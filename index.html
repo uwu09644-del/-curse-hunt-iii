@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#08070f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Curse Hunt">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Curse Hunt III">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/icon-192.png">
+<title>CURSE HUNT III</title>
+
+<!-- ===== SUPABASE CONFIG =====
+To enable multiplayer: create a free Supabase project (https://supabase.com),
+then uncomment and fill in the values below. Otherwise the game runs
+offline/single-device using localStorage.
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script>
+  window.SUPABASE_URL = 'https://your-project.supabase.co';
+  window.SUPABASE_ANON_KEY = 'your-anon-key';
+</script>
+================================ -->
+
+<style>
+  :root{ --void:#08070f; --bone:#f1ecff; --energy:#b06bff; --cursed:#ff3d6e; --flash:#5ef2ff; --gold:#ffc94d; }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;overflow:hidden;background:var(--void);font-family:-apple-system,'SF Pro Display','Segoe UI',Roboto,sans-serif;color:var(--bone);touch-action:none;-webkit-user-select:none;user-select:none}
+  #cam{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.85)}
+  #curseTint{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,rgba(255,61,110,.12),rgba(255,61,110,.32));opacity:0;transition:opacity 1s}
+  #sukunaTint{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,rgba(255,30,30,.18),rgba(120,0,20,.45));opacity:0;transition:opacity 1.2s}
+  #vignette{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(8,7,15,.85) 100%)}
+
+  #topBar{position:fixed;top:max(12px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:min(92%,420px);display:none;flex-direction:column;align-items:center;background:rgba(10,9,18,.62);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,61,110,.5);border-radius:18px;padding:10px 16px}
+  #roleLabel{font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:var(--cursed)}
+  #roleName{font-size:19px;font-weight:900;margin:2px 0;text-align:center;line-height:1.2}
+  #reignInfo{font-size:11px;color:#b6add4;letter-spacing:.1em}
+  .tagLine{font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-top:3px;display:none}
+  #skTagMe{color:var(--gold)} #sukunaTagMe{color:#ff5555}
+
+  #statsRow{position:fixed;left:12px;top:calc(max(12px,env(safe-area-inset-top)) + 112px);display:none;flex-direction:column;gap:8px}
+  .pill{border:1px solid rgba(255,255,255,.22);background:rgba(10,9,18,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:999px;padding:8px 14px;font-size:11px;letter-spacing:.12em}
+  .pill b{color:var(--gold)}
+  #kbBtn{cursor:pointer;text-transform:uppercase;letter-spacing:.18em;font-size:10px}
+
+  #radarWrap{position:fixed;right:12px;top:calc(max(12px,env(safe-area-inset-top)) + 112px);display:none}
+  #radar{width:128px;height:128px;border-radius:50%;border:1px solid rgba(176,107,255,.5);background:rgba(10,9,18,.55);box-shadow:0 0 20px rgba(176,107,255,.25)}
+  #radarNote{text-align:center;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:#8d82b5;margin-top:5px}
+
+  #exoBtn,#strikeBtn{position:fixed;bottom:max(24px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:none;border:2px solid var(--cursed);background:radial-gradient(circle,rgba(255,61,110,.35),rgba(255,61,110,.08));color:var(--bone);width:96px;height:96px;border-radius:50%;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;box-shadow:0 0 32px rgba(255,61,110,.5)}
+  #exoBtn:active,#strikeBtn:active{transform:translateX(-50%) scale(.93)}
+  #strikeBtn{border-color:#ff2222;box-shadow:0 0 36px rgba(255,40,40,.6)}
+  #slayBtn{position:fixed;bottom:max(34px,calc(env(safe-area-inset-bottom) + 10px));right:18px;left:auto;transform:none;display:none;border:2px solid var(--gold);background:radial-gradient(circle,rgba(255,201,77,.3),rgba(255,201,77,.06));color:var(--bone);width:76px;height:76px;border-radius:50%;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;box-shadow:0 0 30px rgba(255,201,77,.5)}
+  #slayBtn:active{transform:scale(.93)}
+
+  #mySeal{position:fixed;bottom:max(24px,env(safe-area-inset-bottom));left:12px;display:none;flex-direction:column;align-items:flex-start;background:rgba(10,9,18,.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(176,107,255,.6);border-radius:16px;padding:10px 16px}
+  #mySeal .lab{font-size:8px;letter-spacing:.26em;text-transform:uppercase;color:var(--energy)}
+  #mySeal .glyphs{font-size:26px;letter-spacing:.2em;margin-top:2px}
+  #mySeal.curse{border-color:var(--cursed)}
+  #mySeal.curse .lab{color:var(--cursed)}
+
+  #soulless{position:fixed;bottom:max(130px,calc(env(safe-area-inset-bottom) + 110px));left:50%;transform:translateX(-50%);display:none;background:rgba(10,9,18,.78);border:1px solid var(--energy);border-radius:999px;padding:9px 18px;font-size:12px;letter-spacing:.14em;color:var(--energy)}
+
+  #pad{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(8,7,15,.93);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:45;padding:28px;text-align:center}
+  #pad h2{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--cursed);max-width:300px;line-height:1.8}
+  #padEntry{font-size:42px;letter-spacing:.3em;height:64px;margin:18px 0 8px;color:var(--flash)}
+  #padGrid{display:grid;grid-template-columns:repeat(4,68px);gap:12px;margin:10px 0 22px}
+  .padKey{height:68px;border-radius:16px;border:1px solid rgba(176,107,255,.5);background:rgba(176,107,255,.1);color:var(--bone);font-size:30px;cursor:pointer}
+  .padKey:active{background:rgba(176,107,255,.35)}
+  #padMsg{font-size:13px;color:var(--cursed);height:20px;margin-bottom:14px}
+
+  #toast{position:fixed;bottom:150px;left:50%;transform:translateX(-50%);max-width:88%;background:rgba(10,9,18,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(176,107,255,.5);border-radius:14px;padding:12px 18px;font-size:13px;line-height:1.4;text-align:center;display:none;z-index:30}
+
+  #kbPanel{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(8,7,15,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:40;padding:30px}
+  #kbPanel h2{font-size:13px;letter-spacing:.4em;text-transform:uppercase;color:var(--cursed);margin-bottom:20px}
+  .lbRow{display:flex;justify-content:space-between;align-items:center;width:min(100%,330px);padding:11px 4px;border-bottom:1px solid rgba(255,255,255,.1);font-size:14px}
+  .lbRow b{color:var(--cursed);font-size:16px}
+  .skTag{display:block;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+  .sukTag{display:block;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#ff5555}
+  #kbClose{margin-top:26px}
+
+  .splash{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:50;text-align:center}
+  .splash .kanji{font-size:104px;font-weight:900;font-family:serif}
+  .splash .kt{font-size:21px;font-weight:900;letter-spacing:.26em;text-transform:uppercase;margin-top:8px}
+  .splash .ks{font-size:14px;color:#d6cdee;margin-top:8px;max-width:300px;line-height:1.5}
+  #killSplash{background:radial-gradient(circle,rgba(255,61,110,.3),rgba(8,7,15,.96))}
+  #killSplash .kanji{color:var(--cursed);text-shadow:0 0 50px rgba(255,61,110,.9)}
+  #deathSplash{background:radial-gradient(circle,rgba(176,107,255,.25),rgba(8,7,15,.97))}
+  #deathSplash .kanji{color:var(--energy);text-shadow:0 0 50px rgba(176,107,255,.9)}
+  #possessSplash{background:radial-gradient(circle,rgba(255,61,110,.35),rgba(8,7,15,.97))}
+  #possessSplash .kanji{color:var(--cursed);text-shadow:0 0 60px rgba(255,61,110,1)}
+  #sukunaSplash{background:radial-gradient(circle,rgba(255,40,40,.35),rgba(40,0,8,.98))}
+  #sukunaSplash .kanji{color:#ff4040;text-shadow:0 0 70px rgba(255,40,40,1)}
+
+  .overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;background:radial-gradient(ellipse at 50% 28%,rgba(255,61,110,.13),transparent 60%),var(--void);z-index:60}
+  .kicker{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--cursed);margin-bottom:14px}
+  h1{font-size:40px;font-weight:900;letter-spacing:-.03em}
+  h1 .kanji{display:block;font-size:15px;font-weight:400;letter-spacing:1.1em;color:var(--cursed);margin-top:10px;padding-left:1.1em}
+  .sub{max-width:320px;font-size:13px;line-height:1.6;color:#b6add4;margin:16px 0 10px}
+  .privacy{max-width:300px;font-size:10.5px;line-height:1.5;color:#8d82b5;margin-bottom:20px}
+  .btn{border:1px solid var(--cursed);background:linear-gradient(180deg,rgba(255,61,110,.22),rgba(255,61,110,.06));color:var(--bone);font-size:15px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:17px 42px;border-radius:999px;cursor:pointer;box-shadow:0 0 28px rgba(255,61,110,.35)}
+  .btn:active{transform:scale(.96)}
+  .btn.ghost{border-color:rgba(255,255,255,.3);background:transparent;box-shadow:none;font-size:12px;padding:12px 26px}
+  #err{display:none;margin-top:18px;font-size:13px;color:var(--cursed);max-width:300px;line-height:1.5}
+  #installBadge{position:fixed;bottom:max(24px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:none;background:rgba(10,9,18,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--gold);border-radius:14px;padding:12px 20px;font-size:13px;color:var(--gold);z-index:55;text-align:center;cursor:pointer}
+  .connection-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+  .connection-dot.online{background:#44ff88;box-shadow:0 0 8px #44ff88}
+  .connection-dot.offline{background:#ff5555;box-shadow:0 0 8px #ff5555}
+  .connection-dot.local{background:#ffc94d;box-shadow:0 0 8px #ffc94d}
+</style>
+</head>
+<body>
+<video id="cam" autoplay playsinline muted></video>
+<div id="curseTint"></div><div id="sukunaTint"></div><div id="vignette"></div>
+
+<div id="topBar">
+  <div id="roleLabel">…</div>
+  <div id="roleName">…</div>
+  <div id="reignInfo">…</div>
+  <div class="tagLine" id="skTagMe">⚔ Sorcerer Killer · curse-immune</div>
+  <div class="tagLine" id="sukunaTagMe">両面宿儺 · SUKUNA</div>
+</div>
+
+<div id="statsRow">
+  <div class="pill">Kills <b id="myKills">0</b></div>
+  <div class="pill">Gold <b id="myGold">0</b>💰</div>
+  <div class="pill" id="kbBtn">Kill bar</div>
+  <div class="pill" id="shopBtn" style="cursor:pointer;text-transform:uppercase;letter-spacing:.18em;font-size:10px;color:var(--gold)">🛍 Shop</div>
+</div>
+
+<div id="radarWrap"><canvas id="radar" width="256" height="256"></canvas><div id="radarNote">sorcerer radar</div></div>
+
+<button id="exoBtn">Exorcise</button>
+<button id="strikeBtn">Strike</button>
+<button id="slayBtn">⚔ Slay</button>
+<div id="mySeal"><div class="lab" id="sealLab">Your seal · hide your screen</div><div class="glyphs" id="sealGlyphs"></div></div>
+<div id="soulless">SOULLESS · revive in <span id="soulT">--:--</span></div>
+
+<div id="pad">
+  <h2 id="padTitle"></h2>
+  <div id="padEntry"></div>
+  <div id="padGrid"></div>
+  <div id="padMsg"></div>
+  <button class="btn ghost" id="padClose">Retreat</button>
+</div>
+
+<div id="toast"></div>
+
+<div id="kbPanel"><h2>☠ Kill bar</h2><div id="kbList"></div><button class="btn ghost" id="kbClose">Close</button></div>
+
+<div id="shopPanel" style="position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(8,7,15,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:40;padding:30px">
+  <h2 style="font-size:13px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">🛍 Cursed bazaar</h2>
+  <div style="font-size:12px;color:#8d82b5;margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:12px">
+    <span>Your gold: <b id="shopGold" style="color:var(--gold)">0</b>💰</span>
+    <span id="connStatus"><span class="connection-dot local"></span>local</span>
+  </div>
+  <div id="shopList" style="width:min(100%,340px);max-height:48vh;overflow-y:auto"></div>
+  <button class="btn ghost" id="shopClose" style="margin-top:24px">Close</button>
+</div>
+
+<div class="splash" id="killSplash"><div class="kanji">祓</div><div class="kt">Curse slain</div><div class="ks" id="killSub"></div></div>
+<div class="splash" id="deathSplash"><div class="kanji">死</div><div class="kt" id="deathTitle">You were struck down</div><div class="ks" id="deathSub"></div></div>
+<div class="splash" id="possessSplash"><div class="kanji">呪</div><div class="kt">You are possessed</div><div class="ks">You are THE CURSE. Survive. Strike hunters who get careless with their seals. Survive 5 days to become Sukuna.</div></div>
+<div class="splash" id="sukunaSplash"><div class="kanji">宿儺</div><div class="kt">The King of Curses</div><div class="ks">You survived 5 days. +1000💰. The SUKUNA tag is yours forever. Your reign continues until someone kills you.</div></div>
+
+<div class="overlay" id="startScreen">
+  <div class="kicker">Multiplayer · persistent reigns</div>
+  <h1>CURSE HUNT III<span class="kanji">両面宿儺</span></h1>
+  <p class="sub">One player is possessed as <b>THE CURSE — and stays cursed until killed</b>. Hunters track them on radar and must read the seal on the Curse's screen up close. The Curse <b>fights back</b> by reading hunters' seals. Survive <b>5 days</b> as the Curse → <b style="color:#ff5555">+1000💰 and the permanent SUKUNA tag</b>. The top killer holds <b style="color:var(--gold)">⚔ SORCERER KILLER</b>: immune to possession — and able to <b style="color:var(--gold)">slay ANY player</b>, not just the Curse. Get slain by them and you lose 50💰.</p>
+  <p class="privacy">Only play with friends who agreed to play. Radar shares approximate location, codename, kills and gold with other players. 💰 is in-game gold, not real money.</p>
+  <button class="btn" id="startBtn">Begin the hunt</button>
+  <div id="err"></div>
+</div>
+
+<div id="installBadge">📲 Install CURSE HUNT III on your home screen</div>
+
+<script>
+// ===== STORAGE LAYER ============================================================
+// Provides window.storage API that the game expects.
+// Uses localStorage by default. When Supabase is configured, shared=true
+// operations sync across devices for multiplayer.
+
+(function(){
+
+  // Detect if Supabase is available
+  const hasSupabase = typeof window.supabaseJs !== 'undefined' && window.SUPABASE_URL && window.SUPABASE_ANON_KEY;
+
+  // ----- localStorage adapter (always available) -----
+  const localAdapter = {
+    async get(key) {
+      const val = localStorage.getItem(key);
+      return val ? { value: val } : null;
+    },
+    async set(key, val) {
+      localStorage.setItem(key, val);
+    },
+    async delete(key) {
+      localStorage.removeItem(key);
+    },
+    async list(prefix) {
+      const keys = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && k.startsWith(prefix)) keys.push(k);
+      }
+      return { keys };
+    }
+  };
+
+  // ----- Supabase adapter (used only for shared=true operations) -----
+  let supabaseClient = null;
+  if (hasSupabase) {
+    try {
+      supabaseClient = supabaseJs.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+    } catch(e) {
+      console.warn('Supabase init failed, falling back to localStorage:', e);
+    }
+  }
+
+  function connType() { return supabaseClient ? 'online' : 'local'; }
+
+  const supabaseAdapter = supabaseClient ? {
+    async get(key) {
+      const { data, error } = await supabaseClient
+        .from('curse_hunt_data')
+        .select('value')
+        .eq('key', key)
+        .single();
+      if (error || !data) return null;
+      return { value: data.value };
+    },
+    async set(key, val) {
+      await supabaseClient
+        .from('curse_hunt_data')
+        .upsert({ key, value: val, updated_at: new Date().toISOString() }, { onConflict: 'key' });
+    },
+    async delete(key) {
+      await supabaseClient.from('curse_hunt_data').delete().eq('key', key);
+    },
+    async list(prefix) {
+      const { data, error } = await supabaseClient
+        .from('curse_hunt_data')
+        .select('key')
+        .like('key', prefix + '%');
+      if (error || !data) return { keys: [] };
+      return { keys: data.map(d => d.key) };
+    }
+  } : null;
+
+  // ----- Combined storage -----
+  window.storage = {
+    async get(key, shared) {
+      if (shared && supabaseAdapter) {
+        const r = await supabaseAdapter.get(key);
+        if (r) return r;
+      }
+      return localAdapter.get(key);
+    },
+    async set(key, val, shared) {
+      localAdapter.set(key, val);
+      if (shared && supabaseAdapter) {
+        await supabaseAdapter.set(key, val).catch(e => console.warn('Supabase sync error:', e));
+      }
+    },
+    async delete(key, shared) {
+      localAdapter.delete(key);
+      if (shared && supabaseAdapter) {
+        await supabaseAdapter.delete(key).catch(e => console.warn('Supabase sync error:', e));
+      }
+    },
+    async list(prefix, shared) {
+      if (shared && supabaseAdapter) {
+        const r = await supabaseAdapter.list(prefix);
+        // Merge with local keys
+        const local = await localAdapter.list(prefix);
+        const merged = new Set([...r.keys, ...local.keys]);
+        return { keys: Array.from(merged) };
+      }
+      return localAdapter.list(prefix);
+    },
+    get connectionType() { return connType(); },
+    get isOnline() { return !!supabaseClient; }
+  };
+
+  // Expose connection status
+  window.getConnectionStatus = () => supabaseClient ? 'online' : 'local';
+
+})();
+// ===== END STORAGE LAYER ========================================================
+
+// ===== SERVICE WORKER REGISTRATION ==============================================
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js').then(reg => {
+      console.log('SW registered:', reg.scope);
+    }, err => {
+      console.warn('SW registration failed:', err);
+    });
+  });
+
+  // PWA install prompt
+  let deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const badge = document.getElementById('installBadge');
+    badge.style.display = 'block';
+    badge.addEventListener('click', async () => {
+      badge.style.display = 'none';
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const result = await deferredPrompt.userChoice;
+        console.log('Install result:', result.outcome);
+        deferredPrompt = null;
+      }
+    });
+  });
+  window.addEventListener('appinstalled', () => {
+    document.getElementById('installBadge').style.display = 'none';
+    console.log('App installed');
+  });
+}
+// ===== END SERVICE WORKER =======================================================
+
+// ===== GAME CODE ================================================================
+(() => {
+  const $ = id => document.getElementById(id);
+  const video = $('cam');
+  const rctx = $('radar').getContext('2d');
+  const store = window.storage;
+
+  // Update connection status indicator
+  function updateConnStatus() {
+    const el = document.getElementById('connStatus');
+    if (!el) return;
+    const type = store.connectionType;
+    el.innerHTML = '<span class="connection-dot ' + type + '"></span>' + type;
+  }
+
+  // ---------- identity ----------
+  const ADJ = ['Hollow','Crimson','Silent','Veiled','Ashen','Feral','Lunar','Grim','Phantom','Static'];
+  const NOUN = ['Fang','Thorn','Veil','Talon','Echo','Husk','Wraith','Sigil','Maw','Pyre'];
+  let me = { id:'h'+Math.random().toString(36).slice(2,9),
+             name: ADJ[Math.random()*ADJ.length|0]+' '+NOUN[Math.random()*NOUN.length|0],
+             kills:0, gold:0, sukuna:false, wards:0, streak:0, lastDaily:0,
+             pact:false, contract:false, sealSalt:0, evileye:false, golden:false };
+  let revealUntil = 0, ghostUntil = 0;
+  async function loadMe(){ if(!store) return; try{ const r=await store.get('me3'); if(r){ me=JSON.parse(r.value); if(me.ward){ me.wards=(me.wards||0)+1; delete me.ward; } me.wards=me.wards||0; } }catch(e){} }
+  async function saveMe(){ if(!store) return; try{ await store.set('me3', JSON.stringify(me)); }catch(e){} }
+  function refreshStats(){ $('myKills').textContent=me.kills; $('myGold').textContent=me.gold; }
+
+  // ---------- helpers ----------
+  function hash(s){ let h=2166136261; const str=String(s); for(let i=0;i<str.length;i++){ h^=str.charCodeAt(i); h=Math.imul(h,16777619);} return Math.abs(h); }
+  const GLYPHS = ['✦','◐','✕','☽','♆','✺','⌖','✶'];
+  const sigil = (salt,id) => { const h=hash(salt+'|'+id); return [h%8,(h>>3)%8,(h>>6)%8,(h>>9)%8].map(i=>GLYPHS[i]).join(''); };
+  function fmtDur(ms){
+    const d=Math.floor(ms/86400000), h=Math.floor(ms/3600000)%24, m=Math.floor(ms/60000)%60;
+    return d>0 ? d+'d '+h+'h' : h>0 ? h+'h '+m+'m' : m+'m '+Math.floor(ms/1000)%60+'s';
+  }
+  let toastT;
+  function showToast(msg, ms=3800){ const t=$('toast'); t.textContent=msg; t.style.display='block'; clearTimeout(toastT); toastT=setTimeout(()=>t.style.display='none',ms); }
+  function splash(id, ms=3000){ $(id).style.display='flex'; setTimeout(()=>$(id).style.display='none', ms); }
+
+  const FIVE_D = 5*24*3600*1000;
+
+  // ---------- geo / radar ----------
+  let myPos=null, others=[], sharing=true;
+  function startGeo(){
+    if(!navigator.geolocation){ $('radarNote').textContent='no gps'; return; }
+    navigator.geolocation.watchPosition(
+      p=>{ myPos={lat:p.coords.latitude,lng:p.coords.longitude}; },
+      ()=>{ $('radarNote').textContent='gps blocked'; },
+      { enableHighAccuracy:true, maximumAge:5000 });
+  }
+  function metersBetween(a,b){
+    const dx=(b.lng-a.lng)*111320*Math.cos(a.lat*Math.PI/180), dy=(b.lat-a.lat)*110540;
+    return {dx,dy,d:Math.hypot(dx,dy)};
+  }
+  function drawRadar(t){
+    const S=256,C=S/2,R=C-8;
+    rctx.clearRect(0,0,S,S);
+    rctx.strokeStyle='rgba(176,107,255,.35)'; rctx.lineWidth=1;
+    for(const rr of [0.5,1]){ rctx.beginPath(); rctx.arc(C,C,R*rr,0,7); rctx.stroke(); }
+    rctx.fillStyle = iAmCurse ? '#ff3d6e' : '#5ef2ff';
+    rctx.beginPath(); rctx.arc(C,C,5,0,7); rctx.fill();
+    if(!myPos) return;
+    for(const o of others){
+      if(!o.pos) continue;
+      const {dx,dy,d}=metersBetween(myPos,o.pos);
+      const rr=Math.min(1,Math.log10(d+1)/3)*R, ang=Math.atan2(dy,dx);
+      const x=C+Math.cos(ang)*rr, y=C-Math.sin(ang)*rr;
+      const isCurse = reign && reign.alive && o.id===reign.curseId;
+      if(isCurse){
+        rctx.strokeStyle = reign.sukuna ? 'rgba(255,60,60,.95)' : 'rgba(255,61,110,.9)';
+        rctx.lineWidth=2;
+        rctx.beginPath(); rctx.arc(x,y,9+Math.sin(t/200)*2.5,0,7); rctx.stroke();
+      }
+      rctx.fillStyle = isCurse ? '#ff3d6e' : '#b06bff';
+      rctx.beginPath(); rctx.arc(x,y,isCurse?6:4,0,7); rctx.fill();
+      rctx.fillStyle='rgba(241,236,255,.85)'; rctx.font='10px sans-serif'; rctx.textAlign='center';
+      rctx.fillText((isCurse?(reign.sukuna?'宿儺':'☠'):'')+(o.name.split(' ')[1]||o.name), x, y-10);
+    }
+  }
+
+  // ---------- reign system ----------
+  let reign=null, iAmCurse=false, wasCurse=false, skHolder=null;
+  let soulUntil=0;
+
+  function electionPool(){
+    const pool=[];
+    if (sharing && myPos) pool.push({id:me.id,name:me.name});
+    for(const o of others) pool.push({id:o.id,name:o.name});
+    return pool;
+  }
+  function computePick(n, excludeId){
+    let pool = electionPool().filter(p => p.id!==excludeId && !(skHolder && p.id===skHolder.id));
+    if(!pool.length) pool = electionPool().filter(p=>p.id!==excludeId);
+    if(!pool.length) return null;
+    pool.sort((a,b)=> a.id<b.id?-1:1);
+    return pool[hash('r'+n)%pool.length];
+  }
+  async function syncReign(){
+    if(!store) return;
+    let r=null;
+    try{ const g=await store.get('reign',true); r=JSON.parse(g.value); }catch(e){}
+    if(!r){
+      const pick = computePick(1, null);
+      if(pick && pick.id===me.id){
+        r = { n:1, curseId:me.id, curseName:me.name, since:Date.now(), alive:true, sukuna:false };
+        try{ await store.set('reign', JSON.stringify(r), true); }catch(e){}
+      }
+    } else if(!r.alive){
+      const pick = computePick(r.n+1, r.curseId);
+      if(pick && (pick.id===me.id || Date.now()-(r.endedAt||0)>90000)){
+        const nr = { n:r.n+1, curseId:pick.id, curseName:pick.name, since:Date.now(), alive:true, sukuna:false };
+        try{
+          const chk = await store.get('reign',true); const cur=JSON.parse(chk.value);
+          if(!cur.alive && cur.n===r.n){ await store.set('reign', JSON.stringify(nr), true); r=nr; }
+          else r=cur;
+        }catch(e){}
+      }
+    }
+    reign = r;
+    const nowCurse = !!(reign && reign.alive && reign.curseId===me.id);
+    if(nowCurse && !wasCurse) splash('possessSplash', 3400);
+    iAmCurse = nowCurse; wasCurse = nowCurse;
+    if(iAmCurse && reign.alive && !reign.sukuna && Date.now()-reign.since>=FIVE_D){
+      reign.sukuna=true;
+      try{ await store.set('reign', JSON.stringify(reign), true); }catch(e){}
+      me.gold+=1000; me.sukuna=true; saveMe(); refreshStats(); pushState();
+      splash('sukunaSplash', 4200);
+    }
+    updateUI();
+  }
+
+  function updateUI(){
+    const soul = Date.now()<soulUntil;
+    $('curseTint').style.opacity = iAmCurse&&!(reign&&reign.sukuna) ? 1:0;
+    $('sukunaTint').style.opacity = iAmCurse&&reign&&reign.sukuna ? 1:0;
+    $('strikeBtn').style.display = iAmCurse ? 'block':'none';
+    $('slayBtn').style.display = (!iAmCurse && skHolder && skHolder.id===me.id && reign && reign.alive) ? 'block':'none';
+    $('exoBtn').style.display = !iAmCurse && reign && reign.alive ? 'block':'none';
+    $('exoBtn').style.opacity = soul ? .4 : 1;
+    $('soulless').style.display = soul ? 'block':'none';
+    if(soul) $('soulT').textContent = Math.floor((soulUntil-Date.now())/60000)+':'+String(Math.floor((soulUntil-Date.now())/1000)%60).padStart(2,'0');
+
+    if(reign && reign.alive){
+      $('mySeal').style.display='flex';
+      $('mySeal').className = iAmCurse ? 'curse' : '';
+      $('sealLab').textContent = iAmCurse ? 'Curse seal · they need this to kill you' : 'Your seal · hide it from the Curse';
+      $('sealGlyphs').textContent = iAmCurse ? sigil('c'+reign.n, me.id) : sigil('h'+reign.n+'#'+(me.sealSalt||0), me.id);
+    } else $('mySeal').style.display='none';
+
+    if(iAmCurse){
+      $('roleLabel').textContent = reign.sukuna ? 'King of curses' : 'You are possessed';
+      $('roleName').textContent = reign.sukuna ? '宿儺 YOU ARE SUKUNA' : '☠ YOU ARE THE CURSE';
+      const held = Date.now()-reign.since;
+      $('reignInfo').textContent = reign.sukuna ? 'reign: '+fmtDur(held)+' · until someone kills you'
+                                                : 'survived '+fmtDur(held)+' · Sukuna at 5d';
+    } else if(reign && reign.alive){
+      $('roleLabel').textContent='Current curse · hunt them';
+      $('roleName').textContent = (reign.sukuna?'宿儺 ':'☠ ')+reign.curseName.toUpperCase();
+      $('reignInfo').textContent='reigning for '+fmtDur(Date.now()-reign.since)+(reign.sukuna?' · SUKUNA bounty +300💰':'');
+    } else {
+      $('roleLabel').textContent='No curse';
+      $('roleName').textContent='AWAITING POSSESSION';
+      $('reignInfo').textContent='a new curse manifests when hunters gather';
+    }
+    $('skTagMe').style.display = (skHolder&&skHolder.id===me.id)?'block':'none';
+    $('sukunaTagMe').style.display = me.sukuna?'block':'none';
+  }
+
+  // ---------- shared sync ----------
+  let lastKillTs=0, lastStrikeTs=0;
+  async function pushState(){
+    if(!store) return;
+    try{
+      if(sharing&&myPos&&Date.now()>=ghostUntil)
+        await store.set('p:'+me.id, JSON.stringify({id:me.id,name:me.name,pos:myPos,ts:Date.now(),sealSalt:me.sealSalt||0}),true);
+      await store.set('kills:'+me.id, JSON.stringify({name:me.name,kills:me.kills,gold:me.gold,sukuna:me.sukuna,golden:me.golden}),true);
+    }catch(e){}
+  }
+  async function pullState(){
+    if(!store){ updateUI(); return; }
+    try{
+      const keys=await store.list('p:',true);
+      const res=[];
+      for(const k of (keys.keys||[]).filter(k=>k!=='p:'+me.id).slice(0,8)){
+        try{ const r=await store.get(k,true); const o=JSON.parse(r.value);
+             if(Date.now()-o.ts<120000) res.push(o);}catch(e){}
+      }
+      others=res;
+    }catch(e){}
+    try{
+      const lk=await store.get('lastpkill',true); const k=JSON.parse(lk.value);
+      if(k.ts>lastKillTs){
+        lastKillTs=k.ts;
+        if(k.victimId===me.id && Date.now()-k.ts<90000){
+          $('deathTitle').textContent='Your reign has ended';
+          $('deathSub').textContent=k.killerName+' read your seal. The possession leaves you.';
+          splash('deathSplash');
+        } else if(k.killerId!==me.id && Date.now()-k.ts<60000){
+          showToast('祓 '+k.killerName+' slew the Curse '+k.victimName+(k.sukuna?' — SUKUNA HAS FALLEN':''));
+        }
+      }
+    }catch(e){}
+    try{
+      const ls=await store.get('laststrike',true); const s=JSON.parse(ls.value);
+      if(s.ts>lastStrikeTs){
+        lastStrikeTs=s.ts;
+        if(s.victimId===me.id && Date.now()-s.ts<90000){
+          if((me.wards||0)>0){
+            me.wards--; saveMe();
+            showToast('🛡 Your ward shattered — the blow was blocked! ('+me.wards+' left)');
+          } else {
+            soulUntil=Date.now()+10*60*1000;
+            me.gold=Math.max(0,me.gold-50); me.streak=0; saveMe(); refreshStats();
+            $('deathTitle').textContent = s.by==='sk' ? 'Slain by the Sorcerer Killer' : 'You were struck down';
+            $('deathSub').textContent=(s.by==='sk' ? '⚔ '+s.curseName : 'The Curse '+s.curseName)+' read your seal. Soulless for 10 minutes. −50💰';
+            splash('deathSplash');
+          }
+        } else if(Date.now()-s.ts<60000 && s.victimId!==me.id && s.curseName!==me.name){
+          showToast((s.by==='sk' ? '⚔ The Sorcerer Killer slew ' : '☠ The Curse struck down ')+s.victimName);
+        }
+      }
+    }catch(e){}
+    await updateSorcererKiller();
+    await syncReign();
+  }
+  async function updateSorcererKiller(){
+    if(!store) return;
+    try{
+      const keys=await store.list('kills:',true);
+      let top=null;
+      for(const k of (keys.keys||[]).slice(0,20)){
+        try{ const r=await store.get(k,true); const o=JSON.parse(r.value); o.id=k.slice(6);
+             if(o.kills>0&&(!top||o.kills>top.kills)) top=o; }catch(e){}
+      }
+      if(!top) return;
+      let sk=null;
+      try{ const r=await store.get('sk',true); sk=JSON.parse(r.value);}catch(e){}
+      if(!sk||sk.id!==top.id){
+        sk={id:top.id,name:top.name,since:Date.now()};
+        await store.set('sk',JSON.stringify(sk),true);
+        if(top.id===me.id) showToast('⚔ You are now the SORCERER KILLER. You cannot be possessed.');
+      }
+      skHolder=sk;
+      if(sk.id===me.id && Date.now()-sk.since>=48*3600*1000){
+        sk.since=Date.now(); await store.set('sk',JSON.stringify(sk),true);
+        me.gold+=100; saveMe(); refreshStats();
+        showToast('王 48h as Sorcerer Killer — bounty +100💰');
+      }
+    }catch(e){}
+  }
+
+  // ---------- keypad ----------
+  let entry='', padMode='exo', wrongCount=0, lockUntil=0;
+  function openPad(mode){
+    if(Date.now()<lockUntil){ showToast('Seal sense burned out. Wait '+Math.ceil((lockUntil-Date.now())/1000)+'s.'); return; }
+    padMode=mode; entry='';
+    $('padEntry').textContent=''; $('padMsg').textContent='';
+    $('padTitle').textContent = mode==='exo'
+      ? 'Get close to the Curse and read the seal on their screen'
+      : mode==='sk'
+      ? 'Sorcerer Killer: read any player\'s seal from their screen and slay them'
+      : 'Read a careless hunter\'s seal from their screen and strike them down';
+    $('pad').style.display='flex';
+  }
+  function buildPad(){
+    const g=$('padGrid'); g.innerHTML='';
+    for(const gl of GLYPHS){
+      const b=document.createElement('button');
+      b.className='padKey'; b.textContent=gl;
+      b.addEventListener('click',()=>{
+        if(entry.length>=4) return;
+        entry+=gl; $('padEntry').textContent=entry;
+        if(entry.length===4) checkEntry();
+      });
+      g.appendChild(b);
+    }
+  }
+  function wrong(msg){
+    wrongCount++;
+    $('padMsg').textContent=msg;
+    if(wrongCount>=4){ lockUntil=Date.now()+60000; wrongCount=0; $('pad').style.display='none'; showToast('Too many failed readings — locked for 60s.'); return; }
+    setTimeout(()=>{ entry=''; $('padEntry').textContent=''; $('padMsg').textContent=''; },900);
+  }
+  async function checkEntry(){
+    if(padMode==='exo'){
+      if(!reign||!reign.alive){ $('pad').style.display='none'; return; }
+      if(entry===sigil('c'+reign.n, reign.curseId)){
+        $('pad').style.display='none'; wrongCount=0;
+        await claimCurseKill();
+      } else wrong('Wrong seal. Look closer.');
+    } else if(padMode==='sk'){
+      const victim = others.find(o => entry===sigil('h'+reign.n+'#'+(o.sealSalt||0), o.id));
+      if(victim){
+        $('pad').style.display='none'; wrongCount=0;
+        await skSlay(victim);
+      } else wrong('No player bears that seal.');
+    } else {
+      const victim = others.find(o => entry===sigil('h'+reign.n+'#'+(o.sealSalt||0), o.id));
+      if(victim){
+        $('pad').style.display='none'; wrongCount=0;
+        await strikeHunter(victim);
+      } else wrong('No hunter bears that seal.');
+    }
+  }
+  async function claimCurseKill(){
+    if(Date.now()<soulUntil){ showToast('You are soulless — you cannot exorcise yet.'); return; }
+    let suk=false;
+    if(store){
+      try{
+        const g=await store.get('reign',true); const r=JSON.parse(g.value);
+        if(!r.alive||r.n!==reign.n){ showToast('Too slow — the Curse was already slain.'); return; }
+        suk=r.sukuna;
+        r.alive=false; r.endedAt=Date.now(); r.killedBy=me.name;
+        await store.set('reign',JSON.stringify(r),true);
+        await store.set('lastpkill',JSON.stringify({killerId:me.id,killerName:me.name,victimId:reign.curseId,victimName:reign.curseName,sukuna:suk,n:reign.n,ts:Date.now()}),true);
+      }catch(e){}
+    }
+    me.kills+=1;
+    let gain = 100+(suk?300:0);
+    if(me.contract){ gain+=1500; me.contract=false; setTimeout(()=>showToast('💀 Contract fulfilled. +1500💰'),3000); }
+    if(me.pact){ gain*=2; me.pact=false; setTimeout(()=>showToast('🩸 Blood Pact — payout DOUBLED.'),3600); }
+    me.gold+=gain;
+    me.streak=(me.streak||0)+1;
+    if(me.streak>=3){ me.gold+=100; me.streak=0; setTimeout(()=>showToast('🔥 FLAWLESS — 3 curse kills without dying. +100💰'),4200); }
+    saveMe(); refreshStats(); pushState();
+    if(navigator.vibrate) navigator.vibrate([60,40,140]);
+    $('killSub').textContent='You exorcised '+reign.curseName+(suk?' — THE KING OF CURSES — +1 kill · +400💰':' · +1 kill · +100💰');
+    splash('killSplash');
+    syncReign();
+  }
+  async function skSlay(victim){
+    if(store){
+      try{
+        const ls=await store.get('laststrike',true).catch(()=>null);
+        if(ls){ const s=JSON.parse(ls.value);
+          if(s.victimId===victim.id && Date.now()-s.ts<10*60*1000){ showToast(victim.name+' is already soulless.'); return; } }
+        await store.set('laststrike',JSON.stringify({victimId:victim.id,victimName:victim.name,curseName:me.name,by:'sk',n:reign.n,ts:Date.now()}),true);
+      }catch(e){}
+    }
+    me.gold+=50;
+    saveMe(); refreshStats(); pushState();
+    if(navigator.vibrate) navigator.vibrate([40,30,90]);
+    showToast('⚔ You slew '+victim.name+'. +50💰 (slays don\'t count as kills)');
+  }
+  async function strikeHunter(victim){
+    if(store){
+      try{ await store.set('laststrike',JSON.stringify({victimId:victim.id,victimName:victim.name,curseName:me.name,by:'curse',n:reign.n,ts:Date.now()}),true);}catch(e){}
+    }
+    me.kills+=1; me.gold+=50;
+    saveMe(); refreshStats(); pushState();
+    if(navigator.vibrate) navigator.vibrate([40,30,90]);
+    showToast('☠ You struck down '+victim.name+'. +1 kill · +50💰');
+  }
+  $('exoBtn').addEventListener('click',()=>{
+    if(Date.now()<soulUntil){ showToast('You are soulless. Wait for your soul to return.'); return; }
+    if(!reign||!reign.alive){ showToast('No curse is active.'); return; }
+    openPad('exo');
+  });
+  $('strikeBtn').addEventListener('click',()=>openPad('strike'));
+  $('slayBtn').addEventListener('click',()=>{
+    if(Date.now()<soulUntil){ showToast('You are soulless. Even the Sorcerer Killer must wait.'); return; }
+    openPad('sk');
+  });
+  $('padClose').addEventListener('click',()=>$('pad').style.display='none');
+
+  // ---------- kill bar ----------
+  $('kbBtn').addEventListener('click', async ()=>{
+    const list=$('kbList'); list.innerHTML='';
+    let rows=[{id:me.id,name:me.name+' (you)',kills:me.kills,sukuna:me.sukuna}];
+    if(store){
+      try{
+        const keys=await store.list('kills:',true);
+        rows=[];
+        for(const k of (keys.keys||[]).slice(0,15)){
+          try{ const r=await store.get(k,true); const o=JSON.parse(r.value);
+               rows.push({id:k.slice(6),name:o.name+(k==='kills:'+me.id?' (you)':''),kills:o.kills,sukuna:o.sukuna,golden:o.golden,gold:o.gold});}catch(e){}
+        }
+      }catch(e){}
+    }
+    rows.sort((a,b)=>b.kills-a.kills);
+    rows.forEach((r,i)=>{
+      const div=document.createElement('div');
+      div.className='lbRow';
+      let tags='';
+      if(skHolder&&skHolder.id===r.id) tags+='<span class="skTag">⚔ Sorcerer Killer · curse-immune</span>';
+      if(r.sukuna) tags+='<span class="sukTag">両面宿儺 · Sukuna</span>';
+      const gname=r.golden?'<span style="color:var(--gold)">✨'+r.name+'</span>':r.name;
+      const goldCol=me.evileye&&r.gold!=null?'<span style="font-size:11px;color:var(--gold);margin-right:10px">'+r.gold+'💰</span>':'';
+      div.innerHTML='<span>'+(i===0&&r.kills>0?'👑 ':'')+gname+tags+'</span><span>'+goldCol+'<b>'+r.kills+'</b></span>';
+      list.appendChild(div);
+    });
+    $('kbPanel').style.display='flex';
+  });
+  $('kbClose').addEventListener('click',()=>$('kbPanel').style.display='none');
+
+  // ---------- shop ----------
+  const ITEMS = [
+    { id:'ward',     icon:'🛡', name:'Ward',           cost:1000,  desc:'Blocks the next strike or slay against you. One use.' },
+    { id:'gward',    icon:'⛨',  name:'Greater Ward',   cost:2500,  desc:'Blocks the next THREE blows against you.' },
+    { id:'reveal',   icon:'👁', name:'Curse Sense',    cost:750,   desc:'Exact distance to the Curse for 60 seconds.' },
+    { id:'esense',   icon:'🔭', name:'Eternal Sense',  cost:3000,  desc:'Exact distance to the Curse for 10 minutes.' },
+    { id:'revive',   icon:'⚡', name:'Soul Revive',    cost:600,   desc:'End your soulless state instantly.' },
+    { id:'ghost',    icon:'👻', name:'Ghost Cloak',    cost:1200,  desc:'Vanish from everyone\'s radar for 5 minutes.' },
+    { id:'scramble', icon:'🔮', name:'Seal Scrambler', cost:1500,  desc:'Reroll your seal. Anyone who memorized it wasted their time.' },
+    { id:'pact',     icon:'🩸', name:'Blood Pact',     cost:2000,  desc:'Your next curse kill pays DOUBLE gold.' },
+    { id:'contract', icon:'💀', name:'Bounty Contract',cost:1000,  desc:'+1500💰 extra if YOU land the next curse kill.' },
+    { id:'dice',     icon:'🎲', name:'Cursed Dice',    cost:300,   desc:'Gamble 300💰. 50/50: win 600 back or lose it all.' },
+    { id:'evileye',  icon:'🧿', name:'Evil Eye',       cost:500,   desc:'Permanently see everyone\'s gold on the kill bar.' },
+    { id:'crystal',  icon:'⏳', name:'Time Crystal',   cost:5000,  desc:'CURSE ONLY: skip 12 hours of your Sukuna countdown.' },
+    { id:'rename',   icon:'🎭', name:'New Identity',   cost:400,   desc:'Reroll your codename. Confuse your enemies.' },
+    { id:'golden',   icon:'👑', name:'Golden Name',    cost:10000, desc:'Pure flex. Your name shines gold on the kill bar forever.' }
+  ];
+  function renderShop(){
+    $('shopGold').textContent = me.gold;
+    updateConnStatus();
+    const list = $('shopList'); list.innerHTML='';
+    for(const it of ITEMS){
+      let ownedTxt = null;
+      if(it.id==='ward'||it.id==='gward'){ if(me.wards>0) ownedTxt='🛡×'+me.wards; }
+      if(it.id==='evileye' && me.evileye) ownedTxt='Owned';
+      if(it.id==='golden' && me.golden) ownedTxt='Owned';
+      if(it.id==='pact' && me.pact) ownedTxt='Active';
+      if(it.id==='contract' && me.contract) ownedTxt='Active';
+      const row = document.createElement('div');
+      row.className='lbRow';
+      row.innerHTML = '<span style="max-width:70%">'+it.icon+' <b style="color:var(--bone);font-size:14px">'+it.name+'</b>'
+        + '<span style="display:block;font-size:11px;color:#8d82b5;line-height:1.4;margin-top:2px">'+it.desc+'</span></span>';
+      const btn = document.createElement('button');
+      btn.className='btn ghost';
+      btn.style.cssText='font-size:11px;padding:9px 16px;border-color:var(--gold);color:var(--gold);flex-shrink:0';
+      const locked = (it.id==='evileye'&&me.evileye)||(it.id==='golden'&&me.golden)||(it.id==='pact'&&me.pact)||(it.id==='contract'&&me.contract);
+      btn.textContent = ownedTxt && locked ? ownedTxt : it.cost+'💰'+(ownedTxt?' ('+ownedTxt+')':'');
+      btn.disabled = locked || me.gold < it.cost;
+      if(btn.disabled) btn.style.opacity=.4;
+      btn.addEventListener('click',()=>buyItem(it));
+      row.appendChild(btn);
+      list.appendChild(row);
+    }
+  }
+  function buyItem(it){
+    if(me.gold < it.cost) return;
+    if(it.id==='crystal' && !iAmCurse){ showToast('⏳ Only the Curse can use a Time Crystal.'); return; }
+    me.gold -= it.cost;
+    switch(it.id){
+      case 'ward':   me.wards=(me.wards||0)+1; showToast('🛡 Ward active — the next blow against you is blocked.'); break;
+      case 'gward':  me.wards=(me.wards||0)+3; showToast('⛨ Greater Ward — your next 3 deaths are denied.'); break;
+      case 'reveal': revealUntil=Date.now()+60000; showToast('👁 Curse Sense — distance shown under the radar for 60s.'); break;
+      case 'esense': revealUntil=Date.now()+600000; showToast('🔭 Eternal Sense — distance shown for 10 minutes.'); break;
+      case 'revive':
+        if(Date.now()<soulUntil){ soulUntil=0; showToast('⚡ Your soul returns. Back to the hunt.'); }
+        else { me.gold += it.cost; showToast('You are not soulless — no need.'); }
+        break;
+      case 'ghost':
+        ghostUntil=Date.now()+300000;
+        if(store) store.delete('p:'+me.id,true).catch(()=>{});
+        showToast('👻 Ghost Cloak — you vanished from all radars for 5 minutes.');
+        break;
+      case 'scramble':
+        me.sealSalt=(Math.random()*1e9)|0;
+        showToast('🔮 Seal scrambled — you carry a brand new seal.');
+        break;
+      case 'pact':     me.pact=true; showToast('🩸 Blood Pact sealed — next curse kill pays double.'); break;
+      case 'contract': me.contract=true; showToast('💀 Contract signed — +1500💰 if you land the next curse kill.'); break;
+      case 'dice':
+        if(Math.random()<0.5){ me.gold+=600; showToast('🎲 The dice favor you. +600💰'); }
+        else showToast('🎲 The dice devour your gold. −300💰');
+        break;
+      case 'evileye': me.evileye=true; showToast('🧿 Evil Eye opened — gold is visible on the kill bar.'); break;
+      case 'crystal':
+        if(store && reign){
+          reign.since -= 12*3600*1000;
+          store.set('reign',JSON.stringify(reign),true).catch(()=>{});
+          showToast('⏳ Time bends. 12 hours closer to Sukuna.');
+        }
+        break;
+      case 'rename':
+        me.name = ADJ[Math.random()*ADJ.length|0]+' '+NOUN[Math.random()*NOUN.length|0];
+        showToast('🎭 You are now '+me.name+'.');
+        break;
+      case 'golden': me.golden=true; showToast('👑 Your name now shines gold. Eternal flex.'); break;
+    }
+    saveMe(); refreshStats(); pushState(); renderShop();
+  }
+  $('shopBtn').addEventListener('click',()=>{ renderShop(); $('shopPanel').style.display='flex'; });
+  $('shopClose').addEventListener('click',()=>$('shopPanel').style.display='none');
+
+  function updateRadarNote(){
+    if(Date.now()<revealUntil && reign && reign.alive && myPos && !iAmCurse){
+      const c = others.find(o=>o.id===reign.curseId);
+      if(c && c.pos){
+        $('radarNote').textContent = '👁 curse: '+Math.round(metersBetween(myPos,c.pos).d)+'m';
+        return;
+      }
+      $('radarNote').textContent = '👁 curse hidden';
+    } else if($('radarNote').textContent.startsWith('👁')) $('radarNote').textContent='sorcerer radar';
+  }
+
+  // ---------- loop ----------
+  function loop(t){ requestAnimationFrame(loop); drawRadar(t); updateUI(); updateRadarNote(); }
+
+  // ---------- start ----------
+  $('startBtn').addEventListener('click', async ()=>{
+    $('err').style.display='none';
+    try{
+      let stream;
+      try{ stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment',width:{ideal:720}},audio:false}); }
+      catch(e){ stream=await navigator.mediaDevices.getUserMedia({video:true,audio:false}); }
+      video.srcObject=stream; await video.play();
+    }catch(e){
+      $('err').style.display='block';
+      $('err').textContent='Camera access was blocked. Allow camera permission in your browser settings, then try again.';
+      return;
+    }
+    await loadMe();
+    const today = Math.floor(Date.now()/86400000);
+    if((me.lastDaily||0) < today){ me.lastDaily = today; me.gold += 25; setTimeout(()=>showToast('🌙 Daily blessing: +25💰'), 4500); }
+    saveMe(); refreshStats(); buildPad();
+    $('startScreen').style.display='none';
+    $('topBar').style.display='flex'; $('radarWrap').style.display='block'; $('statsRow').style.display='flex';
+    startGeo();
+    await pullState(); pushState();
+    setInterval(pushState,15000);
+    setInterval(pullState,20000);
+    requestAnimationFrame(loop);
+    showToast('You are '+me.name+'. The hunt is eternal.');
+  });
+})();
+</script>
+</body>
+</html>

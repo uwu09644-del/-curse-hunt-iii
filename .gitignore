@@ -1,0 +1,5 @@
+node_modules/
+apk/
+generate-icons.js
+*.zip
+*.log
