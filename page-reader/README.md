@@ -14,6 +14,6 @@ Scan a page from a learning book, hear it read aloud, and get highlights.
 node server.js
 ```
 
-Then open `http://localhost:8080/page-reader/`. On a phone, use your computer's IP address. The camera button and installing the app need HTTPS (or localhost).
+Then open `http://localhost:8080/page-reader/`. On a phone, use your computer's IP address. Installing it as an app and using it offline need HTTPS (or localhost).
 
 An internet connection is needed the first time you scan, to download the text recognizer.
