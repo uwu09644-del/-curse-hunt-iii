@@ -1,0 +1,15 @@
+{
+  "name": "Page Reader",
+  "short_name": "Page Reader",
+  "description": "Scan a page from a learning book, hear it read aloud, and highlight the key ideas.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf8f3",
+  "theme_color": "#1f3a5f",
+  "categories": ["education", "books"],
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

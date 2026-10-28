@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1f3a5f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Page Reader">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<title>Page Reader</title>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+<style>
+  :root{
+    --bg:#faf8f3; --paper:#ffffff; --ink:#1d2330; --muted:#6b7280; --line:#e5e1d8;
+    --brand:#1f3a5f; --brand-ink:#ffffff; --accent:#2f6fb3;
+    --reading:#cfe3ff; --word:#2f6fb3; --word-ink:#ffffff;
+    --mark:#ffe36e; --key:#d9f2dc; --key-line:#3f9a4b; --term:#f3d9ff;
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14171d; --paper:#1c2028; --ink:#e8eaee; --muted:#9aa3b2; --line:#2c323d;
+      --brand:#29486f; --accent:#7fb2ff;
+      --reading:#23344d; --word:#7fb2ff; --word-ink:#0d1420;
+      --mark:#7a6614; --key:#1f3a26; --key-line:#5cc56b; --term:#4a2e57;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14171d; --paper:#1c2028; --ink:#e8eaee; --muted:#9aa3b2; --line:#2c323d;
+    --brand:#29486f; --accent:#7fb2ff;
+    --reading:#23344d; --word:#7fb2ff; --word-ink:#0d1420;
+    --mark:#7a6614; --key:#1f3a26; --key-line:#5cc56b; --term:#4a2e57;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{background:var(--bg);color:var(--ink);font-family:-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+  button,select,input,textarea{font:inherit;color:inherit}
+  button{cursor:pointer}
+
+  header{position:sticky;top:0;z-index:5;background:var(--brand);color:var(--brand-ink);padding:max(10px,env(safe-area-inset-top)) 16px 10px;display:flex;align-items:center;gap:10px}
+  header h1{font-size:18px;font-weight:700;flex:1}
+  header button{background:rgba(255,255,255,.14);border:0;border-radius:10px;padding:6px 10px;color:inherit;font-size:14px}
+
+  main{max-width:760px;margin:0 auto;padding:16px 16px 180px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:14px}
+  .muted{color:var(--muted);font-size:14px}
+  h2{font-size:16px;margin-bottom:8px}
+
+  .scanRow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+  .big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:16px 8px;border-radius:12px;border:1px solid var(--line);background:var(--bg);font-weight:600;font-size:15px;text-align:center}
+  .big.primary{background:var(--accent);color:#fff;border-color:transparent}
+  :root[data-theme="dark"] .big.primary{color:#0d1420}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .big.primary{color:#0d1420}}
+  .big .ico{font-size:26px;line-height:1}
+  .optRow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;font-size:14px}
+  .optRow select{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:5px 8px}
+  .linkBtn{background:none;border:0;color:var(--accent);text-decoration:underline;font-size:14px;padding:0}
+
+  #preview{display:none;max-width:100%;max-height:220px;border-radius:10px;margin-top:12px;border:1px solid var(--line)}
+  .progress{display:none;margin-top:12px}
+  .bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:6px}
+  .bar>div{height:100%;width:0;background:var(--accent);transition:width .2s}
+
+  #pasteBox{display:none;margin-top:12px}
+  #pasteBox textarea{width:100%;min-height:120px;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--bg);resize:vertical}
+  .btn{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600}
+  .btn.solid{background:var(--accent);color:#fff;border-color:transparent}
+
+  #readerCard{display:none}
+  .readerHead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+  .readerHead h2{flex:1;margin:0}
+  .toggle{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600}
+  .toggle[aria-pressed="true"]{background:var(--mark);border-color:transparent;color:var(--ink)}
+
+  #text{font-size:var(--fs,19px);line-height:1.75;font-family:Georgia,'Times New Roman',serif;overflow-wrap:anywhere}
+  #text p{margin-bottom:.9em}
+  .s{border-radius:4px;padding:1px 0;cursor:pointer;transition:background .15s}
+  .s.key{background:var(--key);box-shadow:inset 0 -2px 0 var(--key-line)}
+  .s.mark{background:var(--mark)}
+  .s.reading{background:var(--reading)}
+  .w.term{background:var(--term);border-radius:3px}
+  .w.now{background:var(--word);color:var(--word-ink);border-radius:3px}
+  body.markMode .s{cursor:crosshair}
+
+  .legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);margin-bottom:12px}
+  .legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-2px;background:var(--c)}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:4px 12px;font-size:14px}
+  .chip[aria-pressed="true"]{background:var(--term);border-color:transparent}
+
+  #hlList{list-style:none;display:flex;flex-direction:column;gap:8px}
+  #hlList li{border-left:4px solid var(--c,var(--mark));padding:6px 10px;background:var(--bg);border-radius:0 8px 8px 0;font-size:15px}
+  #hlList li small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+  #player{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--paper);border-top:1px solid var(--line);padding:10px 16px max(12px,env(safe-area-inset-bottom));display:none;box-shadow:0 -6px 20px rgba(0,0,0,.08)}
+  .pInner{max-width:760px;margin:0 auto}
+  .pBtns{display:flex;justify-content:center;align-items:center;gap:14px}
+  .pBtns button{border:1px solid var(--line);background:var(--bg);border-radius:50%;width:48px;height:48px;font-size:18px;display:grid;place-items:center}
+  .pBtns #playBtn{width:62px;height:62px;font-size:24px;background:var(--accent);color:#fff;border:0}
+  .pOpts{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:8px;font-size:13px;color:var(--muted)}
+  .pOpts select{max-width:180px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 6px;color:var(--ink)}
+  .pOpts input[type=range]{width:110px;accent-color:var(--accent)}
+
+  #libList{list-style:none}
+  #libList li{display:flex;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+  #libList li:first-child{border-top:0}
+  #libList .t{flex:1;min-width:0}
+  #libList .t b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
+  #libList button{background:none;border:0;font-size:18px;padding:4px}
+
+  .toast{position:fixed;left:50%;bottom:150px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9}
+  .toast.show{opacity:1}
+  .hidden{display:none !important}
+</style>
+</head>
+<body>
+<header>
+  <h1>📖 Page Reader</h1>
+  <button id="themeBtn" aria-label="Toggle theme">🌓</button>
+</header>
+
+<main>
+  <!-- Scan -->
+  <section class="card" id="scanCard">
+    <h2>Scan a book page</h2>
+    <p class="muted">Take a clear, well-lit photo of one page, held flat. The text is read on your device and never uploaded.</p>
+    <div class="scanRow">
+      <label class="big primary"><span class="ico">📷</span>Take photo
+        <input id="camInput" type="file" accept="image/*" capture="environment" hidden>
+      </label>
+      <label class="big"><span class="ico">🖼️</span>Choose image
+        <input id="fileInput" type="file" accept="image/*" hidden>
+      </label>
+    </div>
+    <div class="optRow">
+      <label>Book language
+        <select id="langSel">
+          <option value="eng" data-bcp="en">English</option>
+          <option value="spa" data-bcp="es">Spanish</option>
+          <option value="fra" data-bcp="fr">French</option>
+          <option value="deu" data-bcp="de">German</option>
+          <option value="ita" data-bcp="it">Italian</option>
+          <option value="por" data-bcp="pt">Portuguese</option>
+        </select>
+      </label>
+      <button class="linkBtn" id="pasteToggle">or paste text instead</button>
+    </div>
+    <img id="preview" alt="Scanned page preview">
+    <div class="progress" id="progress">
+      <div class="muted" id="progressLabel">Getting ready…</div>
+      <div class="bar"><div id="progressBar"></div></div>
+    </div>
+    <div id="pasteBox">
+      <textarea id="pasteText" placeholder="Paste or type the page text here…"></textarea>
+      <div class="row"><button class="btn solid" id="pasteGo">Use this text</button></div>
+    </div>
+  </section>
+
+  <!-- Reader -->
+  <section class="card" id="readerCard">
+    <div class="readerHead">
+      <h2 id="pageTitle">Page</h2>
+      <button class="toggle" id="markModeBtn" aria-pressed="false">🖍 Highlighter</button>
+      <button class="toggle" id="sizeDown" aria-label="Smaller text">A−</button>
+      <button class="toggle" id="sizeUp" aria-label="Bigger text">A+</button>
+    </div>
+    <div class="legend">
+      <span style="--c:var(--reading)">Reading now</span>
+      <span style="--c:var(--key)">Key idea (auto)</span>
+      <span style="--c:var(--mark)">Your highlight</span>
+      <span style="--c:var(--term)">Key term</span>
+    </div>
+    <p class="muted" id="tapHint" style="margin-bottom:10px">Tap any sentence to start reading from there. Turn on 🖍 Highlighter to mark sentences instead.</p>
+    <div id="text"></div>
+    <div class="row">
+      <button class="btn" id="editBtn">✏️ Fix text</button>
+      <button class="btn" id="newScanBtn">📷 Scan another page</button>
+    </div>
+  </section>
+
+  <section class="card hidden" id="termsCard">
+    <h2>Key terms</h2>
+    <p class="muted" style="margin-bottom:10px">Words this page keeps coming back to. Tap one to spot it in the text.</p>
+    <div class="chips" id="chips"></div>
+  </section>
+
+  <section class="card hidden" id="hlCard">
+    <h2>Highlights</h2>
+    <p class="muted" style="margin-bottom:10px" id="hlEmpty">Key ideas found on this page and anything you mark show up here.</p>
+    <ul id="hlList"></ul>
+    <div class="row">
+      <button class="btn" id="readHlBtn">🔊 Read highlights</button>
+      <button class="btn" id="copyHlBtn">📋 Copy</button>
+      <button class="btn" id="shareHlBtn">📤 Share</button>
+    </div>
+  </section>
+
+  <section class="card hidden" id="libCard">
+    <h2>My pages</h2>
+    <ul id="libList"></ul>
+  </section>
+</main>
+
+<div id="player">
+  <div class="pInner">
+    <div class="pBtns">
+      <button id="prevBtn" aria-label="Previous sentence">⏮</button>
+      <button id="playBtn" aria-label="Play">▶</button>
+      <button id="stopBtn" aria-label="Stop">⏹</button>
+      <button id="nextBtn" aria-label="Next sentence">⏭</button>
+    </div>
+    <div class="pOpts">
+      <label>Speed <input type="range" id="rate" min="0.5" max="1.75" step="0.05" value="1"> <span id="rateVal">1.0×</span></label>
+      <label>Voice <select id="voiceSel"></select></label>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const synth = window.speechSynthesis;
+  const store = {
+    get(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
+    set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+  };
+
+  // ---------- state ----------
+  let pages = store.get('pr.pages', []);       // [{id, title, text, marks:[sentenceIdx], lang, created}]
+  let page = null;                             // current page object
+  let sentences = [];                          // [{el, text, words:[{el,start,end}], key}]
+  let cur = 0;                                 // current sentence index
+  let playing = false;
+  let queue = null;                            // optional list of sentence indexes to read (e.g. highlights only)
+  let utter = null;                            // keep a reference so Chrome doesn't garbage-collect it
+  let gotBoundary = false, estTimer = null;
+  let markMode = false;
+  let activeTerm = null;
+  let ocrWorker = null, ocrLang = null;
+
+  const settings = Object.assign({ rate: 1, voice: '', fs: 19, theme: '' }, store.get('pr.settings', {}));
+  const saveSettings = () => store.set('pr.settings', settings);
+  const savePages = () => store.set('pr.pages', pages);
+
+  function toast(msg){
+    const t = $('toast'); t.textContent = msg; t.classList.add('show');
+    clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 1800);
+  }
+
+  // ---------- theme / font ----------
+  if (settings.theme) document.documentElement.dataset.theme = settings.theme;
+  $('themeBtn').onclick = () => {
+    const dark = settings.theme ? settings.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    settings.theme = dark ? 'light' : 'dark';
+    document.documentElement.dataset.theme = settings.theme; saveSettings();
+  };
+  const applyFs = () => $('text').style.setProperty('--fs', settings.fs + 'px');
+  applyFs();
+  $('sizeUp').onclick = () => { settings.fs = Math.min(30, settings.fs + 2); applyFs(); saveSettings(); };
+  $('sizeDown').onclick = () => { settings.fs = Math.max(14, settings.fs - 2); applyFs(); saveSettings(); };
+
+  // ---------- scanning ----------
+  $('camInput').onchange = e => handleImage(e.target.files[0], e.target);
+  $('fileInput').onchange = e => handleImage(e.target.files[0], e.target);
+  $('pasteToggle').onclick = () => { const b = $('pasteBox'); b.style.display = b.style.display === 'block' ? 'none' : 'block'; };
+  $('pasteGo').onclick = () => {
+    const t = $('pasteText').value.trim();
+    if (!t) return toast('Type or paste some text first');
+    openNewPage(t);
+    $('pasteText').value = ''; $('pasteBox').style.display = 'none';
+  };
+
+  function setProgress(label, frac){
+    $('progress').style.display = 'block';
+    $('progressLabel').textContent = label;
+    $('progressBar').style.width = Math.round((frac || 0) * 100) + '%';
+  }
+
+  // Shrink large photos, convert to grayscale and stretch contrast — OCR is much more accurate this way.
+  function prepareImage(img){
+    const max = 2200;
+    const scale = Math.min(1, max / Math.max(img.width, img.height));
+    const c = document.createElement('canvas');
+    c.width = Math.round(img.width * scale); c.height = Math.round(img.height * scale);
+    const ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0, c.width, c.height);
+    const d = ctx.getImageData(0, 0, c.width, c.height), px = d.data;
+    let lo = 255, hi = 0;
+    for (let i = 0; i < px.length; i += 4) {
+      const g = 0.299 * px[i] + 0.587 * px[i + 1] + 0.114 * px[i + 2];
+      px[i] = g; if (g < lo) lo = g; if (g > hi) hi = g;
+    }
+    const span = Math.max(1, hi - lo);
+    for (let i = 0; i < px.length; i += 4) {
+      const v = (px[i] - lo) * 255 / span;
+      px[i] = px[i + 1] = px[i + 2] = v;
+    }
+    ctx.putImageData(d, 0, 0);
+    return c;
+  }
+
+  async function getWorker(lang){
+    if (ocrWorker && ocrLang === lang) return ocrWorker;
+    if (ocrWorker) { await ocrWorker.terminate(); ocrWorker = null; }
+    ocrWorker = await Tesseract.createWorker(lang, 1, {
+      logger: m => {
+        if (m.status === 'recognizing text') setProgress('Reading the page… ' + Math.round(m.progress * 100) + '%', m.progress);
+        else if (m.status) setProgress(m.status.charAt(0).toUpperCase() + m.status.slice(1) + '…', m.progress);
+      }
+    });
+    ocrLang = lang;
+    return ocrWorker;
+  }
+
+  async function handleImage(file, input){
+    if (!file) return;
+    input.value = '';
+    if (typeof Tesseract === 'undefined') return toast('Text scanner could not load — check your internet connection');
+    const url = URL.createObjectURL(file);
+    const prev = $('preview'); prev.src = url; prev.style.display = 'block';
+    try {
+      const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = url; });
+      setProgress('Getting the scanner ready (first time takes a moment)…', 0);
+      const worker = await getWorker($('langSel').value);
+      const { data } = await worker.recognize(prepareImage(img));
+      const text = cleanOcr(data.text);
+      if (text.replace(/\W/g, '').length < 3) {
+        setProgress('No text found. Try again with more light and the page filling the photo.', 0);
+        return;
+      }
+      $('progress').style.display = 'none';
+      prev.style.display = 'none';
+      openNewPage(text);
+      if (data.confidence < 60) toast('Some words may be wrong — tap ✏️ Fix text');
+    } catch (err) {
+      console.error(err);
+      setProgress('Something went wrong while scanning. Please try again.', 0);
+    } finally {
+      URL.revokeObjectURL(url);
+    }
+  }
+
+  // Turn raw OCR lines into readable paragraphs.
+  function cleanOcr(raw){
+    return raw
+      .replace(/\r/g, '')
+      .replace(/(\w)-\n(\w)/g, '$1$2')          // re-join words split across lines
+      .split(/\n\s*\n/)                          // blank line = new paragraph
+      .map(p => p.replace(/\s*\n\s*/g, ' ').replace(/\s{2,}/g, ' ').trim())
+      .filter(p => p.length > 1 && !/^\d{1,4}$/.test(p))   // drop lone page numbers
+      .join('\n\n');
+  }
+
+  // ---------- pages ----------
+  function openNewPage(text){
+    const first = text.split(/\s+/).slice(0, 7).join(' ');
+    const p = { id: Date.now().toString(36), title: first + (text.split(/\s+/).length > 7 ? '…' : ''), text, marks: [], lang: $('langSel').value, created: Date.now() };
+    pages.unshift(p);
+    if (pages.length > 30) pages.length = 30;
+    savePages();
+    openPage(p);
+  }
+
+  function openPage(p){
+    stop();
+    page = p;
+    render();
+    $('readerCard').style.display = 'block';
+    $('player').style.display = 'block';
+    $('pageTitle').textContent = new Date(p.created).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) + ' · ' + sentences.length + ' sentences';
+    renderLibrary();
+    pickDefaultVoice();
+    $('readerCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function splitSentences(par){
+    const out = par.match(/[^.!?…]+(?:[.!?…]+["'”’)\]]*|$)\s*/g) || [par];
+    // glue short fragments (e.g. "Dr." or "e.g.") onto the next sentence
+    const merged = [];
+    for (const s of out) {
+      if (merged.length && /\b(?:[A-Z][a-z]{0,2}|e\.g|i\.e|etc|vs|No|Fig)\.\s*$/.test(merged[merged.length - 1])) merged[merged.length - 1] += s;
+      else merged.push(s);
+    }
+    return merged.filter(s => s.trim());
+  }
+
+  // ---------- auto highlights ----------
+  const KEY_PATTERNS = [
+    /\b(is|are|was|were) (called|known as|defined as|referred to as)\b/i,
+    /\b(is|are) (a|an|the) (\w+ )?(type|kind|form|process|way|set|group|part|unit|measure|study|ability|amount)\b/i,
+    /\b(refers? to|is defined|means that|stands for|describes?)\b/i,
+    /\b(important|key|main|essential|remember|note that|in summary|to summarize|in conclusion|therefore|as a result|the purpose of)\b/i,
+    /\b(first|second|third|finally),/i
+  ];
+  const STOP = new Set(('a about above after again against all also am an and any are as at be because been before being below between both but by can could did do does doing down during each few for from further had has have having he her here hers herself him himself his how i if in into is it its itself just let me more most my myself no nor not now of off on once only or other our ours out over own same she should so some such than that the their theirs them then there these they this those through to too under until up very was we were what when where which while who whom why will with would you your yours called known many much often used uses using use make makes made one two three may might must every each like way ways get gets also another such well even still into onto upon within without'.split(' ')));
+
+  function isKeySentence(t){
+    const words = t.trim().split(/\s+/).length;
+    if (words < 5) return false;
+    return KEY_PATTERNS.some(r => r.test(t));
+  }
+
+  function findTerms(text){
+    const counts = new Map(), display = new Map();
+    for (const m of text.matchAll(/[\p{L}][\p{L}'’-]{3,}/gu)) {
+      const w = m[0].replace(/['’]s$/i, '');
+      const k = w.toLowerCase();
+      if (STOP.has(k) || k.length < 4) continue;
+      const stem = k.replace(/(ies|es|s)$/, '');
+      counts.set(stem, (counts.get(stem) || 0) + 1);
+      if (!display.has(stem) || /^[a-z]/.test(display.get(stem))) display.set(stem, w);
+    }
+    return [...counts].filter(([, n]) => n >= 2).sort((a, b) => b[1] - a[1] || b[0].length - a[0].length)
+      .slice(0, 10).map(([stem]) => ({ stem, label: display.get(stem) }));
+  }
+  const stemOf = w => w.toLowerCase().replace(/['’]s$/, '').replace(/[^\p{L}'’-]/gu, '').replace(/(ies|es|s)$/, '');
+
+  // ---------- render ----------
+  function render(){
+    const box = $('text'); box.innerHTML = ''; sentences = []; cur = 0; activeTerm = null;
+    page.text.split(/\n\s*\n/).forEach(par => {
+      const p = document.createElement('p');
+      splitSentences(par).forEach(st => {
+        const i = sentences.length;
+        const span = document.createElement('span');
+        span.className = 's'; span.dataset.i = i;
+        const words = [];
+        // speak the trimmed text; word offsets are relative to it
+        const spoken = st.trim();
+        let pos = 0;
+        spoken.split(/(\s+)/).forEach(tok => {
+          if (!tok) return;
+          if (/^\s+$/.test(tok)) { span.appendChild(document.createTextNode(' ')); pos += tok.length; return; }
+          const w = document.createElement('span');
+          w.className = 'w'; w.textContent = tok; w.dataset.stem = stemOf(tok);
+          span.appendChild(w);
+          words.push({ el: w, start: pos, end: pos + tok.length });
+          pos += tok.length;
+        });
+        const key = isKeySentence(spoken);
+        if (key) span.classList.add('key');
+        if (page.marks.includes(i)) span.classList.add('mark');
+        p.append(span, ' ');
+        sentences.push({ el: span, text: spoken, words, key });
+      });
+      box.appendChild(p);
+    });
+    renderTerms();
+    renderHighlights();
+  }
+
+  function renderTerms(){
+    const terms = findTerms(page.text), chips = $('chips');
+    chips.innerHTML = '';
+    $('termsCard').classList.toggle('hidden', !terms.length);
+    terms.forEach(t => {
+      const b = document.createElement('button');
+      b.className = 'chip'; b.textContent = t.label; b.setAttribute('aria-pressed', 'false');
+      b.onclick = () => {
+        activeTerm = activeTerm === t.stem ? null : t.stem;
+        chips.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', String(c === b && !!activeTerm)));
+        let first = null;
+        $('text').querySelectorAll('.w').forEach(w => {
+          const on = activeTerm && w.dataset.stem === activeTerm;
+          w.classList.toggle('term', !!on);
+          if (on && !first) first = w;
+        });
+        if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      };
+      chips.appendChild(b);
+    });
+  }
+
+  function highlightIdx(){
+    return sentences.map((s, i) => i).filter(i => sentences[i].key || page.marks.includes(i));
+  }
+
+  function renderHighlights(){
+    const list = $('hlList'); list.innerHTML = '';
+    const idx = highlightIdx();
+    $('hlCard').classList.remove('hidden');
+    $('hlEmpty').style.display = idx.length ? 'none' : 'block';
+    ['readHlBtn', 'copyHlBtn', 'shareHlBtn'].forEach(id => $(id).disabled = !idx.length);
+    idx.forEach(i => {
+      const li = document.createElement('li');
+      const mine = page.marks.includes(i);
+      li.style.setProperty('--c', mine ? 'var(--mark)' : 'var(--key-line)');
+      li.innerHTML = '<small>' + (mine ? 'Your highlight' : 'Key idea') + '</small>';
+      li.appendChild(document.createTextNode(sentences[i].text));
+      li.onclick = () => sentences[i].el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      list.appendChild(li);
+    });
+  }
+
+  function highlightsText(){
+    return highlightIdx().map(i => '• ' + sentences[i].text).join('\n');
+  }
+
+  // ---------- tapping the text ----------
+  $('markModeBtn').onclick = () => {
+    markMode = !markMode;
+    $('markModeBtn').setAttribute('aria-pressed', String(markMode));
+    document.body.classList.toggle('markMode', markMode);
+    toast(markMode ? 'Tap sentences to highlight them' : 'Tap a sentence to read from there');
+  };
+  $('text').onclick = e => {
+    const s = e.target.closest('.s'); if (!s) return;
+    const i = +s.dataset.i;
+    if (markMode) {
+      const at = page.marks.indexOf(i);
+      if (at >= 0) page.marks.splice(at, 1); else page.marks.push(i);
+      page.marks.sort((a, b) => a - b);
+      s.classList.toggle('mark', at < 0);
+      savePages(); renderHighlights();
+    } else {
+      queue = null;
+      startAt(i);
+    }
+  };
+
+  $('editBtn').onclick = () => {
+    stop();
+    const t = prompt('Fix any mistakes in the scanned text (leave a blank line between paragraphs):', page.text);
+    if (t == null || !t.trim()) return;
+    page.text = t.trim(); page.marks = [];
+    savePages(); openPage(page);
+  };
+  $('newScanBtn').onclick = () => { stop(); $('scanCard').scrollIntoView({ behavior: 'smooth' }); };
+
+  // ---------- speech ----------
+  let voices = [];
+  function loadVoices(){
+    voices = synth ? synth.getVoices() : [];
+    const sel = $('voiceSel'); sel.innerHTML = '';
+    const lang = (page && $('langSel').querySelector(`[value="${page.lang}"]`)?.dataset.bcp) || 'en';
+    const matching = voices.filter(v => v.lang.toLowerCase().startsWith(lang));
+    (matching.length ? matching : voices).forEach(v => {
+      const o = document.createElement('option');
+      o.value = v.name; o.textContent = v.name.replace(/^(Microsoft|Google) /, '') + ' (' + v.lang + ')';
+      sel.appendChild(o);
+    });
+    if ([...sel.options].some(o => o.value === settings.voice)) sel.value = settings.voice;
+  }
+  function pickDefaultVoice(){ loadVoices(); }
+  if (synth) { loadVoices(); synth.onvoiceschanged = loadVoices; }
+  $('voiceSel').onchange = () => { settings.voice = $('voiceSel').value; saveSettings(); if (playing) startAt(cur); };
+
+  $('rate').value = settings.rate; $('rateVal').textContent = (+settings.rate).toFixed(1) + '×';
+  $('rate').oninput = () => { settings.rate = +$('rate').value; $('rateVal').textContent = settings.rate.toFixed(1) + '×'; saveSettings(); };
+  $('rate').onchange = () => { if (playing) startAt(cur); };
+
+  function clearNow(){
+    document.querySelectorAll('.s.reading').forEach(e => e.classList.remove('reading'));
+    document.querySelectorAll('.w.now').forEach(e => e.classList.remove('now'));
+  }
+  function setWord(s, w){
+    s.words.forEach((x, k) => x.el.classList.toggle('now', k === w));
+  }
+
+  function speakSentence(i){
+    clearTimeout(estTimer);
+    const s = sentences[i]; if (!s) return finish();
+    cur = i; clearNow();
+    s.el.classList.add('reading');
+    s.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    utter = new SpeechSynthesisUtterance(s.text);
+    const v = voices.find(v => v.name === $('voiceSel').value);
+    if (v) { utter.voice = v; utter.lang = v.lang; }
+    utter.rate = settings.rate;
+    gotBoundary = false;
+
+    utter.onstart = () => {
+      // Some voices never report word positions; fall back to an estimated pace.
+      let w = 0;
+      const msPerChar = 62 / settings.rate;
+      const tick = () => {
+        if (gotBoundary || !playing || cur !== i || w >= s.words.length) return;
+        setWord(s, w);
+        const len = s.words[w].end - s.words[w].start + 1;
+        w++;
+        estTimer = setTimeout(tick, len * msPerChar + (/[,;:]$/.test(s.words[w - 1].el.textContent) ? 180 : 0));
+      };
+      estTimer = setTimeout(() => { if (!gotBoundary) tick(); }, 350);
+    };
+    utter.onboundary = e => {
+      if (e.name && e.name !== 'word') return;
+      gotBoundary = true; clearTimeout(estTimer);
+      let w = s.words.findIndex(x => e.charIndex < x.end);
+      if (w < 0) w = s.words.length - 1;
+      setWord(s, w);
+    };
+    const me = utter;
+    utter.onend = () => {
+      if (utter !== me || !playing) return;
+      clearTimeout(estTimer);
+      const next = nextIndex(i);
+      next == null ? finish() : speakSentence(next);
+    };
+    utter.onerror = e => {
+      if (utter !== me) return;
+      if (e.error !== 'interrupted' && e.error !== 'canceled') { console.warn(e.error); finish(); toast('Speech stopped: ' + e.error); }
+    };
+    synth.speak(utter);
+  }
+
+  function nextIndex(i){
+    if (queue) { const k = queue.indexOf(i); return k >= 0 && k < queue.length - 1 ? queue[k + 1] : null; }
+    return i + 1 < sentences.length ? i + 1 : null;
+  }
+  function prevIndex(i){
+    if (queue) { const k = queue.indexOf(i); return k > 0 ? queue[k - 1] : queue[0]; }
+    return Math.max(0, i - 1);
+  }
+
+  function startAt(i){
+    if (!synth) return toast('Read-aloud is not supported in this browser');
+    utter = null; synth.cancel();
+    playing = true; setPlayIcon();
+    // tiny delay: some browsers drop an utterance queued right after cancel()
+    setTimeout(() => { if (playing) speakSentence(i); }, 60);
+  }
+  function pause(){
+    playing = false; utter = null; clearTimeout(estTimer);
+    if (synth) synth.cancel();
+    setPlayIcon();
+  }
+  function stop(){
+    pause(); clearNow(); cur = 0; queue = null;
+  }
+  function finish(){
+    playing = false; utter = null; clearTimeout(estTimer); clearNow(); setPlayIcon();
+    cur = queue ? queue[0] : 0; queue = null;
+  }
+  function setPlayIcon(){
+    $('playBtn').textContent = playing ? '⏸' : '▶';
+    $('playBtn').setAttribute('aria-label', playing ? 'Pause' : 'Play');
+  }
+
+  $('playBtn').onclick = () => playing ? pause() : startAt(cur);
+  $('stopBtn').onclick = stop;
+  $('nextBtn').onclick = () => { const n = nextIndex(cur); if (n != null) playing ? startAt(n) : (cur = n, previewCur()); };
+  $('prevBtn').onclick = () => { const n = prevIndex(cur); playing ? startAt(n) : (cur = n, previewCur()); };
+  function previewCur(){ clearNow(); const s = sentences[cur]; if (s) { s.el.classList.add('reading'); s.el.scrollIntoView({ behavior: 'smooth', block: 'center' }); } }
+
+  // ---------- highlight actions ----------
+  $('readHlBtn').onclick = () => { const q = highlightIdx(); if (!q.length) return; queue = q; startAt(q[0]); };
+  $('copyHlBtn').onclick = async () => {
+    try { await navigator.clipboard.writeText(highlightsText()); toast('Highlights copied'); }
+    catch { toast('Could not copy'); }
+  };
+  $('shareHlBtn').onclick = async () => {
+    const text = highlightsText();
+    if (navigator.share) { try { await navigator.share({ title: 'My highlights', text }); } catch {} }
+    else { try { await navigator.clipboard.writeText(text); toast('Sharing not available — copied instead'); } catch { toast('Could not share'); } }
+  };
+
+  // ---------- library ----------
+  function renderLibrary(){
+    const list = $('libList'); list.innerHTML = '';
+    $('libCard').classList.toggle('hidden', !pages.length);
+    pages.forEach(p => {
+      const li = document.createElement('li');
+      const t = document.createElement('div'); t.className = 't';
+      const b = document.createElement('b'); b.textContent = p.title;
+      const m = document.createElement('span'); m.className = 'muted';
+      m.textContent = new Date(p.created).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) + (p.marks.length ? ' · ' + p.marks.length + ' highlighted' : '');
+      t.append(b, m);
+      const open = document.createElement('button'); open.textContent = p === page ? '📖' : '▶'; open.setAttribute('aria-label', 'Open');
+      open.onclick = () => openPage(p);
+      const del = document.createElement('button'); del.textContent = '🗑'; del.setAttribute('aria-label', 'Delete');
+      del.onclick = () => {
+        if (!confirm('Delete this page?')) return;
+        pages = pages.filter(x => x !== p); savePages();
+        if (p === page) { stop(); page = null; $('readerCard').style.display = 'none'; $('player').style.display = 'none'; $('termsCard').classList.add('hidden'); $('hlCard').classList.add('hidden'); }
+        renderLibrary();
+      };
+      t.onclick = () => openPage(p);
+      li.append(t, open, del);
+      list.appendChild(li);
+    });
+  }
+  renderLibrary();
+
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js').catch(() => {});
+})();
+</script>
+</body>
+</html>

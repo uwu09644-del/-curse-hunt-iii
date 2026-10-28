@@ -9,7 +9,9 @@ const MIME = {
 };
 
 const server = http.createServer((req, res) => {
-  let p = req.url === '/' ? '/index.html' : req.url;
+  let p;
+  try { p = decodeURIComponent(req.url.split('?')[0]); } catch { res.writeHead(400); res.end(); return; }
+  if (p.endsWith('/')) p += 'index.html';
   p = path.join(__dirname, p);
   if (!p.startsWith(__dirname)) { res.writeHead(403); res.end(); return; }
   const ext = path.extname(p);
