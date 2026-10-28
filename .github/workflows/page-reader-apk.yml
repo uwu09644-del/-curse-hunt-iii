@@ -1,0 +1,68 @@
+name: Build Page Reader APK
+
+on:
+  push:
+    paths:
+      - 'page-reader/**'
+      - '.github/workflows/page-reader-apk.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: page-reader/app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: page-reader/app/package-lock.json
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build web files
+        run: npm run build
+
+      - name: Create Android project
+        run: |
+          npx cap add android
+          npx capacitor-assets generate --android \
+            --iconBackgroundColor '#1f3a5f' --iconBackgroundColorDark '#1f3a5f' \
+            --splashBackgroundColor '#1f3a5f' --splashBackgroundColorDark '#14171d'
+          npx cap sync android
+
+      - name: Build APK
+        working-directory: page-reader/app/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+          cp app/build/outputs/apk/debug/app-debug.apk ../PageReader.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PageReader-apk
+          path: page-reader/app/PageReader.apk
+
+      - name: Publish download link
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: page-reader-latest
+          name: Page Reader (latest Android build)
+          body: |
+            Download **PageReader.apk** below on your Android phone and open it to install.
+            If Android asks, allow installing apps from your browser or file manager.
+          prerelease: true
+          files: page-reader/app/PageReader.apk

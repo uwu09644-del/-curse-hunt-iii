@@ -11,6 +11,7 @@
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <link rel="apple-touch-icon" href="icon.svg">
 <title>Page Reader</title>
+<!-- The Android app build swaps this for a bundled copy so scanning works offline. -->
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
 <style>
   :root{
@@ -129,10 +130,10 @@
     <h2>Scan a book page</h2>
     <p class="muted">Take a clear, well-lit photo of one page, held flat. The text is read on your device and never uploaded.</p>
     <div class="scanRow">
-      <label class="big primary"><span class="ico">📷</span>Take photo
+      <label class="big primary" id="camBtn"><span class="ico">📷</span>Take photo
         <input id="camInput" type="file" accept="image/*" capture="environment" hidden>
       </label>
-      <label class="big"><span class="ico">🖼️</span>Choose image
+      <label class="big" id="fileBtn"><span class="ico">🖼️</span>Choose image
         <input id="fileInput" type="file" accept="image/*" hidden>
       </label>
     </div>
@@ -225,7 +226,8 @@
 <script>
 (() => {
   const $ = id => document.getElementById(id);
-  const synth = window.speechSynthesis;
+  // Inside the Android app, Capacitor exposes the phone's camera, voice and share sheet.
+  const native = window.Capacitor?.isNativePlatform?.() ? window.Capacitor.Plugins : null;
   const store = {
     get(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
     set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
@@ -238,7 +240,6 @@
   let cur = 0;                                 // current sentence index
   let playing = false;
   let queue = null;                            // optional list of sentence indexes to read (e.g. highlights only)
-  let utter = null;                            // keep a reference so Chrome doesn't garbage-collect it
   let gotBoundary = false, estTimer = null;
   let markMode = false;
   let activeTerm = null;
@@ -266,8 +267,21 @@
   $('sizeDown').onclick = () => { settings.fs = Math.max(14, settings.fs - 2); applyFs(); saveSettings(); };
 
   // ---------- scanning ----------
-  $('camInput').onchange = e => handleImage(e.target.files[0], e.target);
-  $('fileInput').onchange = e => handleImage(e.target.files[0], e.target);
+  $('camInput').onchange = e => handleFile(e.target);
+  $('fileInput').onchange = e => handleFile(e.target);
+  if (native?.Camera) {
+    const takePhoto = source => async e => {
+      e.preventDefault();
+      try {
+        const photo = await native.Camera.getPhoto({ source, resultType: 'dataUrl', quality: 90, correctOrientation: true });
+        handleImage(photo.dataUrl);
+      } catch (err) {
+        if (!/cancel/i.test(err?.message || '')) toast('Could not get the photo');
+      }
+    };
+    $('camBtn').onclick = takePhoto('CAMERA');
+    $('fileBtn').onclick = takePhoto('PHOTOS');
+  }
   $('pasteToggle').onclick = () => { const b = $('pasteBox'); b.style.display = b.style.display === 'block' ? 'none' : 'block'; };
   $('pasteGo').onclick = () => {
     const t = $('pasteText').value.trim();
@@ -308,7 +322,13 @@
   async function getWorker(lang){
     if (ocrWorker && ocrLang === lang) return ocrWorker;
     if (ocrWorker) { await ocrWorker.terminate(); ocrWorker = null; }
+    const local = window.OCR_LOCAL ? {
+      workerPath: new URL('vendor/worker.min.js', location.href).href,
+      corePath: new URL('vendor/core', location.href).href,
+      ...(lang === 'eng' && { langPath: new URL('vendor/lang', location.href).href })
+    } : {};
     ocrWorker = await Tesseract.createWorker(lang, 1, {
+      ...local,
       logger: m => {
         if (m.status === 'recognizing text') setProgress('Reading the page… ' + Math.round(m.progress * 100) + '%', m.progress);
         else if (m.status) setProgress(m.status.charAt(0).toUpperCase() + m.status.slice(1) + '…', m.progress);
@@ -318,11 +338,16 @@
     return ocrWorker;
   }
 
-  async function handleImage(file, input){
-    if (!file) return;
+  function handleFile(input){
+    const file = input.files[0];
     input.value = '';
-    if (typeof Tesseract === 'undefined') return toast('Text scanner could not load — check your internet connection');
+    if (!file) return;
     const url = URL.createObjectURL(file);
+    handleImage(url).finally(() => URL.revokeObjectURL(url));
+  }
+
+  async function handleImage(url){
+    if (typeof Tesseract === 'undefined') return toast('Text scanner could not load — check your internet connection');
     const prev = $('preview'); prev.src = url; prev.style.display = 'block';
     try {
       const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = url; });
@@ -341,8 +366,6 @@
     } catch (err) {
       console.error(err);
       setProgress('Something went wrong while scanning. Please try again.', 0);
-    } finally {
-      URL.revokeObjectURL(url);
     }
   }
 
@@ -375,7 +398,7 @@
     $('player').style.display = 'block';
     $('pageTitle').textContent = new Date(p.created).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) + ' · ' + sentences.length + ' sentences';
     renderLibrary();
-    pickDefaultVoice();
+    loadVoices();
     $('readerCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
@@ -534,21 +557,62 @@
   $('newScanBtn').onclick = () => { stop(); $('scanCard').scrollIntoView({ behavior: 'smooth' }); };
 
   // ---------- speech ----------
+  // One small interface over the phone's own text-to-speech (in the app) and the browser's (on the web).
+  const speech = native?.TextToSpeech ? (() => {
+    const tts = native.TextToSpeech;
+    let token = null, wordCb = null;
+    tts.addListener('onRangeStart', r => wordCb && wordCb(r.start));
+    return {
+      ok: true,
+      async voices(){
+        try { return (await tts.getSupportedVoices()).voices.map((v, i) => ({ id: String(i), name: v.name, lang: v.lang })); }
+        catch { return []; }
+      },
+      speak(text, { voice, lang, rate, onWord, onEnd, onError }){
+        const me = token = {};
+        wordCb = i => token === me && onWord(i);
+        tts.speak({ text, lang: voice ? voice.lang : lang, rate, voice: voice ? +voice.id : -1 })
+          .then(() => token === me && onEnd())
+          .catch(e => token === me && onError(e?.message || 'error'));
+      },
+      cancel(){ token = null; tts.stop().catch(() => {}); }
+    };
+  })() : (() => {
+    const synth = window.speechSynthesis;
+    let utter = null;   // keep a reference so Chrome doesn't garbage-collect it mid-sentence
+    return {
+      ok: !!synth,
+      async voices(){ return synth ? synth.getVoices().map(v => ({ id: v.name, name: v.name, lang: v.lang, v })) : []; },
+      speak(text, { voice, lang, rate, onWord, onEnd, onError }){
+        const u = utter = new SpeechSynthesisUtterance(text);
+        if (voice) { u.voice = voice.v; u.lang = voice.lang; } else u.lang = lang;
+        u.rate = rate;
+        u.onboundary = e => { if (utter === u && (!e.name || e.name === 'word')) onWord(e.charIndex); };
+        u.onend = () => utter === u && onEnd();
+        u.onerror = e => { if (utter === u && e.error !== 'interrupted' && e.error !== 'canceled') onError(e.error); };
+        // tiny delay: some browsers drop an utterance queued right after cancel()
+        setTimeout(() => utter === u && synth.speak(u), 60);
+      },
+      cancel(){ utter = null; synth?.cancel(); }
+    };
+  })();
+
   let voices = [];
-  function loadVoices(){
-    voices = synth ? synth.getVoices() : [];
+  const bookLang = () => (page && $('langSel').querySelector(`[value="${page.lang}"]`)?.dataset.bcp) || 'en';
+  async function loadVoices(){
+    voices = await speech.voices();
     const sel = $('voiceSel'); sel.innerHTML = '';
-    const lang = (page && $('langSel').querySelector(`[value="${page.lang}"]`)?.dataset.bcp) || 'en';
+    const lang = bookLang();
     const matching = voices.filter(v => v.lang.toLowerCase().startsWith(lang));
     (matching.length ? matching : voices).forEach(v => {
       const o = document.createElement('option');
-      o.value = v.name; o.textContent = v.name.replace(/^(Microsoft|Google) /, '') + ' (' + v.lang + ')';
+      o.value = v.id; o.textContent = v.name.replace(/^(Microsoft|Google) /, '') + ' (' + v.lang + ')';
       sel.appendChild(o);
     });
     if ([...sel.options].some(o => o.value === settings.voice)) sel.value = settings.voice;
   }
-  function pickDefaultVoice(){ loadVoices(); }
-  if (synth) { loadVoices(); synth.onvoiceschanged = loadVoices; }
+  loadVoices();
+  if (!native && window.speechSynthesis) speechSynthesis.onvoiceschanged = loadVoices;
   $('voiceSel').onchange = () => { settings.voice = $('voiceSel').value; saveSettings(); if (playing) startAt(cur); };
 
   $('rate').value = settings.rate; $('rateVal').textContent = (+settings.rate).toFixed(1) + '×';
@@ -569,45 +633,38 @@
     cur = i; clearNow();
     s.el.classList.add('reading');
     s.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-    utter = new SpeechSynthesisUtterance(s.text);
-    const v = voices.find(v => v.name === $('voiceSel').value);
-    if (v) { utter.voice = v; utter.lang = v.lang; }
-    utter.rate = settings.rate;
     gotBoundary = false;
 
-    utter.onstart = () => {
-      // Some voices never report word positions; fall back to an estimated pace.
-      let w = 0;
-      const msPerChar = 62 / settings.rate;
-      const tick = () => {
-        if (gotBoundary || !playing || cur !== i || w >= s.words.length) return;
-        setWord(s, w);
-        const len = s.words[w].end - s.words[w].start + 1;
-        w++;
-        estTimer = setTimeout(tick, len * msPerChar + (/[,;:]$/.test(s.words[w - 1].el.textContent) ? 180 : 0));
-      };
-      estTimer = setTimeout(() => { if (!gotBoundary) tick(); }, 350);
-    };
-    utter.onboundary = e => {
-      if (e.name && e.name !== 'word') return;
-      gotBoundary = true; clearTimeout(estTimer);
-      let w = s.words.findIndex(x => e.charIndex < x.end);
-      if (w < 0) w = s.words.length - 1;
+    // Some voices never report word positions; fall back to an estimated pace.
+    let w = 0;
+    const msPerChar = 62 / settings.rate;
+    const tick = () => {
+      if (gotBoundary || !playing || cur !== i || w >= s.words.length) return;
       setWord(s, w);
+      const len = s.words[w].end - s.words[w].start + 1;
+      w++;
+      estTimer = setTimeout(tick, len * msPerChar + (/[,;:]$/.test(s.words[w - 1].el.textContent) ? 180 : 0));
     };
-    const me = utter;
-    utter.onend = () => {
-      if (utter !== me || !playing) return;
-      clearTimeout(estTimer);
-      const next = nextIndex(i);
-      next == null ? finish() : speakSentence(next);
-    };
-    utter.onerror = e => {
-      if (utter !== me) return;
-      if (e.error !== 'interrupted' && e.error !== 'canceled') { console.warn(e.error); finish(); toast('Speech stopped: ' + e.error); }
-    };
-    synth.speak(utter);
+    estTimer = setTimeout(() => { if (!gotBoundary) tick(); }, 400);
+
+    speech.speak(s.text, {
+      voice: voices.find(v => v.id === $('voiceSel').value),
+      lang: bookLang(),
+      rate: settings.rate,
+      onWord: charIndex => {
+        gotBoundary = true; clearTimeout(estTimer);
+        let w = s.words.findIndex(x => charIndex < x.end);
+        if (w < 0) w = s.words.length - 1;
+        setWord(s, w);
+      },
+      onEnd: () => {
+        if (!playing) return;
+        clearTimeout(estTimer);
+        const next = nextIndex(i);
+        next == null ? finish() : speakSentence(next);
+      },
+      onError: err => { console.warn(err); finish(); toast('Speech stopped: ' + err); }
+    });
   }
 
   function nextIndex(i){
@@ -620,22 +677,21 @@
   }
 
   function startAt(i){
-    if (!synth) return toast('Read-aloud is not supported in this browser');
-    utter = null; synth.cancel();
+    if (!speech.ok) return toast('Read-aloud is not supported in this browser');
+    speech.cancel();
     playing = true; setPlayIcon();
-    // tiny delay: some browsers drop an utterance queued right after cancel()
-    setTimeout(() => { if (playing) speakSentence(i); }, 60);
+    speakSentence(i);
   }
   function pause(){
-    playing = false; utter = null; clearTimeout(estTimer);
-    if (synth) synth.cancel();
+    playing = false; clearTimeout(estTimer);
+    speech.cancel();
     setPlayIcon();
   }
   function stop(){
     pause(); clearNow(); cur = 0; queue = null;
   }
   function finish(){
-    playing = false; utter = null; clearTimeout(estTimer); clearNow(); setPlayIcon();
+    playing = false; clearTimeout(estTimer); clearNow(); setPlayIcon();
     cur = queue ? queue[0] : 0; queue = null;
   }
   function setPlayIcon(){
@@ -657,7 +713,8 @@
   };
   $('shareHlBtn').onclick = async () => {
     const text = highlightsText();
-    if (navigator.share) { try { await navigator.share({ title: 'My highlights', text }); } catch {} }
+    if (native?.Share) { try { await native.Share.share({ title: 'My highlights', text }); } catch {} }
+    else if (navigator.share) { try { await navigator.share({ title: 'My highlights', text }); } catch {} }
     else { try { await navigator.clipboard.writeText(text); toast('Sharing not available — copied instead'); } catch { toast('Could not share'); } }
   };
 
@@ -688,7 +745,7 @@
   }
   renderLibrary();
 
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js').catch(() => {});
+  if (!native && 'serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js').catch(() => {});
 })();
 </script>
 </body>
