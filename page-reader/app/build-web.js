@@ -1,5 +1,5 @@
 // Copies the Page Reader web app into www/ for the Android build, with the
-// text scanner (Tesseract) and English language data bundled so it works offline.
+// text scanner (Tesseract) and English and Hebrew language data bundled so it works offline.
 const fs = require('fs');
 const path = require('path');
 
@@ -17,7 +17,7 @@ const copy = (from, to) => fs.copyFileSync(path.join(mods, from), path.join(www,
 copy('tesseract.js/dist/tesseract.min.js', 'tesseract.min.js');
 copy('tesseract.js/dist/worker.min.js', 'worker.min.js');
 for (const f of ['tesseract-core-lstm.wasm.js', 'tesseract-core-simd-lstm.wasm.js']) copy('tesseract.js-core/' + f, 'core/' + f);
-copy('@tesseract.js-data/eng/4.0.0_best_int/eng.traineddata.gz', 'lang/eng.traineddata.gz');
+for (const lang of ['eng', 'heb']) copy(`@tesseract.js-data/${lang}/4.0.0_best_int/${lang}.traineddata.gz`, `lang/${lang}.traineddata.gz`);
 
 const cdn = '<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>';
 let html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');

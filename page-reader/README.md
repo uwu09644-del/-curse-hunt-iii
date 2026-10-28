@@ -2,7 +2,7 @@
 
 Scan a page from a learning book, hear it read aloud, and get highlights.
 
-- **Scan**: take a photo or choose an image. Text recognition (Tesseract.js) runs in the browser, so the photo is never uploaded.
+- **Scan**: take a photo or choose an image. Works with English, Hebrew, Spanish, French, German, Italian and Portuguese pages; Hebrew is shown right-to-left. Text recognition (Tesseract.js) runs in the browser, so the photo is never uploaded.
 - **Read aloud**: play, pause, skip sentences, change speed and voice. The sentence being read is shaded and the current word is lit up.
 - **Highlights**: sentences that look like definitions or key points are marked green automatically. Turn on the Highlighter to mark your own (yellow). The Highlights list can be read aloud, copied or shared.
 - **Key terms**: words the page repeats; tap one to show every place it appears.
@@ -20,7 +20,7 @@ An internet connection is needed the first time you scan, to download the text r
 
 ## Android app
 
-`page-reader/app/` wraps Page Reader as a real Android app with Capacitor. In the app it uses the phone's own camera, voice and share sheet, and the English text scanner is built in so scanning works offline.
+`page-reader/app/` wraps Page Reader as a real Android app with Capacitor. In the app it uses the phone's own camera, voice and share sheet, and the English and Hebrew text scanners are built in, so scanning in those languages works offline.
 
 Every push that changes `page-reader/` builds a new APK on GitHub (the **Build Page Reader APK** workflow). Get it from the repository's **Releases** page, under **Page Reader (latest Android build)**: download `PageReader.apk` on your phone and open it to install. Android will ask you to allow installing apps from your browser or file manager the first time.
 

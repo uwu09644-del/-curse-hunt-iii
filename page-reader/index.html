@@ -11,7 +11,7 @@
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <link rel="apple-touch-icon" href="icon.svg">
 <title>Page Reader</title>
-<!-- The Android app build swaps this for a bundled copy so scanning works offline. -->
+<!-- The Android app build swaps this for a bundled copy so scanning English and Hebrew works offline. -->
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
 <style>
   :root{
@@ -75,7 +75,7 @@
   .toggle{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600}
   .toggle[aria-pressed="true"]{background:var(--mark);border-color:transparent;color:var(--ink)}
 
-  #text{font-size:var(--fs,19px);line-height:1.75;font-family:Georgia,'Times New Roman',serif;overflow-wrap:anywhere}
+  #text{font-size:var(--fs,19px);line-height:1.75;font-family:Georgia,'Times New Roman','David','Noto Serif Hebrew',serif;overflow-wrap:anywhere}
   #text p{margin-bottom:.9em}
   .s{border-radius:4px;padding:1px 0;cursor:pointer;transition:background .15s}
   .s.key{background:var(--key);box-shadow:inset 0 -2px 0 var(--key-line)}
@@ -93,7 +93,7 @@
   .chip[aria-pressed="true"]{background:var(--term);border-color:transparent}
 
   #hlList{list-style:none;display:flex;flex-direction:column;gap:8px}
-  #hlList li{border-left:4px solid var(--c,var(--mark));padding:6px 10px;background:var(--bg);border-radius:0 8px 8px 0;font-size:15px}
+  #hlList li{border-inline-start:4px solid var(--c,var(--mark));padding:6px 10px;background:var(--bg);border-start-end-radius:8px;border-end-end-radius:8px;font-size:15px}
   #hlList li small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
   .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 
@@ -146,6 +146,7 @@
           <option value="deu" data-bcp="de">German</option>
           <option value="ita" data-bcp="it">Italian</option>
           <option value="por" data-bcp="pt">Portuguese</option>
+          <option value="heb" data-bcp="he">Hebrew – עברית</option>
         </select>
       </label>
       <button class="linkBtn" id="pasteToggle">or paste text instead</button>
@@ -325,7 +326,7 @@
     const local = window.OCR_LOCAL ? {
       workerPath: new URL('vendor/worker.min.js', location.href).href,
       corePath: new URL('vendor/core', location.href).href,
-      ...(lang === 'eng' && { langPath: new URL('vendor/lang', location.href).href })
+      ...(['eng', 'heb'].includes(lang) && { langPath: new URL('vendor/lang', location.href).href })
     } : {};
     ocrWorker = await Tesseract.createWorker(lang, 1, {
       ...local,
@@ -355,7 +356,7 @@
       const worker = await getWorker($('langSel').value);
       const { data } = await worker.recognize(prepareImage(img));
       const text = cleanOcr(data.text);
-      if (text.replace(/\W/g, '').length < 3) {
+      if (text.replace(/[^\p{L}\p{N}]/gu, '').length < 3) {
         setProgress('No text found. Try again with more light and the page filling the photo.', 0);
         return;
       }
@@ -419,13 +420,18 @@
     /\b(is|are) (a|an|the) (\w+ )?(type|kind|form|process|way|set|group|part|unit|measure|study|ability|amount)\b/i,
     /\b(refers? to|is defined|means that|stands for|describes?)\b/i,
     /\b(important|key|main|essential|remember|note that|in summary|to summarize|in conclusion|therefore|as a result|the purpose of)\b/i,
-    /\b(first|second|third|finally),/i
+    /\b(first|second|third|finally),/i,
+    // Hebrew "X is the process / kind / part of…"
+    /(^|\s)(הוא|היא|הם|הן) ה(תהליך|סוג|חלק|יחידה|דרך|מדע|יכולת|כמות|מצב|שיטה)(?=[\s,.:;]|$)/,
+    // Hebrew: "is called", "is defined", "meaning", "important", "remember", "in summary", "therefore", "the purpose"…
+    /(^|[\s"'(])[והבלכמש]?(נקרא|נקראת|נקראים|נקראות|מכונה|מכונים|מוגדר|מוגדרת|מוגדרים|הגדרה|פירושו|פירושה|כלומר|חשוב|חשובה|חשובים|העיקרי|העיקרית|זכרו|זכור|לסיכום|בסיכום|לכן|כתוצאה|המטרה|ראשית|שנית|לבסוף)(?=[\s,.:;!?"')]|$)/
   ];
-  const STOP = new Set(('a about above after again against all also am an and any are as at be because been before being below between both but by can could did do does doing down during each few for from further had has have having he her here hers herself him himself his how i if in into is it its itself just let me more most my myself no nor not now of off on once only or other our ours out over own same she should so some such than that the their theirs them then there these they this those through to too under until up very was we were what when where which while who whom why will with would you your yours called known many much often used uses using use make makes made one two three may might must every each like way ways get gets also another such well even still into onto upon within without'.split(' ')));
+  const STOP_HE = 'אשר כאשר להיות היות אותו אותה אותם אותן שלהם שלהן שלנו שלכם אלה אלו כמו בגלל אולם אבל לפני אחרי בתוך מאוד יותר פחות כלומר עוד גם רק כבר היה היתה הייתה היו יהיה תהיה ידי באמצעות למשל כדי בין עליו עליה עליהם זאת';
+  const STOP = new Set((STOP_HE + ' a about above after again against all also am an and any are as at be because been before being below between both but by can could did do does doing down during each few for from further had has have having he her here hers herself him himself his how i if in into is it its itself just let me more most my myself no nor not now of off on once only or other our ours out over own same she should so some such than that the their theirs them then there these they this those through to too under until up very was we were what when where which while who whom why will with would you your yours called known many much often used uses using use make makes made one two three may might must every each like way ways get gets also another such well even still into onto upon within without'.split(' ')));
 
   function isKeySentence(t){
     const words = t.trim().split(/\s+/).length;
-    if (words < 5) return false;
+    if (words < 4) return false;
     return KEY_PATTERNS.some(r => r.test(t));
   }
 
@@ -449,6 +455,7 @@
     const box = $('text'); box.innerHTML = ''; sentences = []; cur = 0; activeTerm = null;
     page.text.split(/\n\s*\n/).forEach(par => {
       const p = document.createElement('p');
+      p.dir = 'auto';   // right-to-left for Hebrew, left-to-right otherwise
       splitSentences(par).forEach(st => {
         const i = sentences.length;
         const span = document.createElement('span');
@@ -515,7 +522,8 @@
       const mine = page.marks.includes(i);
       li.style.setProperty('--c', mine ? 'var(--mark)' : 'var(--key-line)');
       li.innerHTML = '<small>' + (mine ? 'Your highlight' : 'Key idea') + '</small>';
-      li.appendChild(document.createTextNode(sentences[i].text));
+      const txt = document.createElement('div'); txt.dir = 'auto'; txt.textContent = sentences[i].text;
+      li.appendChild(txt);
       li.onclick = () => sentences[i].el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       list.appendChild(li);
     });
@@ -603,7 +611,9 @@
     voices = await speech.voices();
     const sel = $('voiceSel'); sel.innerHTML = '';
     const lang = bookLang();
-    const matching = voices.filter(v => v.lang.toLowerCase().startsWith(lang));
+    // Android still reports Hebrew voices with the old code "iw"
+    const codes = lang === 'he' ? ['he', 'iw'] : [lang];
+    const matching = voices.filter(v => codes.some(c => v.lang.toLowerCase().startsWith(c)));
     (matching.length ? matching : voices).forEach(v => {
       const o = document.createElement('option');
       o.value = v.id; o.textContent = v.name.replace(/^(Microsoft|Google) /, '') + ' (' + v.lang + ')';
@@ -663,7 +673,10 @@
         const next = nextIndex(i);
         next == null ? finish() : speakSentence(next);
       },
-      onError: err => { console.warn(err); finish(); toast('Speech stopped: ' + err); }
+      onError: err => {
+        console.warn(err); finish();
+        toast(/not supported/i.test(err) ? 'No voice for this language — add one in your phone’s text-to-speech settings' : 'Speech stopped: ' + err);
+      }
     });
   }
 
@@ -725,7 +738,7 @@
     pages.forEach(p => {
       const li = document.createElement('li');
       const t = document.createElement('div'); t.className = 't';
-      const b = document.createElement('b'); b.textContent = p.title;
+      const b = document.createElement('b'); b.dir = 'auto'; b.textContent = p.title;
       const m = document.createElement('span'); m.className = 'muted';
       m.textContent = new Date(p.created).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) + (p.marks.length ? ' · ' + p.marks.length + ' highlighted' : '');
       t.append(b, m);

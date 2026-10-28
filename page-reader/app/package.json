@@ -13,6 +13,7 @@
     "@capacitor/core": "^8.6.0",
     "@capacitor/share": "^8.0.3",
     "@tesseract.js-data/eng": "^1.0.0",
+    "@tesseract.js-data/heb": "^1.0.0",
     "tesseract.js": "^5.1.1",
     "tesseract.js-core": "^5.1.1"
   },
