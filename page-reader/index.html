@@ -326,7 +326,7 @@
     const local = window.OCR_LOCAL ? {
       workerPath: new URL('vendor/worker.min.js', location.href).href,
       corePath: new URL('vendor/core', location.href).href,
-      ...(['eng', 'heb'].includes(lang) && { langPath: new URL('vendor/lang', location.href).href })
+      ...(['eng', 'heb'].includes(lang) && { langPath: new URL('vendor/lang', location.href).href, gzip: false })
     } : {};
     ocrWorker = await Tesseract.createWorker(lang, 1, {
       ...local,

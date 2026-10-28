@@ -2,6 +2,7 @@
 // text scanner (Tesseract) and English and Hebrew language data bundled so it works offline.
 const fs = require('fs');
 const path = require('path');
+const zlib = require('zlib');
 
 const root = path.join(__dirname, '..');
 const www = path.join(__dirname, 'www');
@@ -17,7 +18,11 @@ const copy = (from, to) => fs.copyFileSync(path.join(mods, from), path.join(www,
 copy('tesseract.js/dist/tesseract.min.js', 'tesseract.min.js');
 copy('tesseract.js/dist/worker.min.js', 'worker.min.js');
 for (const f of ['tesseract-core-lstm.wasm.js', 'tesseract-core-simd-lstm.wasm.js']) copy('tesseract.js-core/' + f, 'core/' + f);
-for (const lang of ['eng', 'heb']) copy(`@tesseract.js-data/${lang}/4.0.0_best_int/${lang}.traineddata.gz`, `lang/${lang}.traineddata.gz`);
+// Stored unzipped: Android's packaging strips ".gz" from asset names, which would break the lookup.
+for (const lang of ['eng', 'heb']) {
+  const gz = fs.readFileSync(path.join(mods, `@tesseract.js-data/${lang}/4.0.0_best_int/${lang}.traineddata.gz`));
+  fs.writeFileSync(path.join(www, 'vendor', 'lang', `${lang}.traineddata`), zlib.gunzipSync(gz));
+}
 
 const cdn = '<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>';
 let html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
