@@ -3,3 +3,4 @@ apk/
 generate-icons.js
 *.zip
 *.log
+__pycache__/
