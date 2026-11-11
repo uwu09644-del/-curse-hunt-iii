@@ -1,0 +1,1545 @@
+{
+ "cast": {
+  "TAKUTO": {
+   "voice": [
+    [
+     "am_michael",
+     0.6
+    ],
+    [
+     "am_puck",
+     0.4
+    ]
+   ],
+   "speed": 1.02
+  },
+  "NEMU": {
+   "voice": [
+    [
+     "af_nicole",
+     0.65
+    ],
+    [
+     "af_bella",
+     0.35
+    ]
+   ],
+   "speed": 1.02
+  },
+  "SIEG": {
+   "voice": [
+    [
+     "bm_george",
+     1
+    ]
+   ],
+   "speed": 1.06
+  },
+  "AKURO": {
+   "voice": [
+    [
+     "am_fenrir",
+     1
+    ]
+   ],
+   "speed": 0.8,
+   "fx": "demon"
+  },
+  "RIN": {
+   "voice": [
+    [
+     "af_kore",
+     0.6
+    ],
+    [
+     "bf_emma",
+     0.4
+    ]
+   ],
+   "speed": 1.05
+  },
+  "VALENTINE": {
+   "voice": [
+    [
+     "bf_isabella",
+     0.55
+    ],
+    [
+     "af_nova",
+     0.45
+    ]
+   ],
+   "speed": 1.06
+  },
+  "CLERK": {
+   "voice": [
+    [
+     "af_aoede",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "CROWD": {
+   "voice": [
+    [
+     "am_echo",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "CROWD2": {
+   "voice": [
+    [
+     "af_river",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "VENDOR": {
+   "voice": [
+    [
+     "bm_daniel",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "HUNTER": {
+   "voice": [
+    [
+     "am_onyx",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "SABLE": {
+   "voice": [
+    [
+     "bm_fable",
+     1
+    ]
+   ],
+   "speed": 0.92,
+   "fx": "static"
+  },
+  "WICK": {
+   "voice": [
+    [
+     "am_puck",
+     0.5
+    ],
+    [
+     "am_liam",
+     0.5
+    ]
+   ],
+   "speed": 1.12
+  },
+  "GIDEON": {
+   "voice": [
+    [
+     "bm_lewis",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "EXAMINER": {
+   "voice": [
+    [
+     "bf_alice",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "HARUKI": {
+   "voice": [
+    [
+     "am_liam",
+     0.6
+    ],
+    [
+     "am_eric",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "LUCIEN": {
+   "voice": [
+    [
+     "bm_daniel",
+     0.5
+    ],
+    [
+     "am_adam",
+     0.5
+    ]
+   ],
+   "speed": 0.94
+  },
+  "VESPER": {
+   "voice": [
+    [
+     "bf_lily",
+     0.6
+    ],
+    [
+     "af_sky",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "KUROZANE": {
+   "voice": [
+    [
+     "am_onyx",
+     0.7
+    ],
+    [
+     "am_fenrir",
+     0.3
+    ]
+   ],
+   "speed": 0.9
+  },
+  "OGRE": {
+   "voice": [
+    [
+     "am_santa",
+     1
+    ]
+   ],
+   "speed": 0.9,
+   "fx": "demon"
+  },
+  "NARRATOR": {
+   "voice": [
+    [
+     "bm_george",
+     0.4
+    ],
+    [
+     "am_adam",
+     0.6
+    ]
+   ],
+   "speed": 0.98
+  }
+ },
+ "lines": [
+  {
+   "id": "ep09_001",
+   "who": "TAKUTO",
+   "text": "Previously. Kurozane challenged Sieg at the pass shrine, six years after Grey Hollow.",
+   "tts": "Previously. Kurozane challenged Seeg at the pass shrine, six years after Grey Hollow.",
+   "mono": true
+  },
+  {
+   "id": "ep09_002",
+   "who": "TAKUTO",
+   "text": "Sieg made his honest blade lie, just once. Then Sable set the grey pack on us.",
+   "tts": "Seeg made his honest blade lie, just once. Then Sable set the grey pack on us.",
+   "mono": true
+  },
+  {
+   "id": "ep09_003",
+   "who": "TAKUTO",
+   "text": "Kurozane turned on his own pack. And Sieg laughed again.",
+   "tts": "Kurozane turned on his own pack. And Seeg laughed again.",
+   "mono": true
+  },
+  {
+   "id": "ep09_004",
+   "who": "TAKUTO",
+   "text": "Now we are at the gates of the golden city. Haruki is somewhere inside.",
+   "tts": "Now we are at the gates of the golden city. Hah-roo-kee is somewhere inside.",
+   "mono": true
+  },
+  {
+   "id": "ep09_005",
+   "who": "HARUKI",
+   "text": "Takuto is late. He is always late. The cat is going to give up on us.",
+   "tts": "Tah-koo-toh is late. He is always late. The cat is going to give up on us."
+  },
+  {
+   "id": "ep09_006",
+   "who": "HARUKI",
+   "text": "What... what is that? The sky is cracking."
+  },
+  {
+   "id": "ep09_007",
+   "who": "HARUKI",
+   "text": "I am falling. I am falling. Stop. Stop. STOP."
+  },
+  {
+   "id": "ep09_008",
+   "who": "HARUKI",
+   "text": "...It stopped."
+  },
+  {
+   "id": "ep09_009",
+   "who": "LUCIEN",
+   "text": "Welcome, Skyfallen. Do not be afraid. You stopped time to save yourself. That is a rare gift."
+  },
+  {
+   "id": "ep09_010",
+   "who": "LUCIEN",
+   "text": "I am going to send you home. All of you. Someday."
+  },
+  {
+   "id": "ep09_011",
+   "who": "WICK",
+   "text": "This is a golden carriage. I am inside a golden carriage. My mom would faint."
+  },
+  {
+   "id": "ep09_012",
+   "who": "NEMU",
+   "text": "The seats are made of clouds. I am never getting out."
+  },
+  {
+   "id": "ep09_013",
+   "who": "RIN",
+   "text": "The road is paved with marble. Marble. In the frontier towns people eat bark in winter."
+  },
+  {
+   "id": "ep09_014",
+   "who": "SIEG",
+   "text": "Saint Lumen has always been rich. The Gilded Order guards the capital. The capital pays for the Order. Everyone is happy."
+  },
+  {
+   "id": "ep09_015",
+   "who": "RIN",
+   "text": "Everyone inside the walls."
+  },
+  {
+   "id": "ep09_016",
+   "who": "SIEG",
+   "text": "...Yes. Everyone inside the walls."
+  },
+  {
+   "id": "ep09_017",
+   "who": "TAKUTO",
+   "text": "Tell me about Lucien."
+  },
+  {
+   "id": "ep09_018",
+   "who": "SIEG",
+   "text": "Lucien Aurel. The Golden Saint. Rank S, the only one in a generation. His Brand is called Sanctum."
+  },
+  {
+   "id": "ep09_019",
+   "who": "SIEG",
+   "text": "Golden barriers. He has held a whole city wall against a Calamity with them. Nothing has ever broken a Sanctum. Nothing."
+  },
+  {
+   "id": "ep09_020",
+   "who": "TAKUTO",
+   "text": "Nothing?"
+  },
+  {
+   "id": "ep09_021",
+   "who": "AKURO",
+   "text": "Ha. Nothing. I love that word. It is a door with a sign on it that says knock.",
+   "mono": true
+  },
+  {
+   "id": "ep09_022",
+   "who": "RIN",
+   "text": "It's talking. I can see it on your face."
+  },
+  {
+   "id": "ep09_023",
+   "who": "TAKUTO",
+   "text": "It wants to knock."
+  },
+  {
+   "id": "ep09_024",
+   "who": "RIN",
+   "text": "Tell it no."
+  },
+  {
+   "id": "ep09_025",
+   "who": "TAKUTO",
+   "text": "I always tell it no."
+  },
+  {
+   "id": "ep09_026",
+   "who": "WICK",
+   "text": "Guys. Guys. There is a statue. Of a guy. A giant gold statue of a guy who is alive."
+  },
+  {
+   "id": "ep09_027",
+   "who": "CROWD",
+   "text": "Praise the Saint! Praise the golden wall!"
+  },
+  {
+   "id": "ep09_028",
+   "who": "CROWD2",
+   "text": "Hunters from the frontier! The Saint has guests!"
+  },
+  {
+   "id": "ep09_029",
+   "who": "NEMU",
+   "text": "Everyone is smiling. All the time. Even the dogs."
+  },
+  {
+   "id": "ep09_030",
+   "who": "TAKUTO",
+   "text": "Is that bad?"
+  },
+  {
+   "id": "ep09_031",
+   "who": "NEMU",
+   "text": "Nobody smiles all the time. Not even me, and I am asleep half the time."
+  },
+  {
+   "id": "ep09_032",
+   "who": "VENDOR",
+   "text": "Candles blessed by the Saint! Keep the Rifts away! Two silver!"
+  },
+  {
+   "id": "ep09_033",
+   "who": "CROWD",
+   "text": "The Saint will send the Skyfallen home! He promised!"
+  },
+  {
+   "id": "ep09_034",
+   "who": "WICK",
+   "text": "Did you hear that? Send the Skyfallen home. That is us. That is me."
+  },
+  {
+   "id": "ep09_035",
+   "who": "TAKUTO",
+   "text": "Wick."
+  },
+  {
+   "id": "ep09_036",
+   "who": "WICK",
+   "text": "I know. I know. Nobody ever goes home. But what if, Takuto? What if this one time?",
+   "tts": "I know. I know. Nobody ever goes home. But what if, Tah-koo-toh? What if this one time?"
+  },
+  {
+   "id": "ep09_037",
+   "who": "TAKUTO",
+   "text": "...Then I would want it to be true too."
+  },
+  {
+   "id": "ep09_038",
+   "who": "LUCIEN",
+   "text": "Sieg Valen. The Laughing Blade. You are taller than the songs say.",
+   "tts": "Seeg Valen. The Laughing Blade. You are taller than the songs say."
+  },
+  {
+   "id": "ep09_039",
+   "who": "SIEG",
+   "text": "Saint Lucien. You are exactly as tall as the statues."
+  },
+  {
+   "id": "ep09_040",
+   "who": "LUCIEN",
+   "text": "Ha! The sculptors were generous with the hair. And you must be Takuto Kirishima. The error.",
+   "tts": "Ha! The sculptors were generous with the hair. And you must be Tah-koo-toh Kee-ree-shee-mah. The error."
+  },
+  {
+   "id": "ep09_041",
+   "who": "TAKUTO",
+   "text": "Where is Haruki?",
+   "tts": "Where is Hah-roo-kee?"
+  },
+  {
+   "id": "ep09_042",
+   "who": "LUCIEN",
+   "text": "Straight to the point. He told me you would be."
+  },
+  {
+   "id": "ep09_043",
+   "who": "LUCIEN",
+   "text": "Haruki is here, and he is safe. He will see you when he is ready. He asked for a little time.",
+   "tts": "Hah-roo-kee is here, and he is safe. He will see you when he is ready. He asked for a little time."
+  },
+  {
+   "id": "ep09_044",
+   "who": "TAKUTO",
+   "text": "Ready for what?"
+  },
+  {
+   "id": "ep09_045",
+   "who": "LUCIEN",
+   "text": "To explain why he never came back to the crossing. That is not an easy thing to say to a friend."
+  },
+  {
+   "id": "ep09_046",
+   "who": "LUCIEN",
+   "text": "Takuto. I want to make you an offer. The Gilded Order would be honoured to have you.",
+   "tts": "Tah-koo-toh. I want to make you an offer. The Gilded Order would be honoured to have you."
+  },
+  {
+   "id": "ep09_047",
+   "who": "RIN",
+   "text": "He is rank F."
+  },
+  {
+   "id": "ep09_048",
+   "who": "LUCIEN",
+   "text": "He is rank ERROR, Miss Ashveil. Brands like his appear once in three hundred years. Ruinbreaker. The Brand that breaks Brands.",
+   "tts": "He is rank ERROR, Miss Ash-vale. Brands like his appear once in three hundred years. Ruinbreaker. The Brand that breaks Brands."
+  },
+  {
+   "id": "ep09_049",
+   "who": "LUCIEN",
+   "text": "My Sanctum protects. Your axe destroys. Together, we could close every Rift in the world."
+  },
+  {
+   "id": "ep09_050",
+   "who": "WICK",
+   "text": "And the Skyfallen? The people in the plaza said you are sending us home."
+  },
+  {
+   "id": "ep09_051",
+   "who": "LUCIEN",
+   "text": "The Homeward Rite. Yes. I have spent twelve years on it. It is close. It needs Brands, many Brands, given willingly."
+  },
+  {
+   "id": "ep09_052",
+   "who": "WICK",
+   "text": "Given?"
+  },
+  {
+   "id": "ep09_053",
+   "who": "LUCIEN",
+   "text": "Lent, say. A little of their light, to open a Rift that goes the right way. Haruki has helped. Every Skyfallen who stays here helps.",
+   "tts": "Lent, say. A little of their light, to open a Rift that goes the right way. Hah-roo-kee has helped. Every Skyfallen who stays here helps."
+  },
+  {
+   "id": "ep09_054",
+   "who": "SIEG",
+   "text": "And how many have gone home so far?"
+  },
+  {
+   "id": "ep09_055",
+   "who": "LUCIEN",
+   "text": "...None yet. That is the honest answer. But none yet is not never, Sieg.",
+   "tts": "...None yet. That is the honest answer. But none yet is not never, Seeg."
+  },
+  {
+   "id": "ep09_056",
+   "who": "AKURO",
+   "text": "Listen to his voice, boy. Every word is warm. Every word is gold. Gold does not get warm by itself.",
+   "mono": true
+  },
+  {
+   "id": "ep09_057",
+   "who": "TAKUTO",
+   "text": "I will think about it."
+  },
+  {
+   "id": "ep09_058",
+   "who": "LUCIEN",
+   "text": "That is all I ask. Stay as my guests. Eat. Sleep. See the city. And go to the garden. Someone is waiting there."
+  },
+  {
+   "id": "ep09_059",
+   "who": "LUCIEN",
+   "text": "Walk with me, Takuto. The candles are prettiest at this hour.",
+   "tts": "Walk with me, Tah-koo-toh. The candles are prettiest at this hour."
+  },
+  {
+   "id": "ep09_060",
+   "who": "TAKUTO",
+   "text": "You are trying to recruit me again."
+  },
+  {
+   "id": "ep09_061",
+   "who": "LUCIEN",
+   "text": "I am trying to explain myself. That is harder."
+  },
+  {
+   "id": "ep09_062",
+   "who": "LUCIEN",
+   "text": "I was born on the frontier. A village called Ember Reach. You have never heard of it. Nobody has, anymore."
+  },
+  {
+   "id": "ep09_063",
+   "who": "LUCIEN",
+   "text": "When I was nine, a Rift opened over the well. I watched the sky eat my mother. I was the only one who woke up."
+  },
+  {
+   "id": "ep09_064",
+   "who": "TAKUTO",
+   "text": "...Like Nemu. Like Rin. Like Sieg.",
+   "tts": "...Like Neh-moo. Like Rin. Like Seeg."
+  },
+  {
+   "id": "ep09_065",
+   "who": "LUCIEN",
+   "text": "Like everyone, Takuto. This world is made of people who woke up alone. My Brand woke that day. A wall. Of course it was a wall.",
+   "tts": "Like everyone, Tah-koo-toh. This world is made of people who woke up alone. My Brand woke that day. A wall. Of course it was a wall."
+  },
+  {
+   "id": "ep09_066",
+   "who": "LUCIEN",
+   "text": "I have spent my whole life building walls so that no child wakes up alone again. That is all the gold is. Walls."
+  },
+  {
+   "id": "ep09_067",
+   "who": "TAKUTO",
+   "text": "The people in the undercity are cold."
+  },
+  {
+   "id": "ep09_068",
+   "who": "LUCIEN",
+   "text": "...Walls cost something. I never pretended they were free."
+  },
+  {
+   "id": "ep09_069",
+   "who": "TAKUTO",
+   "text": "Who pays?"
+  },
+  {
+   "id": "ep09_070",
+   "who": "LUCIEN",
+   "text": "Whoever must. Usually me. Goodnight, Takuto.",
+   "tts": "Whoever must. Usually me. Goodnight, Tah-koo-toh."
+  },
+  {
+   "id": "ep09_071",
+   "who": "AKURO",
+   "text": "A sad story, told beautifully. I told stories like that once. Right before I burned the city.",
+   "mono": true
+  },
+  {
+   "id": "ep09_072",
+   "who": "TAKUTO",
+   "text": "Haruki.",
+   "tts": "Hah-roo-kee."
+  },
+  {
+   "id": "ep09_073",
+   "who": "HARUKI",
+   "text": "...You found me. Of course you found me."
+  },
+  {
+   "id": "ep09_074",
+   "who": "HARUKI",
+   "text": "Did you feed the cat?"
+  },
+  {
+   "id": "ep09_075",
+   "who": "TAKUTO",
+   "text": "Every night."
+  },
+  {
+   "id": "ep09_076",
+   "who": "HARUKI",
+   "text": "Coffee milk?"
+  },
+  {
+   "id": "ep09_077",
+   "who": "TAKUTO",
+   "text": "Coffee milk."
+  },
+  {
+   "id": "ep09_078",
+   "who": "HARUKI",
+   "text": "...Ha. That is a terrible thing to give a cat. I am so glad."
+  },
+  {
+   "id": "ep09_079",
+   "who": "TAKUTO",
+   "text": "You never came back. Two years. Your mother put your face on every pole in Nerima.",
+   "tts": "You never came back. Two years. Your mother put your face on every pole in Neh-ree-mah."
+  },
+  {
+   "id": "ep09_080",
+   "who": "HARUKI",
+   "text": "I know. I mean, I did not know. But I knew she would."
+  },
+  {
+   "id": "ep09_081",
+   "who": "TAKUTO",
+   "text": "Come back with us. We will find a way. Together. Like before."
+  },
+  {
+   "id": "ep09_082",
+   "who": "HARUKI",
+   "text": "There is no way back, Takuto. Not yet. That is what we are building here.",
+   "tts": "There is no way back, Tah-koo-toh. Not yet. That is what we are building here."
+  },
+  {
+   "id": "ep09_083",
+   "who": "TAKUTO",
+   "text": "Lucien's Rite."
+  },
+  {
+   "id": "ep09_084",
+   "who": "HARUKI",
+   "text": "He saved my life. I was falling through a crack in the sky, and he caught me with gold. He gave me a home, and a reason."
+  },
+  {
+   "id": "ep09_085",
+   "who": "HARUKI",
+   "text": "When the Rite is ready, everyone goes home. My mother. Wick. Every Skyfallen in this world. You."
+  },
+  {
+   "id": "ep09_086",
+   "who": "TAKUTO",
+   "text": "And until then?"
+  },
+  {
+   "id": "ep09_087",
+   "who": "HARUKI",
+   "text": "Until then I stay. And I help."
+  },
+  {
+   "id": "ep09_088",
+   "who": "TAKUTO",
+   "text": "I came all this way to bring you back."
+  },
+  {
+   "id": "ep09_089",
+   "who": "HARUKI",
+   "text": "I did not ask you to, Takuto. I never asked anyone to.",
+   "tts": "I did not ask you to, Tah-koo-toh. I never asked anyone to."
+  },
+  {
+   "id": "ep09_090",
+   "who": "TAKUTO",
+   "text": "...You did not have to ask."
+  },
+  {
+   "id": "ep09_091",
+   "who": "HARUKI",
+   "text": "That is the worst thing about you. You never wait to be asked."
+  },
+  {
+   "id": "ep09_092",
+   "who": "HARUKI",
+   "text": "Please. Do not break anything here. This city is the only thing I have built in two years."
+  },
+  {
+   "id": "ep09_093",
+   "who": "HUNTER",
+   "text": "This way, honoured guests. The Hall of the Homeward Rite. Speak softly, please."
+  },
+  {
+   "id": "ep09_094",
+   "who": "HUNTER",
+   "text": "The volunteers rest in the golden chairs. A little of their light flows into the great seal."
+  },
+  {
+   "id": "ep09_095",
+   "who": "HUNTER",
+   "text": "When the seal is full, the Rite opens a road home."
+  },
+  {
+   "id": "ep09_096",
+   "who": "WICK",
+   "text": "Those people in the chairs. Are they Skyfallen?"
+  },
+  {
+   "id": "ep09_097",
+   "who": "HUNTER",
+   "text": "Some are. Some are faithful citizens. All are willing. You may volunteer, if you wish, young sir."
+  },
+  {
+   "id": "ep09_098",
+   "who": "WICK",
+   "text": "Me? I could... I could help open the road? To Osaka?",
+   "tts": "Me? I could... I could help open the road? To Oh-sah-kah?"
+  },
+  {
+   "id": "ep09_099",
+   "who": "NEMU",
+   "text": "They are not sleeping. I know what sleeping looks like. They are not sleeping."
+  },
+  {
+   "id": "ep09_100",
+   "who": "WICK",
+   "text": "But if it works, Nemu. My mom's shop. Four tables.",
+   "tts": "But if it works, Neh-moo. My mom's shop. Four tables."
+  },
+  {
+   "id": "ep09_101",
+   "who": "TAKUTO",
+   "text": "Wick. Look at their hands."
+  },
+  {
+   "id": "ep09_102",
+   "who": "WICK",
+   "text": "...They are grey. Their Brands. The marks on their hands are grey."
+  },
+  {
+   "id": "ep09_103",
+   "who": "TAKUTO",
+   "text": "Not today. Okay? Not today."
+  },
+  {
+   "id": "ep09_104",
+   "who": "WICK",
+   "text": "...Okay. Not today. But Takuto, if there is a road home, and it costs a little light...",
+   "tts": "...Okay. Not today. But Tah-koo-toh, if there is a road home, and it costs a little light..."
+  },
+  {
+   "id": "ep09_105",
+   "who": "TAKUTO",
+   "text": "Then we find out what a little means. First."
+  },
+  {
+   "id": "ep09_106",
+   "who": "WICK",
+   "text": "There is a whole roast bird. Inside a bigger roast bird. Inside a pig. Takuto. It is a bird pig.",
+   "tts": "There is a whole roast bird. Inside a bigger roast bird. Inside a pig. Tah-koo-toh. It is a bird pig."
+  },
+  {
+   "id": "ep09_107",
+   "who": "TAKUTO",
+   "text": "Eat it, then."
+  },
+  {
+   "id": "ep09_108",
+   "who": "WICK",
+   "text": "I am going to eat it. I am going to eat all three layers. Respectfully."
+  },
+  {
+   "id": "ep09_109",
+   "who": "NEMU",
+   "text": "The cake has a castle on it. I am going to sleep in the castle."
+  },
+  {
+   "id": "ep09_110",
+   "who": "HARUKI",
+   "text": "You are Nemu. Takuto's first friend here. He told me about you. Nine lives?",
+   "tts": "You are Neh-moo. Tah-koo-toh's first friend here. He told me about you. Nine lives?"
+  },
+  {
+   "id": "ep09_111",
+   "who": "NEMU",
+   "text": "Two left. He told you about me?"
+  },
+  {
+   "id": "ep09_112",
+   "who": "HARUKI",
+   "text": "He talked about you for an hour. Takuto never talks about anyone for an hour.",
+   "tts": "He talked about you for an hour. Tah-koo-toh never talks about anyone for an hour."
+  },
+  {
+   "id": "ep09_113",
+   "who": "NEMU",
+   "text": "...Mm. I like you."
+  },
+  {
+   "id": "ep09_114",
+   "who": "RIN",
+   "text": "Saint Lucien. The Rifts. Something is herding Fiends toward your city. Giants, ogres, a Hydra. Did you know?"
+  },
+  {
+   "id": "ep09_115",
+   "who": "LUCIEN",
+   "text": "The Order watches every road, Miss Ashveil. We know the frontier is restless.",
+   "tts": "The Order watches every road, Miss Ash-vale. We know the frontier is restless."
+  },
+  {
+   "id": "ep09_116",
+   "who": "RIN",
+   "text": "There is a man in a black suit. He opens Rifts. He smells like static."
+  },
+  {
+   "id": "ep09_117",
+   "who": "LUCIEN",
+   "text": "...A frightening story. The frontier is full of them. My scholars will look into it."
+  },
+  {
+   "id": "ep09_118",
+   "who": "RIN",
+   "text": "You did not ask what he looked like."
+  },
+  {
+   "id": "ep09_119",
+   "who": "LUCIEN",
+   "text": "You said he wore a black suit. I assumed the rest was black too. More wine, Sieg?",
+   "tts": "You said he wore a black suit. I assumed the rest was black too. More wine, Seeg?"
+  },
+  {
+   "id": "ep09_120",
+   "who": "SIEG",
+   "text": "No. Thank you. I am counting tonight."
+  },
+  {
+   "id": "ep09_121",
+   "who": "RIN",
+   "text": "Haruki. One question. Then I will leave you alone.",
+   "tts": "Hah-roo-kee. One question. Then I will leave you alone."
+  },
+  {
+   "id": "ep09_122",
+   "who": "HARUKI",
+   "text": "You are Rin. The one with the thread. He talks about you too. Less than Nemu, but louder.",
+   "tts": "You are Rin. The one with the thread. He talks about you too. Less than Neh-moo, but louder."
+  },
+  {
+   "id": "ep09_123",
+   "who": "RIN",
+   "text": "What does consecrated mean?"
+  },
+  {
+   "id": "ep09_124",
+   "who": "HARUKI",
+   "text": "...Where did you hear that word?"
+  },
+  {
+   "id": "ep09_125",
+   "who": "RIN",
+   "text": "In your Saint's archive. Next to forty Skyfallen names. Next to yours, soon. It has a gold seal."
+  },
+  {
+   "id": "ep09_126",
+   "who": "HARUKI",
+   "text": "It means they finished their part of the Rite. They are resting. Lucien told me."
+  },
+  {
+   "id": "ep09_127",
+   "who": "RIN",
+   "text": "Have you ever seen one of them? After they finished resting?"
+  },
+  {
+   "id": "ep09_128",
+   "who": "RIN",
+   "text": "My brother went into a Rift and never came out. I would give anything to have someone tell me he was only resting."
+  },
+  {
+   "id": "ep09_129",
+   "who": "RIN",
+   "text": "That is why I do not believe anyone who says it."
+  },
+  {
+   "id": "ep09_130",
+   "who": "HARUKI",
+   "text": "You do not know him."
+  },
+  {
+   "id": "ep09_131",
+   "who": "RIN",
+   "text": "No. And you do not know what the word means. Find out. Before Takuto does something stupid about it.",
+   "tts": "No. And you do not know what the word means. Find out. Before Tah-koo-toh does something stupid about it."
+  },
+  {
+   "id": "ep09_132",
+   "who": "SIEG",
+   "text": "You picked the lock on a holy archive."
+  },
+  {
+   "id": "ep09_133",
+   "who": "RIN",
+   "text": "My brother taught me. You came with me."
+  },
+  {
+   "id": "ep09_134",
+   "who": "SIEG",
+   "text": "Someone has to be the adult who gets arrested. What did you find?"
+  },
+  {
+   "id": "ep09_135",
+   "who": "RIN",
+   "text": "Skyfallen reports. Every Guild sent its reports here. Forty names in twenty years."
+  },
+  {
+   "id": "ep09_136",
+   "who": "RIN",
+   "text": "Every one of them has the same mark at the end. A gold seal. And one word. Consecrated."
+  },
+  {
+   "id": "ep09_137",
+   "who": "SIEG",
+   "text": "Consecrated."
+  },
+  {
+   "id": "ep09_138",
+   "who": "RIN",
+   "text": "Not sent home. Not dead. Consecrated. What does that mean, Sieg?",
+   "tts": "Not sent home. Not dead. Consecrated. What does that mean, Seeg?"
+  },
+  {
+   "id": "ep09_139",
+   "who": "SIEG",
+   "text": "In the old church, it meant given to the light. Offered."
+  },
+  {
+   "id": "ep09_140",
+   "who": "RIN",
+   "text": "Haruki's name is on the last page. No seal yet.",
+   "tts": "Hah-roo-kee's name is on the last page. No seal yet."
+  },
+  {
+   "id": "ep09_141",
+   "who": "SIEG",
+   "text": "...Yet."
+  },
+  {
+   "id": "ep09_142",
+   "who": "RIN",
+   "text": "There is another page. A new one. Fresh ink."
+  },
+  {
+   "id": "ep09_143",
+   "who": "SIEG",
+   "text": "Whose name?"
+  },
+  {
+   "id": "ep09_144",
+   "who": "RIN",
+   "text": "Takuto Kirishima. Ruinbreaker. And next to it, in Lucien's hand. Remove before consecration.",
+   "tts": "Tah-koo-toh Kee-ree-shee-mah. Ruinbreaker. And next to it, in Lucien's hand. Remove before consecration."
+  },
+  {
+   "id": "ep09_145",
+   "who": "SIEG",
+   "text": "Remove the Brand? Or remove the boy?"
+  },
+  {
+   "id": "ep09_146",
+   "who": "RIN",
+   "text": "It does not say."
+  },
+  {
+   "id": "ep09_147",
+   "who": "TAKUTO",
+   "text": "Why are you on the roof?"
+  },
+  {
+   "id": "ep09_148",
+   "who": "NEMU",
+   "text": "It is the only place in this city that is not gold."
+  },
+  {
+   "id": "ep09_149",
+   "who": "NEMU",
+   "text": "The light in the Rite Hall. Takuto, it felt like the cold part. The part before the blanket.",
+   "tts": "The light in the Rite Hall. Tah-koo-toh, it felt like the cold part. The part before the blanket."
+  },
+  {
+   "id": "ep09_150",
+   "who": "TAKUTO",
+   "text": "The cold part of dying."
+  },
+  {
+   "id": "ep09_151",
+   "who": "NEMU",
+   "text": "I have felt it seven times. I know it. Those people in the chairs are in the cold part. And nobody is letting them reach the blanket."
+  },
+  {
+   "id": "ep09_152",
+   "who": "TAKUTO",
+   "text": "...Nemu.",
+   "tts": "...Neh-moo."
+  },
+  {
+   "id": "ep09_153",
+   "who": "NEMU",
+   "text": "I am scared of this city. I have never been scared of a place before. Only of things."
+  },
+  {
+   "id": "ep09_154",
+   "who": "TAKUTO",
+   "text": "Then we leave as soon as I have Haruki.",
+   "tts": "Then we leave as soon as I have Hah-roo-kee."
+  },
+  {
+   "id": "ep09_155",
+   "who": "NEMU",
+   "text": "And if he will not come?"
+  },
+  {
+   "id": "ep09_156",
+   "who": "TAKUTO",
+   "text": "...Then I break whatever is holding him."
+  },
+  {
+   "id": "ep09_157",
+   "who": "NEMU",
+   "text": "Even if it is gold?"
+  },
+  {
+   "id": "ep09_158",
+   "who": "TAKUTO",
+   "text": "Especially if it is gold."
+  },
+  {
+   "id": "ep09_159",
+   "who": "HARUKI",
+   "text": "You still cannot sleep in new places."
+  },
+  {
+   "id": "ep09_160",
+   "who": "TAKUTO",
+   "text": "You still know that."
+  },
+  {
+   "id": "ep09_161",
+   "who": "HARUKI",
+   "text": "I know everything about you. It is very boring. You only have two settings."
+  },
+  {
+   "id": "ep09_162",
+   "who": "TAKUTO",
+   "text": "Asleep and in a fight."
+  },
+  {
+   "id": "ep09_163",
+   "who": "HARUKI",
+   "text": "Asleep and in a fight."
+  },
+  {
+   "id": "ep09_164",
+   "who": "TAKUTO",
+   "text": "How did you get your Brand?"
+  },
+  {
+   "id": "ep09_165",
+   "who": "HARUKI",
+   "text": "Falling. Out of the Rift, over the city. I thought, if time would just stop for one second, I could think."
+  },
+  {
+   "id": "ep09_166",
+   "who": "HARUKI",
+   "text": "And it did. Three seconds, actually. Frozen Hour. I touch something and it stops. Look."
+  },
+  {
+   "id": "ep09_167",
+   "who": "HARUKI",
+   "text": "One leaf. Three seconds."
+  },
+  {
+   "id": "ep09_168",
+   "who": "TAKUTO",
+   "text": "...That is amazing."
+  },
+  {
+   "id": "ep09_169",
+   "who": "HARUKI",
+   "text": "Your turn. What happened with the axe?"
+  },
+  {
+   "id": "ep09_170",
+   "who": "TAKUTO",
+   "text": "A girl died protecting me in a graveyard. I pulled the axe out of a grave, and I broke the thing that killed her."
+  },
+  {
+   "id": "ep09_171",
+   "who": "HARUKI",
+   "text": "Nemu.",
+   "tts": "Neh-moo."
+  },
+  {
+   "id": "ep09_172",
+   "who": "TAKUTO",
+   "text": "Nemu. She got up again. She does that.",
+   "tts": "Neh-moo. She got up again. She does that."
+  },
+  {
+   "id": "ep09_173",
+   "who": "HARUKI",
+   "text": "And the thing in the axe?"
+  },
+  {
+   "id": "ep09_174",
+   "who": "TAKUTO",
+   "text": "...You know about that?"
+  },
+  {
+   "id": "ep09_175",
+   "who": "HARUKI",
+   "text": "Lucien knows about it. He says your Brand is the most dangerous thing in the world. That is why he wants you close."
+  },
+  {
+   "id": "ep09_176",
+   "who": "TAKUTO",
+   "text": "Close, or locked up?"
+  },
+  {
+   "id": "ep09_177",
+   "who": "HARUKI",
+   "text": "...He is a good man, Takuto. He caught me. He is trying to save everyone.",
+   "tts": "...He is a good man, Tah-koo-toh. He caught me. He is trying to save everyone."
+  },
+  {
+   "id": "ep09_178",
+   "who": "TAKUTO",
+   "text": "You put your hand on my shoulder every time I was about to break something."
+  },
+  {
+   "id": "ep09_179",
+   "who": "HARUKI",
+   "text": "I remember."
+  },
+  {
+   "id": "ep09_180",
+   "who": "TAKUTO",
+   "text": "If I am wrong about him, do it again. If you are wrong about him, let me."
+  },
+  {
+   "id": "ep09_181",
+   "who": "HARUKI",
+   "text": "...Deal. Like the cat."
+  },
+  {
+   "id": "ep09_182",
+   "who": "HARUKI",
+   "text": "Spar with me. Like the old days. No Brands."
+  },
+  {
+   "id": "ep09_183",
+   "who": "TAKUTO",
+   "text": "We never sparred in the old days. We just fought high schoolers."
+  },
+  {
+   "id": "ep09_184",
+   "who": "HARUKI",
+   "text": "You fought high schoolers. I watched. Fine, Brands, then. Come on."
+  },
+  {
+   "id": "ep09_185",
+   "who": "HARUKI",
+   "text": "Frozen Hour."
+  },
+  {
+   "id": "ep09_186",
+   "who": "TAKUTO",
+   "text": "Nnngh...!"
+  },
+  {
+   "id": "ep09_187",
+   "who": "HARUKI",
+   "text": "You... broke out? It has only been two seconds!"
+  },
+  {
+   "id": "ep09_188",
+   "who": "SIEG",
+   "text": "He broke your freeze."
+  },
+  {
+   "id": "ep09_189",
+   "who": "HARUKI",
+   "text": "Nobody breaks my freeze. Three seconds. Always three. It is a rule."
+  },
+  {
+   "id": "ep09_190",
+   "who": "TAKUTO",
+   "text": "I was angry."
+  },
+  {
+   "id": "ep09_191",
+   "who": "HARUKI",
+   "text": "You are always angry."
+  },
+  {
+   "id": "ep09_192",
+   "who": "TAKUTO",
+   "text": "I was angrier."
+  },
+  {
+   "id": "ep09_193",
+   "who": "NEMU",
+   "text": "Ruinbreaker breaks Brands. Your freeze is a Brand."
+  },
+  {
+   "id": "ep09_194",
+   "who": "HARUKI",
+   "text": "...So you could break his too. Lucien's."
+  },
+  {
+   "id": "ep09_195",
+   "who": "TAKUTO",
+   "text": "I cracked it. That is all."
+  },
+  {
+   "id": "ep09_196",
+   "who": "HARUKI",
+   "text": "That is not all, Takuto. That is everything.",
+   "tts": "That is not all, Tah-koo-toh. That is everything."
+  },
+  {
+   "id": "ep09_197",
+   "who": "SIEG",
+   "text": "Haruki. Do you know how far he walked to get here?",
+   "tts": "Hah-roo-kee. Do you know how far he walked to get here?"
+  },
+  {
+   "id": "ep09_198",
+   "who": "HARUKI",
+   "text": "From Ashford. Lucien said."
+  },
+  {
+   "id": "ep09_199",
+   "who": "SIEG",
+   "text": "From a graveyard. Then Ashford. Then the Bramble Wastes, a river town with a Hydra, a fort under siege, a forest full of ogres, a mountain with a wolf on it."
+  },
+  {
+   "id": "ep09_200",
+   "who": "SIEG",
+   "text": "Every night, he asked me if we were closer. Every single night."
+  },
+  {
+   "id": "ep09_201",
+   "who": "HARUKI",
+   "text": "...He never asks anyone anything."
+  },
+  {
+   "id": "ep09_202",
+   "who": "SIEG",
+   "text": "He asked me. Two hundred times. I counted. It is a thing I do."
+  },
+  {
+   "id": "ep09_203",
+   "who": "HARUKI",
+   "text": "Why are you telling me this?"
+  },
+  {
+   "id": "ep09_204",
+   "who": "SIEG",
+   "text": "Because one day soon you will have to choose who to stand next to. I want you to know what that boy paid for the chance."
+  },
+  {
+   "id": "ep09_205",
+   "who": "LUCIEN",
+   "text": "Well, Takuto? Will you wear the gold?",
+   "tts": "Well, Tah-koo-toh? Will you wear the gold?"
+  },
+  {
+   "id": "ep09_206",
+   "who": "TAKUTO",
+   "text": "No."
+  },
+  {
+   "id": "ep09_207",
+   "who": "LUCIEN",
+   "text": "...Just no?"
+  },
+  {
+   "id": "ep09_208",
+   "who": "TAKUTO",
+   "text": "Just no."
+  },
+  {
+   "id": "ep09_209",
+   "who": "LUCIEN",
+   "text": "Ha. Haruki said you would say exactly that. Then indulge me in one thing, before you go. A test. For my curiosity.",
+   "tts": "Ha. Hah-roo-kee said you would say exactly that. Then indulge me in one thing, before you go. A test. For my curiosity."
+  },
+  {
+   "id": "ep09_210",
+   "who": "LUCIEN",
+   "text": "Sanctum. My barrier. Nothing has ever broken it. Strike it, with everything you have. Let me see Ruinbreaker for myself."
+  },
+  {
+   "id": "ep09_211",
+   "who": "SIEG",
+   "text": "Takuto. Careful.",
+   "tts": "Tah-koo-toh. Careful."
+  },
+  {
+   "id": "ep09_212",
+   "who": "AKURO",
+   "text": "Knock knock, boy. Knock as hard as you like. I will not even ask to help. I want to see his face.",
+   "mono": true
+  },
+  {
+   "id": "ep09_213",
+   "who": "LUCIEN",
+   "text": "Sanctum."
+  },
+  {
+   "id": "ep09_214",
+   "who": "TAKUTO",
+   "text": "Break."
+  },
+  {
+   "id": "ep09_215",
+   "who": "HARUKI",
+   "text": "It... cracked."
+  },
+  {
+   "id": "ep09_216",
+   "who": "LUCIEN",
+   "text": "...A hairline. One hairline. In twelve years, nothing has scratched it."
+  },
+  {
+   "id": "ep09_217",
+   "who": "LUCIEN",
+   "text": "Wonderful. Truly. Thank you, Takuto. You have given me a great deal to think about.",
+   "tts": "Wonderful. Truly. Thank you, Tah-koo-toh. You have given me a great deal to think about."
+  },
+  {
+   "id": "ep09_218",
+   "who": "AKURO",
+   "text": "Did you see it? For one heartbeat his face went white. The Saint is afraid of you, boy.",
+   "mono": true
+  },
+  {
+   "id": "ep09_219",
+   "who": "TAKUTO",
+   "text": "Rin. It says he is afraid."
+  },
+  {
+   "id": "ep09_220",
+   "who": "RIN",
+   "text": "Good. So am I. Of him."
+  },
+  {
+   "id": "ep09_221",
+   "who": "WICK",
+   "text": "I did not know there was a down here. The carriage never comes down here."
+  },
+  {
+   "id": "ep09_222",
+   "who": "NEMU",
+   "text": "Everyone is tired. Not sleepy tired. Empty tired."
+  },
+  {
+   "id": "ep09_223",
+   "who": "CROWD2",
+   "text": "Are you Hunters? Real ones?"
+  },
+  {
+   "id": "ep09_224",
+   "who": "CROWD2",
+   "text": "I had a mark too, once. A little one. The light took it."
+  },
+  {
+   "id": "ep09_225",
+   "who": "TAKUTO",
+   "text": "The light?"
+  },
+  {
+   "id": "ep09_226",
+   "who": "CROWD2",
+   "text": "At the Rite. They said it was for the Skyfallen. It did not hurt. I just got cold. I am always cold now."
+  },
+  {
+   "id": "ep09_227",
+   "who": "NEMU",
+   "text": "...Lent. A little of their light. That is what he said."
+  },
+  {
+   "id": "ep09_228",
+   "who": "WICK",
+   "text": "He said given willingly. She is seven."
+  },
+  {
+   "id": "ep09_229",
+   "who": "SABLE",
+   "text": "Lost, Ruinbreaker? The Saint keeps his leftovers down here."
+  },
+  {
+   "id": "ep09_230",
+   "who": "TAKUTO",
+   "text": "Sable!"
+  },
+  {
+   "id": "ep09_231",
+   "who": "NEMU",
+   "text": "He is gone. The air tastes like a battery."
+  },
+  {
+   "id": "ep09_232",
+   "who": "TAKUTO",
+   "text": "He is here. In Lucien's city. Walking around like he owns it."
+  },
+  {
+   "id": "ep09_233",
+   "who": "WICK",
+   "text": "Takuto. What if he does own it?",
+   "tts": "Tah-koo-toh. What if he does own it?"
+  },
+  {
+   "id": "ep09_234",
+   "who": "LUCIEN",
+   "text": "Your friend cracked my Sanctum."
+  },
+  {
+   "id": "ep09_235",
+   "who": "HARUKI",
+   "text": "He can break anything. He always could."
+  },
+  {
+   "id": "ep09_236",
+   "who": "LUCIEN",
+   "text": "Then we must keep him close, Haruki. For his own safety. And for the city's.",
+   "tts": "Then we must keep him close, Hah-roo-kee. For his own safety. And for the city's."
+  },
+  {
+   "id": "ep09_237",
+   "who": "HARUKI",
+   "text": "He said no."
+  },
+  {
+   "id": "ep09_238",
+   "who": "LUCIEN",
+   "text": "People say no to gifts. Then they learn what the gift was for."
+  },
+  {
+   "id": "ep09_239",
+   "who": "HARUKI",
+   "text": "Lucien. The undercity. Takuto went down there today. He asked me why the people are cold.",
+   "tts": "Lucien. The undercity. Tah-koo-toh went down there today. He asked me why the people are cold."
+  },
+  {
+   "id": "ep09_240",
+   "who": "LUCIEN",
+   "text": "...Every great work has a cost, Haruki. Go to bed. The Rite will need you rested.",
+   "tts": "...Every great work has a cost, Hah-roo-kee. Go to bed. The Rite will need you rested."
+  },
+  {
+   "id": "ep09_241",
+   "who": "HARUKI",
+   "text": "...Yes, Saint."
+  },
+  {
+   "id": "ep09_242",
+   "who": "LUCIEN",
+   "text": "He cracked it, Sable. With one strike. Without the Calamity."
+  },
+  {
+   "id": "ep09_243",
+   "who": "SABLE",
+   "text": "Then you need the Calamity out of him before the Rite. I can arrange that."
+  },
+  {
+   "id": "ep09_244",
+   "who": "LUCIEN",
+   "text": "How?"
+  },
+  {
+   "id": "ep09_245",
+   "who": "SABLE",
+   "text": "Morvudd is marching across the plains. Toward the Laughing Blade. Let the boy watch his teacher die."
+  },
+  {
+   "id": "ep09_246",
+   "who": "TAKUTO",
+   "text": "Next time: the plains outside the golden city."
+  },
+  {
+   "id": "ep09_247",
+   "who": "TAKUTO",
+   "text": "Morvudd comes back, with a horde. Sieg holds the line.",
+   "tts": "Morvudd comes back, with a horde. Seeg holds the line."
+  },
+  {
+   "id": "ep09_248",
+   "who": "TAKUTO",
+   "text": "And Mr. Sable finally tells me why I am here."
+  },
+  {
+   "id": "ep09_249",
+   "who": "TAKUTO",
+   "text": "Episode ten. Morvudd."
+  }
+ ]
+}
