@@ -96,6 +96,23 @@ How Episode 1 is made:
 - **Sound:** the score, ambience and sound effects are synthesized live in the browser.
 
 
+## Episode 1, 3D edition (`3d.html`)
+
+The same episode, with the same voices, score, sound and timing, restaged as cel-shaded 3D. `index.html` stays the 2D edition.
+
+- **Engine** (`js/stage3d.js`, three.js r149 in `vendor/`):
+  - toon materials with a two-tone ramp, ink outlines and a directional anime rim light
+  - jointed characters with painted faces wrapped around the head; the eyes blink, look around and talk
+  - the Barrow Fields, Crossing No. 4 and the red mindscape, all built as 3D sets
+- **Shots** (`js/ep01_3d.js`): every shot with a character or a location has a 3D version. `ep01.js` swaps it in when the page runs in 3D mode. The titles, ink-painted flashback panels, chibi gags and on-screen readouts stay 2D.
+- **Direction** follows the make-an-anime toolkit's rules:
+  - one camera move per shot, starting after a short hold and settling before the cut
+  - locked-off framing for comedy beats
+  - a camera that travels with the runner instead of a runner on a treadmill
+  - a partial arc (never a full spin) for the moment time stops
+  - hits sold by the cut, a short jolt, a brief flash and the sound
+- **Not used:** the make-an-anime and Mage skills can also generate painted keyframes and AI video through paid services (Fal and Mage). This episode makes no paid calls and is rendered entirely in the browser.
+
 ## Art credits
 
 The character and creature illustrations are reference art supplied by the series creator. All rights belong to their original artists. Please credit them, and ask before posting this publicly.

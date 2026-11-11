@@ -25,6 +25,9 @@ const EP01 = (() => {
     T += d; return s;
   }
   const at = (t, f, d = 0.2, long = false) => ev.push({ t, d, f, long });
+  // 3D mode (3d.html): a shot's 3D staging replaces its 2D drawing; the 2D one stays as the fallback
+  const D3 = typeof window !== 'undefined' && window.RB_MODE === '3d' && typeof EP3D !== 'undefined';
+  const alt = (f2, f3) => !D3 ? f2 : (lt, d, t) => { if (!S3.ok) return f2(lt, d, t); return f3(lt, d, t, f2); };
   const chapter = name => chapters.push({ t: T, name });
   const n = S.n;
   const shake = (t, amt, fps = 30) => { if (amt <= 0) return; const k = G.twos(t, fps); G.ctx.translate((hash(k, 1) - 0.5) * amt * 2, (hash(k, 2) - 0.5) * amt * 2); };
@@ -204,8 +207,8 @@ const EP01 = (() => {
   chapter('Cold open');
   shot(4, (lt, d, t) => { G.fill('#000'); G.motes(t, { n: 40, vy: -25, color: '#ff4a2a', a: 0.6 * inv(0, 2, lt), size: 1.8, seed: 3 }); },
     { say: [[1.0, 'c1']], sfx: [[0.3, (g, w) => S.heartbeat(g, w, 0.55)], [1.6, (g, w) => S.heartbeat(g, w, 0.6)], [2.9, (g, w) => S.heartbeat(g, w, 0.65)]] });
-  shot(4.5, (lt, d, t) => { eyes(t, lt, d, { mode: 'red', z0: 6.6, z1: 7.4 }); G.fill('#000', 1 - inv(0, 0.6, lt)); }, { say: [[0.3, 'c2']], sfx: [[3.6, (g, w) => S.heartbeat(g, w, 0.7)]] });
-  shot(7.5, (lt, d, t) => {
+  shot(4.5, alt((lt, d, t) => { eyes(t, lt, d, { mode: 'red', z0: 6.6, z1: 7.4 }); G.fill('#000', 1 - inv(0, 0.6, lt)); }, EP3D.coldEyes), { say: [[0.3, 'c2']], sfx: [[3.6, (g, w) => S.heartbeat(g, w, 0.7)]] });
+  shot(7.5, alt((lt, d, t) => {
     const z = lerp(1.0, 1.14, ease.io(lt / d));
     G.barrow(t, { x: 0, y: 0, z }, { mood: 'blood', fogA: 0.6 }); sunShafts(t, 'blood');
     const c = G.ctx; c.save(); zoomAt(W / 2, H / 2, z);
@@ -216,7 +219,7 @@ const EP01 = (() => {
     G.frontFog(t, 0.5, '#ff6a6a');
     G.fill('#000', 1 - inv(0, 0.4, lt));
     POST.set({ bloom: 0.8, thr: 0.52, gain: [1.08, 0.93, 0.92], ca: 0.002 });
-  }, { say: [[2.0, 'c3']], sfx: [[0, (g, w) => S.whoosh(g, w, 1.2, 0.12, 200, 900)], [0.2, (g, w) => S.noiseBed(g, w, 0, 7, { vol: 0.12, bp: 300, q: 0.5, fin: 1, fout: 1, b: 'sfx' })]] });
+  }, EP3D.coldHero), { say: [[2.0, 'c3']], sfx: [[0, (g, w) => S.whoosh(g, w, 1.2, 0.12, 200, 900)], [0.2, (g, w) => S.noiseBed(g, w, 0, 7, { vol: 0.12, bp: 300, q: 0.5, fin: 1, fout: 1, b: 'sfx' })]] });
   shot(2, () => { G.fill('#000'); }, { sfx: [[0, (g, w) => { S.boom(g, w, 0.55); S.shatter(g, w + 0.03, 0.18, 4); }]] });
   at(0, (g, w, off) => { S.pad(g, w, n('D2'), 16.5 - off, { vol: 0.07, cut: 380, att: 2 }); S.pad(g, w, n('A2'), 16.5 - off, { vol: 0.04, cut: 500, att: 3 }); }, 17, true);
   const CO3 = shots[2].t0;
@@ -227,24 +230,24 @@ const EP01 = (() => {
      ==================================================================== */
   chapter('Nerima, 2:14 a.m.');
   const E0 = T;
-  shot(10, (lt, d, t) => {
+  shot(10, alt((lt, d, t) => {
     const head = -100 + 1150 * (lt - 0.4), gate = ease.io(inv(7.0, 8.5, lt));
     earthPOV(t, { x: 0, y: 0, z: lerp(1, 1.05, lt / d) }, { lamps: lt < 7.6, gate, cat: 'sit', train: lt > 0.4 && lt < 7 ? { x: head, v: 1150 } : null });
     if (lt > 0.4 && lt < 7) POST.set({ dir: [0.004, 0] });
     G.locationCard(lt - 1.0, 5.2, 'NERIMA, TOKYO', 'Crossing No. 4  ·  2:14 a.m.');
     G.fill('#000', 1 - inv(0, 1.2, lt));
-  }, { say: [[6.4, 'e1']], sfx: [[0.2, (g, w, off) => S.train(g, w, off, 7.4, 0.42), 7.4, true]] });
+  }, EP3D.earthWide), { say: [[6.4, 'e1']], sfx: [[0.2, (g, w, off) => S.train(g, w, off, 7.4, 0.42), 7.4, true]] });
   for (let k = 0; k * 0.5 < 7.6; k++) at(E0 + k * 0.5, (g, w) => S.kan(g, w, 0.11));
   const CUE_NIGHT = E0 + 8.5;
-  shot(7, (lt, d, t) => { earthPOV(t, mixCam(focusCam(640, 360, 640, 360, 1.05), focusCam(925, 420, 640, 400, 2.3), ease.io(clamp(lt / 2.2))), { gate: 1, cat: 'sit' }); },
+  shot(7, alt((lt, d, t) => { earthPOV(t, mixCam(focusCam(640, 360, 640, 360, 1.05), focusCam(925, 420, 640, 400, 2.3), ease.io(clamp(lt / 2.2))), { gate: 1, cat: 'sit' }); }, EP3D.earthCat),
     { say: [[0.6, 'e2'], ['+0.8', 'e3']], sfx: [[5.0, (g, w) => S.meow(g, w, 0.045)]] });
   shot(7, (lt, d, t) => posterShot(t, lt, d), { say: [[0.6, 'e4']] });
-  shot(7, (lt, d, t) => eyes(t, lt, d, { mode: 'earth', z0: 6.3, z1: 6.7 }), { say: [[0.5, 'e5'], ['+0.6', 'e6']] });
-  shot(7, (lt, d, t) => catClose(t, lt, d, 'eat'), { say: [[0.6, 'e7'], ['+0.7', 'e8']] });
-  shot(6, (lt, d, t) => earthPOV(t, focusCam(700, 420, 640, 380, lerp(1.25, 1.35, lt / d)), { gate: 1, cat: lt > 1.0 ? 'alert' : 'sit' }),
+  shot(7, alt((lt, d, t) => eyes(t, lt, d, { mode: 'earth', z0: 6.3, z1: 6.7 }), EP3D.earthFace), { say: [[0.5, 'e5'], ['+0.6', 'e6']] });
+  shot(7, alt((lt, d, t) => catClose(t, lt, d, 'eat'), EP3D.earthFeed), { say: [[0.6, 'e7'], ['+0.7', 'e8']] });
+  shot(6, alt((lt, d, t) => earthPOV(t, focusCam(700, 420, 640, 380, lerp(1.25, 1.35, lt / d)), { gate: 1, cat: lt > 1.0 ? 'alert' : 'sit' }), EP3D.earthAlert),
     { say: [[2.4, 'e9']], sfx: [[1.0, (g, w) => S.tone(g, w, 55, 5.5, 0.05, 'sine', 'sfx', 3, 0.5)]] });
   const SKY = T;
-  shot(7, (lt, d, t) => {
+  shot(7, alt((lt, d, t) => {
     const p = inv(0.8, 6.2, lt), c = G.ctx;
     G.layer(G.L.eSky, { x: 0, y: -110, z: 1.05 }, 1);
     G.radial(640, 200, 700, 'rgba(255,30,40,' + (0.35 * p).toFixed(2) + ')', 'rgba(255,0,0,0)', 1, 'lighter');
@@ -252,9 +255,9 @@ const EP01 = (() => {
     G.layer(G.L.eMid, { x: 0, y: -300, z: 1.0 }, 1);
     G.rain(t, { n: 200, a: 0.25, seed: 9 });
     POST.set({ bloom: 0.8 + p * 0.6, thr: 0.45, ca: 0.002 + p * 0.002 });
-  }, { say: [[3.9, 'e10']], sfx: [[0.8, (g, w) => S.crackSky(g, w, 6.4, 0.16)]] });
-  shot(2.5, (lt, d, t) => { eyes(t, lt, d, { mode: 'earth', lamp: Math.floor(t / 0.5) % 2 === 0, z0: 6.6, z1: 8.6 }); POST.set({ radial: 0.03 * lt }); }, { sfx: [[0, (g, w) => S.whoosh(g, w, 0.6, 0.18, 400, 2400)]] });
-  shot(5.5, (lt, d, t) => {
+  }, EP3D.earthSky), { say: [[3.9, 'e10']], sfx: [[0.8, (g, w) => S.crackSky(g, w, 6.4, 0.16)]] });
+  shot(2.5, alt((lt, d, t) => { eyes(t, lt, d, { mode: 'earth', lamp: Math.floor(t / 0.5) % 2 === 0, z0: 6.6, z1: 8.6 }); POST.set({ radial: 0.03 * lt }); }, EP3D.earthSmash), { sfx: [[0, (g, w) => S.whoosh(g, w, 0.6, 0.18, 400, 2400)]] });
+  shot(5.5, alt((lt, d, t) => {
     const open = ease.out(inv(0, 1.2, lt)), c = G.ctx;
     c.save(); shake(t, (1 - inv(0, 2, lt)) * 6 + (lt > 3.6 && lt < 4.1 ? 7 : 0));
     earthPOV(t, { x: 0, y: -20, z: 1.0 }, { lamps: true, gate: 0, cat: 'alert', rift: { open, cx: 640, cy: 150 },
@@ -263,8 +266,8 @@ const EP01 = (() => {
     if (lt > 3.6) X.debris(lt - 3.6, { x: 600, y: 505, n: 14, speed: 300, size: 5, seed: 31, dust: '#6a6a74' });
     POST.set({ bloom: 1.0, thr: 0.45, ca: 0.003 * (1 - inv(0, 2, lt)) + 0.001 });
     if (lt < 0.25) POST.set({ flash: 0.7 * (1 - lt / 0.25), flashCol: [1, 0.3, 0.3] });
-  }, { sfx: [[0, (g, w) => S.riftRoar(g, w, 5, 0.22)], [3.6, (g, w) => S.thud(g, w, 0.5)]] });
-  shot(6, (lt, d, t) => {
+  }, EP3D.earthRift), { sfx: [[0, (g, w) => S.riftRoar(g, w, 5, 0.22)], [3.6, (g, w) => S.thud(g, w, 0.5)]] });
+  shot(6, alt((lt, d, t) => {
     const land = 3.5, c = G.ctx, f = ease.in(inv(0.4, land, lt)), sq = lt > land ? 1 - 0.12 * Math.exp(-(lt - land) * 9) * Math.cos((lt - land) * 30) : 1;
     c.save(); shake(t, lt > land && lt < land + 0.7 ? 16 * (1 - inv(land, land + 0.7, lt)) : 1.5);
     earthPOV(t, { x: 0, y: -20, z: lerp(1.0, 1.08, lt / d) }, { lamps: true, gate: 0, cat: 'alert', brokenGate: lt > land + 0.1, rift: { open: 1, cx: 640, cy: 150 },
@@ -278,8 +281,8 @@ const EP01 = (() => {
     c.restore();
     if (lt > land) X.ring(lt - land, { x: 720, y: 520, r1: 700, dur: 0.6 });
     POST.set({ bloom: 0.9, thr: 0.5 });
-  }, { say: [[4.4, 'e11']], sfx: [[1.0, (g, w) => S.clicks(g, w, 2.2, 40, { vol: 0.12, f0: 900, f1: 2600, q: 3, len: 0.02, seed: 41 })], [3.5, (g, w) => { S.boom(g, w, 0.65); S.clang(g, w + 0.05, 0.12); }], [4.1, (g, w) => S.riftRoar(g, w, 1.5, 0.14)]] });
-  shot(5, (lt, d, t) => {
+  }, EP3D.earthLand), { say: [[4.4, 'e11']], sfx: [[1.0, (g, w) => S.clicks(g, w, 2.2, 40, { vol: 0.12, f0: 900, f1: 2600, q: 3, len: 0.02, seed: 41 })], [3.5, (g, w) => { S.boom(g, w, 0.65); S.clang(g, w + 0.05, 0.12); }], [4.1, (g, w) => S.riftRoar(g, w, 1.5, 0.14)]] });
+  shot(5, alt((lt, d, t) => {
     const cam = focusCam(650, 440, 640, 400, lerp(1.6, 1.75, lt / d)), raise = ease.io(inv(0.5, 3.0, lt));
     earthPOV(t, cam, { lamps: true, gate: 0, cat: null, brokenGate: true, rift: { open: 1, cx: 640, cy: 150 },
       world: () => {
@@ -288,8 +291,8 @@ const EP01 = (() => {
         const hl = inv(1.8, 5, lt); G.radial(1400, 430, 200 + hl * 700, 'rgba(255,245,215,' + (hl * 0.9).toFixed(2) + ')', 'rgba(255,240,200,0)', 1, 'lighter');
       } });
     POST.set({ bloom: 1.0 + inv(1.8, 5, lt) * 0.8, thr: 0.5 });
-  }, { say: [[0.3, 'e12'], ['+0.4', 'e13']], sfx: [[2.0, (g, w) => S.horn(g, w, 2.6, 0.12)], [1.8, (g, w, off) => S.train(g, w, off, 9, 0.5), 9, true]] });
-  shot(4.5, (lt, d, t) => {
+  }, EP3D.earthRaise), { say: [[0.3, 'e12'], ['+0.4', 'e13']], sfx: [[2.0, (g, w) => S.horn(g, w, 2.6, 0.12)], [1.8, (g, w, off) => S.train(g, w, off, 9, 0.5), 9, true]] });
+  shot(4.5, alt((lt, d, t) => {
     const c = G.ctx, z = lerp(1.4, 2.8, ease.in(clamp(lt / 3.7)));
     c.save(); shake(t, 3 + lt * 2);
     earthPOV(t, focusCam(630, 470, 640, 420, z), { lamps: true, gate: 0, cat: null, brokenGate: true, rift: { open: 1, cx: 640, cy: 150 },
@@ -299,13 +302,13 @@ const EP01 = (() => {
     G.dashLines(t, { n: 60, a: 0.35 * inv(0.3, 1, lt), dir: -1 });
     POST.set({ radial: 0.05 + lt * 0.02, bloom: 1.2, thr: 0.45 });
     G.fill('#fff', inv(3.55, 3.8, lt));
-  }, { say: [[0.3, 'e14']], sfx: [[0.2, (g, w) => S.splash(g, w)], [0.48, (g, w) => S.splash(g, w)], [0.76, (g, w) => S.splash(g, w)], [1.02, (g, w) => S.splash(g, w)], [1.28, (g, w) => S.splash(g, w)], [1.52, (g, w) => S.splash(g, w)],
+  }, EP3D.earthDive), { say: [[0.3, 'e14']], sfx: [[0.2, (g, w) => S.splash(g, w)], [0.48, (g, w) => S.splash(g, w)], [0.76, (g, w) => S.splash(g, w)], [1.02, (g, w) => S.splash(g, w)], [1.28, (g, w) => S.splash(g, w)], [1.52, (g, w) => S.splash(g, w)],
     [2.9, (g, w) => S.whoosh(g, w, 0.8, 0.3, 300, 3000)], [3.72, (g, w) => { S.boom(g, w, 0.7); S.riftRoar(g, w, 2.4, 0.2); }]] });
   const AFTER = T;
-  shot(7.5, (lt, d, t) => {
+  shot(7.5, alt((lt, d, t) => {
     earthPOV(t, { x: 0, y: 0, z: lerp(1.0, 1.03, lt / d) }, { lamps: lt < 3.5, gate: 0, brokenGate: true, cat: 'alert', bag: true, train: lt < 2.6 ? { x: 2600 + lt * 1150, v: 1150 } : null, rift: { open: 1, close: inv(1.2, 5.0, lt), cx: 640, cy: 150 } });
     G.fill('#fff', 1 - inv(0, 0.9, lt)); G.fill('#000', inv(6.3, 7.5, lt));
-  });
+  }, EP3D.earthAfter));
   for (let tt = SKY + 3.5; tt < AFTER + 3.5; tt += 0.5) at(tt, (g, w) => S.kan(g, w, 0.12));
   at(E0, (g, w, off) => S.noiseBed(g, w, off, T - E0 + 1, { vol: 0.16, hp: 900, lp: 7500, fin: 2.5, fout: 1 }), T - E0 + 1, true);
   at(E0, (g, w, off) => S.noiseBed(g, w, off, T - E0 + 1, { vol: 0.12, brown: true, lp: 600, fin: 2.5, fout: 1 }), T - E0 + 1, true);
@@ -416,16 +419,16 @@ const EP01 = (() => {
      ==================================================================== */
   chapter('Part A');
   const PA = T;
-  shot(8, (lt, d, t) => { const k = ease.io(clamp(lt / d)); G.barrow(t, { x: 0, y: lerp(-240, -40, k), z: 1.1 }, { fogA: 0.4 }); sunShafts(t); G.fill('#000', 1 - inv(0.2, 2.5, lt)); POST.set({ bloom: 0.8, thr: 0.5 }); },
+  shot(8, alt((lt, d, t) => { const k = ease.io(clamp(lt / d)); G.barrow(t, { x: 0, y: lerp(-240, -40, k), z: 1.1 }, { fogA: 0.4 }); sunShafts(t); G.fill('#000', 1 - inv(0.2, 2.5, lt)); POST.set({ bloom: 0.8, thr: 0.5 }); }, EP3D.barrowOpen),
     { say: [[3.2, 'a1']], sfx: [[0.2, (g, w) => S.piano(g, w, n('A5'), 0.5, 0.2)]] });
-  shot(4, (lt, d, t) => { eyes(t, lt, d, { mode: 'dusk', z0: 6.0, z1: 6.3, open: ease.out(inv(0.3, 1.6, lt)) }); G.fill('#000', 0.6 * (1 - inv(0, 1.2, lt))); }, { say: [[1.5, 'a2']] });
-  shot(6, (lt, d, t) => {
+  shot(4, alt((lt, d, t) => { eyes(t, lt, d, { mode: 'dusk', z0: 6.0, z1: 6.3, open: ease.out(inv(0.3, 1.6, lt)) }); G.fill('#000', 0.6 * (1 - inv(0, 1.2, lt))); }, EP3D.barrowWake), { say: [[1.5, 'a2']] });
+  shot(6, alt((lt, d, t) => {
     G.barrow(t, { x: -300, y: 60, z: 1.6 }, { fogA: 0.5 }); G.fill('#2a1020', 0.35);
     const sc = lerp(3.0, 3.25, lt / d), place = { x: 600, y: 400, ax: 112, ay: 452, sc }, pose = P.takuto(t, { arm: 0.02 * Math.sin(t * 5) * inv(0, 2, lt) });
     const grip = R.point('takuto', place, pose, 118, 455); G.fig('axe', grip[0], grip[1], 0, 0, sc, { ...DUSK, rot: -0.5009 + pose.bones.armR.r });
     R.draw('takuto', place, pose, DUSK);
-  }, { say: [[0.8, 'a3']] });
-  shot(9, (lt, d, t) => { // he stands up and looks around
+  }, EP3D.barrowHand), { say: [[0.8, 'a3']] });
+  shot(9, alt((lt, d, t) => { // he stands up and looks around
     const z = lerp(1.0, 1.06, ease.io(lt / d)), rise = ease.out(inv(0.2, 2.2, lt)), look = lt > 2.4 ? Math.sin((lt - 2.4) * 1.6) * 0.22 : 0;
     G.barrow(t, { x: 0, y: 0, z }, { fogA: 0.45 }); sunShafts(t);
     const c = G.ctx; c.save(); zoomAt(W / 2, H / 2, z);
@@ -433,24 +436,24 @@ const EP01 = (() => {
     c.restore();
     G.frontFog(t, 0.45); grass(t);
     G.locationCard(lt - 0.8, 5.8, 'THE BARROW FIELDS', 'Ashen March frontier  ·  dusk');
-  }, { say: [[5.2, 'a4']] });
-  shot(8, (lt, d, t) => {
+  }, EP3D.barrowRise), { say: [[5.2, 'a4']] });
+  shot(8, alt((lt, d, t) => {
     G.barrow(t, { x: 160, y: 0, z: 1.12 }, { fogA: 0.45 }); sunShafts(t);
     const rise = ease.out(inv(0, 1.4, lt)), yawn = lt < 3 ? Math.sin(Math.min(1, lt / 3) * Math.PI) : 0;
     NM(t, 760, lerp(1260, 1110, rise), 0.92, { yawn, armUp: -0.12 * yawn, tail: 0.3 * Math.sin(t * 2), ears: -0.2 * yawn }, DUSK);
     G.frontFog(t, 0.4); grass(t);
-  }, { say: [[0.6, 'a5'], ['+0.6', 'a6']], sfx: [[0.4, (g, w) => { S.pluck(g, w, n('F5'), 0.08); S.pluck(g, w + 0.18, n('A5'), 0.07); S.pluck(g, w + 0.36, n('C6'), 0.06); }]] });
-  shot(9, (lt, d, t) => twoShot(t, lt, d), { say: [[0.5, 'a9'], ['+0.5', 'a10'], ['+0.4', 'a11']] });
-  shot(7, (lt, d, t) => twoShot(t, lt, d, { push: 0.06, camx: 40 }), { say: [[0.2, 'a12'], ['+0.5', 'a13']] });
-  shot(6.5, (lt, d, t) => {
+  }, EP3D.nemuWake), { say: [[0.6, 'a5'], ['+0.6', 'a6']], sfx: [[0.4, (g, w) => { S.pluck(g, w, n('F5'), 0.08); S.pluck(g, w + 0.18, n('A5'), 0.07); S.pluck(g, w + 0.36, n('C6'), 0.06); }]] });
+  shot(9, alt((lt, d, t) => twoShot(t, lt, d), EP3D.twoShot), { say: [[0.5, 'a9'], ['+0.5', 'a10'], ['+0.4', 'a11']] });
+  shot(7, alt((lt, d, t) => twoShot(t, lt, d, { push: 0.06, camx: 40 }), EP3D.otsNemu), { say: [[0.2, 'a12'], ['+0.5', 'a13']] });
+  shot(6.5, alt((lt, d, t) => {
     if (lt < 1.4) { G.fill('#f4efe9'); G.focusLines(640, 360, t, { color: '#1a1a1a', a: 0.25, inner: 200 }); const bo = 1 + 0.08 * Math.abs(Math.sin(lt * 9)); R.draw('nemu_gg', { x: 640, y: 420, ax: 325, ay: 420, sc: 5.2 * bo }, P.generic(t, {}), {}); }
     else nemuClose(t, lt, d, { sc0: 1.6, sc1: 1.66, pose: { ears: 0.25, headR: 0.08 } });
-  }, { say: [[1.5, 'a16'], ['+0.4', 'a17']], sfx: [[0.05, (g, w) => S.ui(g, w, 0.06)]] });
-  shot(8, (lt, d, t) => { G.barrow(t, { x: -100, y: 20, z: 1.2 }, { fogA: 0.45 }); sunShafts(t); TK(t, 560, lerp(1300, 1320, lt / d), 0.72, { lookBias: 0.6, arm: lt > 0.5 && lt < 2.5 ? -0.12 * Math.sin((lt - 0.5) / 2 * Math.PI) : 0, headR: 0.04 }, DUSK); G.frontFog(t, 0.35); grass(t); },
+  }, (lt, d, t, f2) => lt < 1.4 ? f2(lt, d, t) : EP3D.nmClose({ d0: 0.85, opts: { ears: 0.25 } })(lt, d, t)), { say: [[1.5, 'a16'], ['+0.4', 'a17']], sfx: [[0.05, (g, w) => S.ui(g, w, 0.06)]] });
+  shot(8, alt((lt, d, t) => { G.barrow(t, { x: -100, y: 20, z: 1.2 }, { fogA: 0.45 }); sunShafts(t); TK(t, 560, lerp(1300, 1320, lt / d), 0.72, { lookBias: 0.6, arm: lt > 0.5 && lt < 2.5 ? -0.12 * Math.sin((lt - 0.5) / 2 * Math.PI) : 0, headR: 0.04 }, DUSK); G.frontFog(t, 0.35); grass(t); }, EP3D.tkAxe),
     { say: [[0.3, 'a18'], ['+0.5', 'a19']] });
-  shot(8, (lt, d, t) => { const k = ease.io(clamp(lt / d)); G.barrow(t, { x: lerp(300, 380, k), y: lerp(160, 190, k), z: 1.5 }, { fogA: 0.5 }); G.radial(770, 520, 200, 'rgba(255,180,120,0.12)', 'rgba(0,0,0,0)', 1, 'lighter'); X.shafts(t, { x: 900, y: -100, ang: 1.9, spread: 0.4, n: 4, a: 0.12 }); },
+  shot(8, alt((lt, d, t) => { const k = ease.io(clamp(lt / d)); G.barrow(t, { x: lerp(300, 380, k), y: lerp(160, 190, k), z: 1.5 }, { fogA: 0.5 }); G.radial(770, 520, 200, 'rgba(255,180,120,0.12)', 'rgba(0,0,0,0)', 1, 'lighter'); X.shafts(t, { x: 900, y: -100, ang: 1.9, spread: 0.4, n: 4, a: 0.12 }); }, EP3D.headsmanGrave),
     { say: [[0.3, 'a20'], ['+0.5', 'a21']] });
-  shot(4, (lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.3, z1: 6.4 }), { say: [[0.9, 'a22']] });
+  shot(4, alt((lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.3, z1: 6.4 }), EP3D.tkClose({ locked: true, d0: 0.8, still: true })), { say: [[0.9, 'a22']] });
   shot(4, (lt, d, t) => {
     G.fill('#cfe0ff'); G.focusLines(640, 360, t, { color: '#ffffff', a: 0.8, inner: 180 });
     const c = G.ctx, sq = 1 + 0.1 * Math.sin(lt * 18) * Math.exp(-lt * 1.2); c.save(); shake(t, 4, 20);
@@ -463,24 +466,24 @@ const EP01 = (() => {
   shot(10, (lt, d, t) => { G.paper(); G.sigilAxe(640, 340, 190, inv(0.4, 5, lt), t, '#a3121b', 0.9); G.txt('烙印', 1180, 90, { font: '400 26px ' + G.FONT.jp, fill: 'rgba(150,20,28,0.75)', align: 'right', a: inv(1, 2, lt) }); POST.set({ bloom: 0.2, vig: 0.5 }); },
     { say: [[0.5, 'a28'], ['+0.6', 'a29']], sfx: [[0.5, (g, w) => S.riser(g, w, 4.4, 0.05)]] });
   shot(6, (lt, d, t) => inkPanel(t, lt, d, 'sieg', { cut: true, cx: 640, cy: 760, ax: 370, ay: 899, sc: 0.78, label: '狩人' }), { say: [[0.3, 'a30']] });
-  shot(6, (lt, d, t) => twoShot(t, lt, d, { push: 0.02 }), { say: [[0.3, 'a31'], ['+0.4', 'a32']] });
-  shot(8, (lt, d, t) => {
+  shot(6, alt((lt, d, t) => twoShot(t, lt, d, { push: 0.02 }), (lt, d, t) => EP3D.twoShot(lt, d, t, { push: 0.02, ang: 0.55 })), { say: [[0.3, 'a31'], ['+0.4', 'a32']] });
+  shot(8, alt((lt, d, t) => {
     nemuClose(t, lt, d, { sc0: 1.35, sc1: 1.42, ay: 330, pose: { armM: 0.18 * inv(0.3, 1, lt), headR: -0.06 } });
     G.sigilPaw(380, 330, 110, 3, 9, ease.out(inv(0.6, 2, lt)), 0.95); G.radial(380, 330, 220, 'rgba(140,200,255,0.25)', 'rgba(0,0,0,0)', inv(0.6, 2, lt), 'lighter');
     POST.set({ bloom: 0.9, thr: 0.5 });
-  }, { say: [[0.3, 'a33'], ['+0.5', 'a34']], sfx: [[0.6, (g, w) => { S.bell(g, w, n('A5'), 0.05); S.bell(g, w + 0.2, n('E6'), 0.04); }]] });
-  shot(5, (lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.5, z1: 6.9 }), { say: [[0.3, 'a35'], ['+0.4', 'a36']] });
-  shot(10, (lt, d, t) => twoShot(t, lt, d, { push: 0.05, camx: -30, nm: { ears: -0.25 } }), { say: [[0.3, 'a39'], ['+0.5', 'a40']] });
-  shot(8, (lt, d, t) => { G.barrow(t, { x: 0, y: -200, z: 1.15 }, { fogA: 0.3, rift: { open: 0.04, cx: 640, cy: 200, w: 300, h: 60 } }); G.fill('#200810', 0.15); }, { say: [[0.3, 'a41'], ['+0.5', 'a42']] });
+  }, EP3D.nemuSigil), { say: [[0.3, 'a33'], ['+0.5', 'a34']], sfx: [[0.6, (g, w) => { S.bell(g, w, n('A5'), 0.05); S.bell(g, w + 0.2, n('E6'), 0.04); }]] });
+  shot(5, alt((lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.5, z1: 6.9 }), EP3D.tkClose({ d0: 0.75, ang: -0.3 })), { say: [[0.3, 'a35'], ['+0.4', 'a36']] });
+  shot(10, alt((lt, d, t) => twoShot(t, lt, d, { push: 0.05, camx: -30, nm: { ears: -0.25 } }), (lt, d, t) => EP3D.twoShot(lt, d, t, { push: 0.05, ang: -0.3, arc: 0.3, ears: -0.25 })), { say: [[0.3, 'a39'], ['+0.5', 'a40']] });
+  shot(8, alt((lt, d, t) => { G.barrow(t, { x: 0, y: -200, z: 1.15 }, { fogA: 0.3, rift: { open: 0.04, cx: 640, cy: 200, w: 300, h: 60 } }); G.fill('#200810', 0.15); }, EP3D.riftThin), { say: [[0.3, 'a41'], ['+0.5', 'a42']] });
   const BELLS = T;
-  shot(8, (lt, d, t) => {
+  shot(8, alt((lt, d, t) => {
     G.barrow(t, { x: 0, y: 0, z: lerp(1.0, 1.05, lt / d) }, { fogA: lerp(0.45, 0.8, lt / d) });
     const c = G.ctx, turn = ease.io(inv(0.6, 1.6, lt)) * 0.25; c.save(); zoomAt(W / 2, H / 2, 1.02);
     TK(t, 330, 1150, 0.66, { headR: -turn, headX: -turn * 20 }, DUSK); NM(t, 940, 1100, 0.92, { headR: -turn * 1.2, ears: 0.35 * turn * 4 }, DUSK); c.restore();
     G.frontFog(t, lerp(0.4, 0.75, lt / d)); grass(t);
-  }, { say: [[2.0, 'a43'], ['+0.5', 'a44']] });
+  }, EP3D.bellsTurn), { say: [[2.0, 'a43'], ['+0.5', 'a44']] });
   [0.8, 1.3, 3.0, 3.5, 5.6, 6.1].forEach(o => at(BELLS + o, (g, w) => S.kan(g, w, 0.04)));
-  shot(7, (lt, d, t) => {
+  shot(7, alt((lt, d, t) => {
     const c = G.ctx, rise = ease.out(inv(0.6, 6.5, lt));
     c.save(); shake(t, 2 + lt * 0.6);
     G.barrow(t, { x: 120, y: 60, z: 1.3 }, { fogA: 0.7 }); G.fill('#140812', 0.25);
@@ -488,7 +491,7 @@ const EP01 = (() => {
     G.frontFog(t, 0.85, '#d9a8b0', 470, 50);
     c.restore();
     if (lt > 6.0) { X.ring(lt - 6.0, { x: 720, y: 330, r1: 800, dur: 0.7, flat: 0.8 }); POST.set({ ca: 0.006 * (1 - inv(6, 6.8, lt)) }); }
-  }, { sfx: [[0.5, (g, w) => S.noiseBed(g, w, 0, 6.5, { vol: 0.2, brown: true, lp: 140, fin: 1, fout: 0.3, b: 'sfx' })], [1.5, (g, w) => S.clicks(g, w, 4, 70, { vol: 0.16, f0: 900, f1: 2800, q: 4, len: 0.02, seed: 51 })], [6.0, (g, w) => { S.boom(g, w, 0.45); S.riftRoar(g, w, 1.8, 0.22); S.brass(g, w, n('D2'), 1.4, 0.09); S.brass(g, w, n('Eb2'), 1.4, 0.07); }]] });
+  }, EP3D.sbRise), { sfx: [[0.5, (g, w) => S.noiseBed(g, w, 0, 6.5, { vol: 0.2, brown: true, lp: 140, fin: 1, fout: 0.3, b: 'sfx' })], [1.5, (g, w) => S.clicks(g, w, 4, 70, { vol: 0.16, f0: 900, f1: 2800, q: 4, len: 0.02, seed: 51 })], [6.0, (g, w) => { S.boom(g, w, 0.45); S.riftRoar(g, w, 1.8, 0.22); S.brass(g, w, n('D2'), 1.4, 0.09); S.brass(g, w, n('Eb2'), 1.4, 0.07); }]] });
   cueOther(PA + 1, BELLS - PA - 2);
   cueTension(BELLS + 2, 11);
 
@@ -517,7 +520,7 @@ const EP01 = (() => {
      ==================================================================== */
   chapter('Part B');
   const PB = T;
-  shot(9, (lt, d, t) => { // it walks out of the fog
+  shot(9, alt((lt, d, t) => { // it walks out of the fog
     const c = G.ctx, k = ease.io(clamp(lt / d)), steps = [0.9, 2.3, 3.7, 5.1], stp = steps.reduce((m, s) => Math.max(m, lt > s && lt < s + 0.35 ? 10 * (1 - (lt - s) / 0.35) : 0), 0);
     c.save(); shake(t, stp + (lt > 6.4 && lt < 7.4 ? 8 : 0.6));
     G.barrow(t, { x: 100, y: lerp(120, 0, k), z: 1.2 }, { fogA: 0.6 }); G.fill('#1a0a12', 0.25);
@@ -526,11 +529,11 @@ const EP01 = (() => {
     G.frontFog(t, 0.7, '#d9a8b0', 520, 50); c.restore();
     if (lt > 6.4) { X.ring(lt - 6.4, { x: 680, y: 300, r1: 900, dur: 0.8, flat: 0.9 }); POST.set({ ca: 0.008 * (1 - inv(6.4, 7.4, lt)) }); }
     X.holo(lt - 1.2, 4.8, { x: 930, y: 230, w: 540, title: 'FIEND DETECTED', lines: [{ t: 'Skeletal Shieldbearer', big: true }, 'Class: Lesser  ·  Threat ▰▰▱▱▱', { t: 'Its shield has never been broken.', col: '#ffb0b0' }] });
-  }, { sfx: [[1.0, (g, w) => S.ui(g, w, 0.05)], [0.9, (g, w) => S.step(g, w, 0.5)], [2.3, (g, w) => S.step(g, w, 0.55)], [3.7, (g, w) => S.step(g, w, 0.6)], [5.1, (g, w) => S.step(g, w, 0.62)], [6.4, (g, w) => { S.riftRoar(g, w, 1.6, 0.3); S.boom(g, w, 0.4); }], [0.3, (g, w) => S.clicks(g, w, 1.5, 20, { vol: 0.12, f0: 900, f1: 2600, q: 4, len: 0.02, seed: 61 })]] });
-  shot(8, (lt, d, t) => twoShot(t, lt, d, { push: 0.04, nm: { ears: -0.35, tail: -0.3 }, tk: { arm: -0.12 } }), { say: [[0.3, 'b1'], ['+0.4', 'b2'], ['+0.3', 'b3']] });
-  shot(5, (lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.4, z1: 7.2 }), { say: [[0.5, 'b4']] });
+  }, EP3D.sbWalk), { sfx: [[1.0, (g, w) => S.ui(g, w, 0.05)], [0.9, (g, w) => S.step(g, w, 0.5)], [2.3, (g, w) => S.step(g, w, 0.55)], [3.7, (g, w) => S.step(g, w, 0.6)], [5.1, (g, w) => S.step(g, w, 0.62)], [6.4, (g, w) => { S.riftRoar(g, w, 1.6, 0.3); S.boom(g, w, 0.4); }], [0.3, (g, w) => S.clicks(g, w, 1.5, 20, { vol: 0.12, f0: 900, f1: 2600, q: 4, len: 0.02, seed: 61 })]] });
+  shot(8, alt((lt, d, t) => twoShot(t, lt, d, { push: 0.04, nm: { ears: -0.35, tail: -0.3 }, tk: { arm: -0.12 } }), EP3D.faceOff), { say: [[0.3, 'b1'], ['+0.4', 'b2'], ['+0.3', 'b3']] });
+  shot(5, alt((lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.4, z1: 7.2 }), EP3D.tkVow), { say: [[0.5, 'b4']] });
   const FIGHT_T = T;
-  shot(4.6, (lt, d, t) => { // EXCHANGE 1: sprint, leap, chop, CLANG, flip back
+  shot(4.6, alt((lt, d, t) => { // EXCHANGE 1: sprint, leap, chop, CLANG, flip back
     const hit = 2.42, a = hitstop(lt, [hit]), c = G.ctx;
     const cam = lerp(-40, 60, clamp(a / 3));
     c.save(); shake(t, lt > hit && lt < hit + 0.45 ? 16 * (1 - (lt - hit) / 0.45) : 0.8);
@@ -548,8 +551,8 @@ const EP01 = (() => {
     c.restore(); duelEnd(t, 'dusk');
     if (lt > hit && lt < hit + 0.1) { G.impact('inv'); POST.set({ ca: 0.014 }); }
     POST.set({ bloom: 0.9, thr: 0.5, dir: a < 1.3 ? [0.004, 0] : [0, 0] });
-  }, { sfx: [[0.15, (g, w) => [0, 0.26, 0.52, 0.78, 1.04].forEach(o => S.step(g, w + o, 0.12))], [1.45, (g, w) => S.whoosh(g, w, 0.5, 0.2, 200, 1500)], [2.1, (g, w) => S.whoosh(g, w, 0.35, 0.3, 400, 3200)], [2.42, (g, w) => { S.clang(g, w, 0.42); S.boom(g, w, 0.28); }], [2.7, (g, w) => S.whoosh(g, w, 0.5, 0.15, 900, 300)], [3.5, (g, w) => S.noiseBed(g, w, 0, 0.6, { vol: 0.14, bp: 1100, q: 0.8, fin: 0.02, fout: 0.4, b: 'sfx' })]] });
-  shot(5, (lt, d, t) => {
+  }, EP3D.exchange1), { sfx: [[0.15, (g, w) => [0, 0.26, 0.52, 0.78, 1.04].forEach(o => S.step(g, w + o, 0.12))], [1.45, (g, w) => S.whoosh(g, w, 0.5, 0.2, 200, 1500)], [2.1, (g, w) => S.whoosh(g, w, 0.35, 0.3, 400, 3200)], [2.42, (g, w) => { S.clang(g, w, 0.42); S.boom(g, w, 0.28); }], [2.7, (g, w) => S.whoosh(g, w, 0.5, 0.15, 900, 300)], [3.5, (g, w) => S.noiseBed(g, w, 0, 0.6, { vol: 0.14, bp: 1100, q: 0.8, fin: 0.02, fout: 0.4, b: 'sfx' })]] });
+  shot(5, alt((lt, d, t) => {
     const c = G.ctx; c.save(); shake(t, 3 * (1 - inv(0, 1, lt)));
     G.barrow(t, { x: 200, y: 60, z: 1.6 }, { fogA: 0.4 }); G.fill('#1a0a12', 0.3);
     R.draw('shield', { x: 640, y: 360, ax: 590, ay: 640, sc: 1.3 }, P.shield(t, {}), { mul: '#a58c92', mulA: 0.75 });
@@ -557,9 +560,9 @@ const EP01 = (() => {
     TK(t, lerp(380, 140, slide), 1420, 0.62, { rot: -0.25 * slide, lean: -0.1, arm: 0.3 * (1 - slide) }, DUSK);
     X.debris(lt - 0.1, { x: lerp(380, 140, slide), y: 700, n: 8, speed: 200, size: 5, seed: 71 });
     c.restore();
-  }, { say: [[0.8, 'b5']], sfx: [[0.3, (g, w) => S.noiseBed(g, w, 0, 1.2, { vol: 0.12, bp: 900, q: 0.8, fin: 0.05, fout: 0.6, b: 'sfx' })]] });
-  shot(6, (lt, d, t) => twoShot(t, lt, d, { push: 0.06, camx: -60, nm: { ears: -0.4, armUp: -0.2 } }), { say: [[0.3, 'b6'], ['+0.3', 'b7']] });
-  shot(4.6, (lt, d, t) => { // EXCHANGE 2: duck the claw, counter, shield bash, launched
+  }, EP3D.slideBack), { say: [[0.8, 'b5']], sfx: [[0.3, (g, w) => S.noiseBed(g, w, 0, 1.2, { vol: 0.12, bp: 900, q: 0.8, fin: 0.05, fout: 0.6, b: 'sfx' })]] });
+  shot(6, alt((lt, d, t) => twoShot(t, lt, d, { push: 0.06, camx: -60, nm: { ears: -0.4, armUp: -0.2 } }), EP3D.panicPair), { say: [[0.3, 'b6'], ['+0.3', 'b7']] });
+  shot(4.6, alt((lt, d, t) => { // EXCHANGE 2: duck the claw, counter, shield bash, launched
     const clang = 2.05, bash = 2.78, a = hitstop(lt, [clang, bash], 0.1), c = G.ctx;
     c.save(); shake(t, (lt > clang && lt < clang + 0.3 ? 10 : 0) + (lt > bash && lt < bash + 0.5 ? 18 * (1 - (lt - bash) / 0.5) : 0.8));
     FIGHT.backdrop(t, { mood: 'dusk', camx: 20 });
@@ -573,16 +576,16 @@ const EP01 = (() => {
     c.restore(); duelEnd(t, 'dusk');
     if (lt > bash && lt < bash + 0.1) { G.impact('inv'); POST.set({ ca: 0.016 }); }
     POST.set({ bloom: 0.9, thr: 0.5, dir: a > 2.85 && a < 3.6 ? [-0.008, 0] : [0, 0] });
-  }, { sfx: [[0.3, (g, w) => [0, 0.45, 0.9].forEach(o => S.step(g, w + o, 0.55))], [1.25, (g, w) => S.whoosh(g, w, 0.45, 0.32, 1400, 300)], [1.85, (g, w) => S.whoosh(g, w, 0.25, 0.25, 400, 2600)], [2.05, (g, w) => S.clang(g, w, 0.36)], [2.45, (g, w) => S.riftRoar(g, w, 0.8, 0.2)], [2.78, (g, w) => { S.boom(g, w, 0.6); S.clang(g, w, 0.2); }], [2.9, (g, w) => S.whoosh(g, w, 0.9, 0.2, 2000, 200)]] });
-  shot(2.6, (lt, d, t) => { // crash into a gravestone
+  }, EP3D.exchange2), { sfx: [[0.3, (g, w) => [0, 0.45, 0.9].forEach(o => S.step(g, w + o, 0.55))], [1.25, (g, w) => S.whoosh(g, w, 0.45, 0.32, 1400, 300)], [1.85, (g, w) => S.whoosh(g, w, 0.25, 0.25, 400, 2600)], [2.05, (g, w) => S.clang(g, w, 0.36)], [2.45, (g, w) => S.riftRoar(g, w, 0.8, 0.2)], [2.78, (g, w) => { S.boom(g, w, 0.6); S.clang(g, w, 0.2); }], [2.9, (g, w) => S.whoosh(g, w, 0.9, 0.2, 2000, 200)]] });
+  shot(2.6, alt((lt, d, t) => { // crash into a gravestone
     const c = G.ctx, fly = ease.out(clamp(lt / 0.5)); c.save(); shake(t, lt > 0.45 && lt < 1.1 ? 18 * (1 - (lt - 0.45) / 0.65) : 2);
     G.barrow(t, { x: -60, y: 40, z: 1.3 }, { fogA: 0.5 });
     TK(t, lerp(-300, 1060, fly), lerp(1150, 1240, fly), 0.6, { rot: 0.9 + fly * 0.6, arm: 0.5, legPose: [{ lift: 1, spread: 0.4 }, { lift: 0.6, spread: 0.6 }] }, { ...DUSK, smear: lt < 0.5 ? { dx: 260, dy: 0, n: 4, a: 0.4 } : null });
     if (lt > 0.45) { X.debris(lt - 0.45, { x: 1150, y: 560, n: 46, speed: 760, size: 13, seed: 91 }); X.ring(lt - 0.45, { x: 1150, y: 520, r1: 600, dur: 0.5, flat: 0.8 }); }
     c.restore();
     if (lt > 0.45 && lt < 0.55) { G.impact('inv'); POST.set({ ca: 0.014 }); }
-  }, { sfx: [[0.45, (g, w) => { S.thud(g, w, 0.6); S.clicks(g, w, 0.6, 30, { vol: 0.22, f0: 600, f1: 3000, q: 2, len: 0.03, seed: 81 }); S.boom(g, w, 0.35); }]] });
-  shot(7, (lt, d, t) => { // dazed POV
+  }, EP3D.crash), { sfx: [[0.45, (g, w) => { S.thud(g, w, 0.6); S.clicks(g, w, 0.6, 30, { vol: 0.22, f0: 600, f1: 3000, q: 2, len: 0.03, seed: 81 }); S.boom(g, w, 0.35); }]] });
+  shot(7, alt((lt, d, t) => { // dazed POV
     const c = G.ctx, wob = Math.sin(t * 1.3) * 0.02;
     c.save(); c.translate(W / 2, H / 2); c.rotate(-0.12 + wob); c.translate(-W / 2, -H / 2);
     G.barrow(t, { x: 0, y: 80, z: 1.2 }, { fogA: 0.6, mood: 'ash' });
@@ -590,15 +593,15 @@ const EP01 = (() => {
     SHB(t, 680, 1040, sc, { walk: 0.7 }, { ...fx, a: 0.55 }); SHB(t, 710 + Math.sin(t * 2) * 18, 1040, sc, { walk: 0.7 }, { ...fx, a: 0.45 });
     c.restore();
     G.fill('#000', 0.25 + 0.2 * Math.sin(t * 2.4)); POST.set({ vig: 0.8, sat: 0.6, radial: 0.015 + 0.01 * Math.sin(t * 2) });
-  }, { say: [[1.0, 'b8']], sfx: [[0, (g, w) => S.tone(g, w, 3950, 6.5, 0.012, 'sine', 'sfx', 0.3, 2)], [0.6, (g, w) => S.heartbeat(g, w, 0.5)], [2.0, (g, w) => S.heartbeat(g, w, 0.5)], [3.4, (g, w) => S.heartbeat(g, w, 0.55)], [4.8, (g, w) => S.heartbeat(g, w, 0.55)], [6.0, (g, w) => S.heartbeat(g, w, 0.6)]] });
-  shot(5, (lt, d, t) => { // the guillotine
+  }, EP3D.dazed), { say: [[1.0, 'b8']], sfx: [[0, (g, w) => S.tone(g, w, 3950, 6.5, 0.012, 'sine', 'sfx', 0.3, 2)], [0.6, (g, w) => S.heartbeat(g, w, 0.5)], [2.0, (g, w) => S.heartbeat(g, w, 0.5)], [3.4, (g, w) => S.heartbeat(g, w, 0.55)], [4.8, (g, w) => S.heartbeat(g, w, 0.55)], [6.0, (g, w) => S.heartbeat(g, w, 0.6)]] });
+  shot(5, alt((lt, d, t) => { // the guillotine
     const c = G.ctx, up = ease.io(inv(0.3, 4, lt));
     c.save(); shake(t, 1.5);
     G.barrow(t, { x: 0, y: -200, z: 1.4 }, { fogA: 0.3 }); G.fill('#2a0a12', 0.3);
     SHB(t, 640, 1450, 1.55, { shieldR: -0.42 * up, shieldY: -90 * up, jaw: up * 0.8, headR: -0.1 * up }, { mul: '#a58c92', mulA: 0.75, glow: { c: '#ff4a3a', a: 0.4, r: 18 } });
     c.restore();
-  }, { sfx: [[0.3, (g, w) => S.riser(g, w, 4.2, 0.08)]] });
-  shot(2.6, (lt, d, t) => { // Nemu sprints in, full body
+  }, EP3D.guillotine), { sfx: [[0.3, (g, w) => S.riser(g, w, 4.2, 0.08)]] });
+  shot(2.6, alt((lt, d, t) => { // Nemu sprints in, full body
     const c = G.ctx; c.save(); shake(t, 1.5);
     FIGHT.backdrop(t, { mood: 'dusk', camx: 0 });
     SHB(t, 880, 606, 0.5, { shieldR: -0.42, shieldY: -90, jaw: 0.8, headR: -0.08 }, SIL('#ffb07a'), 1);
@@ -607,53 +610,53 @@ const EP01 = (() => {
     if (lt < 1.6) FIGHT.afterimages({ x: 0, y: 606, s: 0.95, t, style: 'nemu' }, tt => ({ ...FIGHT.run(tt * 17), lean: 0.5, x: lerp(-80, 560, clamp(tt / 1.6)) }), 3, 0.05, '#7ab8ff');
     if (lt > 1.9) { const f = clamp((lt - 1.9) / 0.6); c.fillStyle = '#07030a'; c.beginPath(); c.arc(lerp(620, 850, f), lerp(470, 360, f) - Math.sin(f * Math.PI) * 60, 7, 0, 7); c.fill(); }
     c.restore(); duelEnd(t, 'dusk'); POST.set({ bloom: 0.9, thr: 0.5, dir: lt < 1.6 ? [0.005, 0] : [0, 0] });
-  }, { sfx: [[0.1, (g, w) => [0, 0.22, 0.44, 0.66, 0.88, 1.1, 1.32].forEach(o => S.step(g, w + o, 0.08))], [1.9, (g, w) => S.whoosh(g, w, 0.4, 0.18, 600, 2400)]] });
-  shot(5, (lt, d, t) => { // Nemu steps in
+  }, EP3D.nemuSprint), { sfx: [[0.1, (g, w) => [0, 0.22, 0.44, 0.66, 0.88, 1.1, 1.32].forEach(o => S.step(g, w + o, 0.08))], [1.9, (g, w) => S.whoosh(g, w, 0.4, 0.18, 600, 2400)]] });
+  shot(5, alt((lt, d, t) => { // Nemu steps in
     G.barrow(t, { x: 100, y: 40, z: 1.25 }, { fogA: 0.45 });
     const k = ease.out5(inv(0, 0.6, lt)), thr = ease.in(inv(2.3, 2.6, lt));
     NM(t, lerp(1500, 780, k), 1210, 1.05, { lean: (1 - k) * -0.2, armM: -0.6 * thr, armUp: -0.3, ears: -0.4, tail: 0.6 }, { ...DUSK, glow: { c: '#9fd0ff', a: 0.25, r: 14 }, smear: k < 1 ? { dx: 300 * (1 - k), dy: 0, n: 4, a: 0.4 } : null });
     if (lt > 2.5) { const f = inv(2.5, 3.2, lt), g = G.ctx; g.save(); g.fillStyle = '#2a2026'; g.beginPath(); g.arc(lerp(700, 200, f), lerp(260, 300, f) - Math.sin(f * Math.PI) * 140, 11, 0, 7); g.fill(); g.restore(); }
     G.frontFog(t, 0.4); grass(t);
-  }, { say: [[0.5, 'b9'], ['+0.3', 'b10']], sfx: [[0.1, (g, w) => S.whoosh(g, w, 0.4, 0.15, 500, 2500)], [3.2, (g, w) => S.clang(g, w, 0.08)]] });
-  shot(3, (lt, d, t) => { eyes(t, lt, d, { mode: 'dusk', z0: 6.4, z1: 8.0 }); POST.set({ radial: 0.02 * lt }); }, { say: [[0.3, 'b11']], sfx: [[0, (g, w) => S.whoosh(g, w, 0.5, 0.12, 300, 1600)]] });
+  }, EP3D.nemuTaunt), { say: [[0.5, 'b9'], ['+0.3', 'b10']], sfx: [[0.1, (g, w) => S.whoosh(g, w, 0.4, 0.15, 500, 2500)], [3.2, (g, w) => S.clang(g, w, 0.08)]] });
+  shot(3, alt((lt, d, t) => { eyes(t, lt, d, { mode: 'dusk', z0: 6.4, z1: 8.0 }); POST.set({ radial: 0.02 * lt }); }, EP3D.tkClose({ pose: EP3D.slumped(), at: {}, d0: 1.1, d1: 0.5, e: 'in', fov: 24, ang: 0.2 })), { say: [[0.3, 'b11']], sfx: [[0, (g, w) => S.whoosh(g, w, 0.5, 0.12, 300, 1600)]] });
   const BLOW = T + 1.0;
-  shot(4, (lt, d, t) => {
+  shot(4, alt((lt, d, t) => {
     if (lt < 1.0) {
       const c = G.ctx, f = ease.in(inv(0, 1.0, lt)); c.save(); shake(t, 4);
       G.barrow(t, { x: 100, y: 40, z: 1.25 }, { fogA: 0.45 }); NM(t, 780, 1210, 1.05, { ears: -0.5, armUp: -0.3 }, { ...DUSK, sil: '#000', silA: 0.6 });
       R.draw('shield', { x: 760, y: lerp(-700, 260, f), ax: 590, ay: 360, sc: 1.4 }, P.shield(t, {}), { sil: '#000', silA: 0.85, smear: { dx: 0, dy: 200 * f, n: 4, a: 0.4 } }); c.restore();
     } else { G.fill('#fff'); G.fill('#000', inv(1.4, 4, lt)); }
-  }, { vig: false, sfx: [[1.0, (g, w) => { S.boom(g, w, 0.75); S.tone(g, w + 0.3, 4100, 3.6, 0.02, 'sine', 'sfx', 0.2, 2.5); }]] });
-  shot(7, (lt, d, t) => { // stillness
+  }, EP3D.blowDown), { vig: false, sfx: [[1.0, (g, w) => { S.boom(g, w, 0.75); S.tone(g, w + 0.3, 4100, 3.6, 0.02, 'sine', 'sfx', 0.2, 2.5); }]] });
+  shot(7, alt((lt, d, t) => { // stillness
     G.barrow(t, { x: 140, y: 120, z: 1.35 }, { fogA: 0.6, mood: 'ash', wisps: false }); G.fill('#000', 0.35);
     NM(t, 640, 600, 0.6, { rot: -1.5, breath: 0, freeze: 2.0, legs: false }, { mul: '#8a8090', mulA: 0.8 });
     G.sigilPaw(640, 330, 70, 3, 9, inv(1.0, 2, lt), 0.9, 2, inv(4.0, 4.6, lt));
     G.fill('#000', 1 - inv(0, 1.2, lt)); POST.set({ sat: 0.5, vig: 0.7 });
-  }, { sfx: [[4.0, (g, w) => S.piano(g, w, n('A4'), 2, 0.4, 'music', 0.6)]] });
-  shot(10, (lt, d, t) => { eyes(t, lt, d, { mode: 'dusk', z0: 6.2, z1: 7.6, glowEyes: 0.35 * inv(4, 10, lt), tremble: inv(3, 10, lt) }); G.fill('#ff0000', 0.25 * inv(3, 10, lt), 'multiply'); },
+  }, EP3D.stillness), { sfx: [[4.0, (g, w) => S.piano(g, w, n('A4'), 2, 0.4, 'music', 0.6)]] });
+  shot(10, alt((lt, d, t) => { eyes(t, lt, d, { mode: 'dusk', z0: 6.2, z1: 7.6, glowEyes: 0.35 * inv(4, 10, lt), tremble: inv(3, 10, lt) }); G.fill('#ff0000', 0.25 * inv(3, 10, lt), 'multiply'); }, EP3D.tremble),
     { say: [[0.5, 'b12'], ['+0.6', 'b13'], ['+0.6', 'b14']], sfx: [[1, (g, w) => S.heartbeat(g, w, 0.4)], [3.4, (g, w) => S.heartbeat(g, w, 0.45)], [5.6, (g, w) => S.heartbeat(g, w, 0.5)], [7.6, (g, w) => S.heartbeat(g, w, 0.55)], [9.2, (g, w) => S.heartbeat(g, w, 0.6)]] });
-  shot(8, (lt, d, t) => { // the world stops
+  shot(8, alt((lt, d, t) => { // the world stops
     G.barrow(t, { x: 40, y: 40, z: 1.2 }, { fogA: 0.5, mood: 'still', wisps: false });
     TK(t, 340, 1190, 0.6, { freeze: 3.1, rot: -0.15, legPose: [{ lift: 0.5, spread: 0.3 }, { spread: 0.5 }], axeGlow: 0.3 + 0.5 * (0.5 + 0.5 * Math.sin(t * 5)) * inv(0, 4, lt) }, STILL);
     SHB(t, 900, 1120, 1.0, { freeze: 2.0, shieldR: -0.42, shieldY: -90 }, { mul: '#9a9aa0', mulA: 0.7 }, 0.3);
     G.desat(0.7);
     const c = G.ctx; c.save(); c.translate(0, 220); G.drawCrack(t, inv(1, 7.5, lt), 1.3); c.restore();
     POST.set({ sat: 0.25, con: 1.2, bloom: 0.8, thr: 0.4 });
-  }, { say: [[1.0, 'b15'], ['+0.8', 'b16']], sfx: [[0, (g, w) => S.whoosh(g, w, 1.2, 0.18, 2000, 150)], [1.2, (g, w) => S.heartbeat(g, w, 0.7)], [3.0, (g, w) => S.heartbeat(g, w, 0.7)], [5.0, (g, w) => S.heartbeat(g, w, 0.75)], [6.8, (g, w) => S.heartbeat(g, w, 0.8)]] });
-  shot(10, (lt, d, t) => { // mindscape
+  }, EP3D.worldStops), { say: [[1.0, 'b15'], ['+0.8', 'b16']], sfx: [[0, (g, w) => S.whoosh(g, w, 1.2, 0.18, 2000, 150)], [1.2, (g, w) => S.heartbeat(g, w, 0.7)], [3.0, (g, w) => S.heartbeat(g, w, 0.7)], [5.0, (g, w) => S.heartbeat(g, w, 0.75)], [6.8, (g, w) => S.heartbeat(g, w, 0.8)]] });
+  shot(10, alt((lt, d, t) => { // mindscape
     G.fill('#050000'); G.radial(640, 300, 800, 'rgba(120,0,10,0.9)', 'rgba(0,0,0,0)');
     const amp = V.amp('AKURO', t);
     R.cover('akuro', 0, 0, W, H, 0.52, 0.4, lerp(1.04, 1.22, ease.io(lt / d)), { t, wind: 1 + amp * 2, bones: { body: { sy: 1 + amp * 0.01 } } }, { a: ease.io(inv(0.5, 4, lt)) });
     G.fill('#ff1010', 0.18, 'multiply');
     const c = G.ctx; c.save(); c.translate(0, 300); G.drawCrack(t, 1, 1.2 + amp); c.restore();
     X.converge(t, { x: 640, y: 400, r: 520, n: 60, a: 0.5 + amp });
-    TK(t, 250, 1160, 0.42, { wind: 1.5 }, { sil: '#000', silA: 1, glow: { c: '#ff2a1a', a: 0.8, r: 14 } });
+    if (!D3) TK(t, 250, 1160, 0.42, { wind: 1.5 }, { sil: '#000', silA: 1, glow: { c: '#ff2a1a', a: 0.8, r: 14 } });
     G.motes(t, { n: 70, vy: -50, color: '#ff4a3a', seed: 15, size: 2 });
     POST.set({ bloom: 1.2 + amp, thr: 0.4, ca: 0.003 + amp * 0.006, gain: [1.15, 0.9, 0.9] });
-  }, { say: [[0.5, 'b17'], ['+0.5', 'b18'], ['+0.6', 'b19']], sfx: [[0.2, (g, w) => S.noiseBed(g, w, 0, 12, { vol: 0.14, brown: true, lp: 120, fin: 2, fout: 1, b: 'sfx' })]] });
-  shot(6, (lt, d, t) => eyes(t, lt, d, { mode: 'red', z0: 6.8, z1: 7.4, glowEyes: 0.95 }), { say: [[0.5, 'b20'], ['+0.4', 'b21']] });
+  }, (lt, d, t, f2) => { f2(lt, d, t); EP3D.mindscapeTK(lt, d, t); }), { say: [[0.5, 'b17'], ['+0.5', 'b18'], ['+0.6', 'b19']], sfx: [[0.2, (g, w) => S.noiseBed(g, w, 0, 12, { vol: 0.14, brown: true, lp: 120, fin: 2, fout: 1, b: 'sfx' })]] });
+  shot(6, alt((lt, d, t) => eyes(t, lt, d, { mode: 'red', z0: 6.8, z1: 7.4, glowEyes: 0.95 }), EP3D.eyesRed), { say: [[0.5, 'b20'], ['+0.4', 'b21']] });
   const AWAKE = T;
-  shot(10.5, (lt, d, t) => { // BRAND AWAKENED
+  shot(10.5, alt((lt, d, t) => { // BRAND AWAKENED
     G.vgrad([[0, '#140003'], [1, '#2a0306']]);
     const c = G.ctx, sc = lerp(3.2, 3.6, ease.io(lt / d)), place = { x: 560, y: 400, ax: 112, ay: 452, sc }, pose = P.takuto(t, { arm: Math.sin(t * 30) * 0.004 * (1 - inv(4, 5, lt)) });
     c.save(); shake(t, lt < 1.2 ? 8 * (1 - lt / 1.2) : lt < 4.3 ? 1 + lt * 0.5 : 1);
@@ -673,8 +676,8 @@ const EP01 = (() => {
     }
     POST.set({ bloom: 1.3, thr: 0.4, gain: [1.15, 0.9, 0.88], ca: 0.003 + (lt > 4.3 && lt < 5 ? 0.01 : 0) });
     if (lt > 4.3) X.ring(lt - 4.3, { x: 640, y: 360, r1: 900, dur: 0.8, flat: 1, color: '#ff8a7a' });
-  }, { sfx: [[0, (g, w) => { S.boom(g, w, 0.7); S.crash(g, w, 0.12, 'sfx'); }], [0.4, (g, w) => S.riser(g, w, 3.9, 0.12)], [4.3, (g, w) => { S.boom(g, w, 0.85); S.shatter(g, w, 0.12, 9); }], [4.9, (g, w) => S.ui(g, w, 0.06)]] });
-  shot(9, (lt, d, t) => { // power
+  }, EP3D.awaken), { sfx: [[0, (g, w) => { S.boom(g, w, 0.7); S.crash(g, w, 0.12, 'sfx'); }], [0.4, (g, w) => S.riser(g, w, 3.9, 0.12)], [4.3, (g, w) => { S.boom(g, w, 0.85); S.shatter(g, w, 0.12, 9); }], [4.9, (g, w) => S.ui(g, w, 0.06)]] });
+  shot(9, alt((lt, d, t) => { // power
     const z = lerp(1.0, 1.12, ease.io(lt / d)), rise = ease.out(inv(0, 2.5, lt));
     G.barrow(t, { x: 0, y: 0, z }, { mood: 'blood', fogA: 0.6 }); sunShafts(t, 'blood');
     const c = G.ctx; c.save(); shake(t, 1.5 + (1 - rise) * 3); zoomAt(W / 2, H / 2, z);
@@ -686,19 +689,19 @@ const EP01 = (() => {
     c.restore();
     G.motes(t, { n: 140, vy: -130, vx: 25, color: '#ff7a3a', size: 2.6, seed: 17 }); G.frontFog(t, 0.5, '#ff6a6a');
     POST.set({ bloom: 0.95, thr: 0.52, ca: 0.003, gain: [1.12, 0.9, 0.88], sat: 1.1 });
-  }, { sfx: [[0, (g, w) => S.noiseBed(g, w, 0, 9, { vol: 0.14, brown: true, lp: 220, fin: 0.5, fout: 1, b: 'sfx' })], [0, (g, w) => S.noiseBed(g, w, 0, 9, { vol: 0.08, bp: 700, q: 0.7, fin: 0.5, fout: 1, b: 'sfx' })], [2.0, (g, w) => S.staticBurst(g, w, 2, 0.05)]] });
-  shot(5, (lt, d, t) => { // it braces
+  }, EP3D.power), { sfx: [[0, (g, w) => S.noiseBed(g, w, 0, 9, { vol: 0.14, brown: true, lp: 220, fin: 0.5, fout: 1, b: 'sfx' })], [0, (g, w) => S.noiseBed(g, w, 0, 9, { vol: 0.08, bp: 700, q: 0.7, fin: 0.5, fout: 1, b: 'sfx' })], [2.0, (g, w) => S.staticBurst(g, w, 2, 0.05)]] });
+  shot(5, alt((lt, d, t) => { // it braces
     G.barrow(t, { x: 100, y: 0, z: 1.2 }, { mood: 'blood', fogA: 0.6 });
     const br = ease.out(inv(0.5, 1.5, lt)), c = G.ctx; c.save(); shake(t, lt > 0.5 && lt < 1.2 ? 6 : 1);
     SHB(t, 640 + br * 40, 1010 + br * 20, 0.98, { crouch: br, shieldR: -0.12 * br, shieldX: -30 * br, headR: 0.1 * br, jaw: lt > 2 && lt < 3.4 ? 1 : 0 }, { mul: '#c88a8a', mulA: 0.8, glow: { c: '#ff3a2a', a: 0.4, r: 14 } }, 1);
     c.restore(); G.frontFog(t, 0.6, '#ff6a6a', 520, 60);
     POST.set({ bloom: 1.0, thr: 0.45, gain: [1.15, 0.9, 0.9] });
-  }, { sfx: [[0.5, (g, w) => { S.step(g, w, 0.6); S.clang(g, w + 0.1, 0.12); }], [2.0, (g, w) => S.riftRoar(g, w, 1.4, 0.25)]] });
+  }, EP3D.sbBraces), { sfx: [[0.5, (g, w) => { S.step(g, w, 0.6); S.clang(g, w + 0.1, 0.12); }], [2.0, (g, w) => S.riftRoar(g, w, 1.4, 0.25)]] });
   const SWING = T;
   const crackR = G.rng(404), cracks = [];
   for (let i = 0; i < 18; i++) { const a = crackR() * Math.PI * 2, pts = [[590, 700]]; let x = 590, y = 700; for (let k = 0; k < 7; k++) { x += Math.cos(a + (crackR() - 0.5) * 0.9) * (20 + crackR() * 30); y += Math.sin(a + (crackR() - 0.5) * 0.9) * (20 + crackR() * 30); pts.push([x, y]); } cracks.push(pts); }
   const CLIMAX_HIT = 3.85;
-  shot(6.6, (lt, d, t) => { // THE CLIMAX: vanish, zig-zag, leap over the sweep in slow motion, crescent slash
+  shot(6.6, alt((lt, d, t) => { // THE CLIMAX: vanish, zig-zag, leap over the sweep in slow motion, crescent slash
     const c = G.ctx, H1 = CLIMAX_HIT;
     // time remap: real time until the leap, slow motion over the shield, snap into the strike, hit-stop
     const a = lt < 1.5 ? lt : lt < 3.5 ? 1.5 + (lt - 1.5) * 0.25 : lt < H1 ? 2.0 + (lt - 3.5) * 1.0 : lt < H1 + 0.18 ? 2.35 : 2.35 + (lt - H1 - 0.18);
@@ -724,10 +727,10 @@ const EP01 = (() => {
     else if (lt > H1 + 0.12 && lt < H1 + 0.18) { G.fill('#000', 0.85); G.ctx.save(); G.ctx.globalCompositeOperation = 'lighter'; G.ctx.strokeStyle = '#ff3a2a'; G.ctx.lineWidth = 14; G.ctx.beginPath(); G.ctx.moveTo(380, -60); G.ctx.lineTo(1100, 900); G.ctx.stroke(); G.ctx.restore(); }
     if (lt > 1.5 && lt < 3.5) POST.set({ sat: 0.6, radial: 0.012, ca: 0.005 });
     POST.set({ bloom: 1.2, thr: 0.45, gain: [1.15, 0.9, 0.88], dir: a < 1.3 && a > 0.7 ? [0.01, 0] : [0, 0] });
-  }, { sfx: [[0, (g, w) => S.noiseBed(g, w, 0, 1.5, { vol: 0.12, brown: true, lp: 200, fin: 0.3, fout: 0.3, b: 'sfx' })], [0.7, (g, w) => { S.whoosh(g, w, 0.18, 0.3, 600, 4000); S.boom(g, w, 0.25); }], [0.95, (g, w) => S.whoosh(g, w, 0.15, 0.28, 600, 4000)], [1.15, (g, w) => S.whoosh(g, w, 0.15, 0.3, 600, 4000)], [1.3, (g, w) => { S.riftRoar(g, w, 0.8, 0.25); S.whoosh(g, w, 0.5, 0.35, 1600, 250); }],
+  }, (lt, d, t) => EP3D.climax(lt, d, t, CLIMAX_HIT)), { sfx: [[0, (g, w) => S.noiseBed(g, w, 0, 1.5, { vol: 0.12, brown: true, lp: 200, fin: 0.3, fout: 0.3, b: 'sfx' })], [0.7, (g, w) => { S.whoosh(g, w, 0.18, 0.3, 600, 4000); S.boom(g, w, 0.25); }], [0.95, (g, w) => S.whoosh(g, w, 0.15, 0.28, 600, 4000)], [1.15, (g, w) => S.whoosh(g, w, 0.15, 0.3, 600, 4000)], [1.3, (g, w) => { S.riftRoar(g, w, 0.8, 0.25); S.whoosh(g, w, 0.5, 0.35, 1600, 250); }],
     [1.5, (g, w) => { S.tone(g, w, 55, 2.0, 0.09, 'sine', 'sfx', 0.2, 0.2); S.heartbeat(g, w + 0.3, 0.7); S.heartbeat(g, w + 1.3, 0.75); }], [3.5, (g, w) => S.slash(g, w, 0.45)], [3.85, (g, w) => { S.clang(g, w, 0.32); S.boom(g, w, 0.55); S.shatter(g, w + 0.05, 0.14, 7); S.clicks(g, w, 0.9, 50, { vol: 0.18, f0: 2000, f1: 6000, q: 3, len: 0.01, seed: 91 }); }]] });
   const SHATTER = T;
-  shot(6.5, (lt, d, t) => { // it breaks
+  shot(6.5, alt((lt, d, t) => { // it breaks
     const c = G.ctx, sep = ease.out(inv(0.1, 2.2, lt)), fade = inv(1.4, 3.8, lt), cx = 760, cy = 1080, sc = 1.0;
     c.save(); shake(t, 12 * (1 - inv(0, 1.2, lt)));
     G.barrow(t, { x: 60, y: 30, z: 1.3 }, { mood: 'blood', fogA: 0.5 });
@@ -752,49 +755,49 @@ const EP01 = (() => {
     G.motes(t, { n: 80, vy: -120, color: '#ff7a3a', size: 2.4, seed: 25 });
     X.ring(lt, { x: 760, y: 420, r1: 1200, dur: 1.0, flat: 1, color: '#ffd0c0' });
     POST.set({ bloom: 1.4, thr: 0.4, flash: 0.8 * (1 - inv(0, 0.3, lt)), gain: [1.15, 0.9, 0.88] });
-  }, { say: [[2.6, 'b22']], sfx: [[0, (g, w) => { S.shatter(g, w, 0.28, 12); S.boom(g, w, 0.6); S.slash(g, w, 0.25); }], [1.6, (g, w) => S.clicks(g, w, 2.4, 60, { vol: 0.08, f0: 400, f1: 1500, q: 1.5, len: 0.03, seed: 95 })]] });
-  shot(7, (lt, d, t) => { // ash like snow
+  }, EP3D.shatter), { say: [[2.6, 'b22']], sfx: [[0, (g, w) => { S.shatter(g, w, 0.28, 12); S.boom(g, w, 0.6); S.slash(g, w, 0.25); }], [1.6, (g, w) => S.clicks(g, w, 2.4, 60, { vol: 0.08, f0: 400, f1: 1500, q: 1.5, len: 0.03, seed: 95 })]] });
+  shot(7, alt((lt, d, t) => { // ash like snow
     G.barrow(t, { x: 0, y: 0, z: lerp(1.05, 1.1, lt / d) }, { mood: 'ash', fogA: 0.5 });
     const settle = ease.io(inv(0, 4, lt));
     X.aura(t, { x: 640, y: 420, w: 420, h: 520, n: 60, a: 0.6 * (1 - settle) });
     TK(t, 640, lerp(1180, 1215, settle), 0.56, { arm: lerp(-0.05, 0.28, settle), headR: 0.1 * settle, breath: 2.2, axeGlow: 0.8 * (1 - settle) }, { ...ASH, glow: { c: '#ff2a1a', a: 0.6 * (1 - settle), r: 22 } });
     G.motes(t, { n: 160, vy: 30, vx: 8, wob: 40, size: 2.2, color: '#d9d0d0', a: 0.55, glow: false, seed: 27 }); G.frontFog(t, 0.4, '#d8c8c8'); grass(t);
     POST.set({ sat: 0.75, bloom: 0.6 });
-  }, { sfx: [[0, (g, w, off) => S.noiseBed(g, w, off, 7, { vol: 0.08, bp: 400, q: 0.6, lfo: 0.1, lfoDepth: 150, fin: 1, fout: 1.5 }), 7, true]] });
+  }, EP3D.ashFall), { sfx: [[0, (g, w, off) => S.noiseBed(g, w, off, 7, { vol: 0.08, bp: 400, q: 0.6, lfo: 0.1, lfoDepth: 150, fin: 1, fout: 1.5 }), 7, true]] });
   const WAKE = T;
-  shot(8, (lt, d, t) => {
+  shot(8, alt((lt, d, t) => {
     G.barrow(t, { x: 160, y: 0, z: 1.12 }, { fogA: 0.4, mood: 'ash' }); G.fill('#ffcf9a', 0.12, 'screen');
     const rise = ease.out(inv(0, 1.6, lt)), yawn = lt < 3 ? Math.sin(Math.min(1, lt / 3) * Math.PI) : 0;
     NM(t, 760, lerp(1260, 1110, rise), 0.92, { yawn, armUp: -0.15 * yawn }, ASH); G.frontFog(t, 0.35); grass(t);
-  }, { say: [[0.5, 'b23'], ['+0.6', 'b24']] });
-  shot(10, (lt, d, t) => twoShot(t, lt, d, { push: 0.04, mood: 'ash', nm: { tail: 0.3 } }), { say: [[0.2, 'b25'], ['+0.5', 'b26'], ['+0.4', 'b27']] });
-  shot(7, (lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.2, z1: 6.4 }), { say: [[0.3, 'b28'], ['+0.6', 'b29']] });
-  shot(6, (lt, d, t) => nemuClose(t, lt, d, { sc0: 1.5, sc1: 1.56, mood: 'ash', pose: { headR: 0.06, ears: 0.2 } }), { say: [[0.3, 'b30'], ['+0.4', 'b31']] });
-  shot(7, (lt, d, t) => { G.barrow(t, { x: -100, y: 20, z: 1.2 }, { fogA: 0.45, mood: 'ash' }); TK(t, 560, 1300, 0.72, { headR: 0.03, lookBias: 0.6 }, ASH); G.frontFog(t, 0.35); grass(t); },
+  }, (lt, d, t) => EP3D.nemuWake(lt, d, t, { mood: 'ash' })), { say: [[0.5, 'b23'], ['+0.6', 'b24']] });
+  shot(10, alt((lt, d, t) => twoShot(t, lt, d, { push: 0.04, mood: 'ash', nm: { tail: 0.3 } }), (lt, d, t) => EP3D.twoShot(lt, d, t, { mood: 'ash', push: 0.04, ang: 0.2 })), { say: [[0.2, 'b25'], ['+0.5', 'b26'], ['+0.4', 'b27']] });
+  shot(7, alt((lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.2, z1: 6.4 }), EP3D.tkClose({ d0: 0.8, envOpts: { mood: 'ash' } })), { say: [[0.3, 'b28'], ['+0.6', 'b29']] });
+  shot(6, alt((lt, d, t) => nemuClose(t, lt, d, { sc0: 1.5, sc1: 1.56, mood: 'ash', pose: { headR: 0.06, ears: 0.2 } }), EP3D.nmClose({ d0: 0.85, envOpts: { mood: 'ash' }, opts: { ears: 0.2 } })), { say: [[0.3, 'b30'], ['+0.4', 'b31']] });
+  shot(7, alt((lt, d, t) => { G.barrow(t, { x: -100, y: 20, z: 1.2 }, { fogA: 0.45, mood: 'ash' }); TK(t, 560, 1300, 0.72, { headR: 0.03, lookBias: 0.6 }, ASH); G.frontFog(t, 0.35); grass(t); }, EP3D.tkClaps),
     { say: [[0.2, 'b32']], sfx: [[3.6, (g, w) => S.clap(g, w)], [4.4, (g, w) => S.clap(g, w)], [5.2, (g, w) => S.clap(g, w)]] });
   const SIEG = T;
-  shot(9, (lt, d, t) => { // Sieg walks in
+  shot(9, alt((lt, d, t) => { // Sieg walks in
     G.barrow(t, { x: 200, y: 0, z: 1.1 }, { fogA: 0.45, mood: 'ash' });
     const k = ease.out(inv(0, 3.2, lt)), walking = 1 - inv(2.6, 3.4, lt);
     SG(t, lerp(1180, 880, k), 1260, 0.62, { walk: walking, headR: lt > 3.4 ? 0.04 : 0, lookBias: -0.7 }, { ...ASH, glow: { c: '#9fc0ff', a: 0.3, r: 16 } });
     G.frontFog(t, 0.35); grass(t);
     X.holo(lt - 1.2, 6.4, { x: 330, y: 220, w: 460, title: 'HUNTER', color: '#5f9dff', accent: '#d6e6ff', lines: [{ t: 'Sieg Valen', big: true }, 'Rank A  ·  "The Laughing Blade"', { t: 'Brand: Afterimage', col: '#bcd4ff' }] });
-  }, { say: [[0.4, 'b33'], ['+0.6', 'b34']], sfx: [[1.2, (g, w) => S.ui(g, w, 0.05)], [0.3, (g, w) => [0, 0.48, 0.96, 1.44, 1.92, 2.4].forEach(o => S.step(g, w + o, 0.08))]] });
-  shot(8, (lt, d, t) => {
+  }, EP3D.siegWalk), { say: [[0.4, 'b33'], ['+0.6', 'b34']], sfx: [[1.2, (g, w) => S.ui(g, w, 0.05)], [0.3, (g, w) => [0, 0.48, 0.96, 1.44, 1.92, 2.4].forEach(o => S.step(g, w + o, 0.08))]] });
+  shot(8, alt((lt, d, t) => {
     G.barrow(t, { x: 240, y: -40, z: 1.4 }, { fogA: 0.4, mood: 'ash' }); G.fill('#2a1020', 0.2);
     const place = { x: 640, y: 420, ax: 360, ay: 230, sc: lerp(2.3, 2.45, lt / d) }, talk = V.amp('SIEG', t), pose = P.sieg(t, { talk, lookBias: -0.6 }); pose.open = talk;
     R.draw('sieg', place, pose, ASH);
-  }, { say: [[0.3, 'b36']] });
-  shot(5, (lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.3, z1: 6.35 }), { say: [[0.3, 'b37'], ['+0.4', 'b38']] });
-  shot(8, (lt, d, t) => {
+  }, EP3D.sgClose({ d0: 0.85, fov: 26 })), { say: [[0.3, 'b36']] });
+  shot(5, alt((lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.3, z1: 6.35 }), EP3D.tkClose({ locked: true, still: true, d0: 0.8, envOpts: { mood: 'ash' } })), { say: [[0.3, 'b37'], ['+0.4', 'b38']] });
+  shot(8, alt((lt, d, t) => {
     G.barrow(t, { x: 200, y: 0, z: 1.15 }, { fogA: 0.45, mood: 'ash' });
     const laugh = V.amp('SIEG', t) > 0 && lt < 2 ? 1 : 0;
     SG(t, 880, 1320, 0.68, { lookBias: -0.7, headR: laugh ? -0.08 + Math.sin(t * 20) * 0.02 : 0.03, glaiveR: Math.sin(t * 0.8) * 0.03 }, ASH); G.frontFog(t, 0.35); grass(t);
-  }, { say: [[0.2, 'b39'], ['+0.5', 'b40']] });
+  }, EP3D.siegLaugh), { say: [[0.2, 'b39'], ['+0.5', 'b40']] });
   const RIFTEYE = T;
-  shot(8, (lt, d, t) => { G.barrow(t, { x: 0, y: lerp(-150, -230, lt / d), z: 1.2 }, { fogA: 0.3, mood: 'ash', rift: { open: 1, cx: 640, cy: 190, w: 520, h: 150, eye: inv(3.5, 4.5, lt) * (lt > 6.4 && lt < 6.6 ? 0.1 : 1) } }); POST.set({ bloom: 1.0, thr: 0.45 }); },
+  shot(8, alt((lt, d, t) => { G.barrow(t, { x: 0, y: lerp(-150, -230, lt / d), z: 1.2 }, { fogA: 0.3, mood: 'ash', rift: { open: 1, cx: 640, cy: 190, w: 520, h: 150, eye: inv(3.5, 4.5, lt) * (lt > 6.4 && lt < 6.6 ? 0.1 : 1) } }); POST.set({ bloom: 1.0, thr: 0.45 }); }, EP3D.riftEye),
     { say: [[0.3, 'b41']], sfx: [[3.5, (g, w) => S.staticBurst(g, w, 1.6, 0.1)], [3.6, (g, w) => { S.brass(g, w, n('D2'), 3, 0.08); S.brass(g, w, n('Ab2'), 3, 0.07); S.boom(g, w, 0.4); }]] });
-  shot(10, (lt, d, t) => {
+  shot(10, alt((lt, d, t) => {
     G.vgrad([[0, '#1a0a12'], [1, '#3a1a20']]);
     const sc = lerp(3.0, 3.3, lt / d), place = { x: 640, y: 400, ax: 112, ay: 452, sc }, pose = P.takuto(t, {});
     const grip = R.point('takuto', place, pose, 118, 455); G.fig('axe', grip[0], grip[1], 0, 0, sc, { mul: '#e0a090', mulA: 0.5, rot: -0.5009 + pose.bones.armR.r });
@@ -802,7 +805,7 @@ const EP01 = (() => {
     const [sx, sy] = R.point('takuto', place, pose, 125, 448), amp = V.amp('AKURO', t);
     G.sigilAxe(sx, sy, 80, 1, t, '#ff4a3a', 0.35 + 0.25 * Math.sin(t * 2.5) + amp * 0.5);
     G.fill('#000', inv(d - 2.4, d - 0.5, lt)); POST.set({ bloom: 0.9 + amp, thr: 0.45 });
-  }, { say: [[1.0, 'b42']], sfx: [[6.0, (g, w) => S.kan(g, w, 0.05)], [6.5, (g, w) => S.kan(g, w, 0.04)], [7.0, (g, w) => S.kan(g, w, 0.03)]] });
+  }, EP3D.akuroLast), { say: [[1.0, 'b42']], sfx: [[6.0, (g, w) => S.kan(g, w, 0.05)], [6.5, (g, w) => S.kan(g, w, 0.04)], [7.0, (g, w) => S.kan(g, w, 0.03)]] });
   cueTension(PB, FIGHT_T - PB);
   cueBattle(FIGHT_T, BLOW - FIGHT_T - 0.05);
   at(BLOW + 2.5, (g, w, off) => { S.pad(g, w, n('D2'), AWAKE - BLOW - 2.5 - off, { vol: 0.05, cut: 260, att: 4, type: 'sine' }); }, AWAKE - BLOW - 2.5, true);
@@ -862,12 +865,12 @@ const EP01 = (() => {
      ==================================================================== */
   chapter('After the credits');
   const TAG = T;
-  shot(16, (lt, d, t) => {
+  shot(16, alt((lt, d, t) => {
     const cam = focusCam(700, 420, 640, 380, lerp(1.3, 1.45, lt / d));
     G.earth(t, cam, { gate: 1, cat: 'alert', brokenGate: true, lamps: lt > 9.5, world: () => SBL(t, 700, 528, 0.13, { eye: inv(3.5, 4.2, lt), hand: lt > 9 ? Math.sin(t * 4) * 0.15 : 0 }, { mul: '#9aa4c8', mulA: 0.8, a: ease.out(inv(1.5, 3.5, lt)), glow: { c: '#a8b8ff', a: 0.3, r: 8 } }) });
     G.fill('#ffb38a', 0.18, 'screen'); G.fill('#b8c4e8', 0.25, 'multiply');
     G.fill('#000', 1 - inv(0, 1.5, lt)); G.fill('#000', inv(d - 1.5, d, lt)); POST.set({ bloom: 0.8, thr: 0.5 });
-  }, { say: [[5.0, 's1'], ['+1.2', 's2']], sfx: [[3.5, (g, w) => S.staticBurst(g, w, 1.2, 0.08)], [12.6, (g, w) => S.meow(g, w, 0.04)], [0, (g, w, off) => S.noiseBed(g, w, off, 16, { vol: 0.05, bp: 500, q: 0.5, fin: 2, fout: 2 }), 16, true]] });
+  }, EP3D.sableTag), { say: [[5.0, 's1'], ['+1.2', 's2']], sfx: [[3.5, (g, w) => S.staticBurst(g, w, 1.2, 0.08)], [12.6, (g, w) => S.meow(g, w, 0.04)], [0, (g, w, off) => S.noiseBed(g, w, off, 16, { vol: 0.05, bp: 500, q: 0.5, fin: 2, fout: 2 }), 16, true]] });
   for (let k = 0; k < 10; k++) at(TAG + 9.5 + k * 0.5, (g, w) => S.kan(g, w, 0.08));
 
   /* ====================================================================
