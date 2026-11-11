@@ -2,7 +2,7 @@
 'use strict';
 
 (() => {
-  const G = GFX, E = EP01, W = G.W, H = G.H;
+  const G = GFX, E = window.RB_EP || EP01, W = G.W, H = G.H;
   const $ = s => document.querySelector(s);
   const cv = $('#cv'), subc = $('#subs'), stage = $('#stage'), ui = $('#ui'), startBtn = $('#start'), startLbl = $('#startLbl'), startOv = $('#startOverlay');
   const playBtn = $('#play'), bar = $('#bar'), fillEl = $('#fill'), knob = $('#knob'), timeEl = $('#time'), ccBtn = $('#cc'), fsBtn = $('#fs'), volEl = $('#vol'), endOv = $('#endOverlay');
@@ -121,7 +121,7 @@
     started = true; startOv.hidden = true; ui.hidden = false;
     const hasAudio = ensureAudio();
     if (hasAudio && ac.state === 'suspended') ac.resume();
-    if (hasAudio && !VOICE.buffer) VOICE.load(ac, 'voice/voices.mp3').catch(e => console.warn('voice track', e));
+    if (hasAudio && !VOICE.buffer) VOICE.load(ac, VOICE_DATA.file || 'voice/voices.mp3').catch(e => console.warn('voice track', e));
     playing = true;
     if (needsRestart || !hasAudio || !graph) startAt(pausedPos);
     stage.classList.add('playing'); playBtn.setAttribute('aria-label', 'Pause'); playBtn.dataset.state = 'pause';
@@ -196,11 +196,11 @@
     try { await G.loadAssets('assets/', f => { startLbl.textContent = 'Loading art… ' + Math.round(f * 100) + '%'; }); }
     catch (e) { startLbl.textContent = 'Some art failed to load. Reload the page to try again.'; console.error(e); return; }
     startLbl.textContent = 'Loading voices…';
-    try { if (ensureAudio()) await VOICE.load(ac, 'voice/voices.mp3'); } catch (e) { console.warn('voice track will load on play', e); }
+    try { if (ensureAudio()) await VOICE.load(ac, VOICE_DATA.file || 'voice/voices.mp3'); } catch (e) { console.warn('voice track will load on play', e); }
     if (typeof S3 !== 'undefined' && S3.preload) { startLbl.textContent = 'Loading characters…'; try { await S3.preload('models/', f => { startLbl.textContent = 'Loading characters… ' + Math.round(f * 100) + '%'; }); } catch (e) { console.warn('3D characters fell back to simple models', e); } }
     startLbl.textContent = 'Loading fonts…'; await fontP;
     G.init(sctx, K); G.build(); PARTS.register(); VFX.build(); RIG.init(); RIG.setK(K);
-    ready = true; startBtn.disabled = false; startLbl.textContent = 'Play Episode 1';
+    ready = true; startBtn.disabled = false; startLbl.textContent = 'Play Episode ' + (window.RB_EP_NO || 1);
     pausedPos = 0; updateBar(0);
     posterT = E.chapters.find(c => c.name === 'Opening').t + 35.2 * 1.6;
     draw(posterT);

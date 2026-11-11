@@ -833,7 +833,7 @@ const EP01 = (() => {
      ==================================================================== */
   chapter('Ending');
   const ED = T, ED_D = 58;
-  const CREDITS = [['RUINBREAKER', 'h1'], ['Episode 1  ·  The Crossing', 'h2'], ['', ''], ['CAST', 'l'], ['Takuto Kirishima', 'n'], ['Nemu', 'n'], ['Sieg Valen', 'n'], ['Akuro (voice)', 'n'], ['Mr. Sable', 'n'], ['The Skeletal Shieldbearer', 'n'], ['The cat at Crossing No. 4', 'n'], ['', ''],
+  const CREDITS = [['RUINBREAKER', 'h1'], [(typeof window !== 'undefined' && window.RB_EP_LABEL) || 'Episode 1  ·  The Crossing', 'h2'], ['', ''], ['CAST', 'l'], ['Takuto Kirishima', 'n'], ['Nemu', 'n'], ['Sieg Valen', 'n'], ['Akuro (voice)', 'n'], ['Mr. Sable', 'n'], ['The Skeletal Shieldbearer', 'n'], ['The cat at Crossing No. 4', 'n'], ['', ''],
     ['VOICES', 'l'], ['Kokoro-82M neural voices', 'n'], ['(Apache-2.0, hexgrad)', 's'], ['', ''],
     ['ORIGINAL CONCEPT & CHARACTERS', 'l'], ['The series creator', 'n'], ['', ''], ['SCRIPT  ·  STORYBOARD', 'l'], ['ANIMATION  ·  MUSIC  ·  SOUND', 'l'], ['Written and built with Claude', 'n'], ['', ''],
     ['CHARACTER & CREATURE ART', 'l'], ['Reference illustrations by', 'n'], ['their original artists.', 'n'], ['All rights belong to them.', 'n'], ['', ''],

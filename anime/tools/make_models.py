@@ -79,6 +79,19 @@ CAST = {
         'Tops_01': lambda im: tint(im, (0.15, 0.15, 0.19), 0.35, 1.0), 'Bottoms': lambda im: tint(im, (0.1, 0.1, 0.13), 0.4, 1.0),
         'Accessory': lambda im: tint(im, (0.3, 0.32, 0.4), 0.4, 1.0), 'FaceMouth': lambda im: tint(im, (0.6, 0.7, 0.9), 0.3, 1.0), 'FaceBrow': lambda im: tint(im, (0.05, 0.05, 0.07), 0.5, 1.0),
     }, {'SKIN': ((1, 1, 1, 1), (0.6, 0.6, 0.7, 1)), 'HAIR': ((1, 1, 1, 1), (0.6, 0.6, 0.7, 1))}),
+    'rin': ('Sendagaya_Shino.vrm', {  # Rin Ashveil: Takuto's white hair (the running joke), crimson eyes, red bow
+        'Hair_00': lambda im: tint(normalize(im), (0.95, 0.93, 0.95), 0.6, 1.05), 'HairBack': lambda im: tint(normalize(im), (0.95, 0.93, 0.95), 0.6, 1.05),
+        'EyeIris': lambda im: tint(im, (1.0, 0.2, 0.26), 0.12, 1.05), 'FaceBrow': lambda im: tint(im, (0.66, 0.62, 0.66), 0.6, 0.9),
+        'Accessory': lambda im: tint(im, (0.78, 0.1, 0.16), 0.3, 1.05),
+    }, {'HAIR': ((1, 1, 1, 1), (0.78, 0.74, 0.82, 1))}),
+    'valentine': ('Darkness_Shibu.vrm', {  # Valentine: the Guild's theatrical appraiser, pink hair and a pink-black gown
+        'Hair_00': lambda im: tint(normalize(im), (1.0, 0.66, 0.82), 0.45, 1.05), 'HairBack': lambda im: tint(normalize(im), (1.0, 0.66, 0.82), 0.45, 1.05),
+        'Tops_01': lambda im: tint(im, (0.95, 0.42, 0.66), 0.12, 1.0), 'EyeIris': lambda im: tint(im, (1.0, 0.45, 0.75), 0.15, 1.05),
+    }, {'HAIR': ((1, 1, 1, 1), (0.85, 0.6, 0.75, 1))}),
+    'clerk': ('Sendagaya_Shibu.vrm', {  # the Guild receptionist: brown hair, green eyes
+        'Hair_00': lambda im: tint(normalize(im), (0.6, 0.4, 0.26), 0.25, 1.0), 'HairBack': lambda im: tint(normalize(im), (0.6, 0.4, 0.26), 0.25, 1.0),
+        'EyeIris': lambda im: tint(im, (0.35, 0.8, 0.45), 0.15, 1.05),
+    }, {'HAIR': ((1, 1, 1, 1), (0.7, 0.6, 0.55, 1))}),
     'nemu': ('HairSample_Female.vrm', {
         'EyeIris': lambda im: tint(im, (1.0, 0.68, 0.22), 0.14, 1.05),
     }, {}),

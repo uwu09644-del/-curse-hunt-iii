@@ -1,0 +1,1601 @@
+{
+ "cast": {
+  "TAKUTO": {
+   "voice": [
+    [
+     "am_michael",
+     0.6
+    ],
+    [
+     "am_puck",
+     0.4
+    ]
+   ],
+   "speed": 1.02
+  },
+  "NEMU": {
+   "voice": [
+    [
+     "af_nicole",
+     0.65
+    ],
+    [
+     "af_bella",
+     0.35
+    ]
+   ],
+   "speed": 1.02
+  },
+  "SIEG": {
+   "voice": [
+    [
+     "bm_george",
+     1
+    ]
+   ],
+   "speed": 1.06
+  },
+  "AKURO": {
+   "voice": [
+    [
+     "am_fenrir",
+     1
+    ]
+   ],
+   "speed": 0.8,
+   "fx": "demon"
+  },
+  "RIN": {
+   "voice": [
+    [
+     "af_kore",
+     0.6
+    ],
+    [
+     "bf_emma",
+     0.4
+    ]
+   ],
+   "speed": 1.05
+  },
+  "VALENTINE": {
+   "voice": [
+    [
+     "bf_isabella",
+     0.55
+    ],
+    [
+     "af_nova",
+     0.45
+    ]
+   ],
+   "speed": 1.06
+  },
+  "CLERK": {
+   "voice": [
+    [
+     "af_aoede",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "CROWD": {
+   "voice": [
+    [
+     "am_echo",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "CROWD2": {
+   "voice": [
+    [
+     "af_river",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "VENDOR": {
+   "voice": [
+    [
+     "bm_daniel",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "HUNTER": {
+   "voice": [
+    [
+     "am_onyx",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "SABLE": {
+   "voice": [
+    [
+     "bm_fable",
+     1
+    ]
+   ],
+   "speed": 0.92,
+   "fx": "static"
+  }
+ },
+ "lines": [
+  {
+   "id": "ep02_001",
+   "who": "TAKUTO",
+   "text": "Previously. The sky cracked open over the crossing in Nerima, and I fell into another world.",
+   "tts": "Previously. The sky cracked open over the crossing in Neh-ree-mah, and I fell into another world.",
+   "mono": true
+  },
+  {
+   "id": "ep02_002",
+   "who": "TAKUTO",
+   "text": "I pulled an axe out of a grave that nobody could move for three hundred years.",
+   "mono": true
+  },
+  {
+   "id": "ep02_003",
+   "who": "TAKUTO",
+   "text": "A girl named Nemu died to protect me. And something inside the axe asked me what I wanted to break.",
+   "tts": "A girl named Neh-moo died to protect me. And something inside the axe asked me what I wanted to break.",
+   "mono": true
+  },
+  {
+   "id": "ep02_004",
+   "who": "TAKUTO",
+   "text": "I told it. Everything that's in the way.",
+   "mono": true
+  },
+  {
+   "id": "ep02_005",
+   "who": "AKURO",
+   "text": "You're not sleeping, boy.",
+   "mono": true
+  },
+  {
+   "id": "ep02_006",
+   "who": "TAKUTO",
+   "text": "Neither are you, apparently."
+  },
+  {
+   "id": "ep02_007",
+   "who": "AKURO",
+   "text": "I slept for three hundred years. I'm catching up on being awake.",
+   "mono": true
+  },
+  {
+   "id": "ep02_008",
+   "who": "TAKUTO",
+   "text": "Can everyone hear you?"
+  },
+  {
+   "id": "ep02_009",
+   "who": "AKURO",
+   "text": "Only you. Lucky boy.",
+   "mono": true
+  },
+  {
+   "id": "ep02_010",
+   "who": "SIEG",
+   "text": "Talking to your axe again?"
+  },
+  {
+   "id": "ep02_011",
+   "who": "TAKUTO",
+   "text": "It started it."
+  },
+  {
+   "id": "ep02_012",
+   "who": "SIEG",
+   "text": "Get some sleep. Ashford's half a day's walk, and the Guild doesn't like people who show up yawning."
+  },
+  {
+   "id": "ep02_013",
+   "who": "NEMU",
+   "text": "Five more minutes..."
+  },
+  {
+   "id": "ep02_014",
+   "who": "SIEG",
+   "text": "You've been asleep for six hours."
+  },
+  {
+   "id": "ep02_015",
+   "who": "NEMU",
+   "text": "Then five more hours."
+  },
+  {
+   "id": "ep02_016",
+   "who": "TAKUTO",
+   "text": "So this is a town."
+  },
+  {
+   "id": "ep02_017",
+   "who": "TAKUTO",
+   "text": "I was expecting more... dragons."
+  },
+  {
+   "id": "ep02_018",
+   "who": "SIEG",
+   "text": "Dragons are more of a southern thing."
+  },
+  {
+   "id": "ep02_019",
+   "who": "TAKUTO",
+   "text": "That was a joke."
+  },
+  {
+   "id": "ep02_020",
+   "who": "SIEG",
+   "text": "So was mine. Mostly."
+  },
+  {
+   "id": "ep02_021",
+   "who": "CROWD2",
+   "text": "Is that the Headsman's Axe? On that boy's shoulder?"
+  },
+  {
+   "id": "ep02_022",
+   "who": "CROWD",
+   "text": "Can't be. Nobody could pull it out."
+  },
+  {
+   "id": "ep02_023",
+   "who": "CROWD2",
+   "text": "Look at his hair. Is he one of the Ashveils?"
+  },
+  {
+   "id": "ep02_024",
+   "who": "TAKUTO",
+   "text": "Everyone's staring."
+  },
+  {
+   "id": "ep02_025",
+   "who": "NEMU",
+   "text": "You're carrying a legend around like a bag of groceries."
+  },
+  {
+   "id": "ep02_026",
+   "who": "TAKUTO",
+   "text": "It's heavy. Where else am I supposed to put it?"
+  },
+  {
+   "id": "ep02_027",
+   "who": "NEMU",
+   "text": "Most people would put it in a museum."
+  },
+  {
+   "id": "ep02_028",
+   "who": "VENDOR",
+   "text": "Skewers! Fresh skewers! Rift-boar, still warm!"
+  },
+  {
+   "id": "ep02_029",
+   "who": "NEMU",
+   "text": "Takuto.",
+   "tts": "Tah-koo-toh."
+  },
+  {
+   "id": "ep02_030",
+   "who": "TAKUTO",
+   "text": "No."
+  },
+  {
+   "id": "ep02_031",
+   "who": "NEMU",
+   "text": "I died for you yesterday."
+  },
+  {
+   "id": "ep02_032",
+   "who": "TAKUTO",
+   "text": "...How many?"
+  },
+  {
+   "id": "ep02_033",
+   "who": "NEMU",
+   "text": "Four. For now."
+  },
+  {
+   "id": "ep02_034",
+   "who": "TAKUTO",
+   "text": "I don't even have money. I have two hundred yen and a receipt for cat food."
+  },
+  {
+   "id": "ep02_035",
+   "who": "VENDOR",
+   "text": "Is that silver? Those little coins? I'll take 'em!"
+  },
+  {
+   "id": "ep02_036",
+   "who": "TAKUTO",
+   "text": "...Four skewers, please."
+  },
+  {
+   "id": "ep02_037",
+   "who": "NEMU",
+   "text": "Mm. Rift-boar."
+  },
+  {
+   "id": "ep02_038",
+   "who": "TAKUTO",
+   "text": "What's a Rift-boar?"
+  },
+  {
+   "id": "ep02_039",
+   "who": "NEMU",
+   "text": "Don't ask while you're chewing."
+  },
+  {
+   "id": "ep02_040",
+   "who": "TAKUTO",
+   "text": "Sieg. The Guild. What happens there?",
+   "tts": "Seeg. The Guild. What happens there?"
+  },
+  {
+   "id": "ep02_041",
+   "who": "SIEG",
+   "text": "Registration. They test your Brand, give you a rank, put your name in a very big book."
+  },
+  {
+   "id": "ep02_042",
+   "who": "SIEG",
+   "text": "Ranks go from F to S. F means you can carry luggage. S means kingdoms send you letters."
+  },
+  {
+   "id": "ep02_043",
+   "who": "TAKUTO",
+   "text": "And you?"
+  },
+  {
+   "id": "ep02_044",
+   "who": "SIEG",
+   "text": "A. Kingdoms send me invoices."
+  },
+  {
+   "id": "ep02_045",
+   "who": "TAKUTO",
+   "text": "Do they have records? Of Skyfallen?"
+  },
+  {
+   "id": "ep02_046",
+   "who": "SIEG",
+   "text": "...Some."
+  },
+  {
+   "id": "ep02_047",
+   "who": "TAKUTO",
+   "text": "My friend disappeared at that crossing two years ago. Haruki. Same crossing. Same bell.",
+   "tts": "My friend disappeared at that crossing two years ago. Hah-roo-kee. Same crossing. Same bell."
+  },
+  {
+   "id": "ep02_048",
+   "who": "TAKUTO",
+   "text": "If something like me fell through, maybe he did too."
+  },
+  {
+   "id": "ep02_049",
+   "who": "SIEG",
+   "text": "Then you ask the Guild. I'm not the one who keeps that book."
+  },
+  {
+   "id": "ep02_050",
+   "who": "NEMU",
+   "text": "...He changed the subject."
+  },
+  {
+   "id": "ep02_051",
+   "who": "TAKUTO",
+   "text": "I noticed."
+  },
+  {
+   "id": "ep02_052",
+   "who": "SIEG",
+   "text": "The Hunters' Guild of Ashford. Try not to break anything."
+  },
+  {
+   "id": "ep02_053",
+   "who": "TAKUTO",
+   "text": "I only break things on purpose."
+  },
+  {
+   "id": "ep02_054",
+   "who": "SIEG",
+   "text": "That's what worries me."
+  },
+  {
+   "id": "ep02_055",
+   "who": "CLERK",
+   "text": "Welcome to the Hunters' Guild of Ashford! Registration, quests, or complaints?"
+  },
+  {
+   "id": "ep02_056",
+   "who": "SIEG",
+   "text": "Registration. Two of them."
+  },
+  {
+   "id": "ep02_057",
+   "who": "CLERK",
+   "text": "Wonderful! Names, please."
+  },
+  {
+   "id": "ep02_058",
+   "who": "NEMU",
+   "text": "Nemu. Just Nemu.",
+   "tts": "Neh-moo. Just Neh-moo."
+  },
+  {
+   "id": "ep02_059",
+   "who": "TAKUTO",
+   "text": "Kirishima Takuto.",
+   "tts": "Kee-ree-shee-mah Tah-koo-toh."
+  },
+  {
+   "id": "ep02_060",
+   "who": "CLERK",
+   "text": "Kiri... shima? What an unusual name. Where are you from, sir?"
+  },
+  {
+   "id": "ep02_061",
+   "who": "TAKUTO",
+   "text": "Nerima.",
+   "tts": "Neh-ree-mah."
+  },
+  {
+   "id": "ep02_062",
+   "who": "CLERK",
+   "text": "I don't know where that is."
+  },
+  {
+   "id": "ep02_063",
+   "who": "SIEG",
+   "text": "He's Skyfallen."
+  },
+  {
+   "id": "ep02_064",
+   "who": "CLERK",
+   "text": "...Oh. Oh. I see."
+  },
+  {
+   "id": "ep02_065",
+   "who": "CLERK",
+   "text": "We have a form for that. It's a very long form."
+  },
+  {
+   "id": "ep02_066",
+   "who": "TAKUTO",
+   "text": "Of course you do."
+  },
+  {
+   "id": "ep02_067",
+   "who": "CLERK",
+   "text": "And your weapon, sir? We register those too. Please place it on the counter."
+  },
+  {
+   "id": "ep02_068",
+   "who": "TAKUTO",
+   "text": "Are you sure? It is a little heavy."
+  },
+  {
+   "id": "ep02_069",
+   "who": "CLERK",
+   "text": "Sir, I've weighed war hammers. I think I can handle an a..."
+  },
+  {
+   "id": "ep02_070",
+   "who": "CLERK",
+   "text": "...ax..."
+  },
+  {
+   "id": "ep02_071",
+   "who": "CLERK",
+   "text": "Is that the Headsman's Axe?"
+  },
+  {
+   "id": "ep02_072",
+   "who": "TAKUTO",
+   "text": "People keep asking me that."
+  },
+  {
+   "id": "ep02_073",
+   "who": "CLERK",
+   "text": "It was in the Barrow Fields! For three hundred years! We have a painting of it! In the lobby!"
+  },
+  {
+   "id": "ep02_074",
+   "who": "TAKUTO",
+   "text": "It was loose."
+  },
+  {
+   "id": "ep02_075",
+   "who": "NEMU",
+   "text": "He keeps saying that."
+  },
+  {
+   "id": "ep02_076",
+   "who": "CLERK",
+   "text": "I need to get the appraiser. Please don't move. Please don't put it down. Please don't pick it up either."
+  },
+  {
+   "id": "ep02_077",
+   "who": "TAKUTO",
+   "text": "Should I just hold it?"
+  },
+  {
+   "id": "ep02_078",
+   "who": "CLERK",
+   "text": "Hold it very calmly!"
+  },
+  {
+   "id": "ep02_079",
+   "who": "VALENTINE",
+   "text": "Did someone say... the Headsman's Axe?"
+  },
+  {
+   "id": "ep02_080",
+   "who": "VALENTINE",
+   "text": "Valentine. Brand appraiser of the Ashford chapter. And this is Tofu."
+  },
+  {
+   "id": "ep02_081",
+   "who": "TAKUTO",
+   "text": "The cube is called Tofu?"
+  },
+  {
+   "id": "ep02_082",
+   "who": "VALENTINE",
+   "text": "He is white, he is square, and he does not like being dropped. What else would I call him?"
+  },
+  {
+   "id": "ep02_083",
+   "who": "NEMU",
+   "text": "Fair."
+  },
+  {
+   "id": "ep02_084",
+   "who": "VALENTINE",
+   "text": "Tofu reads Brands. The mark on your soul has a shape, a weight, a color. He measures all three."
+  },
+  {
+   "id": "ep02_085",
+   "who": "VALENTINE",
+   "text": "Then he gives you a rank, and you spend the rest of your life complaining about it."
+  },
+  {
+   "id": "ep02_086",
+   "who": "VALENTINE",
+   "text": "Ladies first. Little cat, step forward."
+  },
+  {
+   "id": "ep02_087",
+   "who": "NEMU",
+   "text": "I'm not little."
+  },
+  {
+   "id": "ep02_088",
+   "who": "VALENTINE",
+   "text": "Tofu, if you please."
+  },
+  {
+   "id": "ep02_089",
+   "who": "VALENTINE",
+   "text": "Nine Lives. Rank D. Lives remaining... two."
+  },
+  {
+   "id": "ep02_090",
+   "who": "VALENTINE",
+   "text": "Two? Darling, what have you been doing?"
+  },
+  {
+   "id": "ep02_091",
+   "who": "NEMU",
+   "text": "Dying, mostly."
+  },
+  {
+   "id": "ep02_092",
+   "who": "TAKUTO",
+   "text": "We're going to talk about that later."
+  },
+  {
+   "id": "ep02_093",
+   "who": "NEMU",
+   "text": "You're making the face."
+  },
+  {
+   "id": "ep02_094",
+   "who": "VALENTINE",
+   "text": "And now, our Skyfallen woodcutter. Hold the axe. Breathe. Think of something you hate."
+  },
+  {
+   "id": "ep02_095",
+   "who": "TAKUTO",
+   "text": "Paperwork."
+  },
+  {
+   "id": "ep02_096",
+   "who": "VALENTINE",
+   "text": "Perfect."
+  },
+  {
+   "id": "ep02_097",
+   "who": "VALENTINE",
+   "text": "Tofu?"
+  },
+  {
+   "id": "ep02_098",
+   "who": "VALENTINE",
+   "text": "Error?"
+  },
+  {
+   "id": "ep02_099",
+   "who": "VALENTINE",
+   "text": "Tofu does not say error. Tofu has never said error. Tofu once appraised a dragon."
+  },
+  {
+   "id": "ep02_100",
+   "who": "SIEG",
+   "text": "Maybe the cube is broken."
+  },
+  {
+   "id": "ep02_101",
+   "who": "VALENTINE",
+   "text": "Wash your mouth, Sieg Valen.",
+   "tts": "Wash your mouth, Seeg Valen."
+  },
+  {
+   "id": "ep02_102",
+   "who": "VALENTINE",
+   "text": "The Brand is called Ruinbreaker. That much he could read. The rank, the limits, the ceiling... nothing."
+  },
+  {
+   "id": "ep02_103",
+   "who": "VALENTINE",
+   "text": "Either your Brand is broken, little woodcutter, or it is bigger than the box we built to measure it."
+  },
+  {
+   "id": "ep02_104",
+   "who": "AKURO",
+   "text": "Bigger. Obviously.",
+   "mono": true
+  },
+  {
+   "id": "ep02_105",
+   "who": "TAKUTO",
+   "text": "Shut up."
+  },
+  {
+   "id": "ep02_106",
+   "who": "VALENTINE",
+   "text": "...I beg your pardon?"
+  },
+  {
+   "id": "ep02_107",
+   "who": "TAKUTO",
+   "text": "Not you."
+  },
+  {
+   "id": "ep02_108",
+   "who": "VALENTINE",
+   "text": "Oh, I like him. I like him very much. Register him as unranked, and put a star next to his name."
+  },
+  {
+   "id": "ep02_109",
+   "who": "CLERK",
+   "text": "We don't have a star."
+  },
+  {
+   "id": "ep02_110",
+   "who": "VALENTINE",
+   "text": "Draw one!"
+  },
+  {
+   "id": "ep02_111",
+   "who": "TAKUTO",
+   "text": "All of these are jobs?"
+  },
+  {
+   "id": "ep02_112",
+   "who": "NEMU",
+   "text": "Fiend bounties. Lesser ones pay in copper. Greater ones pay in silver."
+  },
+  {
+   "id": "ep02_113",
+   "who": "TAKUTO",
+   "text": "And the ones with the red seal?"
+  },
+  {
+   "id": "ep02_114",
+   "who": "NEMU",
+   "text": "Calamity class. Those pay in gold, and funerals."
+  },
+  {
+   "id": "ep02_115",
+   "who": "TAKUTO",
+   "text": "What was the thing at the crossing?"
+  },
+  {
+   "id": "ep02_116",
+   "who": "NEMU",
+   "text": "A Shieldbearer is Lesser. The weakest kind."
+  },
+  {
+   "id": "ep02_117",
+   "who": "TAKUTO",
+   "text": "That was the weakest kind?"
+  },
+  {
+   "id": "ep02_118",
+   "who": "NEMU",
+   "text": "Mm. You're going to have a very interesting life."
+  },
+  {
+   "id": "ep02_119",
+   "who": "TAKUTO",
+   "text": "This one. The big one with the horns. Morvudd?"
+  },
+  {
+   "id": "ep02_120",
+   "who": "SIEG",
+   "text": "Don't take that one."
+  },
+  {
+   "id": "ep02_121",
+   "who": "TAKUTO",
+   "text": "I wasn't going to. I was just reading it."
+  },
+  {
+   "id": "ep02_122",
+   "who": "SIEG",
+   "text": "Then stop reading it."
+  },
+  {
+   "id": "ep02_123",
+   "who": "SIEG",
+   "text": "...Sorry. Old poster. Bad memories. Come on, the clerk has your star ready."
+  },
+  {
+   "id": "ep02_124",
+   "who": "NEMU",
+   "text": "Four times."
+  },
+  {
+   "id": "ep02_125",
+   "who": "TAKUTO",
+   "text": "I'm keeping count."
+  },
+  {
+   "id": "ep02_126",
+   "who": "RIN",
+   "text": "Which one of you is the Skyfallen with the Headsman's Axe?"
+  },
+  {
+   "id": "ep02_127",
+   "who": "TAKUTO",
+   "text": "...Me."
+  },
+  {
+   "id": "ep02_128",
+   "who": "RIN",
+   "text": "Why do you have my hair?"
+  },
+  {
+   "id": "ep02_129",
+   "who": "TAKUTO",
+   "text": "Why do you have mine?"
+  },
+  {
+   "id": "ep02_130",
+   "who": "CROWD",
+   "text": "Wait. Are those two siblings?"
+  },
+  {
+   "id": "ep02_131",
+   "who": "CROWD2",
+   "text": "They have the same face when they're angry."
+  },
+  {
+   "id": "ep02_132",
+   "who": "RIN",
+   "text": "We are NOT related."
+  },
+  {
+   "id": "ep02_133",
+   "who": "TAKUTO",
+   "text": "Agreed. My sister is nicer."
+  },
+  {
+   "id": "ep02_134",
+   "who": "RIN",
+   "text": "You have a sister?"
+  },
+  {
+   "id": "ep02_135",
+   "who": "TAKUTO",
+   "text": "No."
+  },
+  {
+   "id": "ep02_136",
+   "who": "NEMU",
+   "text": "He does that."
+  },
+  {
+   "id": "ep02_137",
+   "who": "SIEG",
+   "text": "Rin Ashveil. C rank, the youngest in the chapter. She has been waiting three years for someone to pull that axe out.",
+   "tts": "Rin Ash-vale. C rank, the youngest in the chapter. She has been waiting three years for someone to pull that axe out."
+  },
+  {
+   "id": "ep02_138",
+   "who": "RIN",
+   "text": "Four years. I was going to pull it out. I trained for it. I had a plan."
+  },
+  {
+   "id": "ep02_139",
+   "who": "TAKUTO",
+   "text": "It was loose."
+  },
+  {
+   "id": "ep02_140",
+   "who": "RIN",
+   "text": "It was NOT loose! I tried every morning! I tried with rope! I tried with my Brand!"
+  },
+  {
+   "id": "ep02_141",
+   "who": "VALENTINE",
+   "text": "She tried with a horse once. The horse gave up first."
+  },
+  {
+   "id": "ep02_142",
+   "who": "RIN",
+   "text": "Valentine!"
+  },
+  {
+   "id": "ep02_143",
+   "who": "RIN",
+   "text": "Fine. You want to be a Hunter? Then prove the axe chose you. Training yard. Now."
+  },
+  {
+   "id": "ep02_144",
+   "who": "TAKUTO",
+   "text": "I'm not fighting a girl over an axe."
+  },
+  {
+   "id": "ep02_145",
+   "who": "RIN",
+   "text": "Good. You won't be fighting. You'll be losing."
+  },
+  {
+   "id": "ep02_146",
+   "who": "TAKUTO",
+   "text": "Sieg?",
+   "tts": "Seeg?"
+  },
+  {
+   "id": "ep02_147",
+   "who": "SIEG",
+   "text": "Go on. You need to learn what your Brand can and cannot do. Better from her than from a Fiend."
+  },
+  {
+   "id": "ep02_148",
+   "who": "NEMU",
+   "text": "I'll hold the skewers."
+  },
+  {
+   "id": "ep02_149",
+   "who": "TAKUTO",
+   "text": "They're my skewers."
+  },
+  {
+   "id": "ep02_150",
+   "who": "NEMU",
+   "text": "Were."
+  },
+  {
+   "id": "ep02_151",
+   "who": "SIEG",
+   "text": "Rules. No killing, no maiming, no damage to the Guild walls. Valentine is still angry about last spring."
+  },
+  {
+   "id": "ep02_152",
+   "who": "VALENTINE",
+   "text": "Eleven thousand crowns of stonework!"
+  },
+  {
+   "id": "ep02_153",
+   "who": "RIN",
+   "text": "Draw your axe, Skyfallen."
+  },
+  {
+   "id": "ep02_154",
+   "who": "TAKUTO",
+   "text": "It's always drawn. It doesn't fit in a pocket."
+  },
+  {
+   "id": "ep02_155",
+   "who": "SIEG",
+   "text": "Begin!"
+  },
+  {
+   "id": "ep02_156",
+   "who": "RIN",
+   "text": "Red Thread."
+  },
+  {
+   "id": "ep02_157",
+   "who": "TAKUTO",
+   "text": "...What is this?"
+  },
+  {
+   "id": "ep02_158",
+   "who": "RIN",
+   "text": "My Brand. Every thread I tie moves with me. Pull, and you fall. Struggle, and you choke."
+  },
+  {
+   "id": "ep02_159",
+   "who": "AKURO",
+   "text": "Threads. How adorable. Break them.",
+   "mono": true
+  },
+  {
+   "id": "ep02_160",
+   "who": "TAKUTO",
+   "text": "Ruinbreaker."
+  },
+  {
+   "id": "ep02_161",
+   "who": "RIN",
+   "text": "He... cut them? No. He broke them."
+  },
+  {
+   "id": "ep02_162",
+   "who": "RIN",
+   "text": "You swing like a landslide."
+  },
+  {
+   "id": "ep02_163",
+   "who": "TAKUTO",
+   "text": "Thanks."
+  },
+  {
+   "id": "ep02_164",
+   "who": "RIN",
+   "text": "It wasn't a compliment. Landslides are slow."
+  },
+  {
+   "id": "ep02_165",
+   "who": "RIN",
+   "text": "Block this."
+  },
+  {
+   "id": "ep02_166",
+   "who": "AKURO",
+   "text": "Ha! Didn't anyone tell you?",
+   "mono": true
+  },
+  {
+   "id": "ep02_167",
+   "who": "AKURO",
+   "text": "I don't defend, boy. I only destroy.",
+   "mono": true
+  },
+  {
+   "id": "ep02_168",
+   "who": "RIN",
+   "text": "Yield."
+  },
+  {
+   "id": "ep02_169",
+   "who": "TAKUTO",
+   "text": "...I yield."
+  },
+  {
+   "id": "ep02_170",
+   "who": "RIN",
+   "text": "You hit like a landslide, and you defend like a sheet of paper."
+  },
+  {
+   "id": "ep02_171",
+   "who": "RIN",
+   "text": "Whatever that axe is, it isn't yours yet."
+  },
+  {
+   "id": "ep02_172",
+   "who": "NEMU",
+   "text": "Are you dead?"
+  },
+  {
+   "id": "ep02_173",
+   "who": "TAKUTO",
+   "text": "Only my pride."
+  },
+  {
+   "id": "ep02_174",
+   "who": "NEMU",
+   "text": "That one doesn't come back. Trust me."
+  },
+  {
+   "id": "ep02_175",
+   "who": "TAKUTO",
+   "text": "I tried to block. The axe just... wouldn't. It slid off her knife like it didn't want to."
+  },
+  {
+   "id": "ep02_176",
+   "who": "VALENTINE",
+   "text": "Because it didn't want to, darling."
+  },
+  {
+   "id": "ep02_177",
+   "who": "VALENTINE",
+   "text": "Every Brand has a price. Nine Lives has a count. Afterimage has a delay. Red Thread snaps if she loses her focus."
+  },
+  {
+   "id": "ep02_178",
+   "who": "VALENTINE",
+   "text": "Ruinbreaker breaks anything it strikes with intent. Shields. Armor. Barriers. Other Brands."
+  },
+  {
+   "id": "ep02_179",
+   "who": "VALENTINE",
+   "text": "And in exchange, it will never, ever stand between you and a blow."
+  },
+  {
+   "id": "ep02_180",
+   "who": "TAKUTO",
+   "text": "So I can only attack."
+  },
+  {
+   "id": "ep02_181",
+   "who": "SIEG",
+   "text": "So you have to be faster than everything that wants to hit you. Or smarter."
+  },
+  {
+   "id": "ep02_182",
+   "who": "TAKUTO",
+   "text": "I'm neither."
+  },
+  {
+   "id": "ep02_183",
+   "who": "SIEG",
+   "text": "Not yet."
+  },
+  {
+   "id": "ep02_184",
+   "who": "SIEG",
+   "text": "In three days the Guild holds its licensing exam in the Bramble Wastes. Teams of two. Survive, and you're a Hunter."
+  },
+  {
+   "id": "ep02_185",
+   "who": "TAKUTO",
+   "text": "Teams. Then Nemu and I...",
+   "tts": "Teams. Then Neh-moo and I..."
+  },
+  {
+   "id": "ep02_186",
+   "who": "VALENTINE",
+   "text": "Ah. About that. Teams are assigned by the appraiser. Rank with rank, gap with gap."
+  },
+  {
+   "id": "ep02_187",
+   "who": "VALENTINE",
+   "text": "And the only applicant this season who might survive standing next to an ERROR..."
+  },
+  {
+   "id": "ep02_188",
+   "who": "TAKUTO",
+   "text": "No."
+  },
+  {
+   "id": "ep02_189",
+   "who": "VALENTINE",
+   "text": "Is a certain C rank with very red threads."
+  },
+  {
+   "id": "ep02_190",
+   "who": "TAKUTO",
+   "text": "Absolutely not."
+  },
+  {
+   "id": "ep02_191",
+   "who": "RIN",
+   "text": "ABSOLUTELY NOT!"
+  },
+  {
+   "id": "ep02_192",
+   "who": "NEMU",
+   "text": "She heard that from across the yard."
+  },
+  {
+   "id": "ep02_193",
+   "who": "SIEG",
+   "text": "Ha! This is going to be a wonderful exam."
+  },
+  {
+   "id": "ep02_194",
+   "who": "SIEG",
+   "text": "Again. When I swing, you move. Not your axe. You."
+  },
+  {
+   "id": "ep02_195",
+   "who": "TAKUTO",
+   "text": "I moved last time."
+  },
+  {
+   "id": "ep02_196",
+   "who": "SIEG",
+   "text": "You moved your eyebrows. That is not dodging."
+  },
+  {
+   "id": "ep02_197",
+   "who": "SIEG",
+   "text": "Afterimage."
+  },
+  {
+   "id": "ep02_198",
+   "who": "TAKUTO",
+   "text": "Two swings. You swung twice."
+  },
+  {
+   "id": "ep02_199",
+   "who": "SIEG",
+   "text": "Once. My Brand swings the second time for me, a heartbeat later, from the same angle."
+  },
+  {
+   "id": "ep02_200",
+   "who": "SIEG",
+   "text": "Everyone you fight will have a trick like that. You can't block it. So you read it."
+  },
+  {
+   "id": "ep02_201",
+   "who": "TAKUTO",
+   "text": "How?"
+  },
+  {
+   "id": "ep02_202",
+   "who": "SIEG",
+   "text": "Watch the shoulders, not the blade. The blade lies. The shoulders never do."
+  },
+  {
+   "id": "ep02_203",
+   "who": "TAKUTO",
+   "text": "You sound like a fortune cookie."
+  },
+  {
+   "id": "ep02_204",
+   "who": "SIEG",
+   "text": "I don't know what that is, but I'm choosing to be flattered."
+  },
+  {
+   "id": "ep02_205",
+   "who": "NEMU",
+   "text": "Sieg. Is he getting better?",
+   "tts": "Seeg. Is he getting better?"
+  },
+  {
+   "id": "ep02_206",
+   "who": "SIEG",
+   "text": "He's getting hit less. That's the same thing, at the start."
+  },
+  {
+   "id": "ep02_207",
+   "who": "TAKUTO",
+   "text": "Why are you helping me?"
+  },
+  {
+   "id": "ep02_208",
+   "who": "SIEG",
+   "text": "Because a long time ago, somebody taught me the same thing, and I didn't listen."
+  },
+  {
+   "id": "ep02_209",
+   "who": "TAKUTO",
+   "text": "What happened?"
+  },
+  {
+   "id": "ep02_210",
+   "who": "SIEG",
+   "text": "...Again. From the top."
+  },
+  {
+   "id": "ep02_211",
+   "who": "NEMU",
+   "text": "He changed the subject."
+  },
+  {
+   "id": "ep02_212",
+   "who": "TAKUTO",
+   "text": "Three times today."
+  },
+  {
+   "id": "ep02_213",
+   "who": "VALENTINE",
+   "text": "You brought me a boy with the Headsman's Axe and didn't warn me."
+  },
+  {
+   "id": "ep02_214",
+   "who": "SIEG",
+   "text": "Would you have believed me?"
+  },
+  {
+   "id": "ep02_215",
+   "who": "VALENTINE",
+   "text": "I'd have worn a better coat."
+  },
+  {
+   "id": "ep02_216",
+   "who": "VALENTINE",
+   "text": "Sieg. Do you know why that axe was in a grave?",
+   "tts": "Seeg. Do you know why that axe was in a grave?"
+  },
+  {
+   "id": "ep02_217",
+   "who": "SIEG",
+   "text": "The stories say the Headsman buried it with himself."
+  },
+  {
+   "id": "ep02_218",
+   "who": "VALENTINE",
+   "text": "The stories are polite. The Guild archive is not. Three hundred years ago, something called the Crimson Calamity burned four cities to the ground."
+  },
+  {
+   "id": "ep02_219",
+   "who": "VALENTINE",
+   "text": "The Headsman didn't kill it. He couldn't. So he sealed it, into the only thing he owned that could hold it."
+  },
+  {
+   "id": "ep02_220",
+   "who": "SIEG",
+   "text": "His axe."
+  },
+  {
+   "id": "ep02_221",
+   "who": "VALENTINE",
+   "text": "And today, while Tofu was reading that boy's Brand, something inside it looked back at him."
+  },
+  {
+   "id": "ep02_222",
+   "who": "SIEG",
+   "text": "...He talks to it. He thinks we don't notice."
+  },
+  {
+   "id": "ep02_223",
+   "who": "VALENTINE",
+   "text": "Then watch him, Sieg Valen. Very closely. If that thing ever opens its eyes...",
+   "tts": "Then watch him, Seeg Valen. Very closely. If that thing ever opens its eyes..."
+  },
+  {
+   "id": "ep02_224",
+   "who": "SIEG",
+   "text": "I know what the Guild does with Branded who lose control."
+  },
+  {
+   "id": "ep02_225",
+   "who": "VALENTINE",
+   "text": "Vesper does it. Let's make sure she never has to."
+  },
+  {
+   "id": "ep02_226",
+   "who": "SIEG",
+   "text": "Again, Takuto! Shoulders, not the blade!",
+   "tts": "Again, Tah-koo-toh! Shoulders, not the blade!"
+  },
+  {
+   "id": "ep02_227",
+   "who": "NEMU",
+   "text": "You're still mad."
+  },
+  {
+   "id": "ep02_228",
+   "who": "RIN",
+   "text": "I'm not mad. I'm practicing."
+  },
+  {
+   "id": "ep02_229",
+   "who": "NEMU",
+   "text": "You're practicing being mad."
+  },
+  {
+   "id": "ep02_230",
+   "who": "RIN",
+   "text": "...My brother was a Hunter. B rank. He used to walk me out to the Barrow Fields to look at that axe."
+  },
+  {
+   "id": "ep02_231",
+   "who": "RIN",
+   "text": "He said whoever pulled it out would be strong enough to protect everyone. He said it like a fairy tale."
+  },
+  {
+   "id": "ep02_232",
+   "who": "NEMU",
+   "text": "What happened to him?"
+  },
+  {
+   "id": "ep02_233",
+   "who": "RIN",
+   "text": "A Greater Fiend, four years ago. The day after, I started trying to pull out the axe. Every morning."
+  },
+  {
+   "id": "ep02_234",
+   "who": "RIN",
+   "text": "And then some idiot from another world walks past and it just... comes out. Like it was waiting for him."
+  },
+  {
+   "id": "ep02_235",
+   "who": "NEMU",
+   "text": "Maybe it was."
+  },
+  {
+   "id": "ep02_236",
+   "who": "RIN",
+   "text": "That's not comforting."
+  },
+  {
+   "id": "ep02_237",
+   "who": "NEMU",
+   "text": "It wasn't meant to be. He's an idiot, but he jumped in front of a Fiend for me yesterday. And for a cat, the day before."
+  },
+  {
+   "id": "ep02_238",
+   "who": "RIN",
+   "text": "...For a cat?"
+  },
+  {
+   "id": "ep02_239",
+   "who": "NEMU",
+   "text": "Mm. He's that kind of idiot."
+  },
+  {
+   "id": "ep02_240",
+   "who": "RIN",
+   "text": "...I'm still going to beat him at the exam."
+  },
+  {
+   "id": "ep02_241",
+   "who": "NEMU",
+   "text": "You're on his team."
+  },
+  {
+   "id": "ep02_242",
+   "who": "RIN",
+   "text": "Then I'll beat him from the same team."
+  },
+  {
+   "id": "ep02_243",
+   "who": "TAKUTO",
+   "text": "The book. The one with every Hunter's name in it. Does it have Skyfallen too?"
+  },
+  {
+   "id": "ep02_244",
+   "who": "CLERK",
+   "text": "It does, sir. But the Skyfallen pages are... sealed."
+  },
+  {
+   "id": "ep02_245",
+   "who": "TAKUTO",
+   "text": "Sealed by who?"
+  },
+  {
+   "id": "ep02_246",
+   "who": "CLERK",
+   "text": "By order of Saint Lumen. The capital. Every Skyfallen is reported there, and the pages come back with a gold seal on them."
+  },
+  {
+   "id": "ep02_247",
+   "who": "TAKUTO",
+   "text": "I'm looking for one person. Shinjo Haruki. Sixteen. Black hair. He'd have come through about two years ago.",
+   "tts": "I'm looking for one person. Sheen-joh Hah-roo-kee. Sixteen. Black hair. He'd have come through about two years ago."
+  },
+  {
+   "id": "ep02_248",
+   "who": "CLERK",
+   "text": "I'm sorry, sir. I'm not allowed to break the seal."
+  },
+  {
+   "id": "ep02_249",
+   "who": "VALENTINE",
+   "text": "She isn't. I, however, have terrible manners."
+  },
+  {
+   "id": "ep02_250",
+   "who": "VALENTINE",
+   "text": "Tofu has a very good memory. He reads every Brand that passes through this hall. Including, two winters ago..."
+  },
+  {
+   "id": "ep02_251",
+   "who": "VALENTINE",
+   "text": "A boy with black hair and blue eyes. Frightened, polite, very cold hands. His Brand stopped Tofu's clock for three seconds."
+  },
+  {
+   "id": "ep02_252",
+   "who": "TAKUTO",
+   "text": "That's him. Where did he go?"
+  },
+  {
+   "id": "ep02_253",
+   "who": "VALENTINE",
+   "text": "Where every Skyfallen goes. A carriage came from Saint Lumen, with a golden sun on the door. He got in. He waved."
+  },
+  {
+   "id": "ep02_254",
+   "who": "VALENTINE",
+   "text": "That is all I know, and I have already said too much in a building with very thin walls."
+  },
+  {
+   "id": "ep02_255",
+   "who": "TAKUTO",
+   "text": "Thank you."
+  },
+  {
+   "id": "ep02_256",
+   "who": "VALENTINE",
+   "text": "Don't thank me. Pass the exam. Hunters can go anywhere. Even the capital."
+  },
+  {
+   "id": "ep02_257",
+   "who": "NEMU",
+   "text": "Can't sleep?"
+  },
+  {
+   "id": "ep02_258",
+   "who": "TAKUTO",
+   "text": "It's too quiet. In Nerima there's always a train somewhere.",
+   "tts": "It's too quiet. In Neh-ree-mah there's always a train somewhere."
+  },
+  {
+   "id": "ep02_259",
+   "who": "NEMU",
+   "text": "You miss it."
+  },
+  {
+   "id": "ep02_260",
+   "who": "TAKUTO",
+   "text": "I miss the cat. The rest of it I can live without."
+  },
+  {
+   "id": "ep02_261",
+   "who": "NEMU",
+   "text": "Liar."
+  },
+  {
+   "id": "ep02_262",
+   "who": "TAKUTO",
+   "text": "...Maybe."
+  },
+  {
+   "id": "ep02_263",
+   "who": "NEMU",
+   "text": "The boy on the poster. Haruki.",
+   "tts": "The boy on the poster. Hah-roo-kee."
+  },
+  {
+   "id": "ep02_264",
+   "who": "TAKUTO",
+   "text": "You saw that?"
+  },
+  {
+   "id": "ep02_265",
+   "who": "NEMU",
+   "text": "I fell on it. It was very soggy."
+  },
+  {
+   "id": "ep02_266",
+   "who": "TAKUTO",
+   "text": "He fed that cat every night on his way home. Then one night he didn't come home."
+  },
+  {
+   "id": "ep02_267",
+   "who": "TAKUTO",
+   "text": "Everyone said he ran away. I didn't believe them. I kept going to the crossing."
+  },
+  {
+   "id": "ep02_268",
+   "who": "TAKUTO",
+   "text": "And then the sky opened, and I thought... oh. Oh, that's where he went."
+  },
+  {
+   "id": "ep02_269",
+   "who": "NEMU",
+   "text": "And if he's here?"
+  },
+  {
+   "id": "ep02_270",
+   "who": "TAKUTO",
+   "text": "Then I find him. And I take him home."
+  },
+  {
+   "id": "ep02_271",
+   "who": "NEMU",
+   "text": "...Sieg changed the subject again, didn't he. When you asked about going home.",
+   "tts": "...Seeg changed the subject again, didn't he. When you asked about going home."
+  },
+  {
+   "id": "ep02_272",
+   "who": "TAKUTO",
+   "text": "Twice."
+  },
+  {
+   "id": "ep02_273",
+   "who": "NEMU",
+   "text": "Then don't ask him. Ask me. I'll tell you the truth."
+  },
+  {
+   "id": "ep02_274",
+   "who": "TAKUTO",
+   "text": "...Has anyone ever gone back?"
+  },
+  {
+   "id": "ep02_275",
+   "who": "NEMU",
+   "text": "Go to sleep, Takuto.",
+   "tts": "Go to sleep, Tah-koo-toh."
+  },
+  {
+   "id": "ep02_276",
+   "who": "TAKUTO",
+   "text": "That's an answer, isn't it."
+  },
+  {
+   "id": "ep02_277",
+   "who": "NEMU",
+   "text": "It's a suggestion. You have an exam in three days and a partner who hates you."
+  },
+  {
+   "id": "ep02_278",
+   "who": "TAKUTO",
+   "text": "Don't remind me."
+  },
+  {
+   "id": "ep02_279",
+   "who": "AKURO",
+   "text": "Three hundred years in the dirt, and you're my first friend in centuries.",
+   "mono": true
+  },
+  {
+   "id": "ep02_280",
+   "who": "TAKUTO",
+   "text": "We're not friends."
+  },
+  {
+   "id": "ep02_281",
+   "who": "AKURO",
+   "text": "Not yet, boy. Not yet.",
+   "mono": true
+  },
+  {
+   "id": "ep02_282",
+   "who": "SABLE",
+   "text": "Ruinbreaker."
+  },
+  {
+   "id": "ep02_283",
+   "who": "SABLE",
+   "text": "...Let's see what it breaks first."
+  },
+  {
+   "id": "ep02_284",
+   "who": "TAKUTO",
+   "text": "Next time: the licensing exam in the Bramble Wastes."
+  },
+  {
+   "id": "ep02_285",
+   "who": "TAKUTO",
+   "text": "I'm stuck on a team with Rin, I meet a guy whose head is on fire who says he's from Osaka..."
+  },
+  {
+   "id": "ep02_286",
+   "who": "TAKUTO",
+   "text": "...and the ground starts walking."
+  },
+  {
+   "id": "ep02_287",
+   "who": "TAKUTO",
+   "text": "Episode three. A Flame From Home."
+  }
+ ]
+}

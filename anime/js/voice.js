@@ -5,7 +5,7 @@ const VOICE = (() => {
   const L = VOICE_DATA.lines, placed = [];
   let buffer = null;
   function place(t, id) {
-    const l = L[id]; if (!l) throw new Error('missing voice line ' + id);
+    const l = L[id]; if (!l) { if (VOICE_DATA.lenient) return { t, id, who: '', dur: 0, env: [], mono: false, text: '', off: 0 }; throw new Error('missing voice line ' + id); }
     const p = { t, id, who: l.who, dur: l.dur, env: l.env, mono: l.mono, text: l.text, off: l.off };
     placed.push(p); return p;
   }
