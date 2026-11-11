@@ -381,7 +381,9 @@ const S3 = (() => {
     if (kind === 'vesper') { const hb = new THREE.Group(); hb.rotation.y = Math.PI; N('head').add(hb); const hood = new THREE.Mesh(new THREE.SphereGeometry(0.15, 20, 14, 0, Math.PI * 2, 0, Math.PI * 0.62), toon('#f0f0f4', { side: THREE.DoubleSide })); hood.scale.set(1, 1.12, 1.15); hb.add(at(hood, 0, 0.07, -0.02, -0.35, 0, 0)); const tip = cone(0.06, 0.16, toon('#f0f0f4'), 's', 10); hb.add(at(tip, 0, 0.12, -0.15, -1.9, 0, 0)); }
     if (kind === 'valentine') { const mask = new THREE.Mesh(new THREE.SphereGeometry(0.1, 20, 12, Math.PI * 0.18, Math.PI * 0.64, Math.PI * 0.3, Math.PI * 0.32), toon('#f6f2f4', { side: THREE.DoubleSide })); const hb = new THREE.Group(); hb.rotation.y = Math.PI; N('head').add(hb); mask.rotation.y = -Math.PI / 2; mask.position.set(0, 0.06, 0.012); mask.scale.set(1.0, 1.0, 1.08); hb.add(mask); const gem = sph(0.012, basic('#ff5aa8'), null); hb.add(at(gem, 0, 0.1, 0.105)); }
     if (kind === 'nemu') { J.tail = []; let prev = back; const hm = toon('#25222c'); for (let i = 0; i < 10; i++) { const g = new THREE.Group(); g.position.set(0, i ? 0.065 : -0.03, i ? 0 : -0.1); prev.add(g); const seg = cap(0.02 - i * 0.0008, 0.05, hm, 's'); seg.position.y = 0.03; g.add(seg); J.tail.push(g); prev = g; } J.tail[0].rotation.x = -2.1; }
-    const mats = []; vrm.scene.traverse(o => { if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => { if (m.isMToonMaterial && !mats.includes(m)) { mats.push(m); const cel = window.RB_CEL !== false; /* 2D cel: bold ink, hard two-tone shading, flat light, no gloss */ if (m.color) m.color.multiplyScalar(cel ? 0.96 : 0.84); if (m.outlineWidthFactor != null) m.outlineWidthFactor *= cel ? 3.0 : 1.7; if (m.shadingToonyFactor != null) m.shadingToonyFactor = cel ? 1.0 : Math.max(m.shadingToonyFactor, 0.93); if (cel && m.giEqualizationFactor != null) m.giEqualizationFactor = 1.0; if (cel && m.matcapFactor) m.matcapFactor.set(0, 0, 0); if (m.outlineColorFactor) m.outlineColorFactor.set('#140a10'); } }); });
+    const mats = []; vrm.scene.traverse(o => { if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => { if (m.isMToonMaterial && !mats.includes(m)) { mats.push(m); const cel = window.RB_CEL !== false; /* 2D cel: bold ink, hard two-tone shading, flat light, no gloss */ if (m.color) m.color.multiplyScalar(cel ? 0.96 : 0.84); if (m.outlineWidthFactor != null) m.outlineWidthFactor *= cel ? 3.0 : 1.7; if (m.shadingToonyFactor != null) m.shadingToonyFactor = cel ? 1.0 : Math.max(m.shadingToonyFactor, 0.93); if (cel && m.giEqualizationFactor != null) m.giEqualizationFactor = 1.0; if (cel && m.matcapFactor) m.matcapFactor.set(0, 0, 0); if (m.outlineColorFactor) m.outlineColorFactor.set('#140a10');
+      if (m.shadeColorFactor) m.userData.sh0 = m.shadeColorFactor.clone();
+      if (cel && /_HAIR/.test(m.name || '') && m.matcapFactor) { m.matcapTexture = hairRing(); m.matcapFactor.setRGB(0.3, 0.29, 0.28); m.needsUpdate = true; } } }); });
     return { J, kind, vrm, spec, mats, isVRM: true, headR: 0.1 };
   }
   function setPoseVRM(ch, p, t, o) {
@@ -738,7 +740,39 @@ const S3 = (() => {
     earth: { mode: 'sky', plates: [['nerima_night', Math.PI], ['nerima_street', 0]] },
   };
   const plateImg = {}; let plateBase = 'plates/';
-  function loadPlates(ids, base = 'plates/') { plateBase = base; return Promise.all(ids.filter(id => !plateImg[id]).map(id => new Promise(res => { const im = new Image(); im.onload = () => { const c = G.canvas(im.width, im.height), g = c.getContext('2d'); g.filter = 'blur(5px)'; g.drawImage(im, 0, 0); const row = g.getImageData(0, Math.floor(im.height * 0.56), im.width, 1).data; let r = 0, gg = 0, b = 0; for (let i = 0; i < row.length; i += 4) { r += row[i]; gg += row[i + 1]; b += row[i + 2]; } const n2 = row.length / 4; plateImg[id] = { im, blur: c, horizon: '#' + [r, gg, b].map(v => Math.round(v / n2).toString(16).padStart(2, '0')).join('') }; res(); }; im.onerror = () => res(); im.src = base + id + '.webp'; }))); }
+  function loadPlates(ids, base = 'plates/') { plateBase = base; return Promise.all(ids.filter(id => !plateImg[id]).map(id => new Promise(res => { const im = new Image(); im.onload = () => { const c = G.canvas(im.width, im.height), g = c.getContext('2d'); g.filter = 'blur(5px)'; g.drawImage(im, 0, 0); const row = g.getImageData(0, Math.floor(im.height * 0.56), im.width, 1).data; let r = 0, gg = 0, b = 0; for (let i = 0; i < row.length; i += 4) { r += row[i]; gg += row[i + 1]; b += row[i + 2]; } const n2 = row.length / 4; plateImg[id] = { im, blur: c, horizon: '#' + [r, gg, b].map(v => Math.round(v / n2).toString(16).padStart(2, '0')).join(''), ...readPlate(im) }; res(); }; im.onerror = () => res(); im.src = base + id + '.webp'; }))); }
+  /* What a painting says about its light, so the characters can be lit and coloured to sit inside it (the job a
+     compositor does on every anime cut): where the bright side is, the colour of that light, and the ambient hue. */
+  function readPlate(im) {
+    const sw = 64, sh = 36, c = G.canvas(sw, sh), g = c.getContext('2d'); g.filter = 'blur(1px)'; g.drawImage(im, 0, 0, sw, sh);
+    const d = g.getImageData(0, 0, sw, sh).data, n = sw * sh, L = []; let ar = 0, ag = 0, ab = 0;
+    for (let i = 0; i < n; i++) { const r = d[i * 4], gg = d[i * 4 + 1], b = d[i * 4 + 2]; ar += r; ag += gg; ab += b; L.push([0.299 * r + 0.587 * gg + 0.114 * b, i]); }
+    ar /= n * 255; ag /= n * 255; ab /= n * 255; const lum = 0.299 * ar + 0.587 * ag + 0.114 * ab;
+    L.sort((a, b) => b[0] - a[0]); const top = L.slice(0, Math.round(n * 0.08)); let rx = 0, ry = 0, rr = 0, rg = 0, rb = 0;
+    top.forEach(([, k]) => { rx += (k % sw) / sw - 0.5; ry += 0.5 - Math.floor(k / sw) / sh; rr += d[k * 4]; rg += d[k * 4 + 1]; rb += d[k * 4 + 2]; });
+    const m = top.length; rx /= m; ry /= m; rr /= m; rg /= m; rb /= m;
+    let dx = rx * 2.2, dy = ry * 2.2 + 0.45; const dl = Math.hypot(dx, dy) || 1; dx /= dl; dy /= dl; // the light comes from the bright side, and from above
+    const mx = Math.max(rr, rg, rb, 1), rim = new THREE.Color(rr / mx, rg / mx, rb / mx).lerp(new THREE.Color(1, 1, 1), 0.3);
+    const norm = (v, lo, hi) => { const q = v.map(x => Math.max(lo, Math.min(hi, x / Math.max(lum, 0.02)))), l = 0.299 * q[0] + 0.587 * q[1] + 0.114 * q[2]; return new THREE.Color(q[0] / l, q[1] / l, q[2] / l); };
+    const amb = norm([ar, ag, ab], 0.72, 1.4), cool = lum < 0.28 ? [0.74, 0.82, 1.3] : [0.86, 0.86, 1.16];
+    const shade = norm([amb.r * cool[0], amb.g * cool[1], amb.b * cool[2]], 0.6, 1.5);
+    const small = G.canvas(128, 72), sg = small.getContext('2d'); sg.filter = 'blur(3px)'; sg.drawImage(im, -6, -4, 140, 80);
+    const L1 = c => { const l = 0.299 * c.r + 0.587 * c.g + 0.114 * c.b || 1; return c.clone().multiplyScalar(1 / l); };
+    const key = L1(rim), sky = L1(amb.clone().lerp(new THREE.Color(1, 1, 1), 0.25)), fill = L1(amb.clone().multiply(new THREE.Color(0.9, 0.95, 1.15))), ground = L1(amb.clone().multiply(new THREE.Color(1.1, 0.95, 0.85)));
+    return { light: { dir: [dx, dy], rim, amb, shade, lum, small, tex: null, key, sky, fill, ground } };
+  }
+  /* Relight a set to its painting: each light keeps its strength, but takes the painting's colour (key light from the
+     bright side's colour, sky and fill from the ambient hue). Returns a function that puts the set's own colours back. */
+  function relight(sc, P, k = 0.8) {
+    const saved = [], lum = c => 0.299 * c.r + 0.587 * c.g + 0.114 * c.b; let key = null;
+    sc.children.forEach(o => { if (o.isDirectionalLight && (!key || o.intensity > key.intensity)) key = o; });
+    sc.children.forEach(o => {
+      if (o.isDirectionalLight) { saved.push([o, o.color.clone()]); o.color.lerp((o === key ? P.key : P.fill).clone().multiplyScalar(lum(o.color)), k); }
+      else if (o.isHemisphereLight) { saved.push([o, o.color.clone(), o.groundColor.clone()]); o.color.lerp(P.sky.clone().multiplyScalar(lum(o.color)), k); o.groundColor.lerp(P.ground.clone().multiplyScalar(lum(o.groundColor)), k); }
+      else if (o.isAmbientLight) { saved.push([o, o.color.clone()]); o.color.lerp(P.sky.clone().multiplyScalar(lum(o.color)), k); }
+    });
+    return () => saved.forEach(([o, c, g]) => { o.color.copy(c); if (g) o.groundColor.copy(g); });
+  }
   function plateFor(spec) {
     const eo = spec.envOpts || {}, pls = spec.plates || eo.plates;
     const set = pls ? { mode: spec.plateMode || eo.plateMode || 'full', plates: pls.map(p => Array.isArray(p) ? p : [p, 0]), light: spec.light || eo.light || 'day' } : PLATE_SETS[spec.env];
@@ -750,12 +784,15 @@ const S3 = (() => {
     return { set, id: best[0], dyaw: Math.atan2(Math.sin(yaw - best[1]), Math.cos(yaw - best[1])), pitch };
   }
   function drawPlate(ctx, pl, w, h) {
-    const P = plateImg[pl.id], near = (cam.fov < 29) || spec_close, src = near ? P.blur : P.im, iw = P.im.width, ih = P.im.height;
-    const zoom = 1.18 * Math.pow(34 / cam.fov, 0.55), s = Math.max(w / iw, h / ih) * zoom;
+    const P = plateImg[pl.id], near = (cam.fov < 29) || spec_close, src = near ? P.blur : P.im;
+    const r = plateRect(pl, w, h); ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.drawImage(src, r[0], r[1], r[2], r[3]); ctx.restore();
+  }
+  function plateRect(pl, w, h) {
+    const P = plateImg[pl.id], iw = P.im.width, ih = P.im.height, zoom = 1.18 * Math.pow(34 / cam.fov, 0.55), s = Math.max(w / iw, h / ih) * zoom;
     const hfov = 2 * Math.atan(Math.tan(cam.fov * Math.PI / 360) * (w / h));
     let dx = -pl.dyaw / hfov * w * 0.7, dy = pl.pitch / (cam.fov * Math.PI / 180) * h * 0.7;
     const mx = (iw * s - w) / 2, my = (ih * s - h) / 2; dx = Math.max(-mx, Math.min(mx, dx)); dy = Math.max(-my, Math.min(my, dy));
-    ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.drawImage(src, (w - iw * s) / 2 + dx, (h - ih * s) / 2 + dy, iw * s, ih * s); ctx.restore();
+    return [(w - iw * s) / 2 + dx, (h - ih * s) / 2 + dy, iw * s, ih * s];
   }
   let spec_close = false;
   const STAGES = {};
@@ -768,7 +805,7 @@ const S3 = (() => {
   }
   // a seated character gets something to sit on: a low wooden crate under the hips (painted-only sets have no furniture)
   function seatFor(c, pose = {}) {
-    if (c.sprite) return; const sit = (pose.crouch || 0) >= 0.45 && pose.thL && pose.thL[0] >= 1.2 && (pose.lean || 0) > -0.4; // lying down: no crate
+    if (c.sprite) return; const sit = (pose.crouch || 0) >= 0.45 && pose.thL && pose.thL[0] >= 1.2 && (!pose.thR || pose.thR[0] >= 1.0) && (pose.lean || 0) > -0.4; // lying down or kneeling: no crate
     if (!c.seat) { if (!sit) return; const g = new THREE.Group(), box = new THREE.Mesh(new THREE.BoxGeometry(0.56, 0.44, 0.46), toon('#5a4232')), lid = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.05, 0.5), toon('#6e5240'));
       box.position.y = 0.22; lid.position.y = 0.465; g.add(box, lid); g.position.set(0, 0, 0.16); c.J.root.add(g); c.seat = g; }
     c.seat.visible = sit;
@@ -821,12 +858,14 @@ const S3 = (() => {
     const cm = spec.cam; cam.fov = cm.fov || 32; cam.updateProjectionMatrix(); cam.position.set(...cm.pos); cam.up.set(Math.sin(cm.roll || 0), Math.cos(cm.roll || 0), 0); cam.lookAt(...cm.look);
     animateEnv(spec.env, spec.t, spec.envOpts || {}, sc);
     (spec.cast || []).forEach(([n]) => { const c = chars[n]; if (c && c.sprite) { const r = c.J.root; r.rotation.set(0, Math.atan2(cam.position.x - r.position.x, cam.position.z - r.position.z), 0); } });
-    (spec.cast || []).forEach(([n]) => { const c = chars[n]; if (c && c.mats) c.mats.forEach(m => { if (m.parametricRimColorFactor) { m.parametricRimColorFactor.copy(RIM.uRim.value).multiplyScalar(Math.min(1, RIM.uRimK.value * (window.RB_CEL === false ? 0.55 : 0.3))); m.parametricRimFresnelPowerFactor = 4.5; m.parametricRimLiftFactor = 0; } }); });
-    cam.updateMatrixWorld(); const ud = sc.userData;
-    RIM.uRim.value.set(spec.rim || ud.rim || '#ffb070'); RIM.uRimK.value = spec.rimK ?? ud.rimK ?? 0.7; RIM.uRimDir.value.copy(spec.rimDir ? V3(...spec.rimDir) : (ud.rimDir || V3(0, 0.3, -1))).normalize().transformDirection(cam.matrixWorldInverse);
+    cam.updateMatrixWorld(); const ud = sc.userData, look = celLook(spec, ud, pl, w, h);
+    RIM.uRim.value.set(spec.rim || ud.rim || '#ffb070'); if (pl && !spec.rim && plateImg[pl.id].light && window.RB_LOOK !== false) RIM.uRim.value.copy(plateImg[pl.id].light.rim); RIM.uRimK.value = spec.rimK ?? ud.rimK ?? 0.7; RIM.uRimDir.value.copy(spec.rimDir ? V3(...spec.rimDir) : (ud.rimDir || V3(0, 0.3, -1))).normalize().transformDirection(cam.matrixWorldInverse);
+    (spec.cast || []).forEach(([n]) => { const c = chars[n]; if (c && c.mats) c.mats.forEach(m => { if (m.parametricRimColorFactor) { m.parametricRimColorFactor.copy(RIM.uRim.value).multiplyScalar(Math.min(1, RIM.uRimK.value * (window.RB_CEL === false ? 0.55 : 0.16))); m.parametricRimFresnelPowerFactor = 4.5; m.parametricRimLiftFactor = 0; }
+      if (m.userData.sh0 && m.shadeColorFactor) m.shadeColorFactor.copy(m.userData.sh0).multiply(look.shade); }); });
     let fog0 = null; if (pl && sc.fog) { fog0 = sc.fog.color.getHex(); sc.fog.color.set(plateImg[pl.id].horizon); }
     const bg0 = sc.background; if (pl) sc.background = null; // a painted plate shows through: the 3D set must not paint its own backdrop
-    if (window.RB_CEL === false) R.render(sc, cam); else renderCel(sc, cam, w, h);
+    const unlit = pl && plateImg[pl.id].light && spec.relight !== false && window.RB_LOOK !== false ? relight(sc, plateImg[pl.id].light) : null;
+    if (window.RB_CEL === false) R.render(sc, cam); else renderCel(sc, cam, w, h, look); if (unlit) unlit();
     sc.background = bg0; hidden.forEach(ch => { ch.visible = true; }); if (fog0 != null) sc.fog.color.setHex(fog0);
     if (pl) { drawPlate(spec.ctx || ctx, pl, w, h); if (pl.set.mode === 'full') contactShadows(spec.ctx || ctx, spec.cast || []); }
     if (spec.under) { const u = spec.ctx || ctx; u.save(); u.setTransform(G.K, 0, 0, G.K, 0, 0); spec.under(u); u.restore(); } // 2D art that belongs behind the characters (a distant horde, eyes in the trees)
@@ -840,25 +879,68 @@ const S3 = (() => {
      The scene is drawn into an offscreen target with its depth. A full-screen pass then inks a black line wherever a
      nearer surface meets a farther one (silhouettes, an arm across a body, hair over a face), on the nearer side only,
      like a key animator's line. Colours get a flatter, brighter cel treatment. Line width follows the frame height. */
-  let celRT = null, celScene = null, celCam = null, celMat = null;
-  function renderCel(sc, cam3, w, h) {
+  let celRT = null, celScene = null, celCam = null, celMat = null, blankTex = null;
+  /* The light a frame's characters get. With a painting behind them, it comes from the painting (readPlate);
+     on a modelled set, from the set's key light. A shot can override any of it (spec.rim, spec.celRim, spec.rimDir2). */
+  const WHITE = new THREE.Color(1, 1, 1), COOL = new THREE.Color(0.9, 0.9, 1.12);
+  function celLook(spec, ud, pl, w, h) {
+    const P = pl && plateImg[pl.id] && plateImg[pl.id].light, o = { rimK: 0.5, ambK: 0, wrapK: 0, gradK: 0.14, tex: null, rect: [0, 0, 1, 1] };
+    if (P) {
+      o.dir = P.dir.slice(); o.rim = P.rim.clone(); o.amb = P.amb; o.ambK = 0.2; o.wrapK = 0.55; o.rimK = P.lum < 0.28 ? 0.62 : 0.48;
+      o.shade = WHITE.clone().lerp(P.shade, 0.5).multiplyScalar(0.94);
+      if (!P.tex) { P.tex = new THREE.CanvasTexture(P.small); P.tex.minFilter = THREE.LinearFilter; P.tex.generateMipmaps = false; }
+      const r = plateRect(pl, w, h); o.tex = P.tex; o.rect = [r[0] / w, r[1] / h, r[2] / w, r[3] / h];
+    } else {
+      const key = ud.key || (ud.dayLights && ud.dayLights.key); let dx = 0.45, dy = 0.9;
+      if (key) { const v = key.position.clone().normalize().transformDirection(cam.matrixWorldInverse); if (Math.hypot(v.x, v.y) > 0.15) { dx = v.x; dy = v.y + 0.35; } }
+      const dl = Math.hypot(dx, dy); o.dir = [dx / dl, dy / dl]; o.rim = new THREE.Color(ud.rim || '#ffd2a0').lerp(WHITE, 0.25); o.amb = WHITE; o.shade = WHITE.clone().lerp(COOL, 0.5).multiplyScalar(0.95);
+    }
+    if (window.RB_LOOK === false) Object.assign(o, { rimK: 0, ambK: 0, wrapK: 0, gradK: 0, shade: WHITE.clone() }); // the plain cel look, for comparison
+    if (spec.rim) o.rim = new THREE.Color(spec.rim).lerp(WHITE, 0.2);
+    if (spec.celRim != null) o.rimK = spec.celRim;
+    if (spec.rimDir2) { const l = Math.hypot(...spec.rimDir2) || 1; o.dir = [spec.rimDir2[0] / l, spec.rimDir2[1] / l]; }
+    return o;
+  }
+  let ringTex = null;
+  function hairRing() { // a matcap with one hard band in it: the "angel ring" highlight that runs round anime hair
+    if (ringTex) return ringTex; const S = 256, c = G.canvas(S, S), g = c.getContext('2d'); g.fillStyle = '#000'; g.fillRect(0, 0, S, S);
+    const X = nx => (0.5 + 0.5 * nx) * S, Y = ny => (0.5 - 0.5 * ny) * S; // upward-facing normals sit at the top (flipY off)
+    g.fillStyle = '#fff'; g.beginPath(); g.moveTo(X(-0.74), Y(0.53));
+    for (let i = 0; i <= 16; i++) { const x = -0.74 + i * 1.48 / 16; g.lineTo(X(x), Y(0.635 - 0.05 * x * x)); }
+    for (let i = 16; i >= 0; i--) { const x = -0.74 + i * 1.48 / 16, tip = i % 2 ? 0.43 : 0.515; g.lineTo(X(x), Y(tip + 0.06 * x * x)); }
+    g.closePath(); g.fill(); const out = G.canvas(S, S), og = out.getContext('2d'); og.filter = 'blur(1.2px)'; og.drawImage(c, 0, 0);
+    ringTex = new THREE.CanvasTexture(out); ringTex.flipY = false; return ringTex;
+  }
+  function renderCel(sc, cam3, w, h, look) {
     const SS = 1.5, rw = Math.round(w * SS), rh = Math.round(h * SS); // supersampled: smooth edges, and the depth stays readable for inking
     if (!celRT || celRT.width !== rw || celRT.height !== rh) {
       if (celRT) celRT.dispose();
       celRT = new THREE.WebGLRenderTarget(rw, rh, { depthTexture: new THREE.DepthTexture(rw, rh), depthBuffer: true, type: THREE.HalfFloatType, minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter });
       if (!celMat) {
         celMat = new THREE.ShaderMaterial({
-          uniforms: { tColor: { value: null }, tDepth: { value: null }, px: { value: new THREE.Vector2() }, cNear: { value: 0.05 }, cFar: { value: 900 }, width: { value: 1.6 }, ink: { value: new THREE.Color('#1a0f16') }, sat: { value: 1.2 } },
+          uniforms: { tColor: { value: null }, tDepth: { value: null }, px: { value: new THREE.Vector2() }, cNear: { value: 0.05 }, cFar: { value: 900 }, width: { value: 1.6 }, ink: { value: new THREE.Color('#1a0f16') }, sat: { value: 1.2 },
+            tPlate: { value: null }, pRect: { value: new THREE.Vector4(0, 0, 1, 1) }, wrapK: { value: 0 }, rimCol: { value: new THREE.Color() }, rimK: { value: 0.5 }, rimDir: { value: new THREE.Vector2(0, 1) }, rimW: { value: 6 }, amb: { value: new THREE.Color(1, 1, 1) }, ambK: { value: 0 }, gradK: { value: 0.14 } },
           vertexShader: 'varying vec2 vUv; void main() { vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }',
           fragmentShader: [
-            'uniform sampler2D tColor; uniform sampler2D tDepth; uniform vec2 px; uniform float cNear; uniform float cFar; uniform float width; uniform vec3 ink; uniform float sat; varying vec2 vUv;',
+            'uniform sampler2D tColor; uniform sampler2D tDepth; uniform sampler2D tPlate; uniform vec2 px; uniform float cNear; uniform float cFar; uniform float width; uniform vec3 ink; uniform float sat;',
+            'uniform vec4 pRect; uniform float wrapK; uniform vec3 rimCol; uniform float rimK; uniform vec2 rimDir; uniform float rimW; uniform vec3 amb; uniform float ambK; uniform float gradK; varying vec2 vUv;',
             'float lin(float d) { return (2.0 * cNear * cFar) / (cFar + cNear - (d * 2.0 - 1.0) * (cFar - cNear)); }',
             'void main() {',
-            '  vec4 c = texture2D(tColor, vUv); float d0 = lin(texture2D(tDepth, vUv).x); float e = 0.0;',
-            '  for (int i = 0; i < 8; i++) { float a = float(i) * 0.7853982; vec2 o = vec2(cos(a), sin(a)) * px * width;',
-            '    float d = lin(texture2D(tDepth, vUv + o).x); e = max(e, (d - d0) / d0); }',
+            '  vec4 c = texture2D(tColor, vUv); float d0 = lin(texture2D(tDepth, vUv).x); float e = 0.0; float bg = 0.0;',
+            '  for (int i = 0; i < 8; i++) { float a = float(i) * 0.7853982; vec2 dir = vec2(cos(a), sin(a));',
+            '    float d = lin(texture2D(tDepth, vUv + dir * px * width).x); e = max(e, (d - d0) / d0);',
+            '    bg += step(1.6, lin(texture2D(tDepth, vUv + dir * px * width * 5.0).x) / d0); }',
+            '  float near = (1.0 - smoothstep(16.0, 30.0, d0)) * step(0.01, c.a);',
             '  float line = smoothstep(0.018, 0.055, e) * step(0.01, c.a);',
+            // rim light: this pixel is on the edge that faces the light if, a few pixels toward the light, the frame falls away to the background
+            '  float rim = step(1.35, lin(texture2D(tDepth, vUv + rimDir * px * rimW).x) / d0) * near;',
             '  float l = dot(c.rgb, vec3(0.299, 0.587, 0.114)); vec3 col = mix(vec3(l), c.rgb, sat);',
+            '  col *= mix(vec3(1.0), amb, ambK * near);',
+            '  col *= 1.0 + gradK * near * dot(vUv - 0.5, rimDir) - 0.1 * near * (1.0 - smoothstep(0.0, 0.5, vUv.y));',
+            '  vec2 iuv = vec2((vUv.x - pRect.x) / pRect.z, ((1.0 - vUv.y) - pRect.y) / pRect.w);',
+            '  vec3 pc = pow(texture2D(tPlate, vec2(iuv.x, 1.0 - iuv.y)).rgb, vec3(2.2));',
+            '  col = mix(col, max(col, pc * 1.2), (bg / 8.0) * near * wrapK);',
+            '  col = 1.0 - (1.0 - col) * (1.0 - rimCol * rim * rimK);',
             '  col = mix(col, ink, line * 0.94);',
             '  gl_FragColor = linearToOutputTexel(vec4(col, c.a));',
             '}'].join('\n'),
@@ -870,6 +952,9 @@ const S3 = (() => {
     const enc = R.outputEncoding; R.outputEncoding = THREE.LinearEncoding;
     R.setRenderTarget(celRT); R.clear(true, true, true); R.render(sc, cam3); R.setRenderTarget(null); R.outputEncoding = enc;
     const u = celMat.uniforms; u.tColor.value = celRT.texture; u.tDepth.value = celRT.depthTexture; u.px.value.set(1 / rw, 1 / rh); u.cNear.value = cam3.near; u.cFar.value = cam3.far; u.width.value = 2.4 * rh / 720;
+    if (!blankTex) { blankTex = new THREE.DataTexture(new Uint8Array([0, 0, 0, 255]), 1, 1); blankTex.needsUpdate = true; }
+    const L = look || celLook({}, sc.userData, null, w, h); u.tPlate.value = L.tex || blankTex; u.pRect.value.set(...L.rect); u.wrapK.value = L.tex ? L.wrapK : 0;
+    u.rimCol.value.copy(L.rim); u.rimK.value = L.rimK; u.rimDir.value.set(L.dir[0], L.dir[1]); u.rimW.value = u.width.value * 3.6; u.amb.value.copy(L.amb); u.ambK.value = L.ambK; u.gradK.value = L.gradK;
     R.clear(true, true, true); R.render(celScene, celCam);
   }
   // project a world point to logical screen px (for 2D effects over the 3D frame)

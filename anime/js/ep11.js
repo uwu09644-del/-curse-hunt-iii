@@ -7,6 +7,7 @@ const EP11_SCRIPT = (() => {
   const PI = Math.PI, H = PI / 2;
   const W = (light, ...plates) => ({ plates: plates.map((p, i) => [p, [PI, 0, H, -H][i % 4]]), light });
   const sit = { crouch: 0.52, lean: -0.05, thL: [1.5, 0.15], knL: 1.6, thR: [1.5, 0.2], knR: 1.5, uaL: [-0.3, 0.3], elL: 0.3, uaR: [-0.3, 0.3], elR: 0.3 };
+  const kneelBy = { crouch: 0.45, lean: 0.3, thL: [1.4, 0.1], knL: 2.3, thR: [0.1, 0.1], knR: 2.2, uaR: [0.7, 0.2], elR: 0.9, uaL: [0.4, 0.2], elL: 0.5, headX: 0.3 };
   const lie = { crouch: 0.52, lean: -0.6, thL: [1.5, 0.15], knL: 0.4, thR: [1.5, 0.2], knR: 0.5, uaL: [-0.1, 0.3], elL: 0.2, uaR: [-0.1, 0.3], elR: 0.2, headX: -0.3 };
   const snow = (lt) => GFX.motes(lt * 0.8, { n: 140, vy: 70, vx: -30, color: '#f0f6ff', size: 2.6, glow: false, seed: 23, a: 0.7 });
   const motes = (lt) => GFX.motes(lt, { n: 50, vy: -20, color: '#ffe0a0', size: 2.2, seed: 7, a: 0.6 });
@@ -229,7 +230,7 @@ const EP11_SCRIPT = (() => {
         ['custom', 'redRecedes', 9, [[1.6, 'TAK', 'Get out. GET OUT. Give me back.'], [5.4, 'AKU', '...Fine. Fine, boy. Six minutes early. You have terrible manners.']]],
       ] },
     { env: 'lumen', envOpts: RUINS, mood: 'night', music: 'emotional', side: -1, wideDir: [0.6, 0.8],
-      cast: { nemu: [0, -0.4, 0, { pose: lie }], takuto: [0.6, 0.4, PI + 0.6, { pose: sit }], rin: [-0.9, 0.8, PI - 0.5], haruki: [1.6, 1.4, PI + 0.4], wick: [-1.6, 1.6, PI - 0.4], vesper: [2.8, -1.2, -0.8], gideon: [-2.6, 0.2, H + 0.4], valentine: [2.6, 0.4, -H - 0.4] },
+      cast: { nemu: [0, -0.4, 0, { pose: lie }], takuto: [0.6, 0.4, PI + 0.6, { pose: kneelBy }], rin: [-0.9, 0.8, PI - 0.5], haruki: [1.6, 1.4, PI + 0.4], wick: [-1.6, 1.6, PI - 0.4], vesper: [2.8, -1.2, -0.8], gideon: [-2.6, 0.2, H + 0.4], valentine: [2.6, 0.4, -H - 0.4] },
       beats: [
         ['custom', 'snowSilence', 10, [[2.4, 'TAK', 'Nemu. Nemu. Wake up. You always wake up.'], [6.6, 'WIC', 'How long does it take? Rin, how long does it take?']]],
         ['RIN', 'I do not know. I have never seen it.', { to: 'wick', emote: 'sad' }],

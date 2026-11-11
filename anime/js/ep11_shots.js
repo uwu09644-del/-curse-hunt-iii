@@ -141,8 +141,8 @@ const EP11_CUSTOM = (() => {
       api.render(t, cam, api.castList(t)); POST.set({ sat: 0.35, vig: 0.8, bloom: 0.4, thr: 0.75 }); snow(t * 0.5, 0.8);
     },
     nemuWakes(lt, d, t, api) {
-      const nm = api.marks().nemu, cam = { pos: [nm.x + 1.3, 2.3, nm.z + 1.5], look: [nm.x, 0.5, nm.z], fov: 34 }, k = inv(2.6, 4, lt);
-      api.render(t, cam, K.over(api, t, { nemu: { o: { expr: lt > 5 ? { happy: 0.5 } : { relaxed: 0.9 }, blink: lt < 2.6 ? 1 : undefined } } }));
+      const nm = api.marks().nemu, cam = { pos: [nm.x - 0.75, 1.75, nm.z + 1.3], look: [nm.x + 0.15, 0.5, nm.z + 0.1], fov: 32 }, k = inv(2.6, 4, lt); // front-left: Takuto kneels to her right, out of the lens
+      api.render(t, cam, K.over(api, t, { nemu: { o: { expr: lt > 5 ? { happy: 0.5 } : { relaxed: 0.9 }, blink: lt < 2.6 ? 1 : undefined } } }).filter(c => c[0] === 'nemu' || c[0] === 'takuto')); // just the two of them
       const [x, y] = K.proj(S3.jointPos('nemu', 'chest', 0)); GFX.radial(x, y, 300 * k, 'rgba(255,240,220,' + (0.35 * k * (1 - inv(5, d, lt))).toFixed(2) + ')', 'rgba(0,0,0,0)', 1, 'lighter');
       POST.set({ sat: lerp(0.35, 1, k), vig: 0.6, bloom: 0.6, thr: 0.6 }); snow(t * 0.5, 0.6);
     },
