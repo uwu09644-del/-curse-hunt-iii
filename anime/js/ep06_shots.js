@@ -133,7 +133,7 @@ const EP06_CUSTOM = (() => {
       const rp = lt < swing ? { ...P().ready, x: rn.x, z: rn.z, ry: yaw(rn, tk) } : { ...P().hit, x: lerp(rn.x, away.x, fly), z: lerp(rn.z, away.z, fly), y: Math.sin(fly * PI) * 1.1, pitch: fly * 1.2, ry: yaw(rn, tk) };
       const cam = jolt(lt < 3.6 ? { pos: [lerp(tk.x, rn.x, 0.5) + 3.4, 1.0, lerp(tk.z, rn.z, 0.5) + 2.2], look: [lerp(tk.x, rn.x, 0.5), 1.0, lerp(tk.z, rn.z, 0.5)], fov: 44 } : { pos: [away.x + 1.4, 0.4, away.z + 1.6], look: [away.x, 0.3, away.z], fov: 32 }, t, lt > swing && lt < swing + 0.5 ? 0.25 : 0.02);
       api.render(t, cam, over(api, t, { takuto: { pose: { ...(lt < swing ? P().windup : P().chop), weapon: lt < swing ? 2.0 : 1.7, ry: yaw(tk, rn) + 0.5 }, o: { axeGlow: 1, expr: { angry: 1 } } }, rin: { pose: lt > 3.6 ? { ...P().hit, x: away.x, z: away.z, pitch: 1.4, y: 0 } : rp, o: { expr: { Surprised: 0.8 } } } }).filter(c => c[0] !== RG));
-      if (lt > swing) { const [x, y] = proj([tk.x, 1.0, tk.z]); VFX.ring(lt - swing, { x, y, r1: 1400, dur: 0.7, flat: 0.8, color: '#ff4a3a' }); if (lt < swing + 0.07) GFX.fill('#fff', 0.7); }
+      if (lt > swing) { const [x, y] = proj([tk.x, 1.0, tk.z]); VFX.ring(lt - swing, { x, y, r1: 1400, dur: 0.7, flat: 0.8, color: '#ff4a3a' }); if (lt < swing + 0.09) GFX.fill('#fff', 0.7); }
       crimson(1 - inv(3.6, d, lt) * 0.6); ash(t);
     },
     rinDown(lt, d, t, api) {

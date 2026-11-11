@@ -722,8 +722,8 @@ const EP01 = (() => {
     if (lt > 3.5) X.slash(lt - 3.55, { x: 860, y: 300, r: 380, a0: -2.4, a1: 0.95, dur: 0.22, hold: 0.9, w: 130, flat: 0.75, rot: 0.15 });
     if (lt > H1) { X.ring(lt - H1, { x: 880, y: 420, r1: 1300, dur: 0.9, flat: 1, color: '#ffd0c0' }); X.sparks(lt - H1, { x: 880, y: 420, n: 120, ang: -0.4, spread: 3.2, speed: 1700, color: '#ffc29a' }); X.debris(lt - H1, { x: 900, y: 600, n: 46, speed: 1000, size: 13, seed: 99 }); }
     c.restore(); duelEnd(t, 'blood');
-    if (lt > H1 && lt < H1 + 0.06) { G.fill('#fff'); POST.set({ ca: 0.02 }); }
-    else if (lt > H1 + 0.06 && lt < H1 + 0.12) { G.impact('inv'); POST.set({ ca: 0.02 }); }
+    if (lt > H1 && lt < H1 + 0.09) { G.fill('#fff'); POST.set({ ca: 0.02 }); }
+    else if (lt > H1 + 0.09 && lt < H1 + 0.18) { G.impact('inv'); POST.set({ ca: 0.02 }); }
     else if (lt > H1 + 0.12 && lt < H1 + 0.18) { G.fill('#000', 0.85); G.ctx.save(); G.ctx.globalCompositeOperation = 'lighter'; G.ctx.strokeStyle = '#ff3a2a'; G.ctx.lineWidth = 14; G.ctx.beginPath(); G.ctx.moveTo(380, -60); G.ctx.lineTo(1100, 900); G.ctx.stroke(); G.ctx.restore(); }
     if (lt > 1.5 && lt < 3.5) POST.set({ sat: 0.6, radial: 0.012, ca: 0.005 });
     POST.set({ bloom: 1.2, thr: 0.45, gain: [1.15, 0.9, 0.88], dir: a < 1.3 && a > 0.7 ? [0.01, 0] : [0, 0] });

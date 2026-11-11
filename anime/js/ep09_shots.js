@@ -45,6 +45,16 @@ const EP09_CUSTOM = (() => {
       if (frz) { const k = ease.out(clamp((lt - f0) / 0.4)); K.frost(lx, ly, 160, k, t); GFX.fill('#a8d8ff', 0.1 * k, 'screen'); const n = 3 - Math.floor(lt - f0); GFX.txt(String(Math.max(1, n)), lx + 90, ly - 60, { font: '800 54px ' + GFX.FONT.disp, fill: '#e8f6ff', a: 0.9 }); POST.set({ sat: 0.7 }); }
       else api.postFor();
     },
+    freezeSpar(lt, d, t, api) {
+      const m = api.marks(), tk = m.takuto, hr = m.haruki, f0 = 1.6, brk = 6.2, frz = lt > f0 && lt < brk;
+      const tp = lt < f0 ? S3.seq(lt, [[0, P().ready], [f0, { ...P().windup, weapon: 2.0 }, 'out']]) : frz ? { ...P().windup, weapon: 2.0 } : S3.seq(lt - brk, [[0, { ...P().windup, weapon: 2.0 }], [0.2, { ...P().chop, weapon: 1.7 }, 'in'], [1.0, P().ready]]);
+      const cam = K.jolt({ pos: [4.2, 1.3, 0.4], look: [0, 1.2, 0], fov: 34 }, t, lt > brk && lt < brk + 0.4 ? 0.12 : frz ? 0.004 + inv(3.5, brk, lt) * 0.02 : 0);
+      api.render(t, cam, K.over(api, t, { takuto: { pose: { ...tp, ry: PI }, o: { axeGlow: frz ? inv(3.5, brk, lt) : 0.2, expr: { angry: frz ? 0.9 : 0.5 } } }, haruki: { pose: { ...(lt > f0 - 0.3 && lt < f0 + 0.4 ? { uaR: [1.6, 0.2], elR: 0.2 } : P().ready), x: lt > brk ? 0.5 : 0, ry: 0 } } }));
+      const [x, y] = K.proj([tk.x, 1.2, tk.z]);
+      if (frz) { K.frost(x, y, 320, ease.out(clamp((lt - f0) / 0.4)) * (1 - inv(brk - 0.4, brk, lt) * 0.3), t); GFX.fill('#a8d8ff', 0.1, 'screen'); K.cracks(x, y - 40, 260, inv(4.0, brk, lt), { n: 8, w: 2, col: 'rgba(255,90,80,0.9)' }); GFX.txt(String(Math.max(1, 3 - Math.floor((lt - f0) / 1.0))), x + 160, y - 160, { font: '800 54px ' + GFX.FONT.disp, fill: '#e8f6ff', a: 0.9 }); }
+      if (lt > brk && lt < brk + 0.9) { VFX.sparks(lt - brk, { x, y: y - 40, n: 100, spread: 3, speed: 1100, color: '#d8f0ff' }); if (lt < brk + 0.09) GFX.fill('#fff', 0.7); }
+      api.postFor();
+    },
     sanctumTest(lt, d, t, api) {
       const m = api.marks(), tk = m.takuto, lu = m.lucien, raise = ease.out(clamp((lt - 0.8) / 1.4)), hit = 5.0, crack = lt > hit;
       const B = { x: lerp(tk.x, lu.x, 0.45), z: lerp(tk.z, lu.z, 0.45) };
@@ -52,7 +62,7 @@ const EP09_CUSTOM = (() => {
       const cam = K.jolt(lt < 7.4 ? { pos: [B.x + 3.6, 1.4, B.z + 1.2], look: [B.x, 1.4, B.z], fov: 40 } : { pos: [lu.x + 0.3, 1.62, lu.z + 1.1], look: [lu.x, 1.6, lu.z], fov: 24 }, t, crack && lt < hit + 0.6 ? 0.25 : 0.01);
       api.render(t, cam, K.over(api, t, { takuto: { pose: { ...pose, x: lerp(tk.x, B.x, 0.55), z: lerp(tk.z, B.z, 0.55), ry: K.yaw(tk, lu) }, o: { axeGlow: inv(3.4, hit, lt), expr: { angry: 0.7 } } }, lucien: { pose: { uaR: [1.6, 0.3], elR: 0.2, ry: K.yaw(lu, tk) }, o: { expr: lt > 7.6 && lt < 8.6 ? { Surprised: 0.7 } : { happy: 0.4 } } } }));
       if (lt < 7.4) { const [x, y] = K.proj([B.x, 1.3, B.z]), r = Math.abs(K.proj([B.x + 2.0, 1.3, B.z])[0] - x) + 160; K.gold(x, y, r * 2, r * 2.4, raise, t);
-        if (crack) { K.cracks(x - 10, y - 30, 220, ease.out(clamp((lt - hit) / 0.3)), { n: 3, w: 2, col: 'rgba(255,255,255,0.95)' }); if (lt < hit + 0.9) { VFX.sparks(lt - hit, { x, y: y - 30, n: 120, spread: 3.2, speed: 1400, color: '#ffe2a0' }); VFX.ring(lt - hit, { x, y: y - 30, r1: 900, dur: 0.6, flat: 0.95, color: '#ffe8b0' }); } if (lt < hit + 0.07) GFX.fill('#fff', 0.85); } }
+        if (crack) { K.cracks(x - 10, y - 30, 220, ease.out(clamp((lt - hit) / 0.3)), { n: 3, w: 2, col: 'rgba(255,255,255,0.95)' }); if (lt < hit + 0.9) { VFX.sparks(lt - hit, { x, y: y - 30, n: 120, spread: 3.2, speed: 1400, color: '#ffe2a0' }); VFX.ring(lt - hit, { x, y: y - 30, r1: 900, dur: 0.6, flat: 0.95, color: '#ffe8b0' }); } if (lt < hit + 0.09) GFX.fill('#fff', 0.85); } }
       else { const e = S3.eyePos('lucien').map(K.proj); if (lt > 7.6 && lt < 8.6) e.forEach(([x, y]) => GFX.radial(x, y, 10, 'rgba(255,230,160,0.6)', 'rgba(0,0,0,0)', 1, 'lighter')); }
       motes(t, 0.6); POST.set({ bloom: 0.9, thr: 0.5, sat: 1.1 });
     },

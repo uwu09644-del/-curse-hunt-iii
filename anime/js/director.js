@@ -187,7 +187,7 @@ const DIRECTOR = (() => {
         render(t, cam, castWith(t, { [hero]: { pose: { ...pose, x: H1[0], z: H1[1], ry: yawTo(H1, F0) }, o: { axeGlow: o.glow ?? 0.4, expr: { angry: 0.6 } } }, [o.foe]: { o: { flash: lt > hit && lt < hit + 0.1 ? 1 : 0, shake: after, lunge: -after * 0.8, tilt: -after * 0.08 } } }));
         if (lt > hit) { const [x, y] = proj([F0[0], fh * 0.5, F0[1]]); X.sparks(lt - hit, { x, y, n: 70, spread: 2.4, speed: 1200, color: o.color || '#ffd0a0' }); X.debris(lt - hit, { x, y: proj([F0[0], 0, F0[1]])[1], n: 30, speed: 600, size: 10, seed: Math.round(t * 10) }); }
         if (lt > hit && lt < hit + 0.45) { const [x, y] = proj([F0[0], fh * 0.5, F0[1]]); X.focus(t, { x, y, r0: 220, a: 1 - (lt - hit) / 0.45 }); }
-        if (lt > hit && lt < hit + 0.07) G.fill('#fff', 0.8); else if (lt > hit + 0.07 && lt < hit + 0.13) G.impact('inv');
+        if (lt > hit && lt < hit + 0.09) G.fill('#fff', 0.8); else if (lt > hit + 0.09 && lt < hit + 0.18) G.impact('inv');
       },
       foeAttack(lt, d, t, o) {
         const hero = o.hero || 'takuto', H0 = mk(hero), F0 = mk(o.foe), at = d * 0.42, fh = S3.SPRITE_H[o.foe] || 1.8, lunge = Math.max(0, 1 - Math.abs(lt - at) / 0.5);
@@ -198,7 +198,7 @@ const DIRECTOR = (() => {
         const cam = jolt({ pos: [H0[0] + (H0[0] - F0[0]) * 0.45, 1.1, H0[1] + (H0[1] - F0[1]) * 0.45 + 0.8 * SC.side], look: [F0[0], fh * 0.6, F0[1]], fov: 40 }, t, lunge * 0.15 + (hit && lt < at + 0.4 ? 0.2 : 0));
         render(t, cam, castWith(t, { [hero]: { pose: { x: back[0], z: back[1], ry: yawTo(H0, F0), ...hp }, o: { expr: hit ? { Surprised: 0.6 } : { angry: 0.5 } } }, [o.foe]: { pose: { x: fpos[0], z: fpos[1] }, o: { lunge: lunge, tilt: lunge * 0.06 } } }));
         if (lunge > 0.6) { const [x, y] = proj([H0[0], 1.0, H0[1]]); X.focus(t, { x, y, r0: 260, a: (lunge - 0.6) * 2 }); }
-        if (hit && lt < at + 0.06) G.fill('#fff', 0.7);
+        if (hit && lt < at + 0.09) G.fill('#fff', 0.7);
       },
       special(lt, d, t, o) {
         const hero = o.hero || 'takuto', H0 = mk(hero), F0 = mk(o.foe), fh = S3.SPRITE_H[o.foe] || 1.8, jumpAt = d * 0.45, hit = d * 0.62;
@@ -213,7 +213,7 @@ const DIRECTOR = (() => {
         if (lt > hit - 0.15) { const [x, yy] = proj([F0[0], fh * 0.55, F0[1]]); X.slash(lt - hit + 0.15, { x, y: yy - 60, r: 420, a0: -2.4, a1: 0.95, dur: 0.22, hold: 0.8, w: 130, flat: 0.75, rot: 0.15 }); if (lt > hit) { X.ring(lt - hit, { x, y: yy, r1: 1300, dur: 0.9, flat: 1, color: '#ffd0c0' }); X.sparks(lt - hit, { x, y: yy, n: 120, spread: 3.2, speed: 1600, color: '#ffc29a' }); } }
         if (broke) { const [x, yy] = proj([F0[0], fh * 0.5, F0[1]]); X.debris(lt - hit - 0.3, { x, y: yy, n: 60, speed: 900, size: 14, seed: 77 }); G.motes(t, { n: 90, vy: -60, color: '#ff8a5a', size: 2.4, seed: 5, a: 1 - fade * 0.5 }); }
         if (lt > jumpAt && lt < hit) X.streaks(t, { a: 0.6, dir: -1 }); if (lt > hit && lt < hit + 0.7) { const [x, yy] = proj([F0[0], fh * 0.55, F0[1]]); X.focus(t, { x, y: yy, r0: 240, a: 1 - (lt - hit) / 0.7 }); }
-        if (lt > hit && lt < hit + 0.06) G.fill('#fff'); else if (lt > hit + 0.06 && lt < hit + 0.12) G.impact('inv');
+        if (lt > hit && lt < hit + 0.09) G.fill('#fff'); else if (lt > hit + 0.09 && lt < hit + 0.18) G.impact('inv');
         POST.set({ bloom: 0.9, thr: 0.5 });
       },
       ally(lt, d, t, o) { // an ally's Brand on the creature: threads (Rin), afterimage (Sieg), flame (Wick), freeze (Haruki)

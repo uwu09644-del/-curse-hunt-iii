@@ -64,7 +64,7 @@ const EP12_CUSTOM = (() => {
       const cam = K.jolt({ pos: [B.x + 3.4, 1.4, B.z + 1.6], look: [B.x, 1.4, B.z], fov: 40 }, t, lt > hit && lt < hit + 0.6 ? 0.3 : 0.01);
       api.render(t, cam, K.over(api, t, { takuto: { pose: { ...pose, x: lerp(tk.x, B.x, 0.6) + (lt > hit + 0.4 ? 0.6 * ease.out(clamp((lt - hit - 0.4) / 0.6)) : 0), z: lerp(tk.z, B.z, 0.6), ry: K.yaw(tk, lu) }, o: { axeGlow: 0.6, expr: { angry: 0.8 } } }, lucien: { pose: { uaR: [1.8, 0.3], elR: 0.2 }, o: { expr: { angry: 0.7 } } } }));
       const [x, y] = K.proj([B.x, 1.3, B.z]); K.gold(x, y, 720, 820, 1, t, { cell: 40 });
-      if (lt > hit && lt < hit + 1) { VFX.sparks(lt - hit, { x, y, n: 140, spread: 3.2, speed: 1500, color: '#ffe2a0' }); VFX.ring(lt - hit, { x, y, r1: 900, dur: 0.6, flat: 0.95, color: '#ffe8b0' }); if (lt < hit + 0.07) GFX.fill('#fff', 0.85); K.cracks(x, y, 120, 0.4 * (1 - inv(hit + 0.4, hit + 1, lt)), { n: 3, w: 2, col: 'rgba(255,255,255,0.9)' }); }
+      if (lt > hit && lt < hit + 1) { VFX.sparks(lt - hit, { x, y, n: 140, spread: 3.2, speed: 1500, color: '#ffe2a0' }); VFX.ring(lt - hit, { x, y, r1: 900, dur: 0.6, flat: 0.95, color: '#ffe8b0' }); if (lt < hit + 0.09) GFX.fill('#fff', 0.85); K.cracks(x, y, 120, 0.4 * (1 - inv(hit + 0.4, hit + 1, lt)), { n: 3, w: 2, col: 'rgba(255,255,255,0.9)' }); }
       POST.set({ bloom: 0.9, thr: 0.5 });
     },
     haruRun(lt, d, t, api) {

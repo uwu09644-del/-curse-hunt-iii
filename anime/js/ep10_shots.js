@@ -90,7 +90,7 @@ const EP10_CUSTOM = (() => {
       if (lt > 5.2 && lt < hit) { const [hx, hy] = K.proj([tk.x, 1.0, tk.z]); VFX.aura(t, { x: hx, y: hy, w: 300, h: 420, n: 50, a: 0.7, color: '#ffd0b0' }); }
       if (lt > hit - 0.15) { VFX.slash(lt - hit + 0.15, { x, y: yy - 60, r: 620, a0: -2.4, a1: 0.95, dur: 0.22, hold: 0.9, w: 160, flat: 0.75, rot: 0.15 }); if (lt > hit) { VFX.ring(lt - hit, { x, y: yy, r1: 1500, dur: 1.0, flat: 1, color: '#ffd0c0' }); VFX.sparks(lt - hit, { x, y: yy, n: 140, spread: 3.2, speed: 1600, color: '#ffc29a' }); } }
       if (dead) VFX.debris(lt - hit - 0.4, { x, y: yy, n: 80, speed: 1000, size: 16, seed: 7 });
-      if (lt > hit && lt < hit + 0.06) GFX.fill('#fff'); else if (lt > hit + 0.06 && lt < hit + 0.12) GFX.impact('inv');
+      if (lt > hit && lt < hit + 0.09) GFX.fill('#fff'); else if (lt > hit + 0.09 && lt < hit + 0.18) GFX.impact('inv');
       POST.set({ bloom: 0.9, thr: 0.5 });
     },
     encore(lt, d, t, api) {

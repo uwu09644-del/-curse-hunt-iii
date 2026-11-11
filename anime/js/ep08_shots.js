@@ -47,7 +47,7 @@ const EP08_CUSTOM = (() => {
       const draw = 1.2, m = api.marks(), s = m.sieg, w = m[WF], past = lt > draw;
       const cam = lt < draw ? { pos: [w.x + 0.8, 1.5, w.z + 1.4], look: [w.x, 1.4, w.z], fov: 30 } : duelCam(api, t, lt < draw + 0.4 ? 0.2 : 0.01);
       api.render(t, cam, K.over(api, t, { [WF]: { pose: past ? { x: lerp(w.x, s.x - 0.6, 0.5), z: lerp(w.z, s.z - 0.6, 0.5) } : {}, o: { lunge: lt < draw ? -0.2 : 0.6 * (1 - inv(draw, draw + 1, lt)), squash: lt < draw ? 0.15 : 0 } }, sieg: { pose: past ? { ...P().hit, ry: K.yaw(s, w) } : { ...P().ready, ry: K.yaw(s, w) } } }));
-      if (lt > draw - 0.1 && lt < draw + 0.06) GFX.fill('#fff', 0.9);
+      if (lt > draw - 0.1 && lt < draw + 0.09) GFX.fill('#fff', 0.9);
       if (lt > draw) { slashLine(lt, 360, 1 - inv(draw, draw + 0.8, lt)); if (lt < draw + 0.3) GFX.impact('inv'); }
       if (lt > draw + 0.8 && lt < draw + 1.6) { const [x, y] = K.proj(S3.jointPos('sieg', 'chest', 0)); VFX.sparks(lt - draw - 0.8, { x, y, n: 40, spread: 2.6, speed: 700, color: '#ff6a6a' }); }
       K.rain(t, 0.5); api.postFor();
@@ -65,7 +65,7 @@ const EP08_CUSTOM = (() => {
       api.render(t, cam, K.over(api, t, { sieg: { pose: { ...(lt > miss ? P().chop : P().windup), weapon: 1.7, ry: K.yaw(s, w) } }, [WF]: { pose: { x: wp.x, z: wp.z }, o: { flash: lt > echo && lt < echo + 0.12 ? 1 : 0, shake: lt > echo ? 1 - inv(echo, echo + 1.4, lt) : 0, tilt: lt > echo ? 0.12 : 0 } } }));
       if (lt > miss && lt < miss + 0.6) { const [x, y] = K.proj([w.x, 1.5, w.z]); VFX.slash(lt - miss, { x, y, r: 280, a0: -2.2, a1: 0.8, dur: 0.12, hold: 0.3, w: 70, flat: 0.8, rot: 0.1, color: '#9ad0ff' }); }
       if (lt > echo - 0.6 && lt < echo + 0.8) { const [x, y] = K.proj([wp.x, 1.5, wp.z]); const k = clamp((lt - echo + 0.6) / 0.6); GFX.radial(x - 40, y, 140, 'rgba(160,210,255,' + (0.6 * k).toFixed(2) + ')', 'rgba(0,0,0,0)', 1, 'lighter'); if (lt > echo) { VFX.slash(lt - echo, { x, y, r: 300, a0: 0.8, a1: -2.2, dur: 0.1, hold: 0.4, w: 90, flat: 0.8, rot: -0.1, color: '#d0ecff' }); VFX.sparks(lt - echo, { x, y, n: 90, spread: 3, speed: 1300, color: '#ff8a8a' }); } }
-      if (lt > echo && lt < echo + 0.06) GFX.fill('#fff', 0.9);
+      if (lt > echo && lt < echo + 0.09) GFX.fill('#fff', 0.9);
       K.rain(t, 0.5); api.postFor();
     },
     staticCrackle(lt, d, t, api) {
@@ -96,7 +96,7 @@ const EP08_CUSTOM = (() => {
     kurozaneTurns(lt, d, t, api) {
       const w = api.marks()[WF], cut = 4.8, cam = K.jolt(lt < cut ? { pos: [w.x + 1.2, 1.5, w.z + 2.4], look: [w.x, 1.6, w.z], fov: 32 } : { pos: [w.x, 1.0, w.z + 6.4], look: [w.x, 1.4, w.z], fov: 50 }, t, lt > cut && lt < cut + 0.6 ? 0.22 : 0.01);
       api.render(t, cam, K.over(api, t, { [WF]: { o: { squash: lt < cut ? 0.2 * inv(2, cut, lt) : 0, lunge: lt > cut ? 0.8 * (1 - inv(cut, cut + 1, lt)) : 0, tint: lt > cut ? '#ffffff' : '#c8d0e0' } } }));
-      if (lt > cut) { const [x, y] = K.proj([w.x, 1.3, w.z]); VFX.slash(lt - cut, { x, y, r: 620, a0: -PI, a1: PI * 0.9, dur: 0.25, hold: 0.8, w: 140, flat: 0.45, rot: 0, color: '#e8f0ff' }); if (lt < cut + 0.06) GFX.fill('#fff', 0.9);
+      if (lt > cut) { const [x, y] = K.proj([w.x, 1.3, w.z]); VFX.slash(lt - cut, { x, y, r: 620, a0: -PI, a1: PI * 0.9, dur: 0.25, hold: 0.8, w: 140, flat: 0.45, rot: 0, color: '#e8f0ff' }); if (lt < cut + 0.09) GFX.fill('#fff', 0.9);
         GFX.motes(lt - cut, { n: 120, vy: -60, color: '#1c1c28', size: 12, glow: false, seed: 51, a: 1 - inv(cut + 0.5, d, lt) }); }
       else { const [x, y] = K.proj(S3.jointPos(WF, 'head', 0)); GFX.radial(x + 8, y + 6, 18, 'rgba(255,50,40,0.95)', 'rgba(0,0,0,0)', 1, 'lighter'); }
       K.rain(t, 0.45); api.postFor();

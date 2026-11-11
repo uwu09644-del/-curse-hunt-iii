@@ -50,7 +50,7 @@ const EP11_CUSTOM = (() => {
       const cam = K.jolt(lt < 2 ? { pos: [pos.x + 3, 1.0, pos.z + 2.6], look: [pos.x, 1.2, pos.z - 1], fov: 40 } : { pos: [pos.x + 1.8, 1.1, pos.z + 1.9], look: [pos.x, 1.6, pos.z - 1.2], fov: 36 }, t, hi >= 0 ? 0.2 : 0.01);
       api.render(t, cam, K.over(api, t, { takuto: { pose: { ...(lt < 1.6 ? S3.run(t * 15, 1) : lock > 0 ? P().block : P().ready), x: pos.x, z: pos.z, weapon: lock > 0 ? 1.2 : 0, ry: K.yaw(pos, ty) }, o: { axeGlow: 0.3, expr: { angry: 0.8 } } }, [TY]: { o: { lunge: hits.reduce((s, h) => Math.max(s, 1 - Math.abs(lt - h) / 0.6), 0) } } }));
       if (lock > 0) K.chains(t, lock * (1 - inv(d - 1, d, lt)), snapK);
-      hits.forEach(h => { if (lt > h && lt < h + 0.9) { const [x, y] = K.proj(S3.weaponTip('takuto', 0.5)); VFX.sparks(lt - h, { x, y, n: 100, spread: 3, speed: 1300, color: '#ffd28a' }); VFX.ring(lt - h, { x, y, r1: 800, dur: 0.6, flat: 0.9 }); if (lt < h + 0.07) GFX.fill('#fff', 0.7); } });
+      hits.forEach(h => { if (lt > h && lt < h + 0.9) { const [x, y] = K.proj(S3.weaponTip('takuto', 0.5)); VFX.sparks(lt - h, { x, y, n: 100, spread: 3, speed: 1300, color: '#ffd28a' }); VFX.ring(lt - h, { x, y, r1: 800, dur: 0.6, flat: 0.9 }); if (lt < h + 0.09) GFX.fill('#fff', 0.7); } });
       snow(t); api.postFor();
     },
     tyrRaises(lt, d, t, api) {
@@ -85,7 +85,7 @@ const EP11_CUSTOM = (() => {
       const [x, y] = K.proj([ty.x + 1.4, h * 0.9, ty.z]);
       if (lt > hit - 0.2) { VFX.slash(lt - hit + 0.2, { x, y, r: 400, a0: -2.4, a1: 0.9, dur: 0.15, hold: 0.6, w: 140, flat: 0.7, rot: 0.2, color: '#ff2a2a' }); K.cracks(x, y, 360, ease.out(clamp((lt - hit) / 0.4)), { n: 12, w: 4, col: 'rgba(200,235,255,0.95)' }); }
       if (lt > hit + 0.4) { VFX.debris(lt - hit - 0.4, { x, y, n: 90, speed: 1100, size: 18, seed: 22 }); GFX.motes(lt, { n: 80, vy: 120, color: '#d8f0ff', size: 4, glow: true, seed: 12, a: 1 - inv(hit + 1, d, lt) }); }
-      if (lt > hit && lt < hit + 0.06) GFX.fill('#fff'); K.crimson(0.7); snow(t, 0.5);
+      if (lt > hit && lt < hit + 0.09) GFX.fill('#fff'); K.crimson(0.7); snow(t, 0.5);
     },
     turnOnCity(lt, d, t, api) {
       const tk = api.marks().takuto, k = ease.io(clamp(lt / 2.4)), cam = lt < 4 ? { pos: [tk.x - 0.8, 1.4, tk.z - 2.6], look: [tk.x, 1.5, tk.z], fov: 32 } : { pos: [tk.x + 0.5, 1.2, tk.z + 2.4], look: [tk.x, 2.4, tk.z - 12], fov: 50 };
@@ -105,7 +105,7 @@ const EP11_CUSTOM = (() => {
       const m = api.marks(), tk = m.takuto, f0 = 0.6, brk = 2.6, frz = lt > f0 && lt < brk, cam = K.jolt({ pos: [tk.x + 1.6, 1.4, tk.z + 2.0], look: [tk.x, 1.3, tk.z], fov: 34 }, t, lt > brk && lt < brk + 0.4 ? 0.25 : 0.01);
       api.render(t, cam, K.over(api, t, { takuto: { pose: frz ? { ...P().windup, weapon: 2.0 } : lt > brk ? swingAt(lt - brk, 0.3) : P().ready, o: {} }, haruki: { pose: { uaR: [1.6, 0.2], elR: 0.2, x: lerp(m.haruki.x, tk.x + 0.6, ease.out(clamp(lt / 0.6))), z: lerp(m.haruki.z, tk.z + 0.5, ease.out(clamp(lt / 0.6))) } } }));
       const [x, y] = K.proj([tk.x, 1.2, tk.z]); if (frz) { K.frost(x, y, 360, ease.out(clamp((lt - f0) / 0.3)), t); K.cracks(x, y - 30, 260, inv(1.4, brk, lt), { n: 10, w: 2.4, col: 'rgba(255,60,50,0.95)' }); }
-      if (lt > brk && lt < brk + 0.9) { VFX.sparks(lt - brk, { x, y, n: 120, spread: 3, speed: 1200, color: '#d8f0ff' }); if (lt < brk + 0.06) GFX.fill('#fff', 0.8); }
+      if (lt > brk && lt < brk + 0.9) { VFX.sparks(lt - brk, { x, y, n: 120, spread: 3, speed: 1200, color: '#d8f0ff' }); if (lt < brk + 0.09) GFX.fill('#fff', 0.8); }
       calamity(api, t, 'takuto', 1); snow(t, 0.4);
     },
     threadBurns(lt, d, t, api) {

@@ -57,7 +57,7 @@ const EP04_CUSTOM = (() => {
       const cam = jolt(lt < 2.6 ? { pos: [3.4, 1.0, 3.0], look: [0.3, 1.4, 0.4], fov: 36 } : { pos: [0.5, 1.5, 3.2], look: [0.35, 1.5, 1.4], fov: 28 }, t, lt > hit && lt < hit + 0.5 ? 0.18 * (1 - (lt - hit) / 0.5) : 0);
       api.render(t, cam, over(api, t, { takuto: { pose: tk, o: { axeGlow: 0.3, expr: { angry: 0.7 } } }, shield: { pose: { ...S3.blend(P().sbRaise, P().sbSlam, slam), x: 0.3, z: lerp(-3.4, -1.0, slam), ry: 0 } } }));
       if (lock > 0) chains(t, lock * (1 - inv(hit + 1.4, hit + 2.4, lt)), lt > hit + 1.2 ? clamp((lt - hit - 1.2) / 0.8) : 0);
-      if (lt > hit && lt < hit + 0.9) { const [x, y] = proj(S3.weaponTip('takuto', 0.5)); VFX.sparks(lt - hit, { x, y, n: 90, spread: 2.8, speed: 1200, color: '#ffd28a' }); VFX.ring(lt - hit, { x, y, r1: 700, dur: 0.6, flat: 0.9 }); if (lt < hit + 0.07) GFX.fill('#fff', 0.7); }
+      if (lt > hit && lt < hit + 0.9) { const [x, y] = proj(S3.weaponTip('takuto', 0.5)); VFX.sparks(lt - hit, { x, y, n: 90, spread: 2.8, speed: 1200, color: '#ffd28a' }); VFX.ring(lt - hit, { x, y, r1: 700, dur: 0.6, flat: 0.9 }); if (lt < hit + 0.09) GFX.fill('#fff', 0.7); }
       api.postFor();
     },
     sableInSmoke(lt, d, t, api) {

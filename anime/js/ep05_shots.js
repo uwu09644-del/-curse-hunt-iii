@@ -104,7 +104,7 @@ const EP05_CUSTOM = (() => {
       const cam = jolt(lt < 3.4 ? { pos: [tk.x + 2.6, 1.0, tk.z + 2.4], look: [tk.x, 1.5, tk.z - 1], fov: 38 } : { pos: [tk.x + 0.4, 1.5, tk.z + 1.6], look: [tk.x, 1.5, tk.z], fov: 28 }, t, lt > hit && lt < hit + 0.5 ? 0.18 * (1 - (lt - hit) / 0.5) : 0.01);
       api.render(t, cam, over(api, t, { takuto: { pose: { ...(lock > 0 ? P().block : P().ready), weapon: lock > 0 ? 1.2 : 0, ry: Math.atan2(m[HY].x - tk.x, m[HY].z - tk.z) }, o: { axeGlow: 0.3, expr: { angry: 0.7 } } }, [HY]: { pose: { x: lerp(m[HY].x, tk.x, lunge * 0.4), z: lerp(m[HY].z, tk.z, lunge * 0.4) }, o: { lunge, tilt: lunge * 0.06 } } }));
       if (lock > 0) chains(t, lock * (1 - inv(hit + 1.6, hit + 2.6, lt)), lt > hit + 1.4 ? clamp((lt - hit - 1.4) / 0.8) : 0);
-      if (lt > hit && lt < hit + 0.9) { const [x, y] = proj(S3.weaponTip('takuto', 0.5)); VFX.sparks(lt - hit, { x, y, n: 90, spread: 2.8, speed: 1200, color: '#ffd28a' }); VFX.ring(lt - hit, { x, y, r1: 700, dur: 0.6, flat: 0.9 }); if (lt < hit + 0.07) GFX.fill('#fff', 0.7); }
+      if (lt > hit && lt < hit + 0.9) { const [x, y] = proj(S3.weaponTip('takuto', 0.5)); VFX.sparks(lt - hit, { x, y, n: 90, spread: 2.8, speed: 1200, color: '#ffd28a' }); VFX.ring(lt - hit, { x, y, r1: 700, dur: 0.6, flat: 0.9 }); if (lt < hit + 0.09) GFX.fill('#fff', 0.7); }
       rain(t, 0.45); api.postFor();
     },
     heartBreak(lt, d, t, api) {

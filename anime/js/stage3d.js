@@ -941,6 +941,8 @@ const S3 = (() => {
             '  vec3 pc = pow(texture2D(tPlate, vec2(iuv.x, 1.0 - iuv.y)).rgb, vec3(2.2));',
             '  col = mix(col, max(col, pc * 1.2), (bg / 8.0) * near * wrapK);',
             '  col = 1.0 - (1.0 - col) * (1.0 - rimCol * rim * rimK);',
+            // highlight shoulder: bright hair and white cloth roll off softly instead of clipping to flat white
+            '  vec3 sh = 0.7 + 0.35 * (1.0 - exp(-(col - 0.7) / 0.35)); col = mix(col, sh, step(vec3(0.7), col));',
             '  col = mix(col, ink, line * 0.94);',
             '  gl_FragColor = linearToOutputTexel(vec4(col, c.a));',
             '}'].join('\n'),
