@@ -355,6 +355,6 @@ const EP09_SCRIPT = (() => {
     ['custom', 'nextTitle', 6, [[0.5, 'TAK', 'Episode ten. Morvudd.']]],
   ] }];
 
-  return { id: 'ep09', number: 9, pace: 0.35, title: { jpNo: '第九話', jp: '聖都ルーメン', en: 'SAINT LUMEN' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
+  return { id: 'ep09', number: 9, pace: 0.47, title: { jpNo: '第九話', jp: '聖都ルーメン', en: 'SAINT LUMEN' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
 })();
 if (typeof module !== 'undefined') module.exports = EP09_SCRIPT;
