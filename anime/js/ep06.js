@@ -127,6 +127,20 @@ const EP06_SCRIPT = (() => {
         ['custom', 'axeWhisper', 7, [[1.4, 'AKU', 'Forty giants, boy. Let me out a little tomorrow. Just a little.'], [4.8, 'TAK', 'No.']]],
         ['plate', 'fort_night', 5, { zoom: 1.12, fadeOut: 1.2, fx: ash }],
       ] },
+    { env: 'fort', envOpts: W('dusk', 'fort_wall', 'fort_night', 'fort_wall', 'fort_night'), mood: 'dusk', music: 'calm', side: -1, wideDir: [0.5, 1],
+      cast: { nemu: [-0.5, 0.2, 0.3, { pose: sit }], takuto: [0.5, 0.3, -0.3, { pose: sit }] },
+      beats: [
+        ['plate', 'fort_wall', 6, { card: ['THE NORTH WALL', 'Before dawn'], zoom: 1.08, fx: ash }],
+        ['NEM', "You didn't sleep.", { to: 'takuto', emote: 'tired' }],
+        ['TAK', 'The axe kept talking.', { to: 'nemu' }],
+        ['NEM', 'What did it say?', { to: 'takuto' }],
+        ['TAK', 'It counted the giants. All night. It got to forty and started again.', { to: 'nemu' }],
+        ['NEM', 'That is a very boring song.', { to: 'takuto', emote: 'smug' }],
+        ['TAK', 'It thinks it is a lullaby.', { to: 'nemu' }],
+        ['NEM', "...If it gets loud today, look for me. I'll be the small one with the bucket.", { to: 'takuto', emote: 'sad' }],
+        ['TAK', "I'll look for the bucket.", { to: 'nemu' }],
+        ['NEM', 'Look for the tail. Sometimes the bucket is on the ground.', { to: 'takuto', emote: 'happy' }],
+      ] },
     { env: 'fort', envOpts: WALL, mood: 'dusk', music: 'battle', side: 1, wideDir: [0.9, 0.5], handheld: true,
       cast: { sieg: [-1.4, 2.4, PI], rin: [0.6, 2.6, PI + 0.1, { weapon: true }], vesper: [2.4, 3.0, PI - 0.2], m_redgiant: [0.4, -7.0, 0] },
       beats: [
@@ -348,6 +362,6 @@ const EP06_SCRIPT = (() => {
     ['custom', 'nextTitle', 6, [[0.5, 'TAK', 'Episode seven. Feathers and Ash.']]],
   ] }];
 
-  return { id: 'ep06', number: 6, pace: 0.55, title: { jpNo: '第六話', jp: '赤き巨人の行進', en: 'THE RED GIANTS MARCH' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
+  return { id: 'ep06', number: 6, pace: 0.7, title: { jpNo: '第六話', jp: '赤き巨人の行進', en: 'THE RED GIANTS MARCH' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
 })();
 if (typeof module !== 'undefined') module.exports = EP06_SCRIPT;

@@ -351,6 +351,6 @@ const EP07_SCRIPT = (() => {
     ['custom', 'nextTitle', 6, [[0.5, 'TAK', 'Episode eight. The Fang Ronin.']]],
   ] }];
 
-  return { id: 'ep07', number: 7, pace: 0.45, title: { jpNo: '第七話', jp: '羽と灰', en: 'FEATHERS AND ASH' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
+  return { id: 'ep07', number: 7, pace: 0.65, title: { jpNo: '第七話', jp: '羽と灰', en: 'FEATHERS AND ASH' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
 })();
 if (typeof module !== 'undefined') module.exports = EP07_SCRIPT;
