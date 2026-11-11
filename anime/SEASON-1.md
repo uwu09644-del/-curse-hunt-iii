@@ -114,6 +114,22 @@ The same episode, with the same voices, score, sound and timing, restaged as cel
   - hits sold by the cut, a short jolt, a brief flash and the sound
 - **Not used:** the make-an-anime and Mage skills can also generate painted keyframes and AI video through paid services (Fal and Mage). This episode makes no paid calls and is rendered entirely in the browser.
 
+## Episode 2 and the production pipeline (`ep2.html`)
+
+Episode 2, "Branded", runs 24:00. It plays in `ep2.html`, and its script is `js/ep02.js`.
+
+- **Auto-director** (`js/director.js`): turns a script of scenes into staged 3D shots.
+  - A scene lists a set, a mood, music, the cast's marks, and beats: dialogue lines, establishing shots, walks, and custom action shots.
+  - The director picks the framing for each line from wide, two-shot, over-the-shoulder, close-up, low angle and reaction cuts.
+  - It keeps the camera on one side of the conversation and inside the set, moves it once per shot, and scores and ambient-sounds each scene by mood.
+  - The opening, eyecatch and ending are shared with Episode 1.
+- **Hand-directed shots** (`js/ep02_shots.js`): the recap, Valentine's entrance, Tofu's appraisal, Rin's entrance, the four-part duel, Sieg's Afterimage drill and the preview.
+- **Voices:** `node tools/episode_lines.js js/ep02.js voice/lines-ep02.json` writes the voice script. Then `tools/make_voices.py ... ep02.mp3` voices it with Kokoro-82M (287 lines).
+- **New sets:** Ashford's street, the Hunters' Guild hall and the training yard, with campfire, sunset and night lighting.
+- **New cast:** Rin Ashveil, Valentine and the Guild clerk are recoloured CC0 VRoid models. Tofu is built from shapes.
+
+Each later episode is one script file plus its custom shots, using the same pipeline.
+
 ## Art credits
 
 The character and creature illustrations are reference art supplied by the series creator. All rights belong to their original artists. Please credit them, and ask before posting this publicly.
