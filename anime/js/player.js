@@ -197,6 +197,7 @@
     catch (e) { startLbl.textContent = 'Some art failed to load. Reload the page to try again.'; console.error(e); return; }
     startLbl.textContent = 'Loading voices…';
     try { if (ensureAudio()) await VOICE.load(ac, 'voice/voices.mp3'); } catch (e) { console.warn('voice track will load on play', e); }
+    if (typeof S3 !== 'undefined' && S3.preload) { startLbl.textContent = 'Loading characters…'; try { await S3.preload('models/', f => { startLbl.textContent = 'Loading characters… ' + Math.round(f * 100) + '%'; }); } catch (e) { console.warn('3D characters fell back to simple models', e); } }
     startLbl.textContent = 'Loading fonts…'; await fontP;
     G.init(sctx, K); G.build(); PARTS.register(); VFX.build(); RIG.init(); RIG.setK(K);
     ready = true; startBtn.disabled = false; startLbl.textContent = 'Play Episode 1';

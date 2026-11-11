@@ -13,7 +13,7 @@ const S3 = (() => {
   function init() {
     if (tried) return ok; tried = true;
     try {
-      if (THREE.ColorManagement) THREE.ColorManagement.legacyMode = false; // author colours in sRGB, light in linear
+      if (THREE.ColorManagement) { if ('enabled' in THREE.ColorManagement) THREE.ColorManagement.enabled = true; else THREE.ColorManagement.legacyMode = false; } // author colours in sRGB, light in linear
       const c = document.createElement('canvas');
       R = new THREE.WebGLRenderer({ canvas: c, antialias: true, alpha: true, premultipliedAlpha: false }); R.setClearColor(0x000000, 0);
       R.setPixelRatio(1); R.outputEncoding = THREE.sRGBEncoding;
@@ -242,7 +242,7 @@ const S3 = (() => {
   }
   function shieldbearer() {
     const J = skeleton({ leg: 1.1, torso: 0.78, arm: 0.9, sw: 0.42, hw: 0.2, head: 0.17 });
-    const armor = toon('#3a383e'), armorD = toon('#24232a'), bone = toon('#d8d0c0'), cloth = toon('#2a2428'), wood = toon('#4a4038');
+    const armor = toon('#2c2a33'), armorD = toon('#1a1920'), bone = toon('#cfc5b2'), cloth = toon('#1e181c'), wood = toon('#4a4038');
     const hood = sph(0.26, cloth, 'm', 1, 1.1, 1); J.head.add(at(hood, 0, 0.12, -0.04));
     const skull = sph(0.16, bone, 's', 0.9, 1.05, 0.95); J.head.add(at(skull, 0, 0.12, 0.08));
     const jaw = new THREE.Group(); at(jaw, 0, 0.04, 0.1); J.head.add(jaw); const jw = box(0.16, 0.06, 0.12, bone); at(jw, 0, -0.03, 0.02); jaw.add(jw); J.jaw = jaw;
@@ -281,12 +281,85 @@ const S3 = (() => {
     return { J, kind: 'sable', height: 1.85 };
   }
 
+  /* ---------- VRM characters: CC0 VRoid models recoloured as the cast (anime faces, expressions, spring-bone hair) ---------- */
+  const VRM_CAST = { takuto: { file: 'takuto.glb', scale: 1.07, seed: 6, expr: { angry: 0.12 } }, nemu: { file: 'nemu.glb', scale: 1.02, seed: 4, sleepy: 0.32 }, sieg: { file: 'sieg.glb', scale: 1.04, seed: 9, expr: { happy: 0.12 } } };
+  const EU = new THREE.Euler(), HP = Math.PI / 2;
+  async function preload(base = 'models/', progress) {
+    if (!window.THREE_VRM || !init()) return false;
+    const { GLTFLoader, VRMLoaderPlugin, VRMUtils } = THREE_VRM, L = new GLTFLoader(); L.register(p => new VRMLoaderPlugin(p));
+    const keys = Object.keys(VRM_CAST);
+    for (let i = 0; i < keys.length; i++) {
+      const k = keys[i], spec = VRM_CAST[k];
+      const g = await L.loadAsync(base + spec.file, e => { if (progress && e.total) progress((i + e.loaded / e.total) / keys.length); });
+      const vrm = g.userData.vrm; VRMUtils.rotateVRM0(vrm);
+      const nr = vrm.humanoid.normalizedHumanBonesRoot; if (nr && !nr.parent) vrm.scene.add(nr);
+      vrm.scene.traverse(o => { o.frustumCulled = false; });
+      chars[k] = vrmChar(k, vrm, spec);
+    }
+    if (progress) progress(1);
+    return true;
+  }
+  function vrmChar(kind, vrm, spec) {
+    const N = b => vrm.humanoid.getNormalizedBoneNode(b);
+    const root = new THREE.Group(), body = new THREE.Group(); body.scale.setScalar(spec.scale); body.add(vrm.scene); root.add(body);
+    const J = { root, vrm, head: N('head'), hips: N('hips'), chest: N('chest') || N('spine'), dims: {} };
+    // grips: a frame under each hand that matches the simple rig's hand frame, so props and poses carry over
+    const grip = (bone, rz) => { const g = new THREE.Group(); g.quaternion.setFromEuler(EU.set(0, Math.PI, 0)).multiply(new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0, rz))); N(bone).add(g); const inner = new THREE.Group(); inner.position.y = -0.075; g.add(inner); return inner; };
+    J.handR = grip('rightHand', -HP); J.handL = grip('leftHand', HP);
+    const back = new THREE.Group(); back.rotation.y = Math.PI; N('hips').add(back);
+    if (kind === 'takuto') {
+      const ax = axe(); J.handR.add(ax); J.weapon = ax;
+      const bag = new THREE.Group(); const bb = sph(0.12, toon('#efefec'), 's', 1, 1.15, 0.7); bb.position.y = -0.17; bag.add(bb); bag.visible = false; J.handL.add(bag); J.bag = bag;
+    }
+    if (kind === 'sieg') { const gl = glaive(); J.handL.add(gl); J.weapon = gl; }
+    if (kind === 'nemu') { J.tail = []; let prev = back; const hm = toon('#25222c'); for (let i = 0; i < 10; i++) { const g = new THREE.Group(); g.position.set(0, i ? 0.065 : -0.03, i ? 0 : -0.1); prev.add(g); const seg = cap(0.02 - i * 0.0008, 0.05, hm, 's'); seg.position.y = 0.03; g.add(seg); J.tail.push(g); prev = g; } J.tail[0].rotation.x = -2.1; }
+    const mats = []; vrm.scene.traverse(o => { if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => { if (m.isMToonMaterial && !mats.includes(m)) { mats.push(m); if (m.color) m.color.multiplyScalar(0.84); } }); });
+    return { J, kind, vrm, spec, mats, isVRM: true, headR: 0.1 };
+  }
+  function setPoseVRM(ch, p, t, o) {
+    const J = ch.J, vrm = ch.vrm, hu = vrm.humanoid;
+    J.root.position.set(p.x, p.y - p.crouch, p.z); J.root.rotation.set(p.pitch, p.ry, p.bank, 'YXZ');
+    // rotations are written in the episode's frame (faces +z, left = +x) and mirrored into VRM0 model space
+    const put = (b, x, y, z) => { const n = hu.getNormalizedBoneNode(b); if (!n) return; n.quaternion.setFromEuler(EU.set(x, y, z, 'XYZ')); const q = n.quaternion; q.set(-q.x, q.y, -q.z, q.w); };
+    const br = 0.018 * Math.sin(t * 2.0) * (o.breath ?? 1), tb = (o.talk || 0) * 0.05 * Math.sin(t * 11);
+    put('hips', p.lean * 0.5 + p.flip, p.twist * 0.5, p.roll); put('spine', p.lean * 0.45 + br, p.twist * 0.5, 0); put('chest', p.lean * 0.1 - br * 0.6, 0, 0);
+    put('neck', p.headX * 0.4, p.headY * 0.4, p.headZ * 0.4); put('head', p.headX * 0.6 + tb, p.headY * 0.6, p.headZ * 0.6);
+    put('leftShoulder', 0, 0, 0); put('rightShoulder', 0, 0, 0);
+    put('leftUpperArm', -p.uaL[0], 0, -HP + 0.08 + p.uaL[1]); put('rightUpperArm', -p.uaR[0], 0, HP - 0.08 - p.uaR[1]);
+    put('leftLowerArm', 0, -p.elL, 0); put('rightLowerArm', 0, p.elR, 0);
+    put('leftUpperLeg', -p.thL[0], 0, p.thL[1]); put('rightUpperLeg', -p.thR[0], 0, -p.thR[1]);
+    put('leftLowerLeg', p.knL, 0, 0); put('rightLowerLeg', p.knR, 0, 0);
+    put('leftFoot', (p.thL[0] - p.knL) * 0.7, 0, 0); put('rightFoot', (p.thR[0] - p.knR) * 0.7, 0, 0);
+    const holdR = J.weapon && J.weapon.visible && ch.kind !== 'sieg', holdL = (ch.kind === 'sieg' && J.weapon && J.weapon.visible) || (J.bag && J.bag.visible);
+    const curl = (side, c) => ['Index', 'Middle', 'Ring', 'Little'].forEach(f => ['Proximal', 'Intermediate', 'Distal'].forEach(sg => put(side + f + sg, 0, 0, side === 'right' ? c : -c)));
+    curl('right', holdR ? 1.25 : 0.3); curl('left', holdL ? 1.25 : 0.3);
+    put('rightThumbProximal', 0, holdR ? 0.5 : 0.1, 0); put('leftThumbProximal', 0, holdL ? -0.5 : -0.1, 0);
+    // face
+    const em = vrm.expressionManager, talk = Math.min(1, (o.talk || 0) * 1.2);
+    let blink = o.blink ?? RIG.blink(t, ch.spec.seed); if (ch.spec.sleepy && o.blink == null) blink = Math.max(blink, ch.spec.sleepy);
+    if (em) {
+      em.setValue('blink', Math.min(1, blink)); em.setValue('aa', talk * 0.7); em.setValue('oh', talk * 0.35 * (0.5 + 0.5 * Math.sin(t * 13))); em.setValue('ih', talk * 0.25 * (0.5 + 0.5 * Math.sin(t * 9 + 1)));
+      const ex = Object.assign({}, ch.spec.expr || {}, o.expr || {}); ['angry', 'happy', 'sad', 'relaxed', 'Surprised'].forEach(k => { if (em.getExpression(k)) em.setValue(k, ex[k] || 0); });
+    }
+    const gz = o.gaze || [0, 0]; if (vrm.lookAt) { vrm.lookAt.target = null; vrm.lookAt.yaw = -gz[0] * 16; vrm.lookAt.pitch = -gz[1] * 10; }
+    let dt = t - (ch.lastT ?? -9); ch.lastT = t; if (dt < 0 || dt > 0.25) { if (vrm.springBoneManager) vrm.springBoneManager.reset(); dt = 0; }
+    vrm.update(Math.min(dt, 1 / 30));
+    // keep feet, knees or seat on the ground (anime models have their own leg lengths)
+    if (o.ground !== false && Math.abs(p.pitch) < 0.35 && p.y < 0.05) {
+      J.root.updateMatrixWorld(true); const v = new THREE.Vector3(), sc = ch.spec.scale * (o.scale || 1); let m = Infinity;
+      [['leftFoot', 0.075], ['rightFoot', 0.075], ['leftToes', 0.025], ['rightToes', 0.025], ['leftLowerLeg', 0.055], ['rightLowerLeg', 0.055], ['hips', 0.09]].forEach(([b, off]) => { const n = hu.getNormalizedBoneNode(b); if (n) { n.getWorldPosition(v); m = Math.min(m, v.y - off * sc); } });
+      if (isFinite(m)) J.root.position.y += p.y - m;
+    }
+    if (J.tail) J.tail.forEach((g, i) => { if (i) { g.rotation.x = 0.16 + Math.sin(t * 2.4 - i * 0.6) * 0.14; g.rotation.z = Math.sin(t * 1.7 - i * 0.5) * 0.12; } });
+    if (J.weapon) { J.weapon.rotation.x = (J.weapon.userData.base ?? Math.PI / 2) + p.weapon; if (J.weapon.userData.glow) J.weapon.userData.glow.material.opacity = o.axeGlow || 0; }
+  }
+
   /* ---------- poses ---------- */
   // pose fields (radians; forward-positive for limbs): x,z,ry (place/facing), y (lift), lean, twist, headX, headY, headZ,
   // uaL/uaR [fwd, out], elL/elR, thL/thR [fwd, out], knL/knR, crouch, jaw, shield [fwd, lift]
   const P0 = { x: 0, y: 0, z: 0, ry: 0, pitch: 0, bank: 0, lean: 0.03, twist: 0, roll: 0, headX: 0, headY: 0, headZ: 0, uaL: [0, 0.12], uaR: [0, 0.12], elL: 0.15, elR: 0.15, thL: [0, 0.04], thR: [0, 0.04], knL: 0.05, knR: 0.05, crouch: 0, jaw: 0, shield: [0, 0], weapon: 0, flip: 0 };
   function setPose(ch, p, t, o = {}) {
-    p = { ...P0, ...p }; const J = ch.J;
+    p = { ...P0, ...p }; if (ch.isVRM) return setPoseVRM(ch, p, t, o); const J = ch.J;
     J.root.position.set(p.x, p.y - p.crouch, p.z); J.root.rotation.set(p.pitch, p.ry, p.bank, 'YXZ');
     J.hips.rotation.set(p.lean * 0.5 + p.flip, p.twist * 0.5, p.roll);
     J.spine.rotation.set(p.lean * 0.5, p.twist * 0.5, 0); J.chest.scale.y = 1 + 0.012 * Math.sin(t * 2.0) * (o.breath ?? 1);
@@ -430,7 +503,7 @@ const S3 = (() => {
   /* ---------- rendering ---------- */
   function ensure() {
     if (!scenes.barrow) { scenes.barrow = buildBarrow(); scenes.earth = buildEarth(); scenes.void = buildVoid(); }
-    if (!chars.takuto) { chars.takuto = takuto(); chars.nemu = nemu(); chars.sieg = sieg(); chars.shield = shieldbearer(); chars.sable = sable(); }
+    if (!chars.shield) { chars.takuto = chars.takuto || takuto(); chars.nemu = chars.nemu || nemu(); chars.sieg = chars.sieg || sieg(); chars.shield = shieldbearer(); chars.sable = sable(); }
   }
   // draw a 3D frame into the 2D scene canvas. spec: { env, t, cam:{pos,look,fov,roll}, cast:[[charName, pose, opts]], envOpts }
   function frame(spec) {
@@ -443,6 +516,7 @@ const S3 = (() => {
     const hidden = []; if (spec.only === 'cast') sc.children.forEach(ch => { if (!ch.isLight && !(spec.cast || []).some(([n]) => chars[n].J.root === ch) && ch.visible) { ch.visible = false; hidden.push(ch); } });
     const cm = spec.cam; cam.fov = cm.fov || 32; cam.updateProjectionMatrix(); cam.position.set(...cm.pos); cam.up.set(Math.sin(cm.roll || 0), Math.cos(cm.roll || 0), 0); cam.lookAt(...cm.look);
     animateEnv(spec.env, spec.t, spec.envOpts || {});
+    (spec.cast || []).forEach(([n]) => { const c = chars[n]; if (c && c.mats) c.mats.forEach(m => { if (m.parametricRimColorFactor) { m.parametricRimColorFactor.copy(RIM.uRim.value).multiplyScalar(Math.min(1, RIM.uRimK.value * 0.55)); m.parametricRimFresnelPowerFactor = 4.5; m.parametricRimLiftFactor = 0; } }); });
     cam.updateMatrixWorld(); const ud = sc.userData;
     RIM.uRim.value.set(spec.rim || ud.rim || '#ffb070'); RIM.uRimK.value = spec.rimK ?? ud.rimK ?? 0.7; RIM.uRimDir.value.copy(spec.rimDir ? V3(...spec.rimDir) : (ud.rimDir || V3(0, 0.3, -1))).normalize().transformDirection(cam.matrixWorldInverse);
     R.render(sc, cam); hidden.forEach(ch => { ch.visible = true; });
@@ -451,11 +525,11 @@ const S3 = (() => {
   }
   // project a world point to logical screen px (for 2D effects over the 3D frame)
   function project(x, y, z) { const v = V3(x, y, z).project(cam); return [(v.x * 0.5 + 0.5) * G.W, (-v.y * 0.5 + 0.5) * G.H]; }
-  function jointPos(name, joint, dy = 0) { const c = chars[name]; if (!c) return [0, 0, 0]; c.J.root.updateMatrixWorld(true); const v = V3(0, dy, 0); c.J[joint].localToWorld(v); return [v.x, v.y, v.z]; }
+  function jointPos(name, joint, dy = 0) { const c = chars[name]; if (!c) return [0, 0, 0]; c.J.root.updateMatrixWorld(true); if (c.isVRM && joint === 'head') dy *= 0.6; const v = V3(0, dy, 0); c.J[joint].localToWorld(v); return [v.x, v.y, v.z]; }
   function weaponTip(name, dist = 1.1) { const c = chars[name]; c.J.root.updateMatrixWorld(true); const v = V3(0, dist, 0); c.J.weapon.localToWorld(v); return [v.x, v.y, v.z]; }
   function place(name, pose, t, o = {}) { if (!init()) return; ensure(); const c = chars[name]; setPose(c, pose, t, o); c.J.root.scale.setScalar(o.scale || 1); c.J.root.updateMatrixWorld(true); }
-  function eyePos(name) { const c = chars[name]; c.J.root.updateMatrixWorld(true); const r = c.headR || 0.12; return [-1, 1].map(k => { const v = V3(k * r * 0.92 * Math.sin(0.29), 0.12 - r * Math.sin(0.07), r * Math.cos(0.29) * 0.98); c.J.head.localToWorld(v); return [v.x, v.y, v.z]; }); }
+  function eyePos(name) { const c = chars[name]; c.J.root.updateMatrixWorld(true); if (c.isVRM) { const hu = c.vrm.humanoid, out = []; ['leftEye', 'rightEye'].forEach(b => { const n = hu.getNormalizedBoneNode(b); if (n) { const v = new THREE.Vector3(); n.getWorldPosition(v); out.push([v.x, v.y, v.z]); } }); if (out.length === 2) return out; } const r = c.headR || 0.12; return [-1, 1].map(k => { const v = V3(k * r * 0.92 * Math.sin(0.29), 0.12 - r * Math.sin(0.07), r * Math.cos(0.29) * 0.98); c.J.head.localToWorld(v); return [v.x, v.y, v.z]; }); }
   function skyPoint(az, el) { const d = V3(Math.sin(az) * Math.cos(el), Math.sin(el), -Math.cos(az) * Math.cos(el)).multiplyScalar(300).add(cam.position); return project(d.x, d.y, d.z); }
   function crack(op) { if (chars.shield) chars.shield.J.cracks.material.opacity = op; }
-  return { init, frame, place, project, jointPos, weaponTip, seq, run, walk, POSES, crack, eyePos, skyPoint, get camera() { return cam; }, get ok() { return init(); }, chars, scenes, setPose, P0, blend };
+  return { init, preload, frame, place, project, jointPos, weaponTip, seq, run, walk, POSES, crack, eyePos, skyPoint, get camera() { return cam; }, get ok() { return init(); }, chars, scenes, setPose, P0, blend };
 })();
