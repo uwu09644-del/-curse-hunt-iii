@@ -579,9 +579,11 @@ const GFX = (() => {
         for (const ox of [0, -2048, 2048]) { const fg = g.createRadialGradient(x + ox, y, 0, x + ox, y, rx); fg.addColorStop(0, 'rgba(255,255,255,0.22)'); fg.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = fg; g.save(); g.translate(x + ox, y); g.scale(1, ry / rx); g.translate(-(x + ox), -y); g.beginPath(); g.arc(x + ox, y, rx, 0, 7); g.fill(); g.restore(); } }
       return c; })();
   }
+  const fogCache = new Map();
   function fog(t, y, speed, a, tint = '#f0c8c8', h = 260) {
-    const c = L.fog, off = ((t * speed) % 2048 + 2048) % 2048;
-    const { c: sc, s } = scratch(1, 2048, h > 260 ? 260 : 260); sc.drawImage(c, 0, 0); sc.globalCompositeOperation = 'source-in'; sc.fillStyle = tint; sc.fillRect(0, 0, 2048, 260);
+    let s = fogCache.get(tint);
+    if (!s) { s = canvas(2048, 260); const sc = s.getContext('2d'); sc.drawImage(L.fog, 0, 0); sc.globalCompositeOperation = 'source-in'; sc.fillStyle = tint; sc.fillRect(0, 0, 2048, 260); fogCache.set(tint, s); }
+    const off = ((t * speed) % 2048 + 2048) % 2048;
     ctx.save(); ctx.globalAlpha = a; for (let x = -off; x < W; x += 2048) ctx.drawImage(s, 0, 0, 2048, 260, x, y, 2048, h); ctx.restore();
   }
   function barrow(t, cam, o = {}) {
