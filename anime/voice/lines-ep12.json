@@ -1,0 +1,1426 @@
+{
+ "cast": {
+  "TAKUTO": {
+   "voice": [
+    [
+     "am_michael",
+     0.6
+    ],
+    [
+     "am_puck",
+     0.4
+    ]
+   ],
+   "speed": 1.02
+  },
+  "NEMU": {
+   "voice": [
+    [
+     "af_nicole",
+     0.65
+    ],
+    [
+     "af_bella",
+     0.35
+    ]
+   ],
+   "speed": 1.02
+  },
+  "SIEG": {
+   "voice": [
+    [
+     "bm_george",
+     1
+    ]
+   ],
+   "speed": 1.06
+  },
+  "AKURO": {
+   "voice": [
+    [
+     "am_fenrir",
+     1
+    ]
+   ],
+   "speed": 0.8,
+   "fx": "demon"
+  },
+  "RIN": {
+   "voice": [
+    [
+     "af_kore",
+     0.6
+    ],
+    [
+     "bf_emma",
+     0.4
+    ]
+   ],
+   "speed": 1.05
+  },
+  "VALENTINE": {
+   "voice": [
+    [
+     "bf_isabella",
+     0.55
+    ],
+    [
+     "af_nova",
+     0.45
+    ]
+   ],
+   "speed": 1.06
+  },
+  "CLERK": {
+   "voice": [
+    [
+     "af_aoede",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "CROWD": {
+   "voice": [
+    [
+     "am_echo",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "CROWD2": {
+   "voice": [
+    [
+     "af_river",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "VENDOR": {
+   "voice": [
+    [
+     "bm_daniel",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "HUNTER": {
+   "voice": [
+    [
+     "am_onyx",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "SABLE": {
+   "voice": [
+    [
+     "bm_fable",
+     1
+    ]
+   ],
+   "speed": 0.92,
+   "fx": "static"
+  },
+  "WICK": {
+   "voice": [
+    [
+     "am_puck",
+     0.5
+    ],
+    [
+     "am_liam",
+     0.5
+    ]
+   ],
+   "speed": 1.12
+  },
+  "GIDEON": {
+   "voice": [
+    [
+     "bm_lewis",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "EXAMINER": {
+   "voice": [
+    [
+     "bf_alice",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "HARUKI": {
+   "voice": [
+    [
+     "am_liam",
+     0.6
+    ],
+    [
+     "am_eric",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "LUCIEN": {
+   "voice": [
+    [
+     "bm_daniel",
+     0.5
+    ],
+    [
+     "am_adam",
+     0.5
+    ]
+   ],
+   "speed": 0.94
+  },
+  "VESPER": {
+   "voice": [
+    [
+     "bf_lily",
+     0.6
+    ],
+    [
+     "af_sky",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "KUROZANE": {
+   "voice": [
+    [
+     "am_onyx",
+     0.7
+    ],
+    [
+     "am_fenrir",
+     0.3
+    ]
+   ],
+   "speed": 0.9
+  },
+  "OGRE": {
+   "voice": [
+    [
+     "am_santa",
+     1
+    ]
+   ],
+   "speed": 0.9,
+   "fx": "demon"
+  },
+  "NARRATOR": {
+   "voice": [
+    [
+     "bm_george",
+     0.4
+    ],
+    [
+     "am_adam",
+     0.6
+    ]
+   ],
+   "speed": 0.98
+  }
+ },
+ "lines": [
+  {
+   "id": "ep12_001",
+   "who": "TAKUTO",
+   "text": "Previously. Tyr the Frost Titan cracked the golden wall over Saint Lumen."
+  },
+  {
+   "id": "ep12_002",
+   "who": "TAKUTO",
+   "text": "I opened the door. Akuro killed the Titan, and then turned on the city.",
+   "tts": "I opened the door. Ah-koo-roh killed the Titan, and then turned on the city."
+  },
+  {
+   "id": "ep12_003",
+   "who": "TAKUTO",
+   "text": "Nemu stood in front of me and spent her eighth life. I came back.",
+   "tts": "Neh-moo stood in front of me and spent her eighth life. I came back."
+  },
+  {
+   "id": "ep12_004",
+   "who": "TAKUTO",
+   "text": "And the Saint decided that to mend his wall, he would take every Brand in the city."
+  },
+  {
+   "id": "ep12_005",
+   "who": "LUCIEN",
+   "text": "Light of the city. Come home to the wall."
+  },
+  {
+   "id": "ep12_006",
+   "who": "LUCIEN",
+   "text": "Great Sanctum. Close."
+  },
+  {
+   "id": "ep12_007",
+   "who": "CROWD2",
+   "text": "Mama? Mama, I feel cold."
+  },
+  {
+   "id": "ep12_008",
+   "who": "WICK",
+   "text": "My fire. Takuto, my fire is shrinking. It has never been this small.",
+   "tts": "My fire. Tah-koo-toh, my fire is shrinking. It has never been this small."
+  },
+  {
+   "id": "ep12_009",
+   "who": "RIN",
+   "text": "My threads are thin. Like hair. I can barely hold them."
+  },
+  {
+   "id": "ep12_010",
+   "who": "NEMU",
+   "text": "Everything is spinning. Is the room spinning? Or is it me?"
+  },
+  {
+   "id": "ep12_011",
+   "who": "TAKUTO",
+   "text": "Nemu, sit.",
+   "tts": "Neh-moo, sit."
+  },
+  {
+   "id": "ep12_012",
+   "who": "NEMU",
+   "text": "I am sitting. I think. It is hard to tell."
+  },
+  {
+   "id": "ep12_013",
+   "who": "HARUKI",
+   "text": "It is the Great Sanctum. It is drinking every Brand under the dome. All of them. At once."
+  },
+  {
+   "id": "ep12_014",
+   "who": "RIN",
+   "text": "How long?"
+  },
+  {
+   "id": "ep12_015",
+   "who": "HARUKI",
+   "text": "By sunset, every Brand in Saint Lumen is in the wall. Hunters. Children. Us."
+  },
+  {
+   "id": "ep12_016",
+   "who": "TAKUTO",
+   "text": "And the axe?"
+  },
+  {
+   "id": "ep12_017",
+   "who": "AKURO",
+   "text": "It is pulling at me too, boy. Gently. Like a thief who thinks the house is asleep. I do not like it.",
+   "mono": true
+  },
+  {
+   "id": "ep12_018",
+   "who": "TAKUTO",
+   "text": "Akuro does not like it.",
+   "tts": "Ah-koo-roh does not like it."
+  },
+  {
+   "id": "ep12_019",
+   "who": "HARUKI",
+   "text": "Then we have something in common with him. That is a first."
+  },
+  {
+   "id": "ep12_020",
+   "who": "VALENTINE",
+   "text": "Darlings. My Encore is a candle. Gideon's chains are getting lazy. Vesper's wind is a breeze. We have perhaps eight hours."
+  },
+  {
+   "id": "ep12_021",
+   "who": "SIEG",
+   "text": "Then we use them. Haruki. Where is the heart of the Sanctum?",
+   "tts": "Then we use them. Hah-roo-kee. Where is the heart of the Sanctum?"
+  },
+  {
+   "id": "ep12_022",
+   "who": "HARUKI",
+   "text": "Under the cathedral. The crystal chamber, where the forty sleep. Lucien stands at the altar. He is the wall. As long as he wills it, it holds."
+  },
+  {
+   "id": "ep12_023",
+   "who": "GIDEON",
+   "text": "Then the boy strikes the altar."
+  },
+  {
+   "id": "ep12_024",
+   "who": "HARUKI",
+   "text": "He cracked the Sanctum once. A hairline. Lucien was surprised. He will not be surprised again. His will is stronger than the barrier."
+  },
+  {
+   "id": "ep12_025",
+   "who": "TAKUTO",
+   "text": "Then I need him to stop willing it."
+  },
+  {
+   "id": "ep12_026",
+   "who": "HARUKI",
+   "text": "For three seconds."
+  },
+  {
+   "id": "ep12_027",
+   "who": "TAKUTO",
+   "text": "...Frozen Hour."
+  },
+  {
+   "id": "ep12_028",
+   "who": "HARUKI",
+   "text": "If I freeze the Saint himself, his will stops with him. Three seconds of a wall with nobody holding it."
+  },
+  {
+   "id": "ep12_029",
+   "who": "SIEG",
+   "text": "You have to touch him to freeze him. Inside his own Sanctum. With Sable beside him."
+  },
+  {
+   "id": "ep12_030",
+   "who": "HARUKI",
+   "text": "I know. I have touched him a thousand times. He always let me."
+  },
+  {
+   "id": "ep12_031",
+   "who": "VESPER",
+   "text": "The Order has sealed every gate. Two hundred knights. They will not let a Branded near the cathedral."
+  },
+  {
+   "id": "ep12_032",
+   "who": "VALENTINE",
+   "text": "Then Gideon and I will give them a show at the cathedral doors. Encore, and every iron hinge in the building."
+  },
+  {
+   "id": "ep12_033",
+   "who": "GIDEON",
+   "text": "I have always wanted to make a cathedral door fight a knight."
+  },
+  {
+   "id": "ep12_034",
+   "who": "VESPER",
+   "text": "I take the north gate. The knights there would like to keep the wounded out of the city. They are about to change their minds."
+  },
+  {
+   "id": "ep12_035",
+   "who": "SIEG",
+   "text": "And I go with you. One sword. A frog crutch. Ha. Do not argue, Valentine."
+  },
+  {
+   "id": "ep12_036",
+   "who": "VALENTINE",
+   "text": "I was not going to argue. I was going to cry."
+  },
+  {
+   "id": "ep12_037",
+   "who": "WICK",
+   "text": "Nemu and me. The Rite Hall. The people in the golden chairs. We carry them out before the wall eats them.",
+   "tts": "Neh-moo and me. The Rite Hall. The people in the golden chairs. We carry them out before the wall eats them."
+  },
+  {
+   "id": "ep12_038",
+   "who": "NEMU",
+   "text": "I can carry people. Slowly. On my tail."
+  },
+  {
+   "id": "ep12_039",
+   "who": "RIN",
+   "text": "And I tie the way open. For you two. Into the crystal chamber, and back out."
+  },
+  {
+   "id": "ep12_040",
+   "who": "TAKUTO",
+   "text": "Rin. If the thread snaps..."
+  },
+  {
+   "id": "ep12_041",
+   "who": "RIN",
+   "text": "Then Kaito's scarf still holds. You have it on your wrist."
+  },
+  {
+   "id": "ep12_042",
+   "who": "SIEG",
+   "text": "Takuto. Last lesson. Always the first move.",
+   "tts": "Tah-koo-toh. Last lesson. Always the first move."
+  },
+  {
+   "id": "ep12_043",
+   "who": "TAKUTO",
+   "text": "Not this time. This time Haruki moves first.",
+   "tts": "Not this time. This time Hah-roo-kee moves first."
+  },
+  {
+   "id": "ep12_044",
+   "who": "SIEG",
+   "text": "...Ha. Good. Now you are a teacher."
+  },
+  {
+   "id": "ep12_045",
+   "who": "HUNTER",
+   "text": "Halt! By order of the Saint, no Branded may enter!"
+  },
+  {
+   "id": "ep12_046",
+   "who": "CROWD",
+   "text": "Shields up! Shields up!"
+  },
+  {
+   "id": "ep12_047",
+   "who": "VALENTINE",
+   "text": "Ladies and gentlemen of the Gilded Order! Tonight, for one performance only!"
+  },
+  {
+   "id": "ep12_048",
+   "who": "VALENTINE",
+   "text": "Encore!"
+  },
+  {
+   "id": "ep12_049",
+   "who": "GIDEON",
+   "text": "Cogwheel Core! Doors! Hinges! Candlesticks! Everyone, up!"
+  },
+  {
+   "id": "ep12_050",
+   "who": "HUNTER",
+   "text": "The doors! The doors are fighting us!"
+  },
+  {
+   "id": "ep12_051",
+   "who": "CROWD",
+   "text": "Why are we dancing? Why can't I stop dancing?"
+  },
+  {
+   "id": "ep12_052",
+   "who": "GIDEON",
+   "text": "Go, boy! The stairs behind the altar! Go!"
+  },
+  {
+   "id": "ep12_053",
+   "who": "TAKUTO",
+   "text": "Gideon. Valentine. Thank you."
+  },
+  {
+   "id": "ep12_054",
+   "who": "VALENTINE",
+   "text": "Thank us at the cast party, darling. GO!"
+  },
+  {
+   "id": "ep12_055",
+   "who": "HUNTER",
+   "text": "Executioner! The Guild has no authority in the holy city!"
+  },
+  {
+   "id": "ep12_056",
+   "who": "HUNTER",
+   "text": "Stand down!"
+  },
+  {
+   "id": "ep12_057",
+   "who": "VESPER",
+   "text": "The Guild has no authority. I have a great deal of wind. White Gale."
+  },
+  {
+   "id": "ep12_058",
+   "who": "VESPER",
+   "text": "Open the gate, and let the wounded in. Or fly."
+  },
+  {
+   "id": "ep12_059",
+   "who": "SIEG",
+   "text": "Behind us. Ten knights. I can hold five. With the crutch, maybe four."
+  },
+  {
+   "id": "ep12_060",
+   "who": "KUROZANE",
+   "text": "Then I will hold the other six, Valen."
+  },
+  {
+   "id": "ep12_061",
+   "who": "SIEG",
+   "text": "Kurozane!"
+  },
+  {
+   "id": "ep12_062",
+   "who": "KUROZANE",
+   "text": "I said after. This is after. If the Saint drinks your Brand, there is nothing left for me to kill."
+  },
+  {
+   "id": "ep12_063",
+   "who": "SIEG",
+   "text": "Ha! That is the most romantic thing anyone has ever said to me."
+  },
+  {
+   "id": "ep12_064",
+   "who": "KUROZANE",
+   "text": "Do not make it strange, Valen. Fang Draw."
+  },
+  {
+   "id": "ep12_065",
+   "who": "VESPER",
+   "text": "The gate is open! Bring the wounded through! Move!"
+  },
+  {
+   "id": "ep12_066",
+   "who": "SIEG",
+   "text": "Ha! Kurozane, behind you. Not that one. The OTHER one."
+  },
+  {
+   "id": "ep12_067",
+   "who": "KUROZANE",
+   "text": "Stop helping, Valen. You are bouncing."
+  },
+  {
+   "id": "ep12_068",
+   "who": "SIEG",
+   "text": "Efficiently! Gideon says I bounce efficiently!"
+  },
+  {
+   "id": "ep12_069",
+   "who": "HARUKI",
+   "text": "Takuto. The cat. Did you ever give it a name?",
+   "tts": "Tah-koo-toh. The cat. Did you ever give it a name?"
+  },
+  {
+   "id": "ep12_070",
+   "who": "TAKUTO",
+   "text": "Coffee."
+  },
+  {
+   "id": "ep12_071",
+   "who": "HARUKI",
+   "text": "You named the cat Coffee."
+  },
+  {
+   "id": "ep12_072",
+   "who": "TAKUTO",
+   "text": "It drank coffee milk. It made sense."
+  },
+  {
+   "id": "ep12_073",
+   "who": "HARUKI",
+   "text": "Ha. I called it Mister Tuesday. Because I met it on a Tuesday."
+  },
+  {
+   "id": "ep12_074",
+   "who": "TAKUTO",
+   "text": "That is worse."
+  },
+  {
+   "id": "ep12_075",
+   "who": "HARUKI",
+   "text": "It is much worse. I am glad you never knew."
+  },
+  {
+   "id": "ep12_076",
+   "who": "HARUKI",
+   "text": "If I do not come back up these stairs..."
+  },
+  {
+   "id": "ep12_077",
+   "who": "TAKUTO",
+   "text": "You are coming back up."
+  },
+  {
+   "id": "ep12_078",
+   "who": "HARUKI",
+   "text": "If I do not, tell my mother I was trying to help people. Even when I was wrong. Especially then."
+  },
+  {
+   "id": "ep12_079",
+   "who": "TAKUTO",
+   "text": "Tell her yourself. That is the plan. Three seconds, then home for dinner."
+  },
+  {
+   "id": "ep12_080",
+   "who": "HARUKI",
+   "text": "...Three seconds. Then dinner."
+  },
+  {
+   "id": "ep12_081",
+   "who": "CROWD2",
+   "text": "Who... who is there? I cannot feel my hands."
+  },
+  {
+   "id": "ep12_082",
+   "who": "WICK",
+   "text": "It is okay! We are Hunters! Rank F! Well, rank F with a lot of experience! We are getting you out!"
+  },
+  {
+   "id": "ep12_083",
+   "who": "NEMU",
+   "text": "Arms around my neck. Hold the tail if you cannot hold me. It is a very strong tail."
+  },
+  {
+   "id": "ep12_084",
+   "who": "CROWD2",
+   "text": "Your head is on fire."
+  },
+  {
+   "id": "ep12_085",
+   "who": "CROWD2",
+   "text": "It is so warm. Thank you. Thank you."
+  },
+  {
+   "id": "ep12_086",
+   "who": "WICK",
+   "text": "Everybody says that! It is my head! It is always on fire! You are welcome!"
+  },
+  {
+   "id": "ep12_087",
+   "who": "NEMU",
+   "text": "Wick. There are sixty chairs. We have carried eleven."
+  },
+  {
+   "id": "ep12_088",
+   "who": "WICK",
+   "text": "Then we carry forty-nine more. Rank F does not stop. Rank F has nothing to lose."
+  },
+  {
+   "id": "ep12_089",
+   "who": "NEMU",
+   "text": "...You are very brave today."
+  },
+  {
+   "id": "ep12_090",
+   "who": "WICK",
+   "text": "I am terrified, Nemu. That is my brave face. Keep carrying.",
+   "tts": "I am terrified, Neh-moo. That is my brave face. Keep carrying."
+  },
+  {
+   "id": "ep12_091",
+   "who": "LUCIEN",
+   "text": "Haruki. You came home.",
+   "tts": "Hah-roo-kee. You came home."
+  },
+  {
+   "id": "ep12_092",
+   "who": "HARUKI",
+   "text": "This was never home, Lucien. It was a waiting room."
+  },
+  {
+   "id": "ep12_093",
+   "who": "LUCIEN",
+   "text": "Takuto. Look around you. Forty people, sleeping. A hundred thousand, alive. Do you know what holds the sky shut over this city?",
+   "tts": "Tah-koo-toh. Look around you. Forty people, sleeping. A hundred thousand, alive. Do you know what holds the sky shut over this city?"
+  },
+  {
+   "id": "ep12_094",
+   "who": "TAKUTO",
+   "text": "Them."
+  },
+  {
+   "id": "ep12_095",
+   "who": "LUCIEN",
+   "text": "Them. And me. For twelve years I have chosen who pays. Do you think that was easy?"
+  },
+  {
+   "id": "ep12_096",
+   "who": "TAKUTO",
+   "text": "I think you liked choosing."
+  },
+  {
+   "id": "ep12_097",
+   "who": "TAKUTO",
+   "text": "You do not get to choose who pays. Nobody does. Break the wall. Let them choose for themselves."
+  },
+  {
+   "id": "ep12_098",
+   "who": "LUCIEN",
+   "text": "And when the Rift opens? When the sky eats this city the way it ate my village?"
+  },
+  {
+   "id": "ep12_099",
+   "who": "TAKUTO",
+   "text": "Then we close it. All of us. Without anyone in a chair."
+  },
+  {
+   "id": "ep12_100",
+   "who": "SABLE",
+   "text": "Oh, I love him. Lucien, isn't he wonderful? He believes it."
+  },
+  {
+   "id": "ep12_101",
+   "who": "TAKUTO",
+   "text": "Sable. You brought me here."
+  },
+  {
+   "id": "ep12_102",
+   "who": "SABLE",
+   "text": "And you came all the way down the stairs. Like a good key. Now, be a dear. Strike the wall."
+  },
+  {
+   "id": "ep12_103",
+   "who": "RIN",
+   "text": "He wants you to break it. Why does he want you to break it?"
+  },
+  {
+   "id": "ep12_104",
+   "who": "SABLE",
+   "text": "Ask the Saint what the wall is holding shut, thread girl. Ask him what is on the other side of the oldest scar in the sky."
+  },
+  {
+   "id": "ep12_105",
+   "who": "LUCIEN",
+   "text": "...Sable. You said it was the Rift. Only the Rift."
+  },
+  {
+   "id": "ep12_106",
+   "who": "SABLE",
+   "text": "It is a Rift, Lucien. To the place I came from. I have been knocking on it for three hundred years. You have been holding the door shut. I am so grateful for your patience."
+  },
+  {
+   "id": "ep12_107",
+   "who": "AKURO",
+   "text": "There it is, boy. That is what I fought in the sky. That is what is behind the door. Do not let him through.",
+   "mono": true
+  },
+  {
+   "id": "ep12_108",
+   "who": "SABLE",
+   "text": "Then I will open it the rude way."
+  },
+  {
+   "id": "ep12_109",
+   "who": "RIN",
+   "text": "Red Thread! Hold him! Hold him still!"
+  },
+  {
+   "id": "ep12_110",
+   "who": "RIN",
+   "text": "Got you. Thin threads, but a lot of them."
+  },
+  {
+   "id": "ep12_111",
+   "who": "SABLE",
+   "text": "Clever girl. Your brother was clever too. Before."
+  },
+  {
+   "id": "ep12_112",
+   "who": "RIN",
+   "text": "...Before what?"
+  },
+  {
+   "id": "ep12_113",
+   "who": "SABLE",
+   "text": "Before he went into my Rift after a little monster I let out for him. He was very brave about it."
+  },
+  {
+   "id": "ep12_114",
+   "who": "RIN",
+   "text": "Then I will hold you twice as hard."
+  },
+  {
+   "id": "ep12_115",
+   "who": "LUCIEN",
+   "text": "Sanctum. Close."
+  },
+  {
+   "id": "ep12_116",
+   "who": "TAKUTO",
+   "text": "Break."
+  },
+  {
+   "id": "ep12_117",
+   "who": "LUCIEN",
+   "text": "Nothing breaks it. NOTHING."
+  },
+  {
+   "id": "ep12_118",
+   "who": "AKURO",
+   "text": "Boy. Let me. Just this once more. I can break it. You know I can.",
+   "mono": true
+  },
+  {
+   "id": "ep12_119",
+   "who": "TAKUTO",
+   "text": "No. This time it is me. Only me."
+  },
+  {
+   "id": "ep12_120",
+   "who": "AKURO",
+   "text": "...Then do not miss.",
+   "mono": true
+  },
+  {
+   "id": "ep12_121",
+   "who": "TAKUTO",
+   "text": "Haruki.",
+   "tts": "Hah-roo-kee."
+  },
+  {
+   "id": "ep12_122",
+   "who": "HARUKI",
+   "text": "I know. Rin, the gap. Tie it open."
+  },
+  {
+   "id": "ep12_123",
+   "who": "RIN",
+   "text": "One gap. Two seconds. Go!"
+  },
+  {
+   "id": "ep12_124",
+   "who": "LUCIEN",
+   "text": "Haruki, don't!",
+   "tts": "Hah-roo-kee, don't!"
+  },
+  {
+   "id": "ep12_125",
+   "who": "HARUKI",
+   "text": "You caught me once. Let me catch you."
+  },
+  {
+   "id": "ep12_126",
+   "who": "HARUKI",
+   "text": "Frozen Hour."
+  },
+  {
+   "id": "ep12_127",
+   "who": "HARUKI",
+   "text": "Three."
+  },
+  {
+   "id": "ep12_128",
+   "who": "HARUKI",
+   "text": "Two."
+  },
+  {
+   "id": "ep12_129",
+   "who": "HARUKI",
+   "text": "One. Takuto!",
+   "tts": "One. Tah-koo-toh!"
+  },
+  {
+   "id": "ep12_130",
+   "who": "TAKUTO",
+   "text": "RUINBREAKER!"
+  },
+  {
+   "id": "ep12_131",
+   "who": "RIN",
+   "text": "The light. It is going back. Out of the walls. Into people."
+  },
+  {
+   "id": "ep12_132",
+   "who": "HARUKI",
+   "text": "The beds. The crystal beds are cracking open."
+  },
+  {
+   "id": "ep12_133",
+   "who": "LUCIEN",
+   "text": "...It broke. Twelve years. And it broke."
+  },
+  {
+   "id": "ep12_134",
+   "who": "HARUKI",
+   "text": "It was always going to, Lucien. Everything breaks. That is why you need people, not walls."
+  },
+  {
+   "id": "ep12_135",
+   "who": "LUCIEN",
+   "text": "Haruki. When you fell. I did catch you. That part was real.",
+   "tts": "Hah-roo-kee. When you fell. I did catch you. That part was real."
+  },
+  {
+   "id": "ep12_136",
+   "who": "HARUKI",
+   "text": "I know. That is why it hurt so much."
+  },
+  {
+   "id": "ep12_137",
+   "who": "SABLE",
+   "text": "Bravo. Bravo! Oh, Ruinbreaker. You opened my door at last."
+  },
+  {
+   "id": "ep12_138",
+   "who": "SABLE",
+   "text": "The oldest scar in the sky is open. And it goes to so many places."
+  },
+  {
+   "id": "ep12_139",
+   "who": "SABLE",
+   "text": "Goodbye for now, Takuto. Give my regards to the cat.",
+   "tts": "Goodbye for now, Tah-koo-toh. Give my regards to the cat."
+  },
+  {
+   "id": "ep12_140",
+   "who": "TAKUTO",
+   "text": "SABLE!"
+  },
+  {
+   "id": "ep12_141",
+   "who": "HARUKI",
+   "text": "Takuto. Look at the crack. Look what is on the other side.",
+   "tts": "Tah-koo-toh. Look at the crack. Look what is on the other side."
+  },
+  {
+   "id": "ep12_142",
+   "who": "TAKUTO",
+   "text": "That is... that is the crossing. In Nerima. That is our crossing.",
+   "tts": "That is... that is the crossing. In Neh-ree-mah. That is our crossing."
+  },
+  {
+   "id": "ep12_143",
+   "who": "WICK",
+   "text": "We got them out. All of them. Every chair. I... what is that? Is that... is that Japan?"
+  },
+  {
+   "id": "ep12_144",
+   "who": "HARUKI",
+   "text": "It is closing. Slowly. A minute. Maybe two."
+  },
+  {
+   "id": "ep12_145",
+   "who": "WICK",
+   "text": "Osaka is down there. Somewhere. Four tables. My mom.",
+   "tts": "Oh-sah-kah is down there. Somewhere. Four tables. My mom."
+  },
+  {
+   "id": "ep12_146",
+   "who": "NEMU",
+   "text": "You should go, Wick."
+  },
+  {
+   "id": "ep12_147",
+   "who": "WICK",
+   "text": "...Three years, I wanted this. Every single night. Corn soup. Vending machines. My mom yelling at me to flip the pancakes."
+  },
+  {
+   "id": "ep12_148",
+   "who": "WICK",
+   "text": "And now it is right there. And all I can think about is that nobody here can make okonomiyaki but me."
+  },
+  {
+   "id": "ep12_149",
+   "who": "NEMU",
+   "text": "That is true. We would starve."
+  },
+  {
+   "id": "ep12_150",
+   "who": "WICK",
+   "text": "I have friends here, Nemu. That is the first time in three years I could say that. I am not leaving my first friends to go look for a pancake.",
+   "tts": "I have friends here, Neh-moo. That is the first time in three years I could say that. I am not leaving my first friends to go look for a pancake."
+  },
+  {
+   "id": "ep12_151",
+   "who": "HARUKI",
+   "text": "Takuto. You came here for me. I am here. The road home is right there.",
+   "tts": "Tah-koo-toh. You came here for me. I am here. The road home is right there."
+  },
+  {
+   "id": "ep12_152",
+   "who": "TAKUTO",
+   "text": "What about you?"
+  },
+  {
+   "id": "ep12_153",
+   "who": "HARUKI",
+   "text": "Forty people in crystal are waking up and do not know where they are. I put some of them in those beds. I am staying until they are home."
+  },
+  {
+   "id": "ep12_154",
+   "who": "TAKUTO",
+   "text": "...Then I am staying too."
+  },
+  {
+   "id": "ep12_155",
+   "who": "HARUKI",
+   "text": "Takuto. Your mother.",
+   "tts": "Tah-koo-toh. Your mother."
+  },
+  {
+   "id": "ep12_156",
+   "who": "TAKUTO",
+   "text": "My mother has your mother. They put posters on poles together. They will be fine for a little while longer."
+  },
+  {
+   "id": "ep12_157",
+   "who": "TAKUTO",
+   "text": "Sable is loose. The scar is open. And there is a cat at the crossing who needs somebody to feed it coffee milk."
+  },
+  {
+   "id": "ep12_158",
+   "who": "TAKUTO",
+   "text": "I am not going home to feed the cat while the man who brought me here walks around. I am going to find him. And break him."
+  },
+  {
+   "id": "ep12_159",
+   "who": "RIN",
+   "text": "...You are staying."
+  },
+  {
+   "id": "ep12_160",
+   "who": "TAKUTO",
+   "text": "I still have your brother's scarf on my wrist. I have to give it back with me attached."
+  },
+  {
+   "id": "ep12_161",
+   "who": "RIN",
+   "text": "Idiot."
+  },
+  {
+   "id": "ep12_162",
+   "who": "NEMU",
+   "text": "You will go back someday. When you are done breaking things here."
+  },
+  {
+   "id": "ep12_163",
+   "who": "TAKUTO",
+   "text": "Someday."
+  },
+  {
+   "id": "ep12_164",
+   "who": "WICK",
+   "text": "Takuto. If you ever get back there. Buy two corn soups from a machine. Drink one for me.",
+   "tts": "Tah-koo-toh. If you ever get back there. Buy two corn soups from a machine. Drink one for me."
+  },
+  {
+   "id": "ep12_165",
+   "who": "TAKUTO",
+   "text": "We will get back. Both of us. And I will buy three."
+  },
+  {
+   "id": "ep12_166",
+   "who": "WICK",
+   "text": "Three? Who is the third one for?"
+  },
+  {
+   "id": "ep12_167",
+   "who": "TAKUTO",
+   "text": "Coffee."
+  },
+  {
+   "id": "ep12_168",
+   "who": "WICK",
+   "text": "...The cat. You are buying corn soup for the cat. That is a terrible thing to give a cat."
+  },
+  {
+   "id": "ep12_169",
+   "who": "TAKUTO",
+   "text": "Goodbye, Nerima. Not yet.",
+   "tts": "Goodbye, Neh-ree-mah. Not yet."
+  },
+  {
+   "id": "ep12_170",
+   "who": "CROWD",
+   "text": "My mark! My mark came back!"
+  },
+  {
+   "id": "ep12_171",
+   "who": "CROWD2",
+   "text": "Mama, I am warm again. I am warm!"
+  },
+  {
+   "id": "ep12_172",
+   "who": "HARUKI",
+   "text": "Mira. Mira, it is me. Haruki.",
+   "tts": "Mira. Mira, it is me. Hah-roo-kee."
+  },
+  {
+   "id": "ep12_173",
+   "who": "CROWD2",
+   "text": "Haruki? Is this... is this Osaka?",
+   "tts": "Hah-roo-kee? Is this... is this Oh-sah-kah?"
+  },
+  {
+   "id": "ep12_174",
+   "who": "HARUKI",
+   "text": "...No. Not yet. But I am going to take you there. I promise. A real promise this time."
+  },
+  {
+   "id": "ep12_175",
+   "who": "VESPER",
+   "text": "Lucien Aurel. By the authority of the Hunters' Guild, you are under arrest. I have a letter. I wrote it myself."
+  },
+  {
+   "id": "ep12_176",
+   "who": "LUCIEN",
+   "text": "...Takuto. The scar will open again. Without a wall, the sky will come for this city.",
+   "tts": "...Tah-koo-toh. The scar will open again. Without a wall, the sky will come for this city."
+  },
+  {
+   "id": "ep12_177",
+   "who": "TAKUTO",
+   "text": "Then we will be on the wall. Standing. Not sitting in chairs."
+  },
+  {
+   "id": "ep12_178",
+   "who": "LUCIEN",
+   "text": "...I hope you are right. For their sake. I truly do."
+  },
+  {
+   "id": "ep12_179",
+   "who": "KUROZANE",
+   "text": "Valen. The Saint is broken. The suit is gone. We are both still standing."
+  },
+  {
+   "id": "ep12_180",
+   "who": "SIEG",
+   "text": "So, our duel?"
+  },
+  {
+   "id": "ep12_181",
+   "who": "KUROZANE",
+   "text": "...Another day. I find I am enjoying waiting for it."
+  },
+  {
+   "id": "ep12_182",
+   "who": "SIEG",
+   "text": "Patience is a very scary bear, Kurozane."
+  },
+  {
+   "id": "ep12_183",
+   "who": "KUROZANE",
+   "text": "What?"
+  },
+  {
+   "id": "ep12_184",
+   "who": "SIEG",
+   "text": "Ha ha ha! I will tell you the joke someday. You will hate it."
+  },
+  {
+   "id": "ep12_185",
+   "who": "CLERK",
+   "text": "Welcome back, Hunters! All nine of you! Ten, counting Tofu! Eleven, counting the hat!"
+  },
+  {
+   "id": "ep12_186",
+   "who": "GIDEON",
+   "text": "The hat is not a member."
+  },
+  {
+   "id": "ep12_187",
+   "who": "WICK",
+   "text": "The hat has been through a LOT, Gideon."
+  },
+  {
+   "id": "ep12_188",
+   "who": "VALENTINE",
+   "text": "Tofu has been begging to read Takuto again. He thinks he can finally do it.",
+   "tts": "Tofu has been begging to read Tah-koo-toh again. He thinks he can finally do it."
+  },
+  {
+   "id": "ep12_189",
+   "who": "VALENTINE",
+   "text": "Ruinbreaker. Rank..."
+  },
+  {
+   "id": "ep12_190",
+   "who": "VALENTINE",
+   "text": "Error. With a little crown. He drew the crown himself."
+  },
+  {
+   "id": "ep12_191",
+   "who": "TAKUTO",
+   "text": "Still an error."
+  },
+  {
+   "id": "ep12_192",
+   "who": "VALENTINE",
+   "text": "The best kind, darling. The kind that breaks the rules."
+  },
+  {
+   "id": "ep12_193",
+   "who": "CLERK",
+   "text": "Also, the Guild has promoted you. All of you. Rank F to rank C!"
+  },
+  {
+   "id": "ep12_194",
+   "who": "WICK",
+   "text": "RANK C! Mom! I am rank C! I skipped two ranks!"
+  },
+  {
+   "id": "ep12_195",
+   "who": "NEMU",
+   "text": "Does rank C get more bread?"
+  },
+  {
+   "id": "ep12_196",
+   "who": "CLERK",
+   "text": "Rank C gets slightly more bread."
+  },
+  {
+   "id": "ep12_197",
+   "who": "NEMU",
+   "text": "Then it is worth it."
+  },
+  {
+   "id": "ep12_198",
+   "who": "SIEG",
+   "text": "One. Two. Three. Four. Five. Six. Seven. Eight. Nine. Ten."
+  },
+  {
+   "id": "ep12_199",
+   "who": "TAKUTO",
+   "text": "You are counting."
+  },
+  {
+   "id": "ep12_200",
+   "who": "SIEG",
+   "text": "Ten. Everyone is here. And I am going to count it every night, out loud, until you are all sick of it."
+  },
+  {
+   "id": "ep12_201",
+   "who": "RIN",
+   "text": "Takuto. The scarf.",
+   "tts": "Tah-koo-toh. The scarf."
+  },
+  {
+   "id": "ep12_202",
+   "who": "TAKUTO",
+   "text": "With me attached. Like I said."
+  },
+  {
+   "id": "ep12_203",
+   "who": "RIN",
+   "text": "...Keep it."
+  },
+  {
+   "id": "ep12_204",
+   "who": "TAKUTO",
+   "text": "You said it stays the way he wore it."
+  },
+  {
+   "id": "ep12_205",
+   "who": "RIN",
+   "text": "He would have liked it on you. Do not make a thing of it."
+  },
+  {
+   "id": "ep12_206",
+   "who": "VESPER",
+   "text": "Error. A word."
+  },
+  {
+   "id": "ep12_207",
+   "who": "TAKUTO",
+   "text": "Vesper."
+  },
+  {
+   "id": "ep12_208",
+   "who": "VESPER",
+   "text": "The Guild asked me for a report on you. I wrote one page. It is very boring. Nothing about it is red."
+  },
+  {
+   "id": "ep12_209",
+   "who": "TAKUTO",
+   "text": "Thank you."
+  },
+  {
+   "id": "ep12_210",
+   "who": "VESPER",
+   "text": "Keep it boring. I would like to read more boring reports about you for a very long time."
+  },
+  {
+   "id": "ep12_211",
+   "who": "AKURO",
+   "text": "You know, boy. Three hundred years in an axe, and these are the loudest people I have ever met.",
+   "mono": true
+  },
+  {
+   "id": "ep12_212",
+   "who": "TAKUTO",
+   "text": "You like them."
+  },
+  {
+   "id": "ep12_213",
+   "who": "AKURO",
+   "text": "...Ask me again in another three hundred years.",
+   "mono": true
+  },
+  {
+   "id": "ep12_214",
+   "who": "TAKUTO",
+   "text": "Ashford rebuilt the forge. Gideon made the new door fight the old one, just to see who would win."
+  },
+  {
+   "id": "ep12_215",
+   "who": "TAKUTO",
+   "text": "In Marrowmere, the little girl who saw the sad head got a job at the Guild. She is the youngest cousin."
+  },
+  {
+   "id": "ep12_216",
+   "who": "TAKUTO",
+   "text": "Fort Cinder put thirty-one names on a stone. Giant names. Commander Hale made them up himself."
+  },
+  {
+   "id": "ep12_217",
+   "who": "TAKUTO",
+   "text": "The Plume Ogres sent a feather to every village in the Greatwood. Nobody has been raided since."
+  },
+  {
+   "id": "ep12_218",
+   "who": "TAKUTO",
+   "text": "There are forty graves at the pass shrine. Kurozane cleans them every morning. He says it is for practice."
+  },
+  {
+   "id": "ep12_219",
+   "who": "TAKUTO",
+   "text": "And in Saint Lumen, forty people who slept in crystal are learning how to buy bread. Haruki is teaching them.",
+   "tts": "And in Saint Lumen, forty people who slept in crystal are learning how to buy bread. Hah-roo-kee is teaching them."
+  },
+  {
+   "id": "ep12_220",
+   "who": "NEMU",
+   "text": "This is where I first died in front of you."
+  },
+  {
+   "id": "ep12_221",
+   "who": "TAKUTO",
+   "text": "You say it like it is a nice memory."
+  },
+  {
+   "id": "ep12_222",
+   "who": "NEMU",
+   "text": "It is. It is where I met you. The dying part was only a little bit of it."
+  },
+  {
+   "id": "ep12_223",
+   "who": "NEMU",
+   "text": "Do you remember what the axe asked you? Here. That night."
+  },
+  {
+   "id": "ep12_224",
+   "who": "TAKUTO",
+   "text": "What is it you want to break."
+  },
+  {
+   "id": "ep12_225",
+   "who": "NEMU",
+   "text": "And? What do you want to break? Now?"
+  },
+  {
+   "id": "ep12_226",
+   "who": "TAKUTO",
+   "text": "...Sable. Someday. The scar in the sky. The idea that somebody has to sit in a chair so everybody else can be safe."
+  },
+  {
+   "id": "ep12_227",
+   "who": "TAKUTO",
+   "text": "But today? Nothing. Not today."
+  },
+  {
+   "id": "ep12_228",
+   "who": "NEMU",
+   "text": "Good. Today is for sleeping."
+  },
+  {
+   "id": "ep12_229",
+   "who": "SABLE",
+   "text": "Hello, kitty. Waiting for someone?"
+  },
+  {
+   "id": "ep12_230",
+   "who": "SABLE",
+   "text": "He is not coming tonight. But I am sure he will. Everyone always comes."
+  }
+ ]
+}
