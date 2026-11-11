@@ -882,583 +882,690 @@
   },
   {
    "id": "ep11_126",
+   "who": "CROWD2",
+   "text": "Mister Sieg, is the big ice man coming in here?",
+   "tts": "Mister Seeg, is the big ice man coming in here?"
+  },
+  {
+   "id": "ep11_127",
+   "who": "CROWD",
+   "text": "Hush. Let him listen."
+  },
+  {
+   "id": "ep11_128",
+   "who": "SIEG",
+   "text": "Nobody is coming through this door. Not the ice man. Not anybody. I promised a very scary lady."
+  },
+  {
+   "id": "ep11_129",
+   "who": "CROWD2",
+   "text": "How many of us are there?"
+  },
+  {
+   "id": "ep11_130",
+   "who": "SIEG",
+   "text": "Let me count. One, two, three... twenty-two. Twenty-two of you. Good. I will remember every one."
+  },
+  {
+   "id": "ep11_131",
+   "who": "CROWD2",
+   "text": "Why do you count?"
+  },
+  {
+   "id": "ep11_132",
+   "who": "SIEG",
+   "text": "Because it is a thing I do. And because tomorrow morning, I am going to count you again, and get the same number."
+  },
+  {
+   "id": "ep11_133",
    "who": "AKURO",
    "text": "Finally. You knocked. Do you know how long I have waited for you to knock?",
    "mono": true
   },
   {
-   "id": "ep11_127",
+   "id": "ep11_134",
    "who": "TAKUTO",
    "text": "Ten minutes. Kill the Titan. Save the city. Then you give me back."
   },
   {
-   "id": "ep11_128",
+   "id": "ep11_135",
    "who": "AKURO",
    "text": "Ten minutes. And if I want eleven?",
    "mono": true
   },
   {
-   "id": "ep11_129",
+   "id": "ep11_136",
    "who": "TAKUTO",
    "text": "Then my friends will come and get me."
   },
   {
-   "id": "ep11_130",
+   "id": "ep11_137",
    "who": "AKURO",
    "text": "Ha! Your friends. The cat. The thread. The fire. The boy who stops time. They will try.",
    "mono": true
   },
   {
-   "id": "ep11_131",
+   "id": "ep11_138",
    "who": "TAKUTO",
    "text": "They always try."
   },
   {
-   "id": "ep11_132",
+   "id": "ep11_139",
    "who": "AKURO",
    "text": "...Deal, boy. Open the door. All the way.",
    "mono": true
   },
   {
-   "id": "ep11_133",
+   "id": "ep11_140",
    "who": "AKURO",
    "text": "Three hundred years.",
    "mono": true
   },
   {
-   "id": "ep11_134",
+   "id": "ep11_141",
    "who": "AKURO",
    "text": "Three hundred years in a headsman's axe, in a graveyard nobody visits.",
    "mono": true
   },
   {
-   "id": "ep11_135",
+   "id": "ep11_142",
    "who": "AKURO",
    "text": "Hello, world.",
    "mono": true
   },
   {
-   "id": "ep11_136",
+   "id": "ep11_143",
    "who": "RIN",
    "text": "His hair. His eyes. Takuto?",
    "tts": "His hair. His eyes. Tah-koo-toh?"
   },
   {
-   "id": "ep11_137",
+   "id": "ep11_144",
    "who": "AKURO",
    "text": "Not at home, thread girl. Leave a message.",
    "mono": true
   },
   {
-   "id": "ep11_138",
+   "id": "ep11_145",
    "who": "AKURO",
    "text": "Tyr! Old friend! Do you remember me?",
    "mono": true
   },
   {
-   "id": "ep11_139",
+   "id": "ep11_146",
    "who": "AKURO",
    "text": "I remember YOU. You were always slow.",
    "mono": true
   },
   {
-   "id": "ep11_140",
+   "id": "ep11_147",
    "who": "AKURO",
    "text": "Rune axe. Breaks wards. Cute. I break rune axes.",
    "mono": true
   },
   {
-   "id": "ep11_141",
+   "id": "ep11_148",
    "who": "WICK",
    "text": "He broke its axe. He broke the axe that breaks things."
   },
   {
-   "id": "ep11_142",
+   "id": "ep11_149",
    "who": "AKURO",
    "text": "Ruinbreaker! Ha ha ha ha!",
    "mono": true
   },
   {
-   "id": "ep11_143",
+   "id": "ep11_150",
    "who": "HARUKI",
    "text": "It is gone. Tyr is gone. Takuto, you did it. Takuto?",
    "tts": "It is gone. Tyr is gone. Tah-koo-toh, you did it. Tah-koo-toh?"
   },
   {
-   "id": "ep11_144",
+   "id": "ep11_151",
    "who": "AKURO",
    "text": "Now. The Saint.",
    "mono": true
   },
   {
-   "id": "ep11_145",
+   "id": "ep11_152",
    "who": "AKURO",
    "text": "I have nine minutes left. I would like to spend them on gold.",
    "mono": true
   },
   {
-   "id": "ep11_146",
+   "id": "ep11_153",
    "who": "SIEG",
    "text": "Takuto. I can see you in there. Count with me. One. Two.",
    "tts": "Tah-koo-toh. I can see you in there. Count with me. One. Two."
   },
   {
-   "id": "ep11_147",
+   "id": "ep11_154",
    "who": "AKURO",
    "text": "The Laughing Blade, on a frog crutch. Oh, this is the best day of my life.",
    "mono": true
   },
   {
-   "id": "ep11_148",
+   "id": "ep11_155",
    "who": "SIEG",
    "text": "Three. Four. You are not him, Takuto. You never were.",
    "tts": "Three. Four. You are not him, Tah-koo-toh. You never were."
   },
   {
-   "id": "ep11_149",
+   "id": "ep11_156",
    "who": "AKURO",
    "text": "He is busy, old man. He cannot hear you over all the gold.",
    "mono": true
   },
   {
-   "id": "ep11_150",
+   "id": "ep11_157",
    "who": "VESPER",
    "text": "...There it is."
   },
   {
-   "id": "ep11_151",
+   "id": "ep11_158",
    "who": "LUCIEN",
    "text": "Vesper of the Guild. By the authority of the Saint. Execute the Calamity."
   },
   {
-   "id": "ep11_152",
+   "id": "ep11_159",
    "who": "LUCIEN",
    "text": "Now."
   },
   {
-   "id": "ep11_153",
+   "id": "ep11_160",
    "who": "VESPER",
    "text": "I always come, error. I told you."
   },
   {
-   "id": "ep11_154",
+   "id": "ep11_161",
    "who": "RIN",
    "text": "Vesper, no! He is still in there!"
   },
   {
-   "id": "ep11_155",
+   "id": "ep11_162",
    "who": "VESPER",
    "text": "White Gale. Final Verse."
   },
   {
-   "id": "ep11_156",
+   "id": "ep11_163",
    "who": "AKURO",
    "text": "Oh, you are lovely. Again. Do it again.",
    "mono": true
   },
   {
-   "id": "ep11_157",
+   "id": "ep11_164",
    "who": "HARUKI",
    "text": "Frozen Hour! Takuto, come back!",
    "tts": "Frozen Hour! Tah-koo-toh, come back!"
   },
   {
-   "id": "ep11_158",
+   "id": "ep11_165",
    "who": "AKURO",
    "text": "One second. That is all your friendship buys, little clock.",
    "mono": true
   },
   {
-   "id": "ep11_159",
+   "id": "ep11_166",
    "who": "RIN",
    "text": "Red Thread! Wrist to wrist!"
   },
   {
-   "id": "ep11_160",
+   "id": "ep11_167",
    "who": "RIN",
    "text": "It burned. It burned the thread."
   },
   {
-   "id": "ep11_161",
+   "id": "ep11_168",
    "who": "RIN",
    "text": "Takuto. I cannot hold you.",
    "tts": "Tah-koo-toh. I cannot hold you."
   },
   {
-   "id": "ep11_162",
+   "id": "ep11_169",
    "who": "NEMU",
    "text": "Takuto.",
    "tts": "Tah-koo-toh."
   },
   {
-   "id": "ep11_163",
+   "id": "ep11_170",
    "who": "NEMU",
    "text": "It is me. I am shouting. Can you hear me?"
   },
   {
-   "id": "ep11_164",
+   "id": "ep11_171",
    "who": "AKURO",
    "text": "The cat. Move, cat. I have an appointment with a Saint.",
    "mono": true
   },
   {
-   "id": "ep11_165",
+   "id": "ep11_172",
    "who": "NEMU",
    "text": "No. You can go through me. That is all right. I know how. I have done it seven times."
   },
   {
-   "id": "ep11_166",
+   "id": "ep11_173",
    "who": "NEMU",
    "text": "Takuto. If you are in there. Watch.",
    "tts": "Tah-koo-toh. If you are in there. Watch."
   },
   {
-   "id": "ep11_167",
+   "id": "ep11_174",
    "who": "AKURO",
    "text": "...Ha.",
    "mono": true
   },
   {
-   "id": "ep11_168",
+   "id": "ep11_175",
    "who": "TAKUTO",
    "text": "NEMU!"
   },
   {
-   "id": "ep11_169",
+   "id": "ep11_176",
    "who": "TAKUTO",
    "text": "Get out. GET OUT. Give me back."
   },
   {
-   "id": "ep11_170",
+   "id": "ep11_177",
    "who": "AKURO",
    "text": "...Fine. Fine, boy. Six minutes early. You have terrible manners.",
    "mono": true
   },
   {
-   "id": "ep11_171",
+   "id": "ep11_178",
    "who": "TAKUTO",
    "text": "Nemu. Nemu. Wake up. You always wake up.",
    "tts": "Neh-moo. Neh-moo. Wake up. You always wake up."
   },
   {
-   "id": "ep11_172",
+   "id": "ep11_179",
    "who": "WICK",
    "text": "How long does it take? Rin, how long does it take?"
   },
   {
-   "id": "ep11_173",
+   "id": "ep11_180",
    "who": "RIN",
    "text": "I do not know. I have never seen it."
   },
   {
-   "id": "ep11_174",
+   "id": "ep11_181",
    "who": "TAKUTO",
    "text": "Ten seconds. She said ten seconds, then the blanket. Then she wakes up hungry."
   },
   {
-   "id": "ep11_175",
+   "id": "ep11_182",
    "who": "TAKUTO",
    "text": "...Eleven. Twelve."
   },
   {
-   "id": "ep11_176",
+   "id": "ep11_183",
    "who": "HARUKI",
    "text": "Takuto...",
    "tts": "Tah-koo-toh..."
   },
   {
-   "id": "ep11_177",
+   "id": "ep11_184",
    "who": "TAKUTO",
    "text": "Thirteen. Fourteen. Fifteen."
   },
   {
-   "id": "ep11_178",
+   "id": "ep11_185",
    "who": "NEMU",
    "text": "..."
   },
   {
-   "id": "ep11_179",
+   "id": "ep11_186",
    "who": "NEMU",
    "text": "Takuto. I am so hungry.",
    "tts": "Tah-koo-toh. I am so hungry."
   },
   {
-   "id": "ep11_180",
+   "id": "ep11_187",
    "who": "TAKUTO",
    "text": "...You idiot. You stupid, lazy, idiot cat."
   },
   {
-   "id": "ep11_181",
+   "id": "ep11_188",
    "who": "NEMU",
    "text": "You heard me."
   },
   {
-   "id": "ep11_182",
+   "id": "ep11_189",
    "who": "TAKUTO",
    "text": "I heard you."
   },
   {
-   "id": "ep11_183",
+   "id": "ep11_190",
    "who": "NEMU",
    "text": "Then it was worth it. One left. I will be very careful with the last one. Promise."
   },
   {
-   "id": "ep11_184",
+   "id": "ep11_191",
    "who": "WICK",
    "text": "She is alive! She is ALIVE! Somebody get her food! All the food!"
   },
   {
-   "id": "ep11_185",
+   "id": "ep11_192",
    "who": "RIN",
    "text": "...Don't ever do that again, Nemu. Ever.",
    "tts": "...Don't ever do that again, Neh-moo. Ever."
   },
   {
-   "id": "ep11_186",
+   "id": "ep11_193",
    "who": "NEMU",
    "text": "I only have one more. So, probably only once more."
   },
   {
-   "id": "ep11_187",
+   "id": "ep11_194",
    "who": "GIDEON",
    "text": "The cat! Is the cat all right? Somebody tell me the cat is all right!"
   },
   {
-   "id": "ep11_188",
+   "id": "ep11_195",
    "who": "NEMU",
    "text": "I am all right. I am hungry. Do you have food in your hat?"
   },
   {
-   "id": "ep11_189",
+   "id": "ep11_196",
    "who": "GIDEON",
    "text": "...I have a sandwich in my hat. Emergency sandwich. Take it."
   },
   {
-   "id": "ep11_190",
+   "id": "ep11_197",
    "who": "VALENTINE",
    "text": "Tofu, read her. Gently."
   },
   {
-   "id": "ep11_191",
+   "id": "ep11_198",
    "who": "VALENTINE",
    "text": "Nine Lives. Lives remaining, one of nine. Oh, darling."
   },
   {
-   "id": "ep11_192",
+   "id": "ep11_199",
    "who": "NEMU",
    "text": "One is enough. Most people only get one."
   },
   {
-   "id": "ep11_193",
+   "id": "ep11_200",
    "who": "VESPER",
    "text": "...The order says execute the Calamity."
   },
   {
-   "id": "ep11_194",
+   "id": "ep11_201",
    "who": "RIN",
    "text": "Vesper."
   },
   {
-   "id": "ep11_195",
+   "id": "ep11_202",
    "who": "VESPER",
    "text": "I am looking at the boy in the snow, holding a cat. I do not see a Calamity."
   },
   {
-   "id": "ep11_196",
+   "id": "ep11_203",
    "who": "VESPER",
    "text": "Tell the Saint the wind took his letter."
   },
   {
-   "id": "ep11_197",
+   "id": "ep11_204",
    "who": "VESPER",
    "text": "One more time, error, and I will not be able to tear it. Do not make me write the next one."
   },
   {
-   "id": "ep11_198",
+   "id": "ep11_205",
    "who": "TAKUTO",
    "text": "I will not."
   },
   {
-   "id": "ep11_199",
+   "id": "ep11_206",
    "who": "VESPER",
    "text": "You said it. You finally said it. Damn you."
   },
   {
-   "id": "ep11_200",
+   "id": "ep11_207",
+   "who": "LUCIEN",
+   "text": "People of Lumen. The Titan is dead. But the wall is broken across half the sky."
+  },
+  {
+   "id": "ep11_208",
+   "who": "LUCIEN",
+   "text": "Stay in your homes. Stay close to the light. Your Saint will mend it."
+  },
+  {
+   "id": "ep11_209",
+   "who": "CROWD",
+   "text": "Who killed the Titan? Was it the Order?"
+  },
+  {
+   "id": "ep11_210",
+   "who": "CROWD2",
+   "text": "It was a red thing. A red demon. I saw it from the roof."
+  },
+  {
+   "id": "ep11_211",
    "who": "TAKUTO",
    "text": "That is your sixth bowl."
   },
   {
-   "id": "ep11_201",
+   "id": "ep11_212",
    "who": "NEMU",
    "text": "Dying is very hungry work. The eighth time is the hungriest. Ask anyone."
   },
   {
-   "id": "ep11_202",
+   "id": "ep11_213",
    "who": "TAKUTO",
    "text": "...What did it feel like? This time."
   },
   {
-   "id": "ep11_203",
+   "id": "ep11_214",
    "who": "NEMU",
    "text": "Not cold. That was the strange part. Every other time was cold first."
   },
   {
-   "id": "ep11_204",
+   "id": "ep11_215",
    "who": "NEMU",
    "text": "This time you were holding me. Even before you came back. Some part of you was already holding me."
   },
   {
-   "id": "ep11_205",
+   "id": "ep11_216",
    "who": "TAKUTO",
    "text": "I hit you, Nemu.",
    "tts": "I hit you, Neh-moo."
   },
   {
-   "id": "ep11_206",
+   "id": "ep11_217",
    "who": "NEMU",
    "text": "Akuro hit me. You caught me. I know the difference. I have a lot of experience.",
    "tts": "Ah-koo-roh hit me. You caught me. I know the difference. I have a lot of experience."
   },
   {
-   "id": "ep11_207",
+   "id": "ep11_218",
    "who": "TAKUTO",
    "text": "One left."
   },
   {
-   "id": "ep11_208",
+   "id": "ep11_219",
    "who": "NEMU",
    "text": "One left. So now I am like everybody else. It is a little bit exciting."
   },
   {
-   "id": "ep11_209",
+   "id": "ep11_220",
    "who": "TAKUTO",
    "text": "...Do not use it. Please. Not for me."
   },
   {
-   "id": "ep11_210",
+   "id": "ep11_221",
    "who": "NEMU",
    "text": "I will try very hard. Pass me the seventh bowl."
   },
   {
-   "id": "ep11_211",
+   "id": "ep11_222",
    "who": "LUCIEN",
    "text": "Knights of the Order. Ring the city. Every gate, every bridge. Nobody leaves Saint Lumen."
   },
   {
-   "id": "ep11_212",
+   "id": "ep11_223",
    "who": "HUNTER",
    "text": "Saint? The people will ask why."
   },
   {
-   "id": "ep11_213",
+   "id": "ep11_224",
    "who": "LUCIEN",
    "text": "Tell them the wall is broken, and their Saint is going to mend it. Tell them to stay close to the light."
   },
   {
-   "id": "ep11_214",
+   "id": "ep11_225",
    "who": "HUNTER",
    "text": "Yes, Saint."
   },
   {
-   "id": "ep11_215",
+   "id": "ep11_226",
+   "who": "RIN",
+   "text": "You told me. Before you did it. You said, it is talking. Then you said, not this time."
+  },
+  {
+   "id": "ep11_227",
+   "who": "TAKUTO",
+   "text": "I made a deal with it. Ten minutes."
+  },
+  {
+   "id": "ep11_228",
+   "who": "RIN",
+   "text": "And it kept four of them for itself."
+  },
+  {
+   "id": "ep11_229",
+   "who": "TAKUTO",
+   "text": "I know."
+  },
+  {
+   "id": "ep11_230",
+   "who": "RIN",
+   "text": "My thread burned, Takuto. My brother's thread. It has never burned. Not even in the Rift where he died.",
+   "tts": "My thread burned, Tah-koo-toh. My brother's thread. It has never burned. Not even in the Rift where he died."
+  },
+  {
+   "id": "ep11_231",
+   "who": "TAKUTO",
+   "text": "...Then I need to be stronger than a thread."
+  },
+  {
+   "id": "ep11_232",
+   "who": "RIN",
+   "text": "No. You need to stop making deals with something that lies."
+  },
+  {
+   "id": "ep11_233",
+   "who": "TAKUTO",
+   "text": "You are right."
+  },
+  {
+   "id": "ep11_234",
+   "who": "RIN",
+   "text": "Say it again. I want to remember it."
+  },
+  {
+   "id": "ep11_235",
+   "who": "TAKUTO",
+   "text": "You are right, Rin."
+  },
+  {
+   "id": "ep11_236",
    "who": "TAKUTO",
    "text": "I let it out. I promised myself I never would, and I let it out."
   },
   {
-   "id": "ep11_216",
+   "id": "ep11_237",
    "who": "HARUKI",
    "text": "You saved the city. And then you came back. Both of those are true."
   },
   {
-   "id": "ep11_217",
+   "id": "ep11_238",
    "who": "RIN",
    "text": "And next time I will have a thicker thread."
   },
   {
-   "id": "ep11_218",
+   "id": "ep11_239",
    "who": "TAKUTO",
    "text": "There cannot be a next time."
   },
   {
-   "id": "ep11_219",
+   "id": "ep11_240",
    "who": "HARUKI",
    "text": "There will be. Tomorrow. Lucien's Sanctum is cracked across half the sky. Tyr did what Sable sent it to do."
   },
   {
-   "id": "ep11_220",
+   "id": "ep11_241",
    "who": "HARUKI",
    "text": "To mend it, he needs Brands. Not forty. Every Brand in the city. He will raise the Great Sanctum over all of Lumen and harvest them at once."
   },
   {
-   "id": "ep11_221",
+   "id": "ep11_242",
    "who": "RIN",
    "text": "Every Hunter. Every child with a mark. Us."
   },
   {
-   "id": "ep11_222",
+   "id": "ep11_243",
    "who": "HARUKI",
    "text": "And the Rift under the city stays shut for a thousand years. That is the trade he will make. I know him. He will make it."
   },
   {
-   "id": "ep11_223",
+   "id": "ep11_244",
    "who": "TAKUTO",
    "text": "Then we break it."
   },
   {
-   "id": "ep11_224",
+   "id": "ep11_245",
    "who": "HARUKI",
    "text": "Nothing has ever broken a Sanctum, Takuto.",
    "tts": "Nothing has ever broken a Sanctum, Tah-koo-toh."
   },
   {
-   "id": "ep11_225",
+   "id": "ep11_246",
    "who": "TAKUTO",
    "text": "I cracked one."
   },
   {
-   "id": "ep11_226",
+   "id": "ep11_247",
    "who": "HARUKI",
    "text": "...You did."
   },
   {
-   "id": "ep11_227",
+   "id": "ep11_248",
    "who": "LUCIEN",
    "text": "The wall is broken across half the sky. I need every Brand in the city to mend it."
   },
   {
-   "id": "ep11_228",
+   "id": "ep11_249",
    "who": "SABLE",
    "text": "The Great Sanctum. Over everything. It will drink them all, you know. Hunters, children, your little clock."
   },
   {
-   "id": "ep11_229",
+   "id": "ep11_250",
    "who": "LUCIEN",
    "text": "Then they will be safe. Forever. In the light."
   },
   {
-   "id": "ep11_230",
+   "id": "ep11_251",
    "who": "SABLE",
    "text": "Oh, Lucien. That is the most beautiful lie you have ever told. I am so proud of you."
   },
   {
-   "id": "ep11_231",
+   "id": "ep11_252",
    "who": "TAKUTO",
    "text": "Next time: the Great Sanctum rises over the whole city."
   },
   {
-   "id": "ep11_232",
+   "id": "ep11_253",
    "who": "TAKUTO",
    "text": "Haruki gives me three seconds. That is all I need.",
    "tts": "Hah-roo-kee gives me three seconds. That is all I need."
   },
   {
-   "id": "ep11_233",
+   "id": "ep11_254",
    "who": "TAKUTO",
    "text": "And a Rift to Earth flickers open in front of me."
   },
   {
-   "id": "ep11_234",
+   "id": "ep11_255",
    "who": "TAKUTO",
    "text": "Final episode. Ruinbreaker."
   }

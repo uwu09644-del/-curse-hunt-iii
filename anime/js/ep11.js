@@ -176,6 +176,16 @@ const EP11_SCRIPT = (() => {
         ['RIN', 'Then tell it no.', { to: 'takuto', emote: 'angry' }],
         ['TAK', 'Not this time.', { to: 'rin' }],
       ] },
+    { env: 'lumen', envOpts: W('interior', 'lumen_library', 'lumen_hall', 'lumen_library', 'lumen_hall'), mood: 'interior', music: 'tension', side: 1, wideDir: [0.5, 1],
+      cast: { sieg: [0.3, 0.4, PI] },
+      beats: [
+        ['plate', 'lumen_library', 6, { card: ['THE INFIRMARY DOOR', 'Meanwhile'], zoom: 1.1, fx: snow }, [[1.0, 'CRF', 'Mister Sieg, is the big ice man coming in here?'], [4.0, 'CRW', 'Hush. Let him listen.']]],
+        ['SIE', 'Nobody is coming through this door. Not the ice man. Not anybody. I promised a very scary lady.', { on: 'sieg', shot: 'mcu', emote: 'happy' }],
+        ['plate', 'lumen_library', 5, { zoom: 1.16 }, [[0.4, 'CRF', 'How many of us are there?']]],
+        ['SIE', 'Let me count. One, two, three... twenty-two. Twenty-two of you. Good. I will remember every one.', { on: 'sieg', shot: 'cu', emote: 'happy' }],
+        ['plate', 'lumen_library', 5, { zoom: 1.2 }, [[0.4, 'CRF', 'Why do you count?']]],
+        ['SIE', 'Because it is a thing I do. And because tomorrow morning, I am going to count you again, and get the same number.', { on: 'sieg', shot: 'cu' }],
+      ] },
   ];
 
   const partB = [
@@ -249,6 +259,10 @@ const EP11_SCRIPT = (() => {
         ['TAK', 'I will not.', { to: 'vesper' }],
         ['VES', 'You said it. You finally said it. Damn you.', { to: 'takuto', emote: 'sad' }],
       ] },
+    { env: 'lumen', envOpts: W('ice', 'lumen_frozen', 'lumen_ruins', 'lumen_frozen', 'lumen_ruins'), mood: 'night', music: 'mystery', cast: {}, beats: [
+        ['plate', 'lumen_frozen', 6.5, { card: ['SAINT LUMEN', 'The cathedral steps'], zoom: 1.1, fx: snow }, [[1.0, 'LUC', 'People of Lumen. The Titan is dead. But the wall is broken across half the sky.'], [4.6, 'LUC', 'Stay in your homes. Stay close to the light. Your Saint will mend it.']]],
+        ['plate', 'lumen_ruins', 6, { zoom: 1.16, fx: snow }, [[0.6, 'CRW', 'Who killed the Titan? Was it the Order?'], [3.4, 'CRF', 'It was a red thing. A red demon. I saw it from the roof.']]],
+      ] },
     { env: 'lumen', envOpts: W('interior', 'lumen_library', 'lumen_hall', 'lumen_library', 'lumen_hall'), mood: 'interior', music: 'emotional', side: -1, wideDir: [0.5, 1],
       cast: { nemu: [-0.5, 0.2, 0.3, { pose: sit }], takuto: [0.5, 0.3, -0.3, { pose: sit }] },
       beats: [
@@ -268,6 +282,20 @@ const EP11_SCRIPT = (() => {
     { env: 'lumen', envOpts: W('gold', 'sanctum', 'lumen_dome', 'sanctum', 'lumen_dome'), mood: 'interior', music: 'mystery', cast: {}, beats: [
         ['plate', 'lumen_dome', 6, { card: ['THE CATHEDRAL', 'Before dawn'], zoom: 1.1 }, [[0.8, 'LUC', 'Knights of the Order. Ring the city. Every gate, every bridge. Nobody leaves Saint Lumen.'], [4.4, 'HUN', 'Saint? The people will ask why.']]],
         ['plate', 'sanctum', 6, { zoom: 1.16 }, [[0.4, 'LUC', 'Tell them the wall is broken, and their Saint is going to mend it. Tell them to stay close to the light.'], [4.0, 'HUN', 'Yes, Saint.']]],
+      ] },
+    { env: 'lumen', envOpts: RUINS, mood: 'night', music: 'emotional', side: -1, wideDir: [0.5, 1],
+      cast: { rin: [-0.5, 0.2, 0.3, { weapon: false }], takuto: [0.5, 0.3, -0.3] },
+      beats: [
+        ['RIN', 'You told me. Before you did it. You said, it is talking. Then you said, not this time.', { to: 'takuto' }],
+        ['TAK', 'I made a deal with it. Ten minutes.', { to: 'rin' }],
+        ['RIN', 'And it kept four of them for itself.', { to: 'takuto', emote: 'angry' }],
+        ['TAK', 'I know.', { to: 'rin', emote: 'sad' }],
+        ['RIN', 'My thread burned, Takuto. My brother\'s thread. It has never burned. Not even in the Rift where he died.', { to: 'takuto', emote: 'sad' }],
+        ['TAK', '...Then I need to be stronger than a thread.', { to: 'rin' }],
+        ['RIN', 'No. You need to stop making deals with something that lies.', { to: 'takuto', emote: 'angry' }],
+        ['TAK', 'You are right.', { to: 'rin' }],
+        ['RIN', 'Say it again. I want to remember it.', { to: 'takuto', emote: 'smug' }],
+        ['TAK', 'You are right, Rin.', { to: 'rin', emote: 'happy' }],
       ] },
     { env: 'lumen', envOpts: RUINS, mood: 'night', music: 'night', side: 1, wideDir: [0.4, 1],
       cast: { takuto: [0.6, 0.2, -0.3, { pose: sit }], haruki: [-0.6, 0.3, 0.3, { pose: sit }], rin: [1.6, 0.8, -0.6] },
@@ -305,6 +333,6 @@ const EP11_SCRIPT = (() => {
     ['custom', 'nextTitle', 6, [[0.5, 'TAK', 'Final episode. Ruinbreaker.']]],
   ] }];
 
-  return { id: 'ep11', number: 11, pace: 0.5, title: { jpNo: '第十一話', jp: '厄災', en: 'CALAMITY' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
+  return { id: 'ep11', number: 11, pace: 0.75, title: { jpNo: '第十一話', jp: '厄災', en: 'CALAMITY' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
 })();
 if (typeof module !== 'undefined') module.exports = EP11_SCRIPT;
