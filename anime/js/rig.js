@@ -20,7 +20,13 @@ const RIG = (() => {
     uniform vec4 uMul; uniform vec4 uScr; uniform vec4 uSil; uniform float uAlpha; uniform vec3 uGlowCol;
     uniform vec4 uDuoA; uniform vec4 uDuoB;
     uniform vec4 uEye0; uniform vec4 uEye1; uniform float uBlink; uniform vec3 uSkin; uniform vec3 uLash;
-    uniform vec4 uMouth; uniform float uOpen; uniform vec3 uMouthCol;
+    uniform vec4 uMouth; uniform float uOpen; uniform vec3 uMouthCol; uniform vec2 uLook;
+    vec2 gaze(vec2 uv, vec4 box){
+      if (box.z <= box.x) return uv;
+      vec2 sz = box.zw - box.xy, l = (uv - box.xy) / sz, d = l - 0.5;
+      float q = length(d * vec2(1.0, 1.25)) * 2.0, m = smoothstep(0.95, 0.15, q);
+      return uv - uLook * m * sz * vec2(0.15, 0.1);
+    }
     vec3 lid(vec3 rgb, vec2 uv, vec4 box){
       if (box.z <= box.x) return rgb;
       vec2 l = (uv - box.xy) / (box.zw - box.xy);
@@ -39,7 +45,8 @@ const RIG = (() => {
         float ga = g * uAlpha; gl_FragColor = vec4(uGlowCol * ga, ga); return;
       }
       if (vUV.x < 0.0 || vUV.y < 0.0 || vUV.x > 1.0 || vUV.y > 1.0) { gl_FragColor = vec4(0.0); return; }
-      vec4 c = texture2D(uTex, vUV);
+      vec2 suv = vUV; if (dot(uLook, uLook) > 0.0) { suv = gaze(suv, uEye0); suv = gaze(suv, uEye1); }
+      vec4 c = texture2D(uTex, suv);
       float a = c.a; if (a < 0.002) { gl_FragColor = vec4(0.0); return; }
       vec3 rgb = c.rgb / a;
       if (uBlink > 0.0) { rgb = lid(rgb, vUV, uEye0); rgb = lid(rgb, vUV, uEye1); }
@@ -66,7 +73,7 @@ const RIG = (() => {
       prog = gl.createProgram(); gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS)); gl.linkProgram(prog);
       if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
       gl.useProgram(prog);
-      ['uRes', 'uTex', 'uGlow', 'uMode', 'uMul', 'uScr', 'uSil', 'uAlpha', 'uGlowCol', 'uDuoA', 'uDuoB', 'uEye0', 'uEye1', 'uBlink', 'uSkin', 'uLash', 'uMouth', 'uOpen', 'uMouthCol'].forEach(n => U[n] = gl.getUniformLocation(prog, n));
+      ['uRes', 'uTex', 'uGlow', 'uMode', 'uMul', 'uScr', 'uSil', 'uAlpha', 'uGlowCol', 'uDuoA', 'uDuoB', 'uEye0', 'uEye1', 'uBlink', 'uSkin', 'uLash', 'uMouth', 'uOpen', 'uMouthCol', 'uLook'].forEach(n => U[n] = gl.getUniformLocation(prog, n));
       ['aPos', 'aUV', 'aUV2'].forEach(n => Abuf[n] = gl.getAttribLocation(prog, n));
       gl.uniform1i(U.uTex, 0); gl.uniform1i(U.uGlow, 1);
       gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
@@ -162,6 +169,8 @@ const RIG = (() => {
       }
       return { f, wv, dv };
     });
+    if (def.face) { const [fx, fy, frx, fry, amp] = def.face; R.yawAmp = (amp || 12) * a.s; R.yawW = new Float32Array(nv);
+      for (let v = 0; v < nv; v++) { const x = R.ox + R.bx[v] / R.s, y = R.oy + R.by[v] / R.s, q = Math.hypot((x - fx) / frx, (y - fy) / fry); R.yawW[v] = Math.pow(Math.max(0, 1 - q), 1.3); } }
     const box = b => b ? [(b[0] - a.ox) * a.s / a.w, (b[1] - a.oy) * a.s / a.h, (b[2] - a.ox) * a.s / a.w, (b[3] - a.oy) * a.s / a.h] : [0, 0, 0, 0];
     R.eye0 = box(def.eyes && def.eyes[0]); R.eye1 = box(def.eyes && def.eyes[1]); R.mouth = box(def.mouth);
     R.cur = new Float32Array(nv * 2); R.scr = new Float32Array(nv * 2); R.mats = new Float32Array(R.nb * 6);
@@ -198,7 +207,7 @@ const RIG = (() => {
   function skin(R, pose) {
     const M = matsFor(R, pose), nb = R.nb, W = R.W, out = R.cur, t = pose.t || 0, wind = pose.wind ?? 1;
     for (let v = 0; v < R.nv; v++) {
-      const x = R.bx[v], y = R.by[v]; let X = 0, Y = 0;
+      const x = R.bx[v] + (R.yawW && pose.yaw ? pose.yaw * R.yawAmp * R.yawW[v] : 0), y = R.by[v]; let X = 0, Y = 0;
       for (let b = 0; b < nb; b++) { const w = W[v * nb + b]; if (w <= 0.0005) continue; const o = b * 6; X += w * (M[o] * x + M[o + 2] * y + M[o + 4]); Y += w * (M[o + 1] * x + M[o + 3] * y + M[o + 5]); }
       out[v * 2] = X; out[v * 2 + 1] = Y;
     }
@@ -285,6 +294,7 @@ const RIG = (() => {
     gl.uniform1f(U.uAlpha, 1);
     gl.uniform4fv(U.uEye0, R.eye0); gl.uniform4fv(U.uEye1, R.eye1); gl.uniform1f(U.uBlink, pose.blink || 0);
     gl.uniform3fv(U.uSkin, hex(R.def.skin || '#f0d8cc')); gl.uniform3fv(U.uLash, hex(R.def.lash || '#2a1c1e'));
+    const lk = pose.look || [0, 0]; gl.uniform2f(U.uLook, (place.flip ? -1 : 1) * lk[0], lk[1]);
     gl.uniform4fv(U.uMouth, R.mouth); gl.uniform1f(U.uOpen, pose.open || 0); gl.uniform3fv(U.uMouthCol, hex(R.def.mouthCol || '#3a1518'));
     gl.drawElements(gl.TRIANGLES, R.ni, gl.UNSIGNED_SHORT, 0);
     ctx.save(); if (fx.comp) ctx.globalCompositeOperation = fx.comp;

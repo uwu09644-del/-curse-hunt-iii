@@ -22,6 +22,7 @@ RIG.define({
       { id: 'hem', s: [['r', 190, 690, 720, 800, 24]], a: [450, 690], fall: 90, amp: 2.2, freq: 1.3, dir: [1, 0.2], seed: 0.7 },
     ],
     eyes: [[345, 207, 389, 238], [425, 205, 470, 236]],
+    face: [408, 228, 98, 92, 9],
   },
   nemu: {
     grid: 30, skin: '#e9b892', root: [460, 920],
@@ -42,6 +43,7 @@ RIG.define({
       { id: 'hair', s: [['e', 490, 130, 125, 105, 20]], a: [495, 150], fall: 110, amp: 2.6, freq: 0.9, dir: [1, 0] },
       { id: 'shirt', s: [['r', 400, 300, 670, 372, 20]], a: [530, 300], fall: 70, amp: 1.6, freq: 1.4, dir: [1, 0.3] },
     ],
+    face: [512, 178, 72, 72, 10],
   },
   sieg: {
     grid: 34, skin: '#d3a08a', lash: '#3a1f1f', mouthCol: '#4a1a1c', root: [370, 899],
@@ -61,6 +63,7 @@ RIG.define({
     ],
     eyes: [[368, 204, 404, 230], null],
     mouth: [338, 256, 378, 282],
+    face: [360, 232, 82, 88, 8],
   },
   shield: {
     grid: 32, root: [380, 1065],
@@ -94,7 +97,7 @@ RIG.define({
   rin_face: { grid: 18, root: [540, 430], bones: [['head', 'root', [540, 400], ALL()]], sway: [{ id: 'hair', s: [['e', 540, 150, 200, 160, 30]], a: [560, 230], fall: 160, amp: 3, freq: 0.8 }] },
   wick: { grid: 22, root: [470, 1300], bones: [['chest', 'root', [480, 900], ALL()], ['head', 'chest', [445, 470], [['e', 440, 340, 115, 135, 30]]]],
     sway: [{ id: 'flame', s: [['e', 440, 320, 125, 150, 20]], a: [445, 470], fall: 190, amp: 8, freq: 2.2, dir: [1, -0.4], ph: 0.05 }] },
-  haruki: { grid: 22, root: [400, 942], bones: [['chest', 'root', [400, 760], ALL()], ['head', 'chest', [430, 255], [['e', 432, 130, 98, 112, 26]]]],
+  haruki: { grid: 22, face: [432, 150, 72, 78, 10], root: [400, 942], bones: [['chest', 'root', [400, 760], ALL()], ['head', 'chest', [430, 255], [['e', 432, 130, 98, 112, 26]]]],
     sway: [{ id: 'hair', s: [['e', 432, 110, 105, 100, 18]], a: [432, 140], fall: 100, amp: 2.4, freq: 0.85 }, { id: 'fur', s: [['r', 240, 170, 640, 400, 26]], a: [440, 260], fall: 200, amp: 2.4, freq: 1.0 }] },
   nemu_chibi: { grid: 16, noGlow: true, root: [135, 350], bones: [['head', 'root', [135, 300], ALL()]], sway: [{ id: 'hair', s: [['e', 135, 170, 110, 80, 20]], a: [135, 200], fall: 90, amp: 3, freq: 1.6 }] },
   nemu_gg: { grid: 10, noGlow: true, root: [325, 420], bones: [['b', 'root', [325, 420], ALL()]] },
@@ -119,7 +122,19 @@ RIG.define({
 /* ---------- poses ---------- */
 const POSE = (() => {
   const S = Math.sin;
-  const base = (t, o, bones) => ({ t: o.freeze ?? t, wind: o.wind ?? 1, blink: o.blink ?? RIG.blink(o.freeze ?? t, o.seed || 0), open: o.open || 0, sway: o.sway, bones });
+  const H = GFX.hash, sm = x => x * x * (3 - 2 * x), cl = x => Math.max(0, Math.min(1, x));
+  function gaze(t, seed) { // saccades: the eyes snap to a new target every couple of seconds, the head follows more slowly
+    const P = 2.3 + (seed % 3) * 0.35, u = t + seed * 3.7, k = Math.floor(u / P), f = (u - k * P);
+    const tgt = i => H(i, seed + 13) < 0.22 ? [0, 0] : [(H(i, seed + 11) - 0.5) * 1.9, (H(i, seed + 12) - 0.45) * 0.8];
+    const a = tgt(k - 1), b = tgt(k), e = sm(cl(f / 0.13)), h = sm(cl(f / 0.75));
+    return { look: [a[0] + (b[0] - a[0]) * e, a[1] + (b[1] - a[1]) * e], yaw: (a[0] + (b[0] - a[0]) * h) * 0.5 };
+  }
+  const base = (t, o, bones) => {
+    const tt = o.freeze ?? t, g = gaze(tt, o.seed || 0), bias = o.lookBias || 0, k = o.lookBias != null ? 0.45 : 1;
+    const look = o.look || [Math.max(-1, Math.min(1, g.look[0] * k + bias)), g.look[1] * k];
+    if (bones.head) bones.head.r = (bones.head.r || 0) + look[0] * 0.018;
+    return { t: tt, wind: o.wind ?? 1, blink: o.blink ?? RIG.blink(tt, o.seed || 0), open: o.open || 0, sway: o.sway, bones, look, yaw: o.yaw ?? (g.yaw * k + bias * 0.55) };
+  };
   return {
     takuto(t, o = {}) {
       const tt = o.freeze ?? t, br = S(tt * 2.0) * (o.breath ?? 1), talk = o.talk || 0;

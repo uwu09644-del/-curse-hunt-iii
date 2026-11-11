@@ -106,8 +106,8 @@ const EP01 = (() => {
     G.barrow(t, { x: camx, y: 0, z }, { mood, fogA: 0.45 });
     sunShafts(t, mood);
     const c = G.ctx; c.save(); zoomAt(W / 2, H / 2, z);
-    TK(t, 330, 1150, 0.66, { headR: o.tkHead || 0.05, ...(o.tk || {}) }, fx);
-    NM(t, 940, 1100, 0.92, { headR: o.nmHead || -0.03, ...(o.nm || {}) }, fx);
+    TK(t, 330, 1150, 0.66, { headR: o.tkHead || 0.05, lookBias: 0.8, ...(o.tk || {}) }, fx);
+    NM(t, 940, 1100, 0.92, { headR: o.nmHead || -0.03, lookBias: -0.8, ...(o.nm || {}) }, fx);
     c.restore();
     G.frontFog(t, 0.4, mood === 'ash' ? '#d8c8c8' : '#e9b5b5', 560, 30);
     grass(t);
@@ -115,7 +115,7 @@ const EP01 = (() => {
   function nemuClose(t, lt, d, o = {}) {
     const sc = lerp(o.sc0 ?? 1.45, o.sc1 ?? 1.55, ease.io(clamp(lt / d)));
     G.barrow(t, { x: 120, y: -40, z: 1.25 }, { mood: o.mood || 'dusk', fogA: 0.5 }); G.fill('#2a1020', 0.25);
-    NM(t, W / 2 + 130, H / 2 + 60 + (975 - (o.ay ?? 190)) * sc, sc, o.pose || {}, o.mood === 'ash' ? ASH : DUSK);
+    NM(t, W / 2 + 130, H / 2 + 60 + (975 - (o.ay ?? 190)) * sc, sc, { lookBias: -0.7, ...(o.pose || {}) }, o.mood === 'ash' ? ASH : DUSK);
     G.frontFog(t, 0.35, '#e9b5b5', 600, 30);
   }
   function sunShafts(t, mood = 'dusk') {
@@ -446,7 +446,7 @@ const EP01 = (() => {
     if (lt < 1.4) { G.fill('#f4efe9'); G.focusLines(640, 360, t, { color: '#1a1a1a', a: 0.25, inner: 200 }); const bo = 1 + 0.08 * Math.abs(Math.sin(lt * 9)); R.draw('nemu_gg', { x: 640, y: 420, ax: 325, ay: 420, sc: 5.2 * bo }, P.generic(t, {}), {}); }
     else nemuClose(t, lt, d, { sc0: 1.6, sc1: 1.66, pose: { ears: 0.25, headR: 0.08 } });
   }, { say: [[1.5, 'a16'], ['+0.4', 'a17']], sfx: [[0.05, (g, w) => S.ui(g, w, 0.06)]] });
-  shot(8, (lt, d, t) => { G.barrow(t, { x: -100, y: 20, z: 1.2 }, { fogA: 0.45 }); sunShafts(t); TK(t, 560, lerp(1300, 1320, lt / d), 0.72, { arm: lt > 0.5 && lt < 2.5 ? -0.12 * Math.sin((lt - 0.5) / 2 * Math.PI) : 0, headR: 0.04 }, DUSK); G.frontFog(t, 0.35); grass(t); },
+  shot(8, (lt, d, t) => { G.barrow(t, { x: -100, y: 20, z: 1.2 }, { fogA: 0.45 }); sunShafts(t); TK(t, 560, lerp(1300, 1320, lt / d), 0.72, { lookBias: 0.6, arm: lt > 0.5 && lt < 2.5 ? -0.12 * Math.sin((lt - 0.5) / 2 * Math.PI) : 0, headR: 0.04 }, DUSK); G.frontFog(t, 0.35); grass(t); },
     { say: [[0.3, 'a18'], ['+0.5', 'a19']] });
   shot(8, (lt, d, t) => { const k = ease.io(clamp(lt / d)); G.barrow(t, { x: lerp(300, 380, k), y: lerp(160, 190, k), z: 1.5 }, { fogA: 0.5 }); G.radial(770, 520, 200, 'rgba(255,180,120,0.12)', 'rgba(0,0,0,0)', 1, 'lighter'); X.shafts(t, { x: 900, y: -100, ang: 1.9, spread: 0.4, n: 4, a: 0.12 }); },
     { say: [[0.3, 'a20'], ['+0.5', 'a21']] });
@@ -770,26 +770,26 @@ const EP01 = (() => {
   shot(10, (lt, d, t) => twoShot(t, lt, d, { push: 0.04, mood: 'ash', nm: { tail: 0.3 } }), { say: [[0.2, 'b25'], ['+0.5', 'b26'], ['+0.4', 'b27']] });
   shot(7, (lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.2, z1: 6.4 }), { say: [[0.3, 'b28'], ['+0.6', 'b29']] });
   shot(6, (lt, d, t) => nemuClose(t, lt, d, { sc0: 1.5, sc1: 1.56, mood: 'ash', pose: { headR: 0.06, ears: 0.2 } }), { say: [[0.3, 'b30'], ['+0.4', 'b31']] });
-  shot(7, (lt, d, t) => { G.barrow(t, { x: -100, y: 20, z: 1.2 }, { fogA: 0.45, mood: 'ash' }); TK(t, 560, 1300, 0.72, { headR: 0.03 }, ASH); G.frontFog(t, 0.35); grass(t); },
+  shot(7, (lt, d, t) => { G.barrow(t, { x: -100, y: 20, z: 1.2 }, { fogA: 0.45, mood: 'ash' }); TK(t, 560, 1300, 0.72, { headR: 0.03, lookBias: 0.6 }, ASH); G.frontFog(t, 0.35); grass(t); },
     { say: [[0.2, 'b32']], sfx: [[3.6, (g, w) => S.clap(g, w)], [4.4, (g, w) => S.clap(g, w)], [5.2, (g, w) => S.clap(g, w)]] });
   const SIEG = T;
   shot(9, (lt, d, t) => { // Sieg walks in
     G.barrow(t, { x: 200, y: 0, z: 1.1 }, { fogA: 0.45, mood: 'ash' });
     const k = ease.out(inv(0, 3.2, lt)), walking = 1 - inv(2.6, 3.4, lt);
-    SG(t, lerp(1180, 880, k), 1260, 0.62, { walk: walking, headR: lt > 3.4 ? 0.04 : 0 }, { ...ASH, glow: { c: '#9fc0ff', a: 0.3, r: 16 } });
+    SG(t, lerp(1180, 880, k), 1260, 0.62, { walk: walking, headR: lt > 3.4 ? 0.04 : 0, lookBias: -0.7 }, { ...ASH, glow: { c: '#9fc0ff', a: 0.3, r: 16 } });
     G.frontFog(t, 0.35); grass(t);
     X.holo(lt - 1.2, 6.4, { x: 330, y: 220, w: 460, title: 'HUNTER', color: '#5f9dff', accent: '#d6e6ff', lines: [{ t: 'Sieg Valen', big: true }, 'Rank A  ·  "The Laughing Blade"', { t: 'Brand: Afterimage', col: '#bcd4ff' }] });
   }, { say: [[0.4, 'b33'], ['+0.6', 'b34']], sfx: [[1.2, (g, w) => S.ui(g, w, 0.05)], [0.3, (g, w) => [0, 0.48, 0.96, 1.44, 1.92, 2.4].forEach(o => S.step(g, w + o, 0.08))]] });
   shot(8, (lt, d, t) => {
     G.barrow(t, { x: 240, y: -40, z: 1.4 }, { fogA: 0.4, mood: 'ash' }); G.fill('#2a1020', 0.2);
-    const place = { x: 640, y: 420, ax: 360, ay: 230, sc: lerp(2.3, 2.45, lt / d) }, talk = V.amp('SIEG', t), pose = P.sieg(t, { talk }); pose.open = talk;
+    const place = { x: 640, y: 420, ax: 360, ay: 230, sc: lerp(2.3, 2.45, lt / d) }, talk = V.amp('SIEG', t), pose = P.sieg(t, { talk, lookBias: -0.6 }); pose.open = talk;
     R.draw('sieg', place, pose, ASH);
   }, { say: [[0.3, 'b36']] });
   shot(5, (lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.3, z1: 6.35 }), { say: [[0.3, 'b37'], ['+0.4', 'b38']] });
   shot(8, (lt, d, t) => {
     G.barrow(t, { x: 200, y: 0, z: 1.15 }, { fogA: 0.45, mood: 'ash' });
     const laugh = V.amp('SIEG', t) > 0 && lt < 2 ? 1 : 0;
-    SG(t, 880, 1320, 0.68, { headR: laugh ? -0.08 + Math.sin(t * 20) * 0.02 : 0.03, glaiveR: Math.sin(t * 0.8) * 0.03 }, ASH); G.frontFog(t, 0.35); grass(t);
+    SG(t, 880, 1320, 0.68, { lookBias: -0.7, headR: laugh ? -0.08 + Math.sin(t * 20) * 0.02 : 0.03, glaiveR: Math.sin(t * 0.8) * 0.03 }, ASH); G.frontFog(t, 0.35); grass(t);
   }, { say: [[0.2, 'b39'], ['+0.5', 'b40']] });
   const RIFTEYE = T;
   shot(8, (lt, d, t) => { G.barrow(t, { x: 0, y: lerp(-150, -230, lt / d), z: 1.2 }, { fogA: 0.3, mood: 'ash', rift: { open: 1, cx: 640, cy: 190, w: 520, h: 150, eye: inv(3.5, 4.5, lt) * (lt > 6.4 && lt < 6.6 ? 0.1 : 1) } }); POST.set({ bloom: 1.0, thr: 0.45 }); },

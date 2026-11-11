@@ -219,7 +219,7 @@ const GFX = (() => {
     ctx.restore();
   }
   function focusLines(cx, cy, t, o = {}) {
-    const { n = 90, color = '#fff', a = 0.75, inner = 230, seed = 4, fps = 12 } = o, tk = twos(t, fps);
+    const { n = 90, color = '#fff', a = 0.75, inner = 230, seed = 4, fps = 24 } = o, tk = twos(t, fps);
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = color; ctx.beginPath();
     const R = Math.hypot(W, H);
     for (let i = 0; i < n; i++) {
@@ -231,7 +231,7 @@ const GFX = (() => {
     ctx.fill(); ctx.restore();
   }
   function dashLines(t, o = {}) {
-    const { n = 70, color = '#fff', a = 0.5, dir = 1, seed = 6, fps = 24 } = o, tk = twos(t, fps);
+    const { n = 70, color = '#fff', a = 0.5, dir = 1, seed = 6, fps = 30 } = o, tk = twos(t, fps);
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = color;
     for (let i = 0; i < n; i++) {
       const y = hash(i, seed + tk) * H, l = 120 + hash(i, seed + tk + 3) * 520, x = hash(i, seed + tk + 7) * (W + l) - l, th = 0.6 + hash(i, tk) * 2.2;

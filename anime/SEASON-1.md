@@ -88,7 +88,8 @@
 
 How Episode 1 is made:
 - **Voices:** every line is voiced with the open-source Kokoro-82M speech model (Apache-2.0). Each character has their own blended voice; Akuro's is pitched down with a sub-octave layer, and Mr. Sable's carries static. Mouths and jaws move with the voice. Voice script: `voice/lines.json`; generator: `tools/make_voices.py`.
-- **Animation:** characters are rigged as deformable puppets (`js/rig.js`, `js/rigs.js`). They breathe, blink, turn their heads, talk, swing their arms and weapons, and walk, with hair, coats, ribbons and tails swaying.
+- **Animation:** characters are rigged as deformable puppets (`js/rig.js`, `js/rigs.js`). They breathe, blink, glance around and look at whoever they're talking to (irises move inside the eyes and the face turns), talk, swing their arms and weapons, and walk, with hair, coats, ribbons and tails swaying.
+- **Frame rate:** a new frame is drawn on every screen refresh (60, 90, 100, 120 or 144 fps depending on the display), and resolution adjusts automatically to hold that speed. The player shows the live fps.
 - **Missing parts:** Takuto's art stops at the waist and Sieg's and Mr. Sable's at the thighs, so their legs and boots are drawn in code (`js/parts.js`). Takuto's crescent axe and Sieg's glaive were cut off by the edges of the art, so both are redrawn complete as separate parts that swing from the hand.
 - **Fight cuts:** full-body action is staged as backlit silhouettes against a giant moon (`js/fighter.js`): figures with real joints run, leap, flip, duck and swing, with hit-stops, slow motion and afterimages, intercut with close-ups of the original art.
 - **Effects:** GPU post-processing (bloom, colour grading, chromatic aberration, shockwave distortion, zoom blur) plus energy slashes, flame auras, sparks, debris, light shafts and holographic Brand readouts (`js/post.js`, `js/vfx.js`).

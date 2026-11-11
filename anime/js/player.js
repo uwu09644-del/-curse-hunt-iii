@@ -26,14 +26,21 @@
     G.init(sctx, K); RIG.setK(K); if (!playing) draw(started ? currentPos() : posterT);
   }
   window.addEventListener('resize', resize);
-  let ftAvg = 16, ftCount = 0, lastFrame = 0;
+  // hold the screen's full refresh rate (60, 90, 100, 120, 144 Hz...) by trading resolution for speed
+  let ftAvg = 16, ftCount = 0, lastFrame = 0, refresh = 16.7, minFt = 1e9, fpsN = 0, fpsT = 0;
+  const fpsEl = $('#fps');
   function adapt(now) {
     if (!playing) { lastFrame = 0; return; }
-    if (lastFrame) { const ft = now - lastFrame; ftAvg = ftAvg * 0.92 + Math.min(100, ft) * 0.08; }
+    if (lastFrame) {
+      const ft = now - lastFrame; ftAvg = ftAvg * 0.9 + Math.min(100, ft) * 0.1;
+      if (ft > 4) minFt = Math.min(minFt, ft);
+      fpsN++; if (now - fpsT > 500) { if (fpsEl) fpsEl.textContent = Math.round(fpsN * 1000 / (now - fpsT)) + ' fps'; fpsN = 0; fpsT = now; }
+    }
     lastFrame = now;
-    if (++ftCount % 45 !== 0) return;
-    if (ftAvg > 24 && quality > 0.55) { quality = Math.max(0.55, quality * 0.85); applyQuality(); }
-    else if (ftAvg < 14 && quality < 1) { quality = Math.min(1, quality * 1.08); applyQuality(); }
+    if (++ftCount % 40 !== 0) return;
+    refresh = Math.max(5, Math.min(34, minFt * 1.02)); minFt = 1e9;
+    if (ftAvg > refresh * 1.3 && quality > 0.5) { quality = Math.max(0.5, quality * 0.86); applyQuality(); }
+    else if (ftAvg < refresh * 1.06 && quality < 1) { quality = Math.min(1, quality * 1.06); applyQuality(); }
   }
 
   /* ---------- timeline lookup ---------- */
