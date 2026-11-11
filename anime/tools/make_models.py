@@ -72,6 +72,13 @@ CAST = {
         'FaceBrow': lambda im: tint(im, (0.66, 0.64, 0.6), 0.6, 0.9),
         'Accessory': lambda im: tint(im, (0.62, 0.1, 0.16), 0.3, 1.0),
     }, {'HAIR': ((1, 1, 1, 1), (0.76, 0.74, 0.8, 1))}),
+    'sable': ('Sakurada_Fumiriya.vrm', {  # Mr. Sable: a man-shaped shadow in a black suit with pale, glowing irises
+        'Face_00': lambda im: tint(im, (0.07, 0.07, 0.1), 0.5, 1.1), 'Body_00': lambda im: tint(im, (0.07, 0.07, 0.1), 0.5, 1.1),
+        'Hair_00': lambda im: tint(im, (0.08, 0.08, 0.11), 0.4, 1.0), 'HairBack': lambda im: tint(im, (0.08, 0.08, 0.11), 0.4, 1.0),
+        'EyeWhite': lambda im: tint(im, (0.04, 0.04, 0.06), 0.5, 1.0), 'EyeIris': lambda im: tint(im, (0.86, 0.93, 1.0), 0.7, 1.1),
+        'Tops_01': lambda im: tint(im, (0.15, 0.15, 0.19), 0.35, 1.0), 'Bottoms': lambda im: tint(im, (0.1, 0.1, 0.13), 0.4, 1.0),
+        'Accessory': lambda im: tint(im, (0.3, 0.32, 0.4), 0.4, 1.0), 'FaceMouth': lambda im: tint(im, (0.6, 0.7, 0.9), 0.3, 1.0), 'FaceBrow': lambda im: tint(im, (0.05, 0.05, 0.07), 0.5, 1.0),
+    }, {'SKIN': ((1, 1, 1, 1), (0.6, 0.6, 0.7, 1)), 'HAIR': ((1, 1, 1, 1), (0.6, 0.6, 0.7, 1))}),
     'nemu': ('HairSample_Female.vrm', {
         'EyeIris': lambda im: tint(im, (1.0, 0.68, 0.22), 0.14, 1.05),
     }, {}),

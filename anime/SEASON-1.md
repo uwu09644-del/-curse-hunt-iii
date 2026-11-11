@@ -100,7 +100,7 @@ How Episode 1 is made:
 
 The same episode, with the same voices, score, sound and timing, restaged as cel-shaded 3D. `index.html` stays the 2D edition.
 
-- **Characters:** Takuto, Nemu and Sieg are anime-style 3D models built from CC0 VRoid Studio sample avatars by pixiv (`tools/make_models.py` recolours them: white hair, a red jacket and red eyes for Takuto, amber eyes for Nemu, white hair and crimson eyes for Sieg). They have real facial expressions for blinking and lip-sync, eyes that look around, and hair that moves with spring-bone physics. The Shieldbearer and Mr. Sable are still built from simple shapes.
+- **Characters:** Takuto, Nemu and Sieg are anime-style 3D models built from CC0 VRoid Studio sample avatars by pixiv (`tools/make_models.py` recolours them: white hair, a red jacket and red eyes for Takuto, amber eyes for Nemu, white hair and crimson eyes for Sieg). They have real facial expressions for blinking and lip-sync, eyes that look around, and hair that moves with spring-bone physics. Mr. Sable is a shadow version of a VRoid model: a black suit, a dark face and pale glowing eyes. The Shieldbearer is built from shapes as an armoured skeleton with a horned skull, an open ribcage and a riveted iron tower shield. The skies have painted anime-style clouds.
 - **Engine** (`js/stage3d.js`, three.js r151 and three-vrm in `vendor/`):
   - toon materials with a two-tone ramp, ink outlines and a directional anime rim light
   - jointed characters with painted faces wrapped around the head; the eyes blink, look around and talk
