@@ -48,6 +48,7 @@ const GFX = (() => {
     sieg: { ox: 2, oy: 40, s: 1.5 }, sable: { ox: 72, oy: 3, s: 1.5 }, shield: { ox: 23, oy: 77, s: 1.5 }, haruki: { ox: 58, oy: 0, s: 1.5 },
     rin: { ox: 0, oy: 31, s: 1.5 }, rin_face: { ox: 345, oy: 17, s: 1.5 }, wick: { ox: 129, oy: 302, s: 1 },
     gideon: {}, valentine: {}, vesper: {}, lucien: {}, akuro: {},
+    gideon_c: {}, lucien_c: {}, vesper_c: {}, clerk_c: {}, valentine_c: {}, // cut-out figures for 2D mode
     m_redgiant: { oy: 128 }, m_hydra: { oy: 95 }, m_golem: { oy: 150 }, m_morvudd: { oy: 125 }, m_plume: {}, m_wolf: {}, m_tyr: { ox: 128 },
   };
   const A = {};

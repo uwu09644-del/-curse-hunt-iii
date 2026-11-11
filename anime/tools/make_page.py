@@ -17,5 +17,8 @@ s = re.sub(r'<p class="syn">.*?</p>', f'<p class="syn">{syn}</p>', s, count=1, f
 s = s.replace('<li class="now"><span class="no">01</span><div><h4>The Crossing<em>NOW PLAYING</em></h4>', '<li><span class="no">01</span><div><h4>The Crossing</h4>', 1)
 m = re.search(r'<li><span class="no">%02d</span><div><h4>([^<]*)</h4>' % int(n), s)
 if m: s = s.replace(m.group(0), '<li class="now"><span class="no">%02d</span><div><h4>%s<em>NOW PLAYING</em></h4>' % (int(n), m.group(1)), 1)
+if os.environ.get('RB_3D') != '1':  # 2D mode (default): the cast is drawn from their illustrations as cut-out puppets; no 3D models
+    s = s.replace("<script>window.RB_MODE = '3d';</script>", "<script>window.RB_MODE = '2d'; window.RB_FLAT = true;</script>", 1)
+    s = s.replace('<script src="js/stage3d.js"></script>', '<script src="js/stage3d.js"></script>\n<script src="js/flat2d.js"></script>', 1)
 open(f'ep{n}.html', 'w').write(s)
 print('ep%s.html' % n)

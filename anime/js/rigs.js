@@ -107,6 +107,16 @@ RIG.define({
   gideon: { grid: 18, pad: 0, noGlow: true, root: [368, 1100], sway: [{ id: 'all', s: [['e', 380, 520, 300, 420, 120]], a: [380, 330], fall: 500, amp: 3, freq: 0.5, dir: [1, 0.2] }] },
   valentine: { grid: 18, pad: 0, noGlow: true, root: [368, 736], sway: [{ id: 'hair', s: [['e', 330, 330, 230, 200, 80]], a: [330, 380], fall: 300, amp: 3, freq: 0.6 }] },
   lucien: { grid: 18, pad: 0, noGlow: true, root: [368, 1226], sway: [{ id: 'hair', s: [['e', 380, 230, 220, 180, 80]], a: [380, 330], fall: 220, amp: 3.5, freq: 0.6 }, { id: 'scarf', s: [['r', 420, 500, 736, 900, 60]], a: [450, 560], fall: 300, amp: 5, freq: 0.7 }] },
+  // cut-out standing figures for 2D mode (art: assets/<name>.webp, cropped to the figure)
+  gideon_c: { grid: 18, pad: 0, noGlow: true, root: [368, 1038], bones: [['chest', 'root', [368, 700], ALL()], ['head', 'chest', [290, 280], [['e', 290, 150, 125, 135, 30]]]] },
+  lucien_c: { grid: 18, pad: 0, noGlow: true, root: [347, 1187], bones: [['chest', 'root', [347, 760], ALL()], ['head', 'chest', [350, 300], [['e', 350, 170, 110, 130, 30]]]],
+    sway: [{ id: 'scarf', s: [['r', 420, 400, 695, 800, 60]], a: [450, 450], fall: 300, amp: 4, freq: 0.7 }] },
+  clerk_c: { grid: 16, pad: 0, noGlow: true, root: [150, 886], bones: [['chest', 'root', [150, 560], ALL()], ['head', 'chest', [135, 190], [['e', 132, 104, 62, 70, 20]]]],
+    sway: [{ id: 'skirt', s: [['r', 30, 380, 260, 720, 40]], a: [150, 400], fall: 300, amp: 2, freq: 0.6 }] },
+  valentine_c: { grid: 16, pad: 0, noGlow: true, root: [230, 841], bones: [['chest', 'root', [230, 520], ALL()], ['head', 'chest', [215, 210], [['e', 215, 125, 80, 85, 24]]]],
+    sway: [{ id: 'ribbon', s: [['r', 250, 280, 474, 700, 60]], a: [260, 300], fall: 400, amp: 6, freq: 0.5 }, { id: 'hair', s: [['e', 215, 110, 120, 90, 30]], a: [215, 150], fall: 120, amp: 3, freq: 0.8 }] },
+  vesper_c: { grid: 18, pad: 0, noGlow: true, root: [368, 1293], bones: [['chest', 'root', [368, 800], ALL()], ['head', 'chest', [368, 280], [['e', 368, 160, 110, 130, 30]]]],
+    sway: [{ id: 'cloth', s: [['e', 368, 700, 330, 520, 120]], a: [368, 420], fall: 500, amp: 5, freq: 0.45, radial: true }] },
   vesper: { grid: 18, pad: 0, noGlow: true, root: [368, 1293], sway: [{ id: 'cloth', s: [['e', 368, 650, 330, 560, 120]], sub: [['e', 368, 330, 80, 90, 40]], a: [368, 420], fall: 500, amp: 6, freq: 0.45, radial: true }] },
 });
 // creature pages breathe slowly

@@ -317,5 +317,5 @@ const RIG = (() => {
     if (ph > 0.17) return 0; return Math.sin(ph / 0.17 * Math.PI);
   }
 
-  return { init, setK, define, draw, cover, point, blink, compile, get ok() { return ok; } };
+  return { init, setK, define, draw, cover, point, blink, compile, def: name => DEFS[name], get ok() { return ok; } };
 })();

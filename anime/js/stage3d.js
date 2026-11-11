@@ -802,7 +802,10 @@ const S3 = (() => {
   }
   // draw a 3D frame into the 2D scene canvas. spec: { env, t, cam:{pos,look,fov,roll}, cast:[[charName, pose, opts]], envOpts }
   function frame(spec) {
-    if (!init()) return false; ensure();
+    if (!init()) return false;
+    const FLAT = window.RB_FLAT && typeof FLAT2D !== 'undefined'; let flatCast = [];
+    if (FLAT) { flatCast = (spec.cast || []).filter(c => FLAT2D.has(c[0])); spec = { ...spec, cast: (spec.cast || []).filter(c => !FLAT2D.has(c[0]) && chars[c[0]]) }; } // 2D mode: puppets are drawn after, not modelled
+    else ensure();
     const ctx = G.ctx, K = G.K, w = Math.round(G.W * K), h = Math.round(G.H * K);
     if (w !== curW || h !== curH) { R.setSize(w, h, false); curW = w; curH = h; }
     if (!scenes[spec.env] && BUILD[spec.env]) scenes[spec.env] = BUILD[spec.env]();
@@ -812,7 +815,7 @@ const S3 = (() => {
     const cm0 = spec.cam; cam.fov = cm0.fov || 32; cam.updateProjectionMatrix(); cam.position.set(...cm0.pos); cam.up.set(Math.sin(cm0.roll || 0), Math.cos(cm0.roll || 0), 0); cam.lookAt(...cm0.look); cam.updateMatrixWorld();
     spec_close = Math.hypot(cm0.pos[0] - cm0.look[0], cm0.pos[1] - cm0.look[1], cm0.pos[2] - cm0.look[2]) < 2.4;
     const pl = spec.only === 'cast' ? null : plateFor(spec);
-    const castOnly = spec.only === 'cast' || (pl && pl.set.mode === 'full');
+    const castOnly = spec.only === 'cast' || (pl && pl.set.mode === 'full') || FLAT;
     const hidden = []; if (castOnly) sc.children.forEach(ch => { if (!ch.isLight && !ch.userData.keep && !(spec.cast || []).some(([n]) => chars[n].J.root === ch) && ch.visible) { ch.visible = false; hidden.push(ch); } });
     else if (pl && pl.set.mode === 'sky') sc.children.forEach(ch => { if (ch.userData.far && ch.visible) { ch.visible = false; hidden.push(ch); } });
     const cm = spec.cam; cam.fov = cm.fov || 32; cam.updateProjectionMatrix(); cam.position.set(...cm.pos); cam.up.set(Math.sin(cm.roll || 0), Math.cos(cm.roll || 0), 0); cam.lookAt(...cm.look);
@@ -827,7 +830,10 @@ const S3 = (() => {
     sc.background = bg0; hidden.forEach(ch => { ch.visible = true; }); if (fog0 != null) sc.fog.color.setHex(fog0);
     if (pl) { drawPlate(spec.ctx || ctx, pl, w, h); if (pl.set.mode === 'full') contactShadows(spec.ctx || ctx, spec.cast || []); }
     if (spec.under) { const u = spec.ctx || ctx; u.save(); u.setTransform(G.K, 0, 0, G.K, 0, 0); spec.under(u); u.restore(); } // 2D art that belongs behind the characters (a distant horde, eyes in the trees)
+    if (FLAT && !pl && spec.only !== 'cast') { const g = spec.ctx || ctx; g.save(); g.setTransform(K, 0, 0, K, 0, 0); const gr = g.createRadialGradient(640, 300, 40, 640, 360, 820); // no painting for this place: a flat backdrop
+      if (spec.env === 'void') { gr.addColorStop(0, '#5a0a12'); gr.addColorStop(1, '#0a0004'); } else { gr.addColorStop(0, '#3a3440'); gr.addColorStop(1, '#0e0c12'); } g.fillStyle = gr; g.fillRect(-10, -10, G.W + 20, G.H + 20); g.restore(); }
     const tg = spec.ctx || ctx; tg.save(); tg.setTransform(1, 0, 0, 1, 0, 0); tg.globalAlpha = spec.alpha ?? 1; tg.drawImage(R.domElement, 0, 0, tg.canvas.width, tg.canvas.height); tg.restore();
+    if (flatCast.length && !spec.ctx) FLAT2D.draw(flatCast, spec);
     return true;
   }
   /* ---------- 2D cel look: render to a target, then ink it ----------
@@ -868,10 +874,10 @@ const S3 = (() => {
   }
   // project a world point to logical screen px (for 2D effects over the 3D frame)
   function project(x, y, z) { const v = V3(x, y, z).project(cam); return [(v.x * 0.5 + 0.5) * G.W, (-v.y * 0.5 + 0.5) * G.H]; }
-  function jointPos(name, joint, dy = 0) { const c = chars[name]; if (!c) return [0, 0, 0]; c.J.root.updateMatrixWorld(true); if (c.isVRM && joint === 'head') dy *= 0.6; const v = V3(0, dy, 0); c.J[joint].localToWorld(v); return [v.x, v.y, v.z]; }
-  function weaponTip(name, dist = 1.1) { const c = chars[name]; c.J.root.updateMatrixWorld(true); const v = V3(0, dist, 0); c.J.weapon.localToWorld(v); return [v.x, v.y, v.z]; }
-  function place(name, pose, t, o = {}) { if (!init()) return; ensure(); const c = chars[name]; setPose(c, pose, t, o); c.J.root.scale.setScalar(o.scale || 1); c.J.root.updateMatrixWorld(true); }
-  function eyePos(name) { const c = chars[name]; c.J.root.updateMatrixWorld(true); if (c.isVRM) { const hu = c.vrm.humanoid, out = []; ['leftEye', 'rightEye'].forEach(b => { const n = hu.getNormalizedBoneNode(b); if (n) { const v = new THREE.Vector3(); n.getWorldPosition(v); out.push([v.x, v.y, v.z]); } }); if (out.length === 2) return out; } const r = c.headR || 0.12; return [-1, 1].map(k => { const v = V3(k * r * 0.92 * Math.sin(0.29), 0.12 - r * Math.sin(0.07), r * Math.cos(0.29) * 0.98); c.J.head.localToWorld(v); return [v.x, v.y, v.z]; }); }
+  function jointPos(name, joint, dy = 0) { if (window.RB_FLAT && typeof FLAT2D !== 'undefined' && FLAT2D.has(name)) return FLAT2D.joint(name, joint, dy); const c = chars[name]; if (!c) return [0, 0, 0]; c.J.root.updateMatrixWorld(true); if (c.isVRM && joint === 'head') dy *= 0.6; const v = V3(0, dy, 0); c.J[joint].localToWorld(v); return [v.x, v.y, v.z]; }
+  function weaponTip(name, dist = 1.1) { if (window.RB_FLAT && typeof FLAT2D !== 'undefined' && FLAT2D.has(name)) return FLAT2D.weaponTip(name, dist); const c = chars[name]; c.J.root.updateMatrixWorld(true); const v = V3(0, dist, 0); c.J.weapon.localToWorld(v); return [v.x, v.y, v.z]; }
+  function place(name, pose, t, o = {}) { if (window.RB_FLAT && typeof FLAT2D !== 'undefined' && FLAT2D.has(name)) { FLAT2D.note(name, pose); return; } if (!init()) return; ensure(); const c = chars[name]; if (!c) return; setPose(c, pose, t, o); c.J.root.scale.setScalar(o.scale || 1); c.J.root.updateMatrixWorld(true); }
+  function eyePos(name) { if (window.RB_FLAT && typeof FLAT2D !== 'undefined' && FLAT2D.has(name)) return FLAT2D.eyes(name); const c = chars[name]; c.J.root.updateMatrixWorld(true); if (c.isVRM) { const hu = c.vrm.humanoid, out = []; ['leftEye', 'rightEye'].forEach(b => { const n = hu.getNormalizedBoneNode(b); if (n) { const v = new THREE.Vector3(); n.getWorldPosition(v); out.push([v.x, v.y, v.z]); } }); if (out.length === 2) return out; } const r = c.headR || 0.12; return [-1, 1].map(k => { const v = V3(k * r * 0.92 * Math.sin(0.29), 0.12 - r * Math.sin(0.07), r * Math.cos(0.29) * 0.98); c.J.head.localToWorld(v); return [v.x, v.y, v.z]; }); }
   function skyPoint(az, el) { const d = V3(Math.sin(az) * Math.cos(el), Math.sin(el), -Math.cos(az) * Math.cos(el)).multiplyScalar(300).add(cam.position); return project(d.x, d.y, d.z); }
   function crack(op) { if (chars.shield) chars.shield.J.cracks.material.opacity = op; }
   return { init, preload, loadPlates, loadSprites, SPRITE_H, plateImage: id => plateImg[id] && plateImg[id].im, PLATE_SETS, frame, place, project, jointPos, weaponTip, seq, run, walk, POSES, crack, eyePos, skyPoint, get camera() { return cam; }, get ok() { return init(); }, chars, scenes, setPose, P0, blend };
