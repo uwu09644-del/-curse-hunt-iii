@@ -6,14 +6,14 @@ const EP01X_CUSTOM = (() => {
   const PI = Math.PI, { clamp, lerp, inv, ease, hash } = GFX, P = () => S3.POSES, K = KIT;
   const rain = (t, a = 0.5) => K.rain(t, a);
   return {
-    catLook(lt, d, t, api) {
-      const m = api.marks(), tk = m.takuto, hr = m.haruki, cam = { pos: [lerp(tk.x, hr.x, 0.5) + 0.4, 0.9, lerp(tk.z, hr.z, 0.5) + 1.6], look: [lerp(tk.x, hr.x, 0.5) - 0.6, 0.35, lerp(tk.z, hr.z, 0.5) - 1.6], fov: 34 };
-      api.render(t, cam, K.over(api, t, { haruki: { pose: { crouch: 0.3, headX: 0.35, ry: PI }, o: { expr: { happy: 0.4 } } }, takuto: { pose: { headX: 0.3, ry: PI } } }));
+    catLook(lt, d, t, api) { // the same spot by the tracks where Episode 1 finds the cat
+      const m = api.marks(), cam = { pos: [6.6, 1.05, -0.4], look: [4.9, 0.55, -2.7], fov: 36 };
+      api.render(t, cam, K.over(api, t, { haruki: { pose: { ...P().kneel, headX: 0.35, ry: -2.5 }, o: { expr: { happy: 0.4 } } }, takuto: { pose: { headX: 0.3, ry: 2.4 } } }));
       rain(t, 0.35); api.postFor();
     },
     catFeed(lt, d, t, api) {
-      const m = api.marks(), tk = m.takuto, hr = m.haruki, k = ease.io(clamp(lt / d)), cam = { pos: [hr.x + 1.0, lerp(1.0, 0.7, k), hr.z + 1.4], look: [hr.x - 0.4, 0.3, hr.z - 1.0], fov: 32 };
-      api.render(t, cam, K.over(api, t, { haruki: { pose: { crouch: 0.5, uaR: [1.0, 0.2], elR: 0.5, headX: 0.4, ry: PI }, o: { expr: { happy: 0.7 } } }, takuto: { pose: { crouch: 0.35, headX: 0.3, ry: PI }, o: { expr: { happy: 0.2 } } } }));
+      const k = ease.io(clamp(lt / d)), cam = { pos: [6.4, lerp(1.0, 0.8, k), -0.6], look: [5.0, 0.45, -2.8], fov: lerp(34, 30, k) };
+      api.render(t, cam, K.over(api, t, { haruki: { pose: { ...P().kneel, uaR: [1.0, 0.2], elR: 0.5, headX: 0.4, ry: -2.5 }, o: { expr: { happy: 0.7 } } }, takuto: { pose: { ...P().kneel, headX: 0.35, ry: 2.4 }, o: { expr: { happy: 0.2 } } } }));
       rain(t, 0.3); api.postFor();
     },
     voidFirst(lt, d, t, api) {
@@ -23,7 +23,7 @@ const EP01X_CUSTOM = (() => {
       GFX.motes(t, { n: 70, vy: -70, color: '#ff4a3a', size: 2.4, seed: 8, a: 0.7 }); POST.set({ bloom: 0.9, thr: 0.5, sat: 1.15, vig: 0.7 });
     },
     siegReads(lt, d, t, api) {
-      const m = api.marks(), tk = m.takuto, sg = m.sieg, cam = { pos: [lerp(tk.x, sg.x, 0.5) + 0.7, 1.2, lerp(tk.z, sg.z, 0.5) + 1.0], look: [tk.x + 0.2, 1.0, tk.z - 0.2], fov: 28 };
+      const m = api.marks(), tk = m.takuto, sg = m.sieg, mx = lerp(tk.x, sg.x, 0.5), mz = lerp(tk.z, sg.z, 0.5), cam = { pos: [mx + 2.6, 1.35, mz + 1.6], look: [mx, 1.15, mz], fov: 34 };
       api.render(t, cam, K.over(api, t, { takuto: { pose: { ...P().ready, weapon: 1.2, ry: K.yaw(tk, sg) }, o: { axeGlow: 0.25 + 0.15 * Math.sin(t * 2) } }, sieg: { pose: { lean: 0.2, headX: 0.3, ry: K.yaw(sg, tk) }, o: { expr: { sad: 0.4 } } } }));
       const [x, y] = K.proj(S3.weaponTip('takuto', 0.6)); GFX.radial(x, y, 120, 'rgba(255,60,40,0.25)', 'rgba(0,0,0,0)', 1, 'lighter'); api.postFor();
     },

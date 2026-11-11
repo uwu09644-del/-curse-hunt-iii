@@ -23,7 +23,7 @@ const EP01X_SCRIPT = (() => {
       ['plate', 'nerima_night', 6.5, { fadeOut: 1.2, fx: rain }, [[0.6, 'TAK', 'I still go every night. Somebody has to feed the cat.']]],
     ] },
     { env: 'earth', envOpts: { gate: 1, cat: true }, mood: 'night', music: 'calm', side: 1, wideDir: [0.6, 0.8],
-      cast: { takuto: [-1.0, 4.2, PI - 0.5], haruki: [-0.1, 4.0, PI + 0.6] },
+      cast: { takuto: [4.0, -1.8, 2.4], haruki: [6.0, -1.9, -2.5] },
       beats: [
         ['plate', 'nerima_night', 6, { card: ['THE CROSSING', 'Three years ago'], zoom: 1.1 }],
         ['HAR', 'Your knuckles are bleeding.', { to: 'takuto' }],

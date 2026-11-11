@@ -1261,226 +1261,287 @@
   },
   {
    "id": "ep08_200",
-   "who": "NEMU",
-   "text": "Are you counting?"
+   "who": "WICK",
+   "text": "Okay. Fishing. I have never fished. How hard can it be?"
   },
   {
    "id": "ep08_201",
-   "who": "SIEG",
-   "text": "A different list tonight."
+   "who": "NEMU",
+   "text": "You do not have a rod."
   },
   {
    "id": "ep08_202",
-   "who": "NEMU",
-   "text": "Who is on it?"
+   "who": "WICK",
+   "text": "I have a head made of fire. Fish are attracted to light. I read that somewhere."
   },
   {
    "id": "ep08_203",
-   "who": "SIEG",
-   "text": "A girl who sleeps all day. A boy whose head is on fire. A girl with her brother's scarf. A boy with an axe that talks back."
+   "who": "NEMU",
+   "text": "Where?"
   },
   {
    "id": "ep08_204",
-   "who": "SIEG",
-   "text": "Five. All five. Still here."
+   "who": "WICK",
+   "text": "On a cereal box. In Osaka. Five years ago.",
+   "tts": "On a cereal box. In Oh-sah-kah. Five years ago."
   },
   {
    "id": "ep08_205",
    "who": "NEMU",
-   "text": "You forgot one."
+   "text": "...Wick. Your head is in the water."
   },
   {
    "id": "ep08_206",
-   "who": "SIEG",
-   "text": "Who?"
+   "who": "WICK",
+   "text": "It still works underwater! Mostly! It is just very steamy!"
   },
   {
    "id": "ep08_207",
    "who": "NEMU",
-   "text": "You. You never count yourself. Six."
+   "text": "The fish are leaving. All of them. They are leaving the river."
   },
   {
    "id": "ep08_208",
+   "who": "WICK",
+   "text": "...So we are having bread for lunch."
+  },
+  {
+   "id": "ep08_209",
+   "who": "NEMU",
+   "text": "I caught three with my hands while you were boiling the river."
+  },
+  {
+   "id": "ep08_210",
+   "who": "WICK",
+   "text": "You are a cat! That is cheating!"
+  },
+  {
+   "id": "ep08_211",
+   "who": "NEMU",
+   "text": "I am a cat. That is fishing."
+  },
+  {
+   "id": "ep08_212",
+   "who": "NEMU",
+   "text": "Are you counting?"
+  },
+  {
+   "id": "ep08_213",
+   "who": "SIEG",
+   "text": "A different list tonight."
+  },
+  {
+   "id": "ep08_214",
+   "who": "NEMU",
+   "text": "Who is on it?"
+  },
+  {
+   "id": "ep08_215",
+   "who": "SIEG",
+   "text": "A girl who sleeps all day. A boy whose head is on fire. A girl with her brother's scarf. A boy with an axe that talks back."
+  },
+  {
+   "id": "ep08_216",
+   "who": "SIEG",
+   "text": "Five. All five. Still here."
+  },
+  {
+   "id": "ep08_217",
+   "who": "NEMU",
+   "text": "You forgot one."
+  },
+  {
+   "id": "ep08_218",
+   "who": "SIEG",
+   "text": "Who?"
+  },
+  {
+   "id": "ep08_219",
+   "who": "NEMU",
+   "text": "You. You never count yourself. Six."
+  },
+  {
+   "id": "ep08_220",
    "who": "SIEG",
    "text": "...Six."
   },
   {
-   "id": "ep08_209",
+   "id": "ep08_221",
    "who": "AKURO",
    "text": "The wolf. Three hundred years ago I knew wolves like him. They die standing up.",
    "mono": true
   },
   {
-   "id": "ep08_210",
+   "id": "ep08_222",
    "who": "TAKUTO",
    "text": "You liked him."
   },
   {
-   "id": "ep08_211",
+   "id": "ep08_223",
    "who": "AKURO",
    "text": "I liked that he refused. Everybody kneels to the suit eventually. That one did not.",
    "mono": true
   },
   {
-   "id": "ep08_212",
+   "id": "ep08_224",
    "who": "TAKUTO",
    "text": "Did you kneel? Three hundred years ago?"
   },
   {
-   "id": "ep08_213",
+   "id": "ep08_225",
    "who": "AKURO",
    "text": "...Go to sleep, boy. Tomorrow you see the golden city. Look at it carefully. Gold is very good at hiding rot.",
    "mono": true
   },
   {
-   "id": "ep08_214",
+   "id": "ep08_226",
    "who": "WICK",
    "text": "Whoa. Whoa. It is so shiny."
   },
   {
-   "id": "ep08_215",
+   "id": "ep08_227",
    "who": "RIN",
    "text": "Saint Lumen. The golden capital."
   },
   {
-   "id": "ep08_216",
+   "id": "ep08_228",
    "who": "NEMU",
    "text": "It looks like someone dropped the sun and built houses on it."
   },
   {
-   "id": "ep08_217",
+   "id": "ep08_229",
    "who": "SIEG",
    "text": "Home of the Gilded Order, the Cathedral, and the Golden Saint himself. Lucien Aurel."
   },
   {
-   "id": "ep08_218",
+   "id": "ep08_230",
    "who": "TAKUTO",
    "text": "Haruki is down there.",
    "tts": "Hah-roo-kee is down there."
   },
   {
-   "id": "ep08_219",
+   "id": "ep08_231",
    "who": "SIEG",
    "text": "If Wick heard right."
   },
   {
-   "id": "ep08_220",
+   "id": "ep08_232",
    "who": "WICK",
    "text": "I always hear right. I just do not always hear the important parts."
   },
   {
-   "id": "ep08_221",
+   "id": "ep08_233",
    "who": "TAKUTO",
    "text": "...Two years. I am coming, Haruki.",
    "tts": "...Two years. I am coming, Hah-roo-kee."
   },
   {
-   "id": "ep08_222",
+   "id": "ep08_234",
    "who": "HUNTER",
    "text": "Halt. State your names and your business in the holy city."
   },
   {
-   "id": "ep08_223",
+   "id": "ep08_235",
    "who": "SIEG",
    "text": "Sieg Valen, rank A, of the Ashford Guild. With four Hunters. The Order sent for us.",
    "tts": "Seeg Valen, rank A, of the Ashford Guild. With four Hunters. The Order sent for us."
   },
   {
-   "id": "ep08_224",
+   "id": "ep08_236",
    "who": "HUNTER",
    "text": "Valen. And the white-haired one is the Skyfallen?"
   },
   {
-   "id": "ep08_225",
+   "id": "ep08_237",
    "who": "HUNTER",
    "text": "The Saint expects you. All of you. A carriage is waiting."
   },
   {
-   "id": "ep08_226",
+   "id": "ep08_238",
    "who": "WICK",
    "text": "A carriage. A golden carriage."
   },
   {
-   "id": "ep08_227",
+   "id": "ep08_239",
    "who": "TAKUTO",
    "text": "Haruki got into a golden carriage. Two years ago. The guild clerk said he waved.",
    "tts": "Hah-roo-kee got into a golden carriage. Two years ago. The guild clerk said he waved."
   },
   {
-   "id": "ep08_228",
+   "id": "ep08_240",
    "who": "NEMU",
    "text": "You are not going to wave, are you?"
   },
   {
-   "id": "ep08_229",
+   "id": "ep08_241",
    "who": "TAKUTO",
    "text": "No."
   },
   {
-   "id": "ep08_230",
+   "id": "ep08_242",
    "who": "AKURO",
    "text": "Gold, boy. Everything smells of gold here. And underneath it, something I have smelled before.",
    "mono": true
   },
   {
-   "id": "ep08_231",
+   "id": "ep08_243",
    "who": "TAKUTO",
    "text": "Rin. It is talking."
   },
   {
-   "id": "ep08_232",
+   "id": "ep08_244",
    "who": "RIN",
    "text": "What does it say?"
   },
   {
-   "id": "ep08_233",
+   "id": "ep08_245",
    "who": "TAKUTO",
    "text": "That this city is hiding something."
   },
   {
-   "id": "ep08_234",
+   "id": "ep08_246",
    "who": "RIN",
    "text": "...Every city is. Let's go find out what."
   },
   {
-   "id": "ep08_235",
+   "id": "ep08_247",
    "who": "LUCIEN",
    "text": "A boy with white hair and a red jacket is coming down the mountain road. He says he is your friend."
   },
   {
-   "id": "ep08_236",
+   "id": "ep08_248",
    "who": "HARUKI",
    "text": "...Takuto?",
    "tts": "...Tah-koo-toh?"
   },
   {
-   "id": "ep08_237",
+   "id": "ep08_249",
    "who": "LUCIEN",
    "text": "You told me nobody would come looking for you."
   },
   {
-   "id": "ep08_238",
+   "id": "ep08_250",
    "who": "HARUKI",
    "text": "I told you nobody should. He never listens. He never, ever listens."
   },
   {
-   "id": "ep08_239",
+   "id": "ep08_251",
    "who": "TAKUTO",
    "text": "Next time: Saint Lumen, the golden capital."
   },
   {
-   "id": "ep08_240",
+   "id": "ep08_252",
    "who": "TAKUTO",
    "text": "The Golden Saint invites me to join the Gilded Order."
   },
   {
-   "id": "ep08_241",
+   "id": "ep08_253",
    "who": "TAKUTO",
    "text": "And Haruki is standing at his side. He doesn't want to be rescued.",
    "tts": "And Hah-roo-kee is standing at his side. He doesn't want to be rescued."
   },
   {
-   "id": "ep08_242",
+   "id": "ep08_254",
    "who": "TAKUTO",
    "text": "Episode nine. Saint Lumen."
   }

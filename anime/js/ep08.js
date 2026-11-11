@@ -272,6 +272,23 @@ const EP08_SCRIPT = (() => {
         ['RIN', 'The giants. The Hydra. The ogres. Grey Hollow. Nerima. It is all him.', { to: 'sieg' }],
         ['TAK', 'And he is going where we are going.', { to: 'rin' }],
       ] },
+    { env: 'pass', envOpts: FALLS, mood: 'day', music: 'comedy', side: 1, wideDir: [0.9, 0.45],
+      cast: { wick: [0.5, 0.4, PI + 0.3], nemu: [-0.6, 0.6, PI - 0.3] },
+      beats: [
+        ['plate', 'waterfall', 5.5, { card: ['THE FALLS', 'Lunch'], pan: 0.05 }],
+        ['WIC', 'Okay. Fishing. I have never fished. How hard can it be?', { to: 'nemu', emote: 'happy' }],
+        ['NEM', 'You do not have a rod.', { to: 'wick', emote: 'tired' }],
+        ['WIC', 'I have a head made of fire. Fish are attracted to light. I read that somewhere.', { to: 'nemu', emote: 'smug' }],
+        ['NEM', 'Where?', { to: 'wick' }],
+        ['WIC', 'On a cereal box. In Osaka. Five years ago.', { to: 'nemu' }],
+        ['NEM', '...Wick. Your head is in the water.', { to: 'wick', emote: 'surprised' }],
+        ['WIC', 'It still works underwater! Mostly! It is just very steamy!', { to: 'nemu', emote: 'happy' }],
+        ['NEM', 'The fish are leaving. All of them. They are leaving the river.', { to: 'wick' }],
+        ['WIC', '...So we are having bread for lunch.', { to: 'nemu', emote: 'sad' }],
+        ['NEM', 'I caught three with my hands while you were boiling the river.', { to: 'wick', emote: 'smug' }],
+        ['WIC', 'You are a cat! That is cheating!', { to: 'nemu', emote: 'angry' }],
+        ['NEM', 'I am a cat. That is fishing.', { to: 'wick', emote: 'happy' }],
+      ] },
     { env: 'pass', envOpts: FALLS, mood: 'dusk', music: 'calm', side: 1, wideDir: [0.5, 1],
       cast: { sieg: [0.5, 0.2, -0.2, { pose: sit }], nemu: [-0.5, 0.3, 0.2, { pose: sit }] },
       beats: [
@@ -340,6 +357,6 @@ const EP08_SCRIPT = (() => {
     ['custom', 'nextTitle', 6, [[0.5, 'TAK', 'Episode nine. Saint Lumen.']]],
   ] }];
 
-  return { id: 'ep08', number: 8, pace: 0.5, title: { jpNo: '第八話', jp: '牙の浪人', en: 'THE FANG RONIN' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
+  return { id: 'ep08', number: 8, pace: 0.75, title: { jpNo: '第八話', jp: '牙の浪人', en: 'THE FANG RONIN' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
 })();
 if (typeof module !== 'undefined') module.exports = EP08_SCRIPT;
