@@ -102,8 +102,8 @@ const DIRECTOR = (() => {
     // keep dialogue cameras inside the set: the street between the houses, the walls of the hall, the yard's fence
     const BOUNDS = { town: p => p[1] > 8 ? p : [clamp(p[0], -3.7, 3.7), p[1], p[2]], guild: p => [clamp(p[0], -10.3, 10.3), Math.min(p[1], 7.3), clamp(p[2], -8.5, 8.5)], yard: p => { const r = Math.hypot(p[0], p[2]); return r > 12.2 ? [p[0] * 12.2 / r, p[1], p[2] * 12.2 / r] : p; } };
     const inSet = cam => { const f = BOUNDS[SC.env]; if (f) cam.pos = f(cam.pos); return cam; };
-    function render(t, cam, cast, after) {
-      S3.frame({ env: SC.env, t, cam, cast, envOpts: SC.envOpts });
+    function render(t, cam, cast, after, under) {
+      S3.frame({ env: SC.env, t, cam, cast, envOpts: SC.envOpts, under });
       if (SC.overlay) SC.overlay(t, cam);
       postFor(SC.mood);
       if (after) after(t);
@@ -318,7 +318,7 @@ const DIRECTOR = (() => {
       const dur = T - t0;
       music(sc.music, t0, dur); ambience(sc.ambience || sc.env, t0, dur, sc.mood);
     }
-    const API = { render: (t, cam, cast, after) => render(t, cam, cast, after), castList, marks: () => SC.marks, frameFor, headAt, S3, G, X, POST, V, postFor: () => postFor(SC.mood) };
+    const API = { render: (t, cam, cast, after, under) => render(t, cam, cast, after, under), castList, marks: () => SC.marks, frameFor, headAt, S3, G, X, POST, V, postFor: () => postFor(SC.mood) };
 
     // assemble: cold open, opening, title card, Part A, eyecatch, Part B, ending, preview
     const custom = spec.custom || {};

@@ -26,7 +26,7 @@ const EP12_CUSTOM = (() => {
       api.render(t, cam, K.over(api, t, { valentine: { pose: { uaL: [2.4, 0.6], elL: 0.3, uaR: [2.4, 0.6], elR: 0.3, ry: PI }, o: { expr: { happy: 0.8 } } }, gideon: { pose: { uaR: [2.0, 0.4], elR: 0.3, uaL: [2.0, 0.4], elL: 0.3, ry: PI }, o: { expr: { angry: 0.5 } } } }));
       const k = ease.out(clamp((lt - 0.4) / 1.0)), c = GFX.ctx; GFX.fill('#ff60b0', 0.12 * k, 'screen');
       for (let i = 0; i < 9; i++) { const x = 140 + i * 125, y = 470 + Math.sin(lt * 6 + i) * 10, h = 120; c.save(); c.translate(x, y); c.rotate(Math.sin(lt * 5 + i) * 0.2 * k); c.fillStyle = 'rgba(230,210,150,0.9)'; c.fillRect(-18, -h, 36, h); c.beginPath(); c.arc(0, -h - 16, 16, 0, 7); c.fill(); c.restore(); }
-      if (lt > 3.6) K.chains(t, inv(3.6, 4.4, lt), 0, 'gideon');
+      if (lt > 3.6) { const k = inv(3.6, 4.4, lt), h = K.proj(S3.jointPos('gideon', 'handR', 0)); [[180, 300], [420, 220], [900, 260], [1120, 340]].forEach((p, i) => K.thread(h, p, t, k, { color: [255, 200, 90], sag: 60, w: 3, i })); }
       GFX.motes(t, { n: 60, vy: 40, color: '#ff9ad8', size: 3, seed: 7, a: k }); POST.set({ bloom: 0.8, thr: 0.55 });
     },
     gateGale(lt, d, t, api) {

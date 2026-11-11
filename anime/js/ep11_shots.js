@@ -15,7 +15,7 @@ const EP11_CUSTOM = (() => {
       if (lt > 6.4 && lt < 6.5) GFX.fill('#e8f4ff', 0.8); snow(t, 0.8); POST.set({ sat: 0.75, bloom: 0.7, thr: 0.55, vig: 0.6 });
     },
     tofuReads(lt, d, t, api) {
-      const tf = api.marks().tofu, cam = { pos: [tf.x + 1.0, 1.0, tf.z + 1.4], look: [tf.x, 0.7, tf.z], fov: 32 };
+      const tf = api.marks().tofu, cam = { pos: [tf.x - 1.3, 0.95, tf.z + 1.2], look: [tf.x, 0.65, tf.z], fov: 32 };
       api.render(t, cam, K.over(api, t, { tofu: { pose: { y: 0.5 + Math.sin(t * 2) * 0.05 }, o: { face: lt > 0.6 ? 'scan' : 'idle' } } }));
       if (lt > 1.0) VFX.holo(lt - 1.0, d - 1.2, { x: 860, y: 230, w: 480, title: 'BRAND APPRAISAL', color: '#ff7ab6', accent: '#ffd6ea', lines: [{ t: 'Lucien Aurel', big: true }, 'Brand: SANCTUM  ·  Rank S', { t: lt > 4 ? 'Second signature: STATIC (key)' : '...', col: '#b0c8ff' }] });
       if (lt > 4 && lt < 4.4) GFX.fill('#c0d0ff', 0.15, 'lighter'); api.postFor();
@@ -54,7 +54,7 @@ const EP11_CUSTOM = (() => {
       snow(t); api.postFor();
     },
     tyrRaises(lt, d, t, api) {
-      const ty = api.marks()[TY], h = K.H(TY), up = ease.io(clamp((lt - 0.6) / 3)), cam = K.jolt({ pos: [ty.x - 2, 0.6, ty.z + 12], look: [ty.x, h * (0.6 + up * 0.25), ty.z], fov: 48 }, t, 0.02);
+      const ty = api.marks()[TY], h = K.H(TY), up = ease.io(clamp((lt - 0.6) / 3)), cam = K.jolt({ pos: [ty.x - 3.2, 1.3, ty.z + 8.6], look: [ty.x, h * (0.6 + up * 0.25), ty.z], fov: 50 }, t, 0.02);
       api.render(t, cam, K.over(api, t, { [TY]: { o: { squash: -up * 0.12, tilt: -up * 0.06, shake: 0.2 } } }));
       const [x, y] = K.proj([ty.x + 1, h * 1.05, ty.z]); GFX.radial(x, y - up * 60, 160, 'rgba(160,220,255,0.55)', 'rgba(0,0,0,0)', 1, 'lighter'); snow(t); POST.set({ sat: 0.8, vig: 0.7 });
     },
@@ -123,7 +123,7 @@ const EP11_CUSTOM = (() => {
     },
     nemuFalls(lt, d, t, api) {
       const m = api.marks(), nm = m.nemu, tk = m.takuto, hit = 1.4, np = { x: lerp(nm.x, tk.x + 0.2, 0.8), z: lerp(nm.z, tk.z + 1.0, 0.8) }, fall = ease.in(clamp((lt - hit - 0.2) / 1.0)), still = lt > 4.2;
-      const cam = K.jolt(lt < 4.2 ? { pos: [np.x + 2.4, 1.1, np.z + 1.6], look: [lerp(np.x, tk.x, 0.4), 1.0, lerp(np.z, tk.z, 0.4)], fov: 40 } : { pos: [np.x + 0.3, 2.6, np.z + 0.6], look: [np.x, 0.2, np.z], fov: 30 }, t, lt > hit && lt < hit + 0.5 ? 0.15 : 0);
+      const cam = K.jolt(lt < 4.2 ? { pos: [np.x + 2.4, 1.1, np.z + 1.6], look: [lerp(np.x, tk.x, 0.4), 1.0, lerp(np.z, tk.z, 0.4)], fov: 40 } : { pos: [np.x + 1.9, 0.55, np.z + 1.1], look: [np.x, 0.35, np.z + 0.3], fov: 32 }, t, lt > hit && lt < hit + 0.5 ? 0.15 : 0);
       const fade = inv(4.6, 7.2, lt);
       api.render(still ? 4.2 : t, cam, K.over(api, t, { nemu: { pose: { ...P().hit, x: np.x, z: np.z + fall * 0.6, pitch: fall * 1.4, y: 0, ry: K.yaw(np, tk) }, o: { expr: { relaxed: 0.9 } } }, takuto: { pose: lt < hit ? { ...P().windup, weapon: 2.0, ry: K.yaw(tk, np) } : { ...P().chop, weapon: 1.7, ry: K.yaw(tk, np) }, o: { axeGlow: 1 - fade, expr: lt > 6 ? { sad: 1 } : { happy: 0.5 } } } }));
       if (lt > hit && lt < hit + 0.1) GFX.fill('#fff', 0.9); if (lt > hit + 0.1 && lt < hit + 0.3) GFX.fill('#000', 0.9);

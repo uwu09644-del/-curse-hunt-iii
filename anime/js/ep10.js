@@ -134,7 +134,7 @@ const EP10_SCRIPT = (() => {
         ['SIE', 'Morvudd does not use bridges. Morvudd is what the river is afraid of.', { to: 'rin', emote: 'sad' }],
       ] },
     { env: 'plains', envOpts: CAMP, mood: 'night', music: 'emotional', side: -1, wideDir: [0.8, 0.6],
-      cast: { takuto: [-0.9, 0.9, H + 0.6, { pose: sit }], rin: [0.9, 1.0, -H - 0.6, { pose: sit, weapon: false }], sieg: [0.1, -0.4, 0.05, { pose: sit }], wick: [-1.6, -0.4, H, { pose: sit }], nemu: [1.6, -0.4, -H, { pose: sit }] },
+      cast: { takuto: [-0.9, 0.9, H + 0.6, { pose: sit }], rin: [0.9, 1.0, -H - 0.6, { pose: sit, weapon: false }], sieg: [0.1, -0.4, 0.05, { pose: sit }], wick: [-1.6, -0.4, H, { pose: sit }], nemu: [1.6, -0.4, -H, { pose: sit }] , m_wolf: [3.4, -2.6, -0.6, { hidden: true }] },
       beats: [
         ['plate', 'forest_camp', 7, { card: ['THE BRIDGE CAMP', 'Midnight'], zoom: 1.1 }],
         ['WIC', 'Sieg. You promised. At Grey Hollow, your squad asked for the one about the bear and the bishop. Tell it. Please.', { to: 'sieg' }],
@@ -200,7 +200,6 @@ const EP10_SCRIPT = (() => {
         ['NEM', 'He is very warm. Okay.', { to: 'takuto', emote: 'happy' }],
       ] },
   ];
-  partA[3].cast.m_wolf = [3.4, -2.6, -0.6, { hidden: true }];
 
   const partB = [
     { env: 'plains', envOpts: FIELD, mood: 'dusk', music: 'battle', side: 1, wideDir: [0.9, 0.5], handheld: true,

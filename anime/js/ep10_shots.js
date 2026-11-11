@@ -6,10 +6,10 @@
 const EP10_CUSTOM = (() => {
   const PI = Math.PI, { clamp, lerp, inv, ease, hash } = GFX, P = () => S3.POSES, K = KIT, MV = 'm_morvudd', WF = 'm_wolf';
   const wind = (t, a = 0.5) => GFX.motes(t * 2, { n: 60, vy: 10, vx: 220, color: '#c8b888', size: 2, glow: false, seed: 33, a });
-  function crowd(lt, t, a, y0 = 470, rows = 3) { // the horde: rows of small dark shapes with red eyes, advancing
-    for (let r = 0; r < rows; r++) for (let i = 0; i < 26; i++) { const x = (i / 25) * 1340 - 30 + hash(i, r) * 30, y = y0 + r * 40 + lt * (6 + r * 4), s = 10 + r * 6, b = Math.abs(Math.sin(t * 5 + i + r)) * 4;
-      const c = GFX.ctx; c.save(); c.globalAlpha = a; c.fillStyle = '#120c10'; c.beginPath(); c.ellipse(x, y - b, s * 0.7, s, 0, 0, 7); c.fill(); c.restore();
-      GFX.radial(x + s * 0.2, y - b - s * 0.5, 3 + r, 'rgba(255,60,40,' + (0.9 * a).toFixed(2) + ')', 'rgba(0,0,0,0)', 1, 'lighter'); }
+  function crowd(lt, t, a, y0 = 470, rows = 3) { // the horde: rows of Lesser Fiends running, smaller with distance
+    if (a <= 0) return;
+    for (let r = 0; r < rows; r++) for (let i = 0; i < 18; i++) { const x = ((i / 17) * 1400 - 60 + hash(i, r) * 50 + lt * (20 + r * 8)) % 1460 - 60, y = y0 + r * 34 + lt * (4 + r * 3) + Math.abs(Math.sin(t * 6 + i * 1.7 + r)) * -6, s = 9 + r * 7;
+      K.wolf(x, y, s, a * (0.75 + 0.25 * r / Math.max(1, rows - 1)), t * 0.6, i + r * 20); }
   }
   return {
     horde(lt, d, t) {
@@ -24,22 +24,22 @@ const EP10_CUSTOM = (() => {
     },
     hordeArrives(lt, d, t, api) {
       const s = api.marks().sieg, cam = K.jolt({ pos: [s.x + 0.6, 1.2, s.z + 3.6], look: [s.x, 1.0, s.z - 8], fov: 52 }, t, 0.01 + inv(4, d, lt) * 0.03);
-      api.render(t, cam, K.over(api, t, { sieg: { pose: { ...P().ready, ry: PI } } })); crowd(lt * 2, t, inv(0.4, 2.6, lt), 380, 4); wind(t); api.postFor();
+      api.render(t, cam, K.over(api, t, { sieg: { pose: { ...P().ready, ry: PI } } }), null, () => crowd(lt * 2, t, inv(0.4, 2.6, lt), 380, 4)); wind(t); api.postFor();
     },
     bridgeFight(lt, d, t, api) {
       const m = api.marks(), cast = ['takuto', 'sieg', 'rin', 'wick', 'm_wolf', 'haruki'].filter(n => m[n] && !m[n].hidden), seg = Math.floor(lt / 2.6) % cast.length, who = cast[(seg + Math.floor(hash(Math.floor(t), 2) * 2)) % cast.length], h = m[who], ph = lt % 2.6, hit = 0.9;
       const cam = K.jolt({ pos: [h.x + (seg % 2 ? 2.4 : -2.4), 1.1, h.z + 2.2], look: [h.x, 1.1, h.z - 1.4], fov: 40 }, t, ph > hit && ph < hit + 0.35 ? 0.14 : 0.015);
       const pose = who === 'takuto' || who === 'sieg' ? S3.seq(ph, [[0, P().ready], [hit - 0.3, { ...P().windup, weapon: 2.0 }, 'out'], [hit, { ...P().chop, weapon: 1.7 }, 'in'], [hit + 0.8, P().ready]]) : { uaR: [1.8, 0.4], elR: 0.3, uaL: [1.2, 0.5], elL: 0.5 };
-      api.render(t, cam, K.over(api, t, { [who]: { pose: { ...pose, ry: PI }, o: { axeGlow: 0.4, expr: { angry: 0.7 } } } }));
-      const [x, y] = K.proj([h.x, 1.0, h.z - 1.4]); crowd(ph * 3, t, 0.95, y - 20, 1);
+      api.render(t, cam, K.over(api, t, { [who]: { pose: { ...pose, ry: PI }, o: { axeGlow: 0.4, expr: { angry: 0.7 } } } }), null, () => crowd(ph * 3, t, 0.95, 400, 2));
+      const [x, y] = K.proj([h.x, 1.0, h.z - 1.4]);
       if (ph > hit && ph < hit + 0.8) { const col = { rin: '#ff4a5a', wick: '#6ab8ff', haruki: '#d8f0ff', m_wolf: '#e8f0ff' }[who] || '#ffd0a0'; VFX.sparks(ph - hit, { x, y, n: 80, spread: 3, speed: 1200, color: col }); VFX.slash(ph - hit, { x, y: y - 30, r: 300, a0: -2.4, a1: 0.9, dur: 0.12, hold: 0.3, w: 90, flat: 0.75, rot: seg * 0.3, color: col });
         if (who === 'rin') K.thread(K.proj(S3.jointPos('rin', 'handR', 0)), [x, y], t, 1); if (who === 'wick') GFX.radial(x, y, 220, 'rgba(90,170,255,0.4)', 'rgba(0,0,0,0)', 1, 'lighter'); }
       wind(t, 0.4); api.postFor();
     },
     freezeLine(lt, d, t, api) {
       const s = api.marks().sieg, k = ease.out(clamp((lt - 0.6) / 0.6)), unf = inv(d - 1.6, d - 0.6, lt), cam = { pos: [s.x + 3.2, 1.4, s.z + 1.2], look: [s.x, 1.0, s.z - 4], fov: 46 };
-      api.render(t, cam, api.castList(t)); crowd(lt < 0.6 ? lt * 2 : 1.2, t, 0.95, 420, 2);
-      if (k > 0) { GFX.fill('#a8d8ff', 0.14 * k * (1 - unf), 'screen'); for (let i = 0; i < 7; i++) K.frost(140 + i * 170, 470 + (i % 2) * 30, 160, k * (1 - unf), t); }
+      api.render(t, cam, api.castList(t), null, () => crowd(lt < 0.6 ? lt * 2 : 1.2, t, 0.95, 420, 2));
+      if (k > 0) { GFX.fill('#a8d8ff', 0.14 * k * (1 - unf), 'screen'); for (let i = 0; i < 4; i++) K.frost(220 + i * 280, 460 + (i % 2) * 30, 150, 0.55 * k * (1 - unf), t); }
       if (lt > 0.6 && lt < 0.68) GFX.fill('#fff', 0.7); POST.set({ sat: lerp(1, 0.6, k * (1 - unf)), bloom: 0.7, thr: 0.55 });
     },
     morvuddRises(lt, d, t, api) {
@@ -49,8 +49,8 @@ const EP10_CUSTOM = (() => {
     },
     siegFalls(lt, d, t, api) {
       const s = api.marks().sieg, mv = api.marks()[MV], kneel = ease.out(clamp((lt - 0.6) / 1.4)), k = ease.io(clamp(lt / d));
-      const cam = { pos: [s.x + lerp(2.4, 0.9, k), lerp(1.3, 1.0, k), s.z + lerp(2.0, 1.2, k)], look: [s.x, lerp(1.2, 0.8, k), s.z], fov: lerp(36, 28, k) };
-      api.render(t, cam, K.over(api, t, { sieg: { pose: { ...P().hit, crouch: 0.45 * kneel, pitch: 0.2 * kneel, ry: K.yaw(s, mv), weapon: 0 }, o: { expr: { sad: 0.6 } } }, [MV]: { o: { lunge: 0.2 * Math.sin(t) } } }));
+      const cam = { pos: [s.x + lerp(2.6, 1.3, k), lerp(1.2, 0.95, k), s.z - lerp(0.4, 1.4, k)], look: [s.x, lerp(1.1, 0.85, k), s.z], fov: lerp(38, 30, k) };
+      api.render(t, cam, K.over(api, t, { sieg: { pose: { ...S3.blend(P().hit, P().kneel, kneel), x: s.x, z: s.z, ry: K.yaw(s, mv), weapon: 0 }, o: { expr: { sad: 0.6 } } }, [MV]: { o: { lunge: 0.2 * Math.sin(t) } } }));
       GFX.fill('#300004', 0.18 * k, 'multiply'); POST.set({ sat: lerp(1, 0.55, k), vig: 0.8, bloom: 0.4, thr: 0.7 }); GFX.fill('#000', inv(d - 1.4, d, lt) * 0.6);
     },
     timeStops(lt, d, t, api) {
@@ -73,7 +73,7 @@ const EP10_CUSTOM = (() => {
     },
     shoulderHand(lt, d, t, api) {
       const m = api.marks(), tk = m.takuto, hr = m.haruki, step = ease.io(clamp(lt / 1.6)), hp = { x: lerp(hr.x, tk.x + 0.45, step), z: lerp(hr.z, tk.z + 0.35, step) }, calm = inv(3.6, 7, lt);
-      const cam = lt < 3.4 ? { pos: [tk.x + 1.8, 1.4, tk.z + 2.2], look: [lerp(tk.x, hp.x, 0.5), 1.4, lerp(tk.z, hp.z, 0.5)], fov: 36 } : { pos: [tk.x + 0.6, 1.55, tk.z + 0.9], look: [tk.x + 0.2, 1.4, tk.z], fov: 26 };
+      const cam = lt < 3.4 ? { pos: [tk.x + 1.8, 1.4, tk.z + 2.2], look: [lerp(tk.x, hp.x, 0.5), 1.4, lerp(tk.z, hp.z, 0.5)], fov: 36 } : { pos: [tk.x - 0.35, 1.5, tk.z - 1.7], look: [tk.x + 0.2, 1.45, tk.z + 0.15], fov: 30 };
       api.render(t, cam, K.over(api, t, { haruki: { pose: { x: hp.x, z: hp.z, ry: K.yaw(hp, tk), ...(lt > 1.6 ? { uaR: [1.5, 0.1], elR: 0.5 } : S3.walk(t * 4, 0.6)) }, o: { expr: { sad: 0.4 } } }, takuto: { o: { axeGlow: 1 - calm, expr: { angry: 1 - calm } } } }));
       K.crimson(1 - calm); if (calm > 0) GFX.fill('#a8d8ff', 0.08 * calm * (1 - inv(6, d, lt)), 'screen');
     },
@@ -95,10 +95,10 @@ const EP10_CUSTOM = (() => {
     },
     encore(lt, d, t, api) {
       const v = api.marks().valentine, cam = { pos: [v.x + 2.4, 1.3, v.z + 2.0], look: [v.x - 0.4, 1.4, v.z - 4], fov: 44 };
-      api.render(t, cam, K.over(api, t, { valentine: { pose: { uaL: [2.4, 0.6], elL: 0.3, uaR: [2.4, 0.6], elR: 0.3, ry: PI }, o: { expr: { happy: 0.8 } } } }));
       const k = ease.out(clamp((lt - 0.4) / 1.2)), loop = (lt * 0.8) % 1, c = GFX.ctx;
+      api.render(t, cam, K.over(api, t, { valentine: { pose: { uaL: [2.4, 0.6], elL: 0.3, uaR: [2.4, 0.6], elR: 0.3, ry: PI }, o: { expr: { happy: 0.8 } } } }), null, () => crowd(loop * 2, t, 0.95 * k, 440, 2));
       GFX.fill('#ff60b0', 0.12 * k, 'screen'); [[320, 0], [960, 1]].forEach(([x, i]) => { c.save(); c.globalCompositeOperation = 'lighter'; const g = c.createLinearGradient(x, 0, x + (i ? -260 : 260), 720); g.addColorStop(0, 'rgba(255,190,230,' + (0.5 * k).toFixed(2) + ')'); g.addColorStop(1, 'rgba(255,120,200,0)'); c.fillStyle = g; c.beginPath(); c.moveTo(x - 30, 0); c.lineTo(x + 30, 0); c.lineTo(x + (i ? -120 : 380), 720); c.lineTo(x + (i ? -380 : 120), 720); c.closePath(); c.fill(); c.restore(); });
-      crowd(loop * 2, t, 0.95 * k, 440, 2); c.save(); c.fillStyle = 'rgba(120,10,40,' + (0.85 * k).toFixed(2) + ')'; c.fillRect(0, 0, 1280 * 0.12 * k, 720); c.fillRect(1280 - 1280 * 0.12 * k, 0, 1280 * 0.12 * k, 720); c.restore();
+      c.save(); c.fillStyle = 'rgba(120,10,40,' + (0.85 * k).toFixed(2) + ')'; c.fillRect(0, 0, 1280 * 0.12 * k, 720); c.fillRect(1280 - 1280 * 0.12 * k, 0, 1280 * 0.12 * k, 720); c.restore();
       GFX.motes(t, { n: 60, vy: 40, color: '#ff9ad8', size: 3, seed: 7, a: k }); POST.set({ bloom: 0.8, thr: 0.5, sat: 1.15 });
     },
     nextTitle: K.title('第十一話', '厄災', 'CALAMITY', 120),

@@ -768,7 +768,7 @@ const S3 = (() => {
   }
   // a seated character gets something to sit on: a low wooden crate under the hips (painted-only sets have no furniture)
   function seatFor(c, pose = {}) {
-    if (c.sprite) return; const sit = (pose.crouch || 0) >= 0.45 && pose.thL && pose.thL[0] >= 1.2;
+    if (c.sprite) return; const sit = (pose.crouch || 0) >= 0.45 && pose.thL && pose.thL[0] >= 1.2 && (pose.lean || 0) > -0.4; // lying down: no crate
     if (!c.seat) { if (!sit) return; const g = new THREE.Group(), box = new THREE.Mesh(new THREE.BoxGeometry(0.56, 0.44, 0.46), toon('#5a4232')), lid = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.05, 0.5), toon('#6e5240'));
       box.position.y = 0.22; lid.position.y = 0.465; g.add(box, lid); g.position.set(0, 0, 0.16); c.J.root.add(g); c.seat = g; }
     c.seat.visible = sit;
@@ -824,6 +824,7 @@ const S3 = (() => {
     let fog0 = null; if (pl && sc.fog) { fog0 = sc.fog.color.getHex(); sc.fog.color.set(plateImg[pl.id].horizon); }
     R.render(sc, cam); hidden.forEach(ch => { ch.visible = true; }); if (fog0 != null) sc.fog.color.setHex(fog0);
     if (pl) { drawPlate(spec.ctx || ctx, pl, w, h); if (pl.set.mode === 'full') contactShadows(spec.ctx || ctx, spec.cast || []); }
+    if (spec.under) { const u = spec.ctx || ctx; u.save(); u.setTransform(G.K, 0, 0, G.K, 0, 0); spec.under(u); u.restore(); } // 2D art that belongs behind the characters (a distant horde, eyes in the trees)
     const tg = spec.ctx || ctx; tg.save(); tg.setTransform(1, 0, 0, 1, 0, 0); tg.globalAlpha = spec.alpha ?? 1; tg.drawImage(R.domElement, 0, 0, tg.canvas.width, tg.canvas.height); tg.restore();
     return true;
   }

@@ -91,8 +91,7 @@ const EP06_CUSTOM = (() => {
     },
     moreGiants(lt, d, t, api) {
       const tk = api.marks().takuto, gt = api.marks()[RG], k = ease.out(clamp(lt / 3)), cam = { pos: [tk.x - 0.6, 1.0, tk.z + 3.4], look: [gt.x, 2.0, gt.z], fov: 50 };
-      api.render(t, cam, over(api, t, { takuto: { pose: { ...P().ready, ry: yaw(tk, gt) }, o: { axeGlow: 0.3 + 0.2 * Math.sin(t * 3) } } }));
-      [[180, 520, 230, 0], [1110, 510, 250, 1], [330, 470, 150, 2], [960, 460, 170, 3], [640, 430, 110, 4]].forEach(([x, y, h, i]) => giantSil(x, y, h * (0.8 + 0.2 * k), inv(i * 0.6, i * 0.6 + 0.8, lt), lt, i));
+      api.render(t, cam, over(api, t, { takuto: { pose: { ...P().ready, ry: yaw(tk, gt) }, o: { axeGlow: 0.3 + 0.2 * Math.sin(t * 3) } } }), null, () => [[180, 520, 230, 0], [1110, 510, 250, 1], [330, 470, 150, 2], [960, 460, 170, 3], [640, 430, 110, 4]].forEach(([x, y, h, i]) => giantSil(x, y, h * (0.8 + 0.2 * k), inv(i * 0.6, i * 0.6 + 0.8, lt), lt, i)));
       ash(t); api.postFor();
     },
     grabRin(lt, d, t, api) {

@@ -78,8 +78,8 @@ const EP08_CUSTOM = (() => {
     },
     packAmbush(lt, d, t, api) {
       const s = api.marks().sieg, cam = { pos: [s.x + 0.4, 1.3, s.z + 3.0], look: [s.x, 1.1, s.z - 3], fov: 50 };
-      api.render(t, cam, K.over(api, t, { sieg: { pose: { ...P().ready, ry: PI }, o: { expr: { angry: 0.5 } } } }));
-      GFX.fill('#05060c', 0.25 * inv(0, 2, lt)); K.eyePairs(80, lt, inv(0.4, 3, lt), { y0: 300, y1: 480, size: 3.6 });
+      api.render(t, cam, K.over(api, t, { sieg: { pose: { ...P().ready, ry: PI }, o: { expr: { angry: 0.5 } } } }), null, () => K.eyePairs(80, lt, inv(0.4, 3, lt), { y0: 300, y1: 480, size: 3.6 }));
+      GFX.fill('#05060c', 0.15 * inv(0, 2, lt));
       [0, 1, 2, 3].forEach(i => { const k = clamp((lt - 4 - i * 0.4) / 1.6); if (k > 0 && k < 1) K.wolf(lerp(i % 2 ? 1400 : -140, 640 + (i - 1.5) * 120, k), 520 - Math.sin(k * PI) * 160, 80, 0.95, t, i); });
       K.rain(t, 0.4); api.postFor();
     },

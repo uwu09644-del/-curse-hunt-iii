@@ -61,8 +61,8 @@ const EP07_CUSTOM = (() => {
     },
     wolfPack(lt, d, t, api) {
       const tk = api.marks().takuto, cam = { pos: [tk.x + 0.4, 1.4, tk.z + 3.4], look: [tk.x, 1.0, tk.z - 6], fov: 48 };
-      api.render(t, cam, K.over(api, t, { takuto: { pose: { ...P().ready, ry: PI }, o: { expr: { angry: 0.4 } } } }));
-      GFX.fill('#05060c', 0.25 * inv(0, 2, lt)); K.eyePairs(70, lt * 0.9, inv(0.6, 3.5, lt), { y0: 330, y1: 470, size: 3.4 });
+      api.render(t, cam, K.over(api, t, { takuto: { pose: { ...P().ready, ry: PI }, o: { expr: { angry: 0.4 } } } }), null, () => K.eyePairs(70, lt * 0.9, inv(0.6, 3.5, lt), { y0: 330, y1: 470, size: 3.4 }));
+      GFX.fill('#05060c', 0.15 * inv(0, 2, lt));
       GFX.motes(t, { n: 50, vy: -10, color: '#6a6a80', size: 9, glow: false, seed: 12, a: 0.25 }); api.postFor();
     },
     wolfLunge(lt, d, t, api) {

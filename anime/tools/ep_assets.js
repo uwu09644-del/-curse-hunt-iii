@@ -8,5 +8,8 @@ const walk = v => { if (Array.isArray(v)) { if (v[0] === 'plate' && typeof v[1] 
   Object.keys(sc.cast || {}).forEach(n => (n.startsWith('m_') ? spr : VRM.includes(n) ? vrm : new Set()).add(n));
   ((sc.envOpts || {}).plates || []).forEach(p => plates.add(p[0])); walk(sc.beats);
 }));
+// plates that only hand-directed shots paint (K.plate('id'), S3.plateImage('id')) need preloading too
+const shots = process.argv[2].replace(/\.js$/, '_shots.js');
+if (require('fs').existsSync(shots)) for (const m of require('fs').readFileSync(shots, 'utf8').matchAll(/(?:plate|plateImage)\('([a-z0-9_]+)'/g)) plates.add(m[1]);
 ['takuto', 'nemu', 'sieg', 'sable'].forEach(n => vrm.add(n)); // the opening and ending always need these
 console.log([[...vrm], [...spr], [...plates]].map(a => a.join(',') || '-').join(' '));

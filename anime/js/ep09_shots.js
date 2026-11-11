@@ -65,22 +65,12 @@ const EP09_CUSTOM = (() => {
     },
     staticAlley(lt, d, t) {
       K.plate('lumen_slums', lt, d, { z0: 1.16, z1: 1.28, pan: 0.02 }); GFX.fill('#05060c', 0.3);
-      const vis = inv(1.0, 2.0, lt) * (1 - inv(5.4, 6.2, lt)), x = 900, y = 420;
-      if (vis > 0) { const c = GFX.ctx; c.save(); c.globalAlpha = vis; c.fillStyle = '#06060a'; c.beginPath(); c.ellipse(x, y + 120, 60, 170, 0, 0, 7); c.fill(); c.beginPath(); c.arc(x, y - 70, 44, 0, 7); c.fill(); c.restore();
-        GFX.radial(x + 12, y - 76, 16, 'rgba(230,240,255,' + vis.toFixed(2) + ')', 'rgba(150,170,255,0)', 1, 'lighter'); K.staticArcs(x, y, 240, vis, t, 6);
-        const g = GFX.ctx; g.save(); g.strokeStyle = 'rgba(230,240,255,' + (0.8 * vis).toFixed(2) + ')'; g.lineWidth = 3; g.beginPath(); g.arc(x, y - 66, 26, 0.3, PI - 0.3); g.stroke(); g.restore(); }
+      const vis = inv(1.0, 2.0, lt) * (1 - inv(5.4, 6.2, lt)), cam = { pos: [0, 1.55, 5.2], look: [0.6, 1.45, 0], fov: 30 };
+      if (vis > 0) { S3.frame({ env: 'lumen', only: 'cast', t, cam, cast: [['sable', { x: 1.1, z: -1.2, ry: -0.4, uaR: [0.05, 0.15], elR: 0.3 }, { expr: { happy: 0.9 } }]], alpha: vis * 0.92, envOpts: { light: 'night' } });
+        const e = K.proj(S3.jointPos('sable', 'head', 0.16)); GFX.radial(e[0] - 4, e[1], 22, 'rgba(230,240,255,' + vis.toFixed(2) + ')', 'rgba(150,170,255,0)', 1, 'lighter');
+        const [x, y] = K.proj(S3.jointPos('sable', 'chest', 0)); K.staticArcs(x, y, 240, vis, t, 6); }
       if (lt > 5.4 && lt < 6.0) GFX.fill('#d8e4ff', 0.3 * (1 - (lt - 5.4) / 0.6), 'lighter');
       POST.set({ sat: 0.7, vig: 0.75, ca: 0.006 });
-    },
-    freezeSpar(lt, d, t, api) {
-      const m = api.marks(), tk = m.takuto, hr = m.haruki, f0 = 1.6, brk = 6.2, frz = lt > f0 && lt < brk;
-      const tp = lt < f0 ? S3.seq(lt, [[0, P().ready], [f0, { ...P().windup, weapon: 2.0 }, 'out']]) : frz ? { ...P().windup, weapon: 2.0 } : S3.seq(lt - brk, [[0, { ...P().windup, weapon: 2.0 }], [0.2, { ...P().chop, weapon: 1.7 }, 'in'], [1.0, P().ready]]);
-      const cam = K.jolt({ pos: [4.2, 1.3, 0.4], look: [0, 1.2, 0], fov: 34 }, t, lt > brk && lt < brk + 0.4 ? 0.12 : frz ? 0.004 + inv(3.5, brk, lt) * 0.02 : 0);
-      api.render(t, cam, K.over(api, t, { takuto: { pose: { ...tp, ry: PI }, o: { axeGlow: frz ? inv(3.5, brk, lt) : 0.2, expr: { angry: frz ? 0.9 : 0.5 } } }, haruki: { pose: { ...(lt > f0 - 0.3 && lt < f0 + 0.4 ? { uaR: [1.6, 0.2], elR: 0.2 } : P().ready), x: lt > brk ? 0.5 : 0, ry: 0 } } }));
-      const [x, y] = K.proj([tk.x, 1.2, tk.z]);
-      if (frz) { K.frost(x, y, 320, ease.out(clamp((lt - f0) / 0.4)) * (1 - inv(brk - 0.4, brk, lt) * 0.3), t); GFX.fill('#a8d8ff', 0.1, 'screen'); K.cracks(x, y - 40, 260, inv(4.0, brk, lt), { n: 8, w: 2, col: 'rgba(255,90,80,0.9)' }); GFX.txt(String(Math.max(1, 3 - Math.floor((lt - f0) / 1.0))), x + 160, y - 160, { font: '800 54px ' + GFX.FONT.disp, fill: '#e8f6ff', a: 0.9 }); }
-      if (lt > brk && lt < brk + 0.9) { VFX.sparks(lt - brk, { x, y: y - 40, n: 100, spread: 3, speed: 1100, color: '#d8f0ff' }); if (lt < brk + 0.07) GFX.fill('#fff', 0.7); }
-      api.postFor();
     },
     nextTitle: K.title('第十話', 'モルヴッド', 'MORVUDD'),
   };
