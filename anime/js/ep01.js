@@ -440,10 +440,8 @@ const EP01 = (() => {
     NM(t, 760, lerp(1260, 1110, rise), 0.92, { yawn, armUp: -0.12 * yawn, tail: 0.3 * Math.sin(t * 2), ears: -0.2 * yawn }, DUSK);
     G.frontFog(t, 0.4); grass(t);
   }, { say: [[0.6, 'a5'], ['+0.6', 'a6']], sfx: [[0.4, (g, w) => { S.pluck(g, w, n('F5'), 0.08); S.pluck(g, w + 0.18, n('A5'), 0.07); S.pluck(g, w + 0.36, n('C6'), 0.06); }]] });
-  shot(5, (lt, d, t) => nemuClose(t, lt, d), { say: [[0.3, 'a7'], ['+0.4', 'a8']] });
   shot(9, (lt, d, t) => twoShot(t, lt, d), { say: [[0.5, 'a9'], ['+0.5', 'a10'], ['+0.4', 'a11']] });
   shot(7, (lt, d, t) => twoShot(t, lt, d, { push: 0.06, camx: 40 }), { say: [[0.2, 'a12'], ['+0.5', 'a13']] });
-  shot(6, (lt, d, t) => nemuClose(t, lt, d, { sc0: 1.5, sc1: 1.58 }), { say: [[0.2, 'a14'], ['+0.5', 'a15']] });
   shot(6.5, (lt, d, t) => {
     if (lt < 1.4) { G.fill('#f4efe9'); G.focusLines(640, 360, t, { color: '#1a1a1a', a: 0.25, inner: 200 }); const bo = 1 + 0.08 * Math.abs(Math.sin(lt * 9)); R.draw('nemu_gg', { x: 640, y: 420, ax: 325, ay: 420, sc: 5.2 * bo }, P.generic(t, {}), {}); }
     else nemuClose(t, lt, d, { sc0: 1.6, sc1: 1.66, pose: { ears: 0.25, headR: 0.08 } });
@@ -472,7 +470,6 @@ const EP01 = (() => {
     POST.set({ bloom: 0.9, thr: 0.5 });
   }, { say: [[0.3, 'a33'], ['+0.5', 'a34']], sfx: [[0.6, (g, w) => { S.bell(g, w, n('A5'), 0.05); S.bell(g, w + 0.2, n('E6'), 0.04); }]] });
   shot(5, (lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.5, z1: 6.9 }), { say: [[0.3, 'a35'], ['+0.4', 'a36']] });
-  shot(6, (lt, d, t) => nemuClose(t, lt, d, { sc0: 1.55, sc1: 1.6, pose: { headR: 0.1, tail: 0.4 } }), { say: [[0.3, 'a37'], ['+0.4', 'a38']] });
   shot(10, (lt, d, t) => twoShot(t, lt, d, { push: 0.05, camx: -30, nm: { ears: -0.25 } }), { say: [[0.3, 'a39'], ['+0.5', 'a40']] });
   shot(8, (lt, d, t) => { G.barrow(t, { x: 0, y: -200, z: 1.15 }, { fogA: 0.3, rift: { open: 0.04, cx: 640, cy: 200, w: 300, h: 60 } }); G.fill('#200810', 0.15); }, { say: [[0.3, 'a41'], ['+0.5', 'a42']] });
   const BELLS = T;
@@ -510,6 +507,11 @@ const EP01 = (() => {
     G.logo(430, 380, 0.62, 1); POST.set({ bloom: 1.0, thr: 0.45 });
   }, { vig: false, sfx: [[0.1, (g, w) => [n('D6'), n('F5'), n('A5'), n('D5')].forEach((f, i) => S.bell(g, w + i * 0.13, f, 0.07, 1.6))]] });
 
+
+  /* ---------- full-body duel cuts (silhouettes against the sky) ---------- */
+  const SIL = rim => ({ sil: '#07030a', silA: 1, glow: { c: rim, a: 0.75, r: 10 } });
+  const hitstop = (lt, hits, len = 0.11) => hits.reduce((a, h) => a - Math.max(0, Math.min(lt - h, len)), lt);
+  function duelEnd(t, mood) { grass(t, 1); G.motes(t, { n: 50, vy: -30, color: mood === 'blood' ? '#ff5a3a' : '#ffc890', size: 2, seed: 44, a: 0.6 }); }
   /* ====================================================================
      PART B — The Shieldbearer
      ==================================================================== */
@@ -527,19 +529,26 @@ const EP01 = (() => {
   }, { sfx: [[1.0, (g, w) => S.ui(g, w, 0.05)], [0.9, (g, w) => S.step(g, w, 0.5)], [2.3, (g, w) => S.step(g, w, 0.55)], [3.7, (g, w) => S.step(g, w, 0.6)], [5.1, (g, w) => S.step(g, w, 0.62)], [6.4, (g, w) => { S.riftRoar(g, w, 1.6, 0.3); S.boom(g, w, 0.4); }], [0.3, (g, w) => S.clicks(g, w, 1.5, 20, { vol: 0.12, f0: 900, f1: 2600, q: 4, len: 0.02, seed: 61 })]] });
   shot(8, (lt, d, t) => twoShot(t, lt, d, { push: 0.04, nm: { ears: -0.35, tail: -0.3 }, tk: { arm: -0.12 } }), { say: [[0.3, 'b1'], ['+0.4', 'b2'], ['+0.3', 'b3']] });
   shot(5, (lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.4, z1: 7.2 }), { say: [[0.5, 'b4']] });
-  const FIGHT = T;
-  shot(5, (lt, d, t) => { // charge, CLANG
-    const c = G.ctx, hit = 3.0, run = clamp(lt / hit), k = ease.in(run), wind = ease.out(inv(1.6, 2.6, lt)), swing = ease.in(inv(2.6, hit, lt));
-    c.save(); shake(t, lt > hit && lt < hit + 0.5 ? 18 : 2);
-    G.barrow(t, { x: lerp(-100, 120, k), y: 30, z: 1.25 }, { fogA: 0.5 });
-    const sb = SHB(t, 940, 1060, 0.9, { shieldR: lt > hit ? 0.06 * Math.exp(-(lt - hit) * 6) : 0, crouch: 0.3 }, { mul: '#a58c92', mulA: 0.75 });
-    const tk = TK(t, lerp(80, 600, k), 1240, 0.62, { lean: 0.1, arm: -0.45 * wind + 0.95 * swing, legPose: PARTS.walk(t * 16, lt < hit ? 1.2 : 0), axeFront: swing > 0 }, { ...DUSK, ...(lt < hit ? {} : {}) });
-    if (lt < hit) G.dashLines(t, { a: 0.35, dir: 1 });
-    c.restore();
-    if (lt > hit) { X.sparks(lt - hit, { x: 820, y: 360, n: 60, ang: Math.PI, spread: 2.2, speed: 1200 }); X.ring(lt - hit, { x: 820, y: 360, r1: 500, dur: 0.45, flat: 1 }); }
-    if (lt > hit && lt < hit + 0.12) { G.impact('inv'); POST.set({ ca: 0.012 }); }
-    POST.set({ dir: lt < hit ? [0.006 * k, 0] : [0, 0] });
-  }, { sfx: [[0.3, (g, w) => [0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1].forEach(o => S.step(g, w + o, 0.15))], [2.6, (g, w) => S.whoosh(g, w, 0.4, 0.3, 300, 2600)], [3.0, (g, w) => { S.clang(g, w, 0.45); S.boom(g, w, 0.3); }]] });
+  const FIGHT_T = T;
+  shot(4.6, (lt, d, t) => { // EXCHANGE 1: sprint, leap, chop, CLANG, flip back
+    const hit = 2.42, a = hitstop(lt, [hit]), c = G.ctx;
+    const cam = lerp(-40, 60, clamp(a / 3));
+    c.save(); shake(t, lt > hit && lt < hit + 0.45 ? 16 * (1 - (lt - hit) / 0.45) : 0.8);
+    FIGHT.backdrop(t, { mood: 'dusk', camx: cam });
+    const mon = SHB(t, 930 - cam * 0.5, 606, 0.46, { crouch: 0.25, shieldR: a > hit ? 0.1 * Math.exp(-(a - hit) * 7) : 0, headR: -0.05 }, SIL('#ffb07a'), 1);
+    let pose;
+    if (a < 1.3) pose = { ...FIGHT.run(a * 15), x: lerp(110, 560, a / 1.3), vx: 380 };
+    else pose = FIGHT.seq(a, [[1.3, 'ready', { x: 560 }], [1.45, 'crouch', { x: 585 }], [1.75, 'leap', { x: 650, y: -150, vx: 400 }, 'out'], [2.15, 'windup', { x: 740, y: -170 }], [2.42, 'chop', { x: 790, y: -60 }, 'in'], [2.6, 'chop', { x: 780, y: -70 }], [3.15, 'spin', { x: 640, y: -160, rot: -5.6, vx: 500 }, 'out'], [3.5, 'slide', { x: 520, y: 0, rot: -6.28 }, 'in'], [3.9, 'slide', { x: 450, rot: -6.28 }, 'out'], [4.6, 'ready', { x: 440, rot: -6.28 }]]);
+    pose.x -= cam * 0.5;
+    const k = FIGHT.draw({ x: 0, y: 606, s: 1.3, t, pose, rim: '#ffb07a' });
+    if (a < 1.3) [0.2, 0.45, 0.7, 0.95, 1.2].forEach((s0, i) => FIGHT.dust(a - s0, 110 + (s0 / 1.3) * 450 - cam * 0.5, 604, 5, i + 3));
+    if (a > 3.5) FIGHT.dust(a - 3.5, 520 - cam * 0.5, 604, 12, 9, Math.PI * 0.1);
+    if (lt > hit) { X.sparks(lt - hit, { x: 800 - cam * 0.5, y: 470, n: 70, ang: Math.PI * 1.1, spread: 2.2, speed: 1300 }); X.ring(lt - hit, { x: 800 - cam * 0.5, y: 470, r1: 600, dur: 0.45, flat: 1 }); }
+    if (a > 1.9 && a < 2.42) X.slash(a - 1.9, { x: k.grip[0], y: k.grip[1], r: 120, a0: -2.6, a1: 0.6, dur: 0.5, hold: 0.15, w: 34, color: '#ffd0a0', flat: 1 });
+    c.restore(); duelEnd(t, 'dusk');
+    if (lt > hit && lt < hit + 0.1) { G.impact('inv'); POST.set({ ca: 0.014 }); }
+    POST.set({ bloom: 0.9, thr: 0.5, dir: a < 1.3 ? [0.004, 0] : [0, 0] });
+  }, { sfx: [[0.15, (g, w) => [0, 0.26, 0.52, 0.78, 1.04].forEach(o => S.step(g, w + o, 0.12))], [1.45, (g, w) => S.whoosh(g, w, 0.5, 0.2, 200, 1500)], [2.1, (g, w) => S.whoosh(g, w, 0.35, 0.3, 400, 3200)], [2.42, (g, w) => { S.clang(g, w, 0.42); S.boom(g, w, 0.28); }], [2.7, (g, w) => S.whoosh(g, w, 0.5, 0.15, 900, 300)], [3.5, (g, w) => S.noiseBed(g, w, 0, 0.6, { vol: 0.14, bp: 1100, q: 0.8, fin: 0.02, fout: 0.4, b: 'sfx' })]] });
   shot(5, (lt, d, t) => {
     const c = G.ctx; c.save(); shake(t, 3 * (1 - inv(0, 1, lt)));
     G.barrow(t, { x: 200, y: 60, z: 1.6 }, { fogA: 0.4 }); G.fill('#1a0a12', 0.3);
@@ -550,26 +559,29 @@ const EP01 = (() => {
     c.restore();
   }, { say: [[0.8, 'b5']], sfx: [[0.3, (g, w) => S.noiseBed(g, w, 0, 1.2, { vol: 0.12, bp: 900, q: 0.8, fin: 0.05, fout: 0.6, b: 'sfx' })]] });
   shot(6, (lt, d, t) => twoShot(t, lt, d, { push: 0.06, camx: -60, nm: { ears: -0.4, armUp: -0.2 } }), { say: [[0.3, 'b6'], ['+0.3', 'b7']] });
-  shot(6, (lt, d, t) => {
-    const c = G.ctx, steps = [0.8, 2.6, 4.4], amt = steps.reduce((m, s) => Math.max(m, lt > s && lt < s + 0.4 ? 12 * (1 - (lt - s) / 0.4) : 0), 0), adv = ease.io(clamp(lt / d));
-    c.save(); shake(t, amt);
-    G.barrow(t, { x: 60, y: 120, z: 1.25 }, { fogA: 0.65 }); G.fill('#1a0a12', 0.3);
-    SHB(t, 660, lerp(1020, 1160, adv), lerp(0.95, 1.25, adv), { walk: 1, walkPh: (lt - 0.8) * Math.PI / 1.8 + Math.PI / 2, headR: -0.05 }, { mul: '#a58c92', mulA: 0.75, glow: { c: '#ff6a5a', a: 0.3, r: 14 } });
-    steps.forEach((s, i) => X.debris(lt - s, { x: 560 + (i % 2) * 200, y: 700, n: 14, speed: 380, size: 8, seed: 80 + i }));
-    G.frontFog(t, 0.7, '#d9a8b0', 520, 60); c.restore();
-  }, { sfx: [[0.8, (g, w) => S.step(g, w, 0.65)], [2.6, (g, w) => S.step(g, w, 0.7)], [4.4, (g, w) => S.step(g, w, 0.75)]] });
-  shot(5, (lt, d, t) => { // shield bash
-    const c = G.ctx, hit = 1.4, lunge = ease.in(inv(0.6, hit, lt)), fly = ease.out(inv(hit, 2.4, lt));
-    c.save(); shake(t, lt > hit && lt < hit + 0.6 ? 20 : 2);
+  shot(4.6, (lt, d, t) => { // EXCHANGE 2: duck the claw, counter, shield bash, launched
+    const clang = 2.05, bash = 2.78, a = hitstop(lt, [clang, bash], 0.1), c = G.ctx;
+    c.save(); shake(t, (lt > clang && lt < clang + 0.3 ? 10 : 0) + (lt > bash && lt < bash + 0.5 ? 18 * (1 - (lt - bash) / 0.5) : 0.8));
+    FIGHT.backdrop(t, { mood: 'dusk', camx: 20 });
+    const swipe = ease.in(clamp((a - 1.25) / 0.35)), lunge = ease.in(clamp((a - 2.45) / 0.33)) * (1 - ease.out(clamp((a - 3.3) / 0.8)));
+    SHB(t, lerp(900, 820, clamp(a / 1.2)) - lunge * 70, 606, 0.46, { walk: a < 1.2 ? 1 : 0, walkPh: a * 4, claw: lerp(-0.9, 0.8, swipe) * (a < 1.25 ? clamp(a / 1.25) : 1), shieldX: 90 * lunge, shieldS: 1 + 0.1 * lunge, lean: 0.1 * lunge, jaw: a > 2.4 && a < 3.2 ? 1 : 0 }, SIL('#ffb07a'), 1);
+    let pose = FIGHT.seq(a, [[0, 'ready', { x: 440 }], [1.15, 'ready', { x: 450 }], [1.32, 'duck', { x: 470 }, 'out'], [1.65, 'duck', { x: 480 }], [1.8, 'crouch', { x: 500 }], [2.05, 'windup', { x: 560, y: -40 }, 'out'], [2.25, 'block', { x: 540 }], [2.78, 'block', { x: 560 }], [3.0, 'hit', { x: 380, y: -110, rot: -2.2, vx: 900 }, 'out'], [3.8, 'hit', { x: -260, y: -60, rot: -7.5, vx: 900 }]]);
+    const k = FIGHT.draw({ x: 0, y: 606, s: 1.3, t, pose, rim: '#ffb07a' });
+    if (a > 1.32 && a < 1.65) X.slash(a - 1.32, { x: 760, y: 470, r: 200, a0: -2.5, a1: -0.5, dur: 0.18, hold: 0.25, w: 40, color: '#c8b8c0', core: '#ffffff', flat: 0.55, rot: Math.PI });
+    if (lt > clang) X.sparks(lt - clang, { x: 640, y: 440, n: 50, ang: -Math.PI * 0.6, spread: 2, speed: 1000 });
+    if (lt > bash) { X.ring(lt - bash, { x: 600, y: 460, r1: 700, dur: 0.5, flat: 1 }); X.sparks(lt - bash, { x: 590, y: 470, n: 40, ang: Math.PI, spread: 1.4, speed: 900 }); }
+    c.restore(); duelEnd(t, 'dusk');
+    if (lt > bash && lt < bash + 0.1) { G.impact('inv'); POST.set({ ca: 0.016 }); }
+    POST.set({ bloom: 0.9, thr: 0.5, dir: a > 2.85 && a < 3.6 ? [-0.008, 0] : [0, 0] });
+  }, { sfx: [[0.3, (g, w) => [0, 0.45, 0.9].forEach(o => S.step(g, w + o, 0.55))], [1.25, (g, w) => S.whoosh(g, w, 0.45, 0.32, 1400, 300)], [1.85, (g, w) => S.whoosh(g, w, 0.25, 0.25, 400, 2600)], [2.05, (g, w) => S.clang(g, w, 0.36)], [2.45, (g, w) => S.riftRoar(g, w, 0.8, 0.2)], [2.78, (g, w) => { S.boom(g, w, 0.6); S.clang(g, w, 0.2); }], [2.9, (g, w) => S.whoosh(g, w, 0.9, 0.2, 2000, 200)]] });
+  shot(2.6, (lt, d, t) => { // crash into a gravestone
+    const c = G.ctx, fly = ease.out(clamp(lt / 0.5)); c.save(); shake(t, lt > 0.45 && lt < 1.1 ? 18 * (1 - (lt - 0.45) / 0.65) : 2);
     G.barrow(t, { x: -60, y: 40, z: 1.3 }, { fogA: 0.5 });
-    TK(t, lerp(520, 1350, fly), lerp(1300, 1180, fly), 0.6, { rot: fly * 0.9, arm: 0.4 * fly, legPose: [{ lift: fly, spread: 0.3 }, { lift: fly * 0.6, spread: 0.5 }] }, { ...DUSK, a: 1 });
-    SHB(t, lerp(60, 360, lunge), 1050, lerp(1.0, 1.25, lunge), { shieldX: 90 * lunge, shieldS: 1 + 0.12 * lunge, lean: 0.12 * lunge, jaw: lunge }, { mul: '#a58c92', mulA: 0.75 });
+    TK(t, lerp(-300, 1060, fly), lerp(1150, 1240, fly), 0.6, { rot: 0.9 + fly * 0.6, arm: 0.5, legPose: [{ lift: 1, spread: 0.4 }, { lift: 0.6, spread: 0.6 }] }, { ...DUSK, smear: lt < 0.5 ? { dx: 260, dy: 0, n: 4, a: 0.4 } : null });
+    if (lt > 0.45) { X.debris(lt - 0.45, { x: 1150, y: 560, n: 46, speed: 760, size: 13, seed: 91 }); X.ring(lt - 0.45, { x: 1150, y: 520, r1: 600, dur: 0.5, flat: 0.8 }); }
     c.restore();
-    if (lt > hit) { X.ring(lt - hit, { x: 780, y: 380, r1: 700, dur: 0.5, flat: 1 }); X.sparks(lt - hit, { x: 760, y: 400, n: 40, ang: 0, spread: 1.6, speed: 900 }); }
-    if (lt > 2.2) X.debris(lt - 2.2, { x: 1180, y: 600, n: 40, speed: 700, size: 12, seed: 91 });
-    if (lt > hit && lt < hit + 0.1) { G.impact('inv'); POST.set({ ca: 0.014 }); }
-    POST.set({ dir: lt > hit && lt < 2.4 ? [0.01 * (1 - fly), 0] : [0, 0] });
-  }, { sfx: [[0.6, (g, w) => S.whoosh(g, w, 0.8, 0.25, 150, 900)], [1.4, (g, w) => { S.boom(g, w, 0.65); S.clang(g, w, 0.22); }], [2.2, (g, w) => { S.thud(g, w, 0.5); S.clicks(g, w, 0.5, 25, { vol: 0.2, f0: 600, f1: 3000, q: 2, len: 0.03, seed: 81 }); }]] });
+    if (lt > 0.45 && lt < 0.55) { G.impact('inv'); POST.set({ ca: 0.014 }); }
+  }, { sfx: [[0.45, (g, w) => { S.thud(g, w, 0.6); S.clicks(g, w, 0.6, 30, { vol: 0.22, f0: 600, f1: 3000, q: 2, len: 0.03, seed: 81 }); S.boom(g, w, 0.35); }]] });
   shot(7, (lt, d, t) => { // dazed POV
     const c = G.ctx, wob = Math.sin(t * 1.3) * 0.02;
     c.save(); c.translate(W / 2, H / 2); c.rotate(-0.12 + wob); c.translate(-W / 2, -H / 2);
@@ -586,6 +598,16 @@ const EP01 = (() => {
     SHB(t, 640, 1450, 1.55, { shieldR: -0.42 * up, shieldY: -90 * up, jaw: up * 0.8, headR: -0.1 * up }, { mul: '#a58c92', mulA: 0.75, glow: { c: '#ff4a3a', a: 0.4, r: 18 } });
     c.restore();
   }, { sfx: [[0.3, (g, w) => S.riser(g, w, 4.2, 0.08)]] });
+  shot(2.6, (lt, d, t) => { // Nemu sprints in, full body
+    const c = G.ctx; c.save(); shake(t, 1.5);
+    FIGHT.backdrop(t, { mood: 'dusk', camx: 0 });
+    SHB(t, 880, 606, 0.5, { shieldR: -0.42, shieldY: -90, jaw: 0.8, headR: -0.08 }, SIL('#ffb07a'), 1);
+    const run = clamp(lt / 1.6), pose = lt < 1.6 ? { ...FIGHT.run(lt * 17), lean: 0.5, x: lerp(-80, 560, run), vx: 600, tail: 0.8 } : FIGHT.seq(lt, [[1.6, 'nemuDash', { x: 560 }], [1.9, 'nemuThrow', { x: 580 }, 'out'], [2.6, 'nemuThrow', { x: 585 }]]);
+    FIGHT.draw({ x: 0, y: 606, s: 0.95, t, pose, style: 'nemu', rim: '#9fd0ff' });
+    if (lt < 1.6) FIGHT.afterimages({ x: 0, y: 606, s: 0.95, t, style: 'nemu' }, tt => ({ ...FIGHT.run(tt * 17), lean: 0.5, x: lerp(-80, 560, clamp(tt / 1.6)) }), 3, 0.05, '#7ab8ff');
+    if (lt > 1.9) { const f = clamp((lt - 1.9) / 0.6); c.fillStyle = '#07030a'; c.beginPath(); c.arc(lerp(620, 850, f), lerp(470, 360, f) - Math.sin(f * Math.PI) * 60, 7, 0, 7); c.fill(); }
+    c.restore(); duelEnd(t, 'dusk'); POST.set({ bloom: 0.9, thr: 0.5, dir: lt < 1.6 ? [0.005, 0] : [0, 0] });
+  }, { sfx: [[0.1, (g, w) => [0, 0.22, 0.44, 0.66, 0.88, 1.1, 1.32].forEach(o => S.step(g, w + o, 0.08))], [1.9, (g, w) => S.whoosh(g, w, 0.4, 0.18, 600, 2400)]] });
   shot(5, (lt, d, t) => { // Nemu steps in
     G.barrow(t, { x: 100, y: 40, z: 1.25 }, { fogA: 0.45 });
     const k = ease.out5(inv(0, 0.6, lt)), thr = ease.in(inv(2.3, 2.6, lt));
@@ -675,26 +697,35 @@ const EP01 = (() => {
   const SWING = T;
   const crackR = G.rng(404), cracks = [];
   for (let i = 0; i < 18; i++) { const a = crackR() * Math.PI * 2, pts = [[590, 700]]; let x = 590, y = 700; for (let k = 0; k < 7; k++) { x += Math.cos(a + (crackR() - 0.5) * 0.9) * (20 + crackR() * 30); y += Math.sin(a + (crackR() - 0.5) * 0.9) * (20 + crackR() * 30); pts.push([x, y]); } cracks.push(pts); }
-  shot(6, (lt, d, t) => { // the leap and the swing, with a slow-motion ramp
-    const hit = 4.0, at2 = lt < 1.0 ? lt : lt < 3.4 ? 1.0 + (lt - 1.0) * 0.18 : lt < hit ? 1.43 + (lt - 3.4) * 2.6 : 3.0 + (lt - hit);
-    const c = G.ctx, jump = Math.sin(clamp(at2 / 3.0) * Math.PI), wind = ease.out(clamp((at2 - 0.4) / 1.2)), swing = ease.in(clamp((at2 - 2.6) / 0.4));
-    c.save(); shake(t, lt > hit ? 20 * (1 - inv(hit, hit + 1, lt)) : 1.5);
-    G.barrow(t, { x: lerp(-60, 140, clamp(at2 / 3)), y: 30 - jump * 80, z: 1.3 }, { mood: 'blood', fogA: 0.5 });
-    const sb = SHB(t, 940, 1080, 1.0, { crouch: 1, shieldR: -0.12, shieldX: -30 }, { mul: '#c88a8a', mulA: 0.8 });
-    if (lt > hit) {
-      const f = inv(hit, hit + 0.9, lt); c.save(); c.globalCompositeOperation = 'lighter'; c.lineCap = 'round';
-      cracks.forEach(pp => { const sp = pp.map(([x, y]) => sb.pt(x, y)); c.strokeStyle = 'rgba(255,60,40,0.5)'; c.lineWidth = 7; G.strokePartial(sp, f); c.strokeStyle = 'rgba(255,240,220,0.95)'; c.lineWidth = 2; G.strokePartial(sp, f); });
-      c.restore();
-    }
-    X.aura(t, { x: lerp(260, 600, clamp(at2 / 3)), y: 380 - jump * 160, w: 380, h: 480, n: 60, a: 0.8 });
-    const k = TK(t, lerp(200, 560, clamp(at2 / 3)), 1230 - jump * 300, 0.56, { rot: lerp(-0.1, 0.18, swing), arm: -0.6 * wind + 1.5 * swing, axeFront: swing > 0.05, axeGlow: 1, wind: 3, legPose: [{ lift: jump * 0.9, spread: 0.2 }, { lift: jump * 0.6, spread: 0.35 }] }, { mul: '#ff9a8a', mulA: 0.5, glow: { c: '#ff2a1a', a: 0.8, r: 26 }, smear: swing > 0 && swing < 1 ? { dx: -60, dy: -120, n: 4, a: 0.35 } : null });
-    if (swing > 0) X.slash(lt - (3.4 + 0.46), { x: k.grip[0], y: k.grip[1], r: 420 * 0.56 * 1.6, a0: -2.2, a1: 0.9, w: 70, flat: 0.8, rot: 0.2 });
-    c.restore();
-    if (lt > hit) { X.sparks(lt - hit, { x: 800, y: 380, n: 90, ang: -0.3, spread: 3, speed: 1500, color: '#ffc29a' }); X.debris(lt - hit, { x: 820, y: 620, n: 40, speed: 900, size: 12, seed: 99 }); X.ring(lt - hit, { x: 800, y: 380, r1: 1000, dur: 0.7, flat: 1, color: '#ffb0a0' }); }
-    if (lt > hit && lt < hit + 0.14) { G.impact('inv'); POST.set({ ca: 0.02, radial: 0.08 }); }
-    else if (lt > 1.0 && lt < 3.4) POST.set({ sat: 0.7, ca: 0.004, radial: 0.01 });
-    POST.set({ bloom: 1.3, thr: 0.4, gain: [1.15, 0.9, 0.88] });
-  }, { sfx: [[0.2, (g, w) => S.whoosh(g, w, 0.8, 0.2, 200, 1200)], [1.0, (g, w) => { S.tone(g, w, 60, 2.4, 0.08, 'sine', 'sfx', 0.3, 0.2); S.riser(g, w, 2.6, 0.1); }], [3.5, (g, w) => S.slash(g, w, 0.4)], [4.0, (g, w) => { S.clang(g, w, 0.3); S.boom(g, w, 0.48); S.clicks(g, w, 0.9, 50, { vol: 0.18, f0: 2000, f1: 6000, q: 3, len: 0.01, seed: 91 }); }]] });
+  const CLIMAX_HIT = 3.85;
+  shot(6.6, (lt, d, t) => { // THE CLIMAX: vanish, zig-zag, leap over the sweep in slow motion, crescent slash
+    const c = G.ctx, H1 = CLIMAX_HIT;
+    // time remap: real time until the leap, slow motion over the shield, snap into the strike, hit-stop
+    const a = lt < 1.5 ? lt : lt < 3.5 ? 1.5 + (lt - 1.5) * 0.25 : lt < H1 ? 2.0 + (lt - 3.5) * 1.0 : lt < H1 + 0.18 ? 2.35 : 2.35 + (lt - H1 - 0.18);
+    c.save(); shake(t, (lt > H1 && lt < H1 + 0.8 ? 24 * (1 - (lt - H1) / 0.8) : 1.2) + (lt < 0.8 ? lt * 2 : 0));
+    FIGHT.backdrop(t, { mood: 'blood', camx: lerp(0, 80, clamp(a / 2.4)) });
+    const sweep = ease.in(clamp((a - 1.3) / 0.35)), crackP = clamp((lt - H1) / 0.9);
+    const mon = SHB(t, 880, 606, 0.5, { crouch: 1, shieldR: -0.1 + sweep * 0.55 * (1 - clamp((a - 2.1) / 0.3)), shieldX: -30 + sweep * -60, headR: a > 2.0 ? -0.2 : 0.05, jaw: a > 1.3 && a < 2.1 ? 1 : 0 }, SIL('#ff6a4a'), 1);
+    if (lt > H1) { c.save(); c.globalCompositeOperation = 'lighter'; c.lineCap = 'round'; cracks.forEach(pp => { const sp = pp.map(([x, y]) => mon.pt(x, y)); c.strokeStyle = 'rgba(255,60,40,0.6)'; c.lineWidth = 8; G.strokePartial(sp, crackP); c.strokeStyle = 'rgba(255,240,220,0.95)'; c.lineWidth = 2.5; G.strokePartial(sp, crackP); }); c.restore(); }
+    const keys = [[0, 'crouch', { x: 300 }], [0.7, 'crouch', { x: 300 }], [0.75, 'ready', { x: 520 }, 'out'], [0.95, 'ready', { x: 520 }], [1.0, 'ready', { x: 420 }, 'out'], [1.15, 'ready', { x: 420 }], [1.25, 'crouch', { x: 690 }, 'out'], [1.45, 'crouch', { x: 700 }],
+      [1.8, 'leap', { x: 780, y: -230, rot: -1.6, vx: 300 }, 'out'], [2.0, 'windup', { x: 860, y: -300, rot: -6.28 }], [2.35, 'chop', { x: 930, y: -120, rot: -6.28 }, 'in'], [2.6, 'slide', { x: 1060, y: 0, rot: -6.28 }, 'in'], [3.2, 'slide', { x: 1110, rot: -6.28 }, 'out']];
+    const vis = !(a > 0.7 && a < 0.75) && !(a > 0.95 && a < 1.0) && !(a > 1.15 && a < 1.25);
+    const pose = FIGHT.seq(a, keys);
+    X.aura(t, { x: pose.x, y: 470 + pose.y, w: 260, h: 380, n: 50, a: a < 2.6 ? 0.9 : 0.4 });
+    FIGHT.afterimages({ x: 0, y: 606, s: 1.3, t: a }, tt => FIGHT.seq(tt, keys), a > 1.45 && a < 2.4 ? 5 : 3, a > 1.45 ? 0.06 : 0.04, '#ff2a1a');
+    let k = null; if (vis) k = FIGHT.draw({ x: 0, y: 606, s: 1.3, t, pose, rim: '#ff6a4a', axeGlow: 1, glow: a < 2.6 ? 'rgba(255,40,20,0.6)' : null });
+    [[0.7, 300, 520], [0.95, 520, 420], [1.15, 420, 690]].forEach(([t0, x0, x1]) => { const f = clamp((a - t0) / 0.12); if (f > 0 && f < 1.6) { c.save(); c.globalCompositeOperation = 'lighter'; c.strokeStyle = 'rgba(255,60,40,' + (1 - f / 1.6) + ')'; c.lineWidth = 26 * (1 - f / 1.6); c.beginPath(); c.moveTo(x0, 470); c.lineTo(lerp(x0, x1, Math.min(1, f)), 470); c.stroke(); c.restore(); X.sparks((a - t0) * 4, { x: x0, y: 480, n: 24, ang: -Math.PI / 2, spread: 2.5, speed: 500, color: '#ff6a4a', life: 0.6 }); } });
+    if (a > 1.3 && a < 1.9) X.slash(a - 1.3, { x: 860, y: 470, r: 230, a0: -0.6, a1: 2.2, dur: 0.3, hold: 0.3, w: 60, color: '#d0a0a0', core: '#ffffff', flat: 0.4, rot: Math.PI });
+    if (lt > 3.5) X.slash(lt - 3.55, { x: 860, y: 300, r: 380, a0: -2.4, a1: 0.95, dur: 0.22, hold: 0.9, w: 130, flat: 0.75, rot: 0.15 });
+    if (lt > H1) { X.ring(lt - H1, { x: 880, y: 420, r1: 1300, dur: 0.9, flat: 1, color: '#ffd0c0' }); X.sparks(lt - H1, { x: 880, y: 420, n: 120, ang: -0.4, spread: 3.2, speed: 1700, color: '#ffc29a' }); X.debris(lt - H1, { x: 900, y: 600, n: 46, speed: 1000, size: 13, seed: 99 }); }
+    c.restore(); duelEnd(t, 'blood');
+    if (lt > H1 && lt < H1 + 0.06) { G.fill('#fff'); POST.set({ ca: 0.02 }); }
+    else if (lt > H1 + 0.06 && lt < H1 + 0.12) { G.impact('inv'); POST.set({ ca: 0.02 }); }
+    else if (lt > H1 + 0.12 && lt < H1 + 0.18) { G.fill('#000', 0.85); G.ctx.save(); G.ctx.globalCompositeOperation = 'lighter'; G.ctx.strokeStyle = '#ff3a2a'; G.ctx.lineWidth = 14; G.ctx.beginPath(); G.ctx.moveTo(380, -60); G.ctx.lineTo(1100, 900); G.ctx.stroke(); G.ctx.restore(); }
+    if (lt > 1.5 && lt < 3.5) POST.set({ sat: 0.6, radial: 0.012, ca: 0.005 });
+    POST.set({ bloom: 1.2, thr: 0.45, gain: [1.15, 0.9, 0.88], dir: a < 1.3 && a > 0.7 ? [0.01, 0] : [0, 0] });
+  }, { sfx: [[0, (g, w) => S.noiseBed(g, w, 0, 1.5, { vol: 0.12, brown: true, lp: 200, fin: 0.3, fout: 0.3, b: 'sfx' })], [0.7, (g, w) => { S.whoosh(g, w, 0.18, 0.3, 600, 4000); S.boom(g, w, 0.25); }], [0.95, (g, w) => S.whoosh(g, w, 0.15, 0.28, 600, 4000)], [1.15, (g, w) => S.whoosh(g, w, 0.15, 0.3, 600, 4000)], [1.3, (g, w) => { S.riftRoar(g, w, 0.8, 0.25); S.whoosh(g, w, 0.5, 0.35, 1600, 250); }],
+    [1.5, (g, w) => { S.tone(g, w, 55, 2.0, 0.09, 'sine', 'sfx', 0.2, 0.2); S.heartbeat(g, w + 0.3, 0.7); S.heartbeat(g, w + 1.3, 0.75); }], [3.5, (g, w) => S.slash(g, w, 0.45)], [3.85, (g, w) => { S.clang(g, w, 0.32); S.boom(g, w, 0.55); S.shatter(g, w + 0.05, 0.14, 7); S.clicks(g, w, 0.9, 50, { vol: 0.18, f0: 2000, f1: 6000, q: 3, len: 0.01, seed: 91 }); }]] });
   const SHATTER = T;
   shot(6.5, (lt, d, t) => { // it breaks
     const c = G.ctx, sep = ease.out(inv(0.1, 2.2, lt)), fade = inv(1.4, 3.8, lt), cx = 760, cy = 1080, sc = 1.0;
@@ -753,7 +784,7 @@ const EP01 = (() => {
     G.barrow(t, { x: 240, y: -40, z: 1.4 }, { fogA: 0.4, mood: 'ash' }); G.fill('#2a1020', 0.2);
     const place = { x: 640, y: 420, ax: 360, ay: 230, sc: lerp(2.3, 2.45, lt / d) }, talk = V.amp('SIEG', t), pose = P.sieg(t, { talk }); pose.open = talk;
     R.draw('sieg', place, pose, ASH);
-  }, { say: [[0.3, 'b35'], ['+0.5', 'b36']] });
+  }, { say: [[0.3, 'b36']] });
   shot(5, (lt, d, t) => eyes(t, lt, d, { mode: 'dusk', z0: 6.3, z1: 6.35 }), { say: [[0.3, 'b37'], ['+0.4', 'b38']] });
   shot(8, (lt, d, t) => {
     G.barrow(t, { x: 200, y: 0, z: 1.15 }, { fogA: 0.45, mood: 'ash' });
@@ -772,10 +803,10 @@ const EP01 = (() => {
     G.sigilAxe(sx, sy, 80, 1, t, '#ff4a3a', 0.35 + 0.25 * Math.sin(t * 2.5) + amp * 0.5);
     G.fill('#000', inv(d - 2.4, d - 0.5, lt)); POST.set({ bloom: 0.9 + amp, thr: 0.45 });
   }, { say: [[1.0, 'b42']], sfx: [[6.0, (g, w) => S.kan(g, w, 0.05)], [6.5, (g, w) => S.kan(g, w, 0.04)], [7.0, (g, w) => S.kan(g, w, 0.03)]] });
-  cueTension(PB, FIGHT - PB);
-  cueBattle(FIGHT, BLOW - FIGHT - 0.05);
+  cueTension(PB, FIGHT_T - PB);
+  cueBattle(FIGHT_T, BLOW - FIGHT_T - 0.05);
   at(BLOW + 2.5, (g, w, off) => { S.pad(g, w, n('D2'), AWAKE - BLOW - 2.5 - off, { vol: 0.05, cut: 260, att: 4, type: 'sine' }); }, AWAKE - BLOW - 2.5, true);
-  cueAwakenNew(AWAKE, SWING, SWING + 4.0);
+  cueAwakenNew(AWAKE, SWING, SWING + CLIMAX_HIT);
   cueAfter(SHATTER + 1.5, SIEG - SHATTER - 2.5);
   cueSieg(SIEG, RIFTEYE - SIEG);
   at(RIFTEYE + 3.6, (g, w, off) => { S.pad(g, w, n('D2'), 13 - off, { vol: 0.06, cut: 300, att: 1 }); S.pad(g, w, n('Eb3'), 13 - off, { vol: 0.03, cut: 600, att: 2 }); }, 13, true);

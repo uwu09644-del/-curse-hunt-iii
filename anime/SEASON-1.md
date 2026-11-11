@@ -1,6 +1,6 @@
 # RUINBREAKER — Season 1 Series Bible
 
-**Format:** TV anime, 12 episodes × ~24 min (Episode 1 is an 11¾-minute voiced, animated episode in `anime/index.html`)
+**Format:** TV anime, 12 episodes × ~24 min (Episode 1 is an 11½-minute voiced, animated episode in `anime/index.html`)
 **Genre:** Isekai · dark fantasy · monster hunting
 **Logline:** A night-shift kid from Tokyo falls through a hole in the sky into a world where only the Branded can fight the monsters, and he pulls out an axe that nobody else could move in three hundred years. Something lives inside it.
 
@@ -75,21 +75,22 @@
 |---|---|
 | 0:00 | Cold open (flash-forward): "What is it you want to break?" |
 | 0:18 | Earth: Nerima railway crossing, 2:14 a.m., rain, the cat, Haruki's missing poster, the sky cracks |
-| 1:42 | Opening title sequence (cast and bestiary) |
-| 2:43 | Title card: Episode 1 "The Crossing" (第一話「踏切」) |
-| 2:49 | Part A: the Barrow Fields, Nemu, the Headsman's Axe, what Brands are |
-| 5:53 | Eyecatch |
-| 6:01 | Part B: the Shieldbearer, Nemu's seventh life, Akuro, **Ruinbreaker awakens** |
-| 9:17 | Sieg Valen arrives. The Rift is still open, and something inside it is watching. |
-| 10:05 | Ending credits |
-| 11:03 | Post-credits: Mr. Sable at the crossing |
-| 11:19 | Next episode preview: "Branded" |
-| 11:42 | End |
+| 1:41 | Opening title sequence (cast and bestiary) |
+| 2:42 | Title card: Episode 1 "The Crossing" (第一話「踏切」) |
+| 2:48 | Part A: the Barrow Fields, Nemu, the Headsman's Axe, what Brands are |
+| 5:35 | Eyecatch |
+| 5:43 | Part B: the Shieldbearer, two full exchanges, Nemu's seventh life, Akuro, **Ruinbreaker awakens**, the climax strike |
+| 8:58 | Sieg Valen arrives. The Rift is still open, and something inside it is watching. |
+| 9:46 | Ending credits |
+| 10:44 | Post-credits: Mr. Sable at the crossing |
+| 11:00 | Next episode preview: "Branded" |
+| 11:23 | End |
 
 How Episode 1 is made:
 - **Voices:** every line is voiced with the open-source Kokoro-82M speech model (Apache-2.0). Each character has their own blended voice; Akuro's is pitched down with a sub-octave layer, and Mr. Sable's carries static. Mouths and jaws move with the voice. Voice script: `voice/lines.json`; generator: `tools/make_voices.py`.
 - **Animation:** characters are rigged as deformable puppets (`js/rig.js`, `js/rigs.js`). They breathe, blink, turn their heads, talk, swing their arms and weapons, and walk, with hair, coats, ribbons and tails swaying.
 - **Missing parts:** Takuto's art stops at the waist and Sieg's and Mr. Sable's at the thighs, so their legs and boots are drawn in code (`js/parts.js`). Takuto's crescent axe and Sieg's glaive were cut off by the edges of the art, so both are redrawn complete as separate parts that swing from the hand.
+- **Fight cuts:** full-body action is staged as backlit silhouettes against a giant moon (`js/fighter.js`): figures with real joints run, leap, flip, duck and swing, with hit-stops, slow motion and afterimages, intercut with close-ups of the original art.
 - **Effects:** GPU post-processing (bloom, colour grading, chromatic aberration, shockwave distortion, zoom blur) plus energy slashes, flame auras, sparks, debris, light shafts and holographic Brand readouts (`js/post.js`, `js/vfx.js`).
 - **Sound:** the score, ambience and sound effects are synthesized live in the browser.
 

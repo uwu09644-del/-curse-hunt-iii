@@ -274,7 +274,24 @@ const GFX = (() => {
     ctx.drawImage(c, LX, LY, LW, LH); ctx.restore();
   }
   function withCam(cam, d, fn) { const z = 1 + (cam.z - 1) * d; ctx.save(); ctx.translate(W / 2 - cam.x * d, H / 2 - cam.y * d); ctx.scale(z, z); ctx.translate(-W / 2, -H / 2); fn(); ctx.restore(); }
-  function mkLayer(fn) { const c = canvas(LW, LH), g = c.getContext('2d'); g.translate(-LX, -LY); fn(g); return c; }
+  let texDark = null, texLight = null;
+  function buildTex() {
+    const mk = (col, seed) => { const c = canvas(256, 256), g = c.getContext('2d'), id = g.createImageData(256, 256), R = rng(seed);
+      const grid = []; for (let i = 0; i < 4; i++) { const n = 4 << i, a = []; for (let k = 0; k < n * n; k++) a.push(R()); grid.push([n, a]); }
+      for (let y = 0; y < 256; y++) for (let x = 0; x < 256; x++) { let v = 0, amp = 0.5;
+        grid.forEach(([n, a]) => { const fx = x / 256 * n, fy = y / 256 * n, ix = Math.floor(fx), iy = Math.floor(fy), tx = fx - ix, ty = fy - iy, q = (i, j) => a[((iy + j) % n) * n + ((ix + i) % n)];
+          const sx = tx * tx * (3 - 2 * tx), sy = ty * ty * (3 - 2 * ty); v += amp * lerp(lerp(q(0, 0), q(1, 0), sx), lerp(q(0, 1), q(1, 1), sx), sy); amp *= 0.5; });
+        const o = (y * 256 + x) * 4; id.data[o] = col[0]; id.data[o + 1] = col[1]; id.data[o + 2] = col[2]; id.data[o + 3] = Math.max(0, Math.min(255, (v - 0.45) * 420)); }
+      g.putImageData(id, 0, 0); return c; };
+    texDark = mk([10, 4, 12], 3); texLight = mk([255, 230, 210], 9);
+  }
+  function paintTex(g, da = 0.22, la = 0.08) { // mottled, hand-painted look on whatever is already drawn
+    if (!texDark) buildTex();
+    g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.globalCompositeOperation = 'source-atop';
+    g.globalAlpha = da; g.fillStyle = g.createPattern(texDark, 'repeat'); g.fillRect(0, 0, LW, LH);
+    g.globalAlpha = la; g.fillStyle = g.createPattern(texLight, 'repeat'); g.translate(97, 53); g.fillRect(-97, -53, LW, LH); g.restore();
+  }
+  function mkLayer(fn, tex = [0.22, 0.08]) { const c = canvas(LW, LH), g = c.getContext('2d'); g.translate(-LX, -LY); fn(g); if (tex) paintTex(g, tex[0], tex[1]); return c; }
 
   function buildEarth() {
     L.eSky = mkLayer(g => {
@@ -340,14 +357,22 @@ const GFX = (() => {
         g.fillStyle = '#1a1b20'; g.fillRect(x - 10 * s, top + 92 * s, 20 * s, 34 * s); // bell box
       };
       signal(380, 176, 562, 1.0); signal(872, 316, 470, 0.5);
-    });
+      // vertical shop signs on the apartment block
+      [[1100, 250, '居酒屋', '#ff4a5a'], [1166, 262, 'カラオケ', '#5ad0ff']].forEach(([x, y, txt, col]) => { g.fillStyle = '#120c14'; g.fillRect(x - 18, y - 6, 36, txt.length * 34 + 12); g.font = '400 28px ' + FONT.jp; g.textAlign = 'center'; g.fillStyle = col; [...txt].forEach((ch, k) => g.fillText(ch, x, y + 26 + k * 34)); });
+      // street lamp
+      g.fillStyle = '#0c0d12'; g.fillRect(232, 250, 6, 300); g.fillRect(232, 250, 38, 5); g.fillStyle = '#e8e2c8'; g.fillRect(262, 254, 16, 6);
+    }, [0.18, 0.04]);
   }
   // lamp positions for live glow (logical coords before camera)
   const LAMPS = [[356, 246, 1.0], [404, 246, 1.0], [860, 351, 0.5], [884, 351, 0.5]];
   function earthLive(t, o) { // dynamic parts drawn in world space (call inside withCam d=0.5)
     const { lamps = false, lampPh = 0, gate = 0, cat = 'sit', train = null, bag = false, brokenGate = false } = o;
-    // vending machine glow
+    // vending machine glow, neon signs, street lamp cone
     radial(977, 410, 140, 'rgba(190,215,255,0.35)', 'rgba(190,215,255,0)', 1, 'lighter');
+    const fl = 0.8 + 0.2 * Math.sin(t * 17) * (Math.sin(t * 1.3) > 0.9 ? 1 : 0.15);
+    radial(1100, 300, 90, 'rgba(255,60,80,' + (0.45 * fl).toFixed(2) + ')', 'rgba(255,60,80,0)', 1, 'lighter'); radial(1166, 330, 100, 'rgba(80,200,255,0.4)', 'rgba(80,200,255,0)', 1, 'lighter');
+    ctx.save(); ctx.globalCompositeOperation = 'lighter'; const lc = ctx.createLinearGradient(0, 260, 0, 560); lc.addColorStop(0, 'rgba(255,240,200,0.28)'); lc.addColorStop(1, 'rgba(255,240,200,0)'); ctx.fillStyle = lc; ctx.beginPath(); ctx.moveTo(262, 260); ctx.lineTo(278, 260); ctx.lineTo(360, 560); ctx.lineTo(180, 560); ctx.closePath(); ctx.fill(); ctx.restore();
+    radial(270, 258, 40, 'rgba(255,240,210,0.8)', 'rgba(255,240,210,0)', 1, 'lighter');
     // cat on far side, then the train passes in front of it
     if (cat) drawCat(918, 462, 0.5, cat, t, '#d8e4ff');
     if (train) drawTrain(train.x, train.v);
@@ -526,7 +551,8 @@ const GFX = (() => {
         g.fillStyle = 'rgba(120,90,110,0.18)'; for (let i = 0; i < 9; i++) { g.beginPath(); g.arc(x + (R() - 0.5) * r * 1.3, y + (R() - 0.5) * r * 1.3, r * (0.08 + R() * 0.16), 0, 7); g.fill(); }
       };
       moon(990, 150, 112, '#f6ece2', 'rgba(255,230,220,0.18)'); moon(250, 105, 30, '#e8705e', 'rgba(255,90,70,0.25)');
-    });
+      for (let i = 0; i < 60; i++) { const y = 230 + R() * 260, x = LX + R() * LW, w = 80 + R() * 260, hh = 2 + R() * 5; const sg = g.createLinearGradient(x - w, 0, x + w, 0); const col = y > 380 ? '255,210,160' : '255,170,190'; sg.addColorStop(0, 'rgba(' + col + ',0)'); sg.addColorStop(0.5, 'rgba(' + col + ',' + (0.06 + R() * 0.1).toFixed(2) + ')'); sg.addColorStop(1, 'rgba(' + col + ',0)'); g.fillStyle = sg; g.fillRect(x - w, y, w * 2, hh); }
+    }, [0.12, 0.05]);
     L.oClouds = mkLayer(g => {
       const R = rng(52);
       for (let i = 0; i < 38; i++) {
@@ -541,6 +567,7 @@ const GFX = (() => {
       if (k < 0.45) { g.beginPath(); g.moveTo(-9 * s, 0); g.lineTo(-9 * s, -20 * s); g.arc(0, -20 * s, 9 * s, Math.PI, 0); g.lineTo(9 * s, 0); g.fill(); }
       else if (k < 0.8) { g.fillRect(-2.5 * s, -32 * s, 5 * s, 32 * s); g.fillRect(-10 * s, -24 * s, 20 * s, 5 * s); }
       else { g.beginPath(); g.moveTo(-6 * s, 0); g.lineTo(-4 * s, -40 * s); g.lineTo(0, -48 * s); g.lineTo(4 * s, -40 * s); g.lineTo(6 * s, 0); g.fill(); }
+      g.globalCompositeOperation = 'source-atop'; const rg = g.createLinearGradient(2 * s, 0, 10 * s, 0); rg.addColorStop(0, 'rgba(255,170,120,0)'); rg.addColorStop(1, 'rgba(255,170,120,0.55)'); g.fillStyle = rg; g.fillRect(0, -60 * s, 14 * s, 62 * s); g.globalCompositeOperation = 'source-over';
       g.restore();
     };
     const tree = (g, x, y, len, ang, w, d, R, col) => {
@@ -552,8 +579,12 @@ const GFX = (() => {
       hill(g, 470, 120, 0.004, 3, '#7a4560');
       g.fillStyle = '#6c3b57'; g.fillRect(300, 330, 14, 110); g.fillRect(292, 330, 30, 8); g.beginPath(); g.moveTo(296, 330); g.lineTo(307, 292); g.lineTo(318, 330); g.fill(); // ruined spire
       g.fillRect(1180, 360, 60, 90); g.beginPath(); g.moveTo(1180, 360); g.lineTo(1190, 340); g.lineTo(1205, 356); g.lineTo(1220, 330); g.lineTo(1240, 360); g.fill();
+      const R2 = rng(19); g.fillStyle = '#6e3c58'; for (let x = LX; x < LX + LW; x += 7) { const base = 470 - 120 * (vnoise(x * 0.004, 3) * 0.7 + vnoise(x * 0.012, 4) * 0.3) + 6, h = 10 + R2() * 18; g.beginPath(); g.moveTo(x - 5, base + 4); g.lineTo(x, base - h); g.lineTo(x + 5, base + 4); g.fill(); } // forest line
+      g.fillStyle = '#5e3150'; g.beginPath(); g.moveTo(1290, 470); g.lineTo(1320, 300); g.lineTo(1370, 280); g.lineTo(1420, 320); g.lineTo(1440, 470); g.fill(); // cliff
+      [[1336, 214, 14, 70], [1356, 190, 16, 94], [1380, 226, 12, 58], [1398, 240, 18, 44]].forEach(([x, y, w, h]) => { g.fillRect(x, y, w, h); g.beginPath(); g.moveTo(x - 3, y); g.lineTo(x + w / 2, y - 22); g.lineTo(x + w + 3, y); g.fill(); }); // castle
+      g.fillStyle = 'rgba(255,190,120,0.7)'; [[1360, 230], [1384, 250], [1362, 260]].forEach(([x, y]) => g.fillRect(x, y, 3, 5));
       const hz = g.createLinearGradient(0, 380, 0, 520); hz.addColorStop(0, 'rgba(240,150,120,0)'); hz.addColorStop(1, 'rgba(240,150,120,0.45)'); g.fillStyle = hz; g.fillRect(LX, 380, LW, 200);
-    });
+    }, [0.15, 0.06]);
     L.oMid = mkLayer(g => {
       const R = rng(61); hill(g, 520, 70, 0.006, 7, '#3b2233');
       for (let i = 0; i < 90; i++) { const x = LX + R() * LW, y = 520 - 70 * (vnoise(x * 0.006, 7) * 0.7 + vnoise(x * 0.018, 8) * 0.3) + 6 + R() * 40; grave(g, x, y, 0.6 + R() * 0.5, R, '#2c1828'); }
