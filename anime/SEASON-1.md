@@ -130,6 +130,27 @@ Episode 2, "Branded", runs 24:00. It plays in `ep2.html`, and its script is `js/
 
 Each later episode is one script file plus its custom shots, using the same pipeline.
 
+## The full season (`ep1.html` … `ep12.html`)
+
+All twelve episodes play in the browser, each about 24 minutes. Every page has the season guide, linked to the other episodes. `python3 tools/season.py` rebuilds all twelve pages.
+
+| # | Page | Script | Notes |
+|---|---|---|---|
+| 1 | `ep1.html` | `js/ep01x.js` | Full-length cut: Episode 1's own timeline (`js/ep01.js`), with new scenes in Nerima before the crossing and on the road from the Barrow. |
+| 2–12 | `ep2.html` … `ep12.html` | `js/epNN.js` + `js/epNN_shots.js` | One script and one file of hand-directed shots per episode. |
+
+**The look: 2D painting, 3D acting.** Characters are cel-shaded 3D models with ink outlines. They stand in front of painted 2D background plates, the way TV anime composites 3D characters over painted art.
+- **Painted plates** (`plates/*.webp`, 80 of them): painted locally by `tools/paint_bg.py` with Stable Diffusion 1.5 (the Counterfeit-V3.0 anime model, with the LCM-LoRA for 5–6 steps on CPU). The prompts are in `plates/plates.json`.
+  - A plate is chosen by which way the camera faces.
+  - The plate slides as the camera turns, scales as it zooms, softens for close-ups, and sets the fog colour.
+  - Characters get painted contact shadows.
+- **Creatures** (`sprites/*.webp`): the bestiary illustrations, cut out with the anime-seg and BiRefNet segmentation models (`tools/cutout.py`). They stand in the scene as camera-facing cards, which can lunge, flash, shake, tilt, fade, or rise out of water below a clipping line.
+- **Shared shot kit** (`js/shotkit.js`): the effects the hand-directed shots share. These are glowing threads, the chain harness, wind ribbons, frost, golden Sanctum barriers, cracks, static, eyes in the dark, distant silhouettes and the next-episode card.
+- **Pacing:** each script sets `pace`, a short beat after every line, like the pauses in TV anime dialogue.
+- **Splicing:** a scene can be `{ borrow: [t0, t1] }`, which replays that stretch of Episode 1 with its shots, sound, subtitles and lip-sync. Episode 1's full-length cut is built this way, and its original voice recordings are reused unchanged.
+- **Voices:** one voice per character across the series (`tools/episode_lines.js`), voiced by Kokoro-82M. Each line is cached, so re-voicing an episode only records the lines that changed.
+- **No paid services.** Everything is generated locally (Stable Diffusion, Kokoro, segmentation models) and rendered in the browser.
+
 ## Art credits
 
 The character and creature illustrations are reference art supplied by the series creator. All rights belong to their original artists. Please credit them, and ask before posting this publicly.

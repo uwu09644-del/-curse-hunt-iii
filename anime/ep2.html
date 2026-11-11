@@ -86,6 +86,7 @@ h2 { font: 900 30px/1 var(--f-disp); letter-spacing: 0.06em; margin: 64px 0 6px;
 .eps li { display: grid; grid-template-columns: 46px 1fr; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); }
 .eps .no { font: 900 28px/1 var(--f-disp); color: #4a4046; font-variant-numeric: tabular-nums; }
 .eps li.now .no { color: var(--accent); }
+.eps h4 a { color: inherit; text-decoration: none; } .eps h4 a:hover, .eps h4 a:focus-visible { color: var(--accent-soft); text-decoration: underline; }
 .eps h4 { margin: 0 0 4px; font: 800 17px/1.2 var(--f-body); }
 .eps h4 em { font-style: normal; font: 700 10px/1 var(--f-body); letter-spacing: 0.2em; color: var(--accent-soft); margin-left: 8px; vertical-align: 2px; }
 .eps p { margin: 0; color: var(--muted); font-size: 14px; }
@@ -130,11 +131,11 @@ kbd { font: 600 11px/1 var(--f-body); padding: 2px 5px; border: 1px solid var(--
 <div class="wrap">
   <header class="top">
     <span class="mark">RUIN<b>/</b>BREAKER</span><span class="mark-jp">ルインブレイカー</span>
-    <span class="season">Season 1 · Episode 2 · 3D edition</span>
+    <span class="season">Season 1 · Episode 2</span>
   </header>
 
   <div id="stage" class="ui-on">
-    <canvas id="cv" width="1280" height="720" aria-label="Ruinbreaker Episode 2 animation, 3D edition"></canvas>
+    <canvas id="cv" width="1280" height="720" aria-label="Ruinbreaker Episode 2 animation"></canvas>
     <canvas id="subs" width="1280" height="720" aria-hidden="true"></canvas>
     <div id="startOverlay">
       <button id="start" class="big-btn" disabled>
@@ -182,18 +183,18 @@ kbd { font: 600 11px/1 var(--f-body); padding: 2px 5px; border: 1px solid var(--
   <h2>Season 1</h2>
   <p class="sub">Twelve episodes. A boy from Tokyo, an axe nobody else could lift, and a man in a black suit who opened the sky on purpose.</p>
   <ol class="eps">
-    <li><span class="no">01</span><div><h4>The Crossing</h4><p>The sky cracks over a Tokyo railway crossing. In the Barrow Fields, Takuto pulls out the Headsman's Axe, and something inside it wakes up.</p></div></li>
-    <li class="now"><span class="no">02</span><div><h4>Branded<em>NOW PLAYING</em></h4><p>The Hunters' Guild. Valentine's cube reads Takuto's rank as ERROR. Rin Ashveil hates him on sight.</p></div></li>
-    <li><span class="no">03</span><div><h4>A Flame From Home</h4><p>The licensing exam, a Stonehide Behemoth, and Wick, another Skyfallen who says nobody ever goes home.</p></div></li>
-    <li><span class="no">04</span><div><h4>Cogwheel Heart</h4><p>Gideon builds Takuto a harness so he can block exactly once. Someone is smiling in the forge smoke.</p></div></li>
-    <li><span class="no">05</span><div><h4>Seven Heads, One River</h4><p>The Hydra of Marrowmere regrows every head he breaks off. Breaking a thing and killing it turn out to be different problems.</p></div></li>
-    <li><span class="no">06</span><div><h4>The Red Giants March</h4><p>Fort Cinder falls under siege. Takuto loses control for the first time, and Rin gets hurt because of it.</p></div></li>
-    <li><span class="no">07</span><div><h4>Feathers and Ash</h4><p>The Plume Ogres aren't raiding the village. They're running from something worse.</p></div></li>
-    <li><span class="no">08</span><div><h4>The Fang Ronin</h4><p>Kurozane challenges Sieg to a duel, and Sieg's old squad comes back to haunt him.</p></div></li>
-    <li><span class="no">09</span><div><h4>Saint Lumen</h4><p>The golden capital. Lucien Aurel offers Takuto a place in the Gilded Order, with Haruki standing at his side.</p></div></li>
-    <li><span class="no">10</span><div><h4>Morvudd</h4><p>The Fiend that killed Sieg's squad returns with a horde, and Mr. Sable finally introduces himself.</p></div></li>
-    <li><span class="no">11</span><div><h4>Calamity</h4><p>Tyr the Frost Titan attacks the capital. Takuto lets Akuro out, and the Guild sends Vesper to kill him.</p></div></li>
-    <li><span class="no">12</span><div><h4>Ruinbreaker</h4><p>A golden barrier over an entire city, and the one Brand built to break it.</p></div></li>
+    <li><span class="no">01</span><div><h4><a href="ep1.html">The Crossing</a></h4><p>The sky cracks over a Tokyo railway crossing. In the Barrow Fields, Takuto pulls out the Headsman's Axe, and something inside it wakes up.</p></div></li>
+    <li class="now"><span class="no">02</span><div><h4><a href="ep2.html">Branded</a><em>NOW PLAYING</em></h4><p>The Hunters' Guild. Valentine's cube reads Takuto's rank as ERROR. Rin Ashveil hates him on sight.</p></div></li>
+    <li><span class="no">03</span><div><h4><a href="ep3.html">A Flame From Home</a></h4><p>The licensing exam, a Stonehide Behemoth, and Wick, another Skyfallen who says nobody ever goes home.</p></div></li>
+    <li><span class="no">04</span><div><h4><a href="ep4.html">Cogwheel Heart</a></h4><p>Gideon builds Takuto a harness so he can block exactly once. Someone is smiling in the forge smoke.</p></div></li>
+    <li><span class="no">05</span><div><h4><a href="ep5.html">Seven Heads, One River</a></h4><p>The Hydra of Marrowmere regrows every head he breaks off. Breaking a thing and killing it turn out to be different problems.</p></div></li>
+    <li><span class="no">06</span><div><h4><a href="ep6.html">The Red Giants March</a></h4><p>Fort Cinder falls under siege. Takuto loses control for the first time, and Rin gets hurt because of it.</p></div></li>
+    <li><span class="no">07</span><div><h4><a href="ep7.html">Feathers and Ash</a></h4><p>The Plume Ogres aren't raiding the village. They're running from something worse.</p></div></li>
+    <li><span class="no">08</span><div><h4><a href="ep8.html">The Fang Ronin</a></h4><p>Kurozane challenges Sieg to a duel, and Sieg's old squad comes back to haunt him.</p></div></li>
+    <li><span class="no">09</span><div><h4><a href="ep9.html">Saint Lumen</a></h4><p>The golden capital. Lucien Aurel offers Takuto a place in the Gilded Order, with Haruki standing at his side.</p></div></li>
+    <li><span class="no">10</span><div><h4><a href="ep10.html">Morvudd</a></h4><p>The Fiend that killed Sieg's squad returns with a horde, and Mr. Sable finally introduces himself.</p></div></li>
+    <li><span class="no">11</span><div><h4><a href="ep11.html">Calamity</a></h4><p>Tyr the Frost Titan attacks the capital. Takuto lets Akuro out, and the Guild sends Vesper to kill him.</p></div></li>
+    <li><span class="no">12</span><div><h4><a href="ep12.html">Ruinbreaker</a></h4><p>A golden barrier over an entire city, and the one Brand built to break it.</p></div></li>
   </ol>
 
   <h2>Cast</h2>
@@ -234,7 +235,7 @@ kbd { font: 600 11px/1 var(--f-body); padding: 2px 5px; border: 1px solid var(--
 <script src="js/audio.js"></script>
 <script src="js/gfx.js"></script>
 <script src="js/voice-data-ep02.js"></script>
-<script>VOICE_DATA.lenient = true; window.RB_EP_LABEL = 'Episode 2  ·  Branded'; window.RB_EP_NO = 2; window.RB_CAST = ['takuto', 'nemu', 'sieg', 'rin', 'valentine', 'clerk', 'sable'];</script>
+<script>VOICE_DATA.lenient = true; window.RB_EP_LABEL = 'Episode 2  ·  Branded'; window.RB_EP_NO = 2; window.RB_CAST = ['takuto', 'nemu', 'sieg', 'clerk', 'valentine', 'rin', 'sable']; window.RB_SPRITES = []; window.RB_PLATES = ['ashford_street', 'ashford_night', 'guild_hall'];</script>
 <script src="js/voice.js"></script>
 <script src="js/rig.js"></script>
 <script src="js/rigs.js"></script>
@@ -249,6 +250,7 @@ kbd { font: 600 11px/1 var(--f-body); padding: 2px 5px; border: 1px solid var(--
 <script src="js/ep01_3d.js"></script>
 <script src="js/ep01.js"></script>
 <script src="js/director.js"></script>
+<script src="js/shotkit.js"></script>
 <script src="js/ep02.js"></script>
 <script src="js/ep02_shots.js"></script>
 <script>window.RB_EP = EP02;</script>
