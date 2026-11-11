@@ -8,12 +8,12 @@ const EP01X_CUSTOM = (() => {
   return {
     catLook(lt, d, t, api) { // the same spot by the tracks where Episode 1 finds the cat
       const m = api.marks(), cam = { pos: [6.6, 1.05, -0.4], look: [4.9, 0.55, -2.7], fov: 36 };
-      api.render(t, cam, K.over(api, t, { haruki: { pose: { ...P().kneel, headX: 0.35, ry: -2.5 }, o: { expr: { happy: 0.4 } } }, takuto: { pose: { headX: 0.3, ry: 2.4 } } }));
+      api.render(t, cam, K.over(api, t, { haruki: { pose: { ...P().kneel, headX: 0.35, ry: 1.2 }, o: { expr: { happy: 0.4 } } }, takuto: { pose: { headX: 0.3, ry: 1.9 } } }));
       rain(t, 0.35); api.postFor();
     },
     catFeed(lt, d, t, api) {
       const k = ease.io(clamp(lt / d)), cam = { pos: [6.4, lerp(1.0, 0.8, k), -0.6], look: [5.0, 0.45, -2.8], fov: lerp(34, 30, k) };
-      api.render(t, cam, K.over(api, t, { haruki: { pose: { ...P().kneel, uaR: [1.0, 0.2], elR: 0.5, headX: 0.4, ry: -2.5 }, o: { expr: { happy: 0.7 } } }, takuto: { pose: { ...P().kneel, headX: 0.35, ry: 2.4 }, o: { expr: { happy: 0.2 } } } }));
+      api.render(t, cam, K.over(api, t, { haruki: { pose: { ...P().kneel, uaR: [1.0, 0.2], elR: 0.5, headX: 0.4, ry: 1.2 }, o: { expr: { happy: 0.7 } } }, takuto: { pose: { ...P().kneel, headX: 0.35, ry: 1.9 }, o: { expr: { happy: 0.2 } } } }));
       rain(t, 0.3); api.postFor();
     },
     voidFirst(lt, d, t, api) {
