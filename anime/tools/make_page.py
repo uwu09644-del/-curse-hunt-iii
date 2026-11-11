@@ -5,7 +5,7 @@ n, title, jpno, jp, syn, cast, sprites, plates = sys.argv[1:9]
 s = open('3d.html').read()
 s = s.replace('<title>Ruinbreaker 3D</title>', f'<title>Ruinbreaker Episode {n}</title>', 1)
 cfg = (f"<script>VOICE_DATA.lenient = true; window.RB_EP_LABEL = 'Episode {n}  ·  {title}'; window.RB_EP_NO = {n}; "
-       f"window.RB_CAST = {cast.split(',')!r}; window.RB_SPRITES = {[x for x in sprites.split(',') if x]!r}; window.RB_PLATES = {[x for x in plates.split(',') if x]!r};</script>")
+       f"window.RB_CAST = {cast.split(',')!r}; window.RB_SPRITES = {[x for x in sprites.split(',') if x and x != '-']!r}; window.RB_PLATES = {[x for x in plates.split(',') if x and x != '-']!r};</script>")
 s = s.replace('<script src="js/voice-data.js"></script>', f'<script src="js/voice-data-ep{int(n):02d}.js"></script>\n' + cfg, 1)
 s = s.replace('<script src="js/ep01.js"></script>', f'<script src="js/ep01.js"></script>\n<script src="js/director.js"></script>\n<script src="js/ep{int(n):02d}.js"></script>\n<script src="js/ep{int(n):02d}_shots.js"></script>\n<script>window.RB_EP = EP{int(n):02d};</script>', 1)
 s = s.replace('Season 1 · 12 episodes · 3D edition', f'Season 1 · Episode {n}', 1)

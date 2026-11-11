@@ -461,5 +461,12 @@
   "seed": 133,
   "w": 768,
   "h": 432
+ },
+ {
+  "id": "bakery_cellar",
+  "prompt": "medieval bakery cellar, stone vaulted ceiling, stacked flour sacks, wooden barrels, bread shelves, one hanging oil lantern, warm dim light, dust in the air",
+  "seed": 140,
+  "w": 768,
+  "h": 432
  }
 ]

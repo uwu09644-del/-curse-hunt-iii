@@ -68,6 +68,13 @@ const EP04_CUSTOM = (() => {
       if (vis > 0.3) { const e = proj(S3.jointPos('sable', 'head', 0.16)); GFX.radial(e[0], e[1], 30, 'rgba(230,240,255,' + (0.9 * vis).toFixed(2) + ')', 'rgba(150,170,255,0)', 1, 'lighter'); }
       api.postFor();
     },
+    tofuScan(lt, d, t, api) {
+      const m = api.marks(), tk = m.takuto, tf = m.tofu, cam = { pos: [tk.x + 1.2, 1.35, tk.z + 1.9], look: [lerp(tk.x, tf.x, 0.5), 1.1, lerp(tk.z, tf.z, 0.5)], fov: 34 };
+      api.render(t, cam, over(api, t, { tofu: { pose: { y: 0.5 + Math.sin(t * 2) * 0.05 }, o: { face: lt > 0.8 && lt < 5 ? 'scan' : 'idle' } }, takuto: { pose: { ...P().ready, weapon: 1.2 }, o: { axeGlow: inv(1, 3, lt) * 0.5 } } }));
+      if (lt > 1) chains(t, inv(1, 1.6, lt) * (1 - inv(d - 1, d, lt)));
+      if (lt > 2.2) VFX.holo(lt - 2.2, d - 2.4, { x: 900, y: 230, w: 460, title: 'BRAND APPRAISAL', color: '#ff7ab6', accent: '#ffd6ea', lines: [{ t: 'Kirishima Takuto', big: true }, 'Brand: RUINBREAKER', { t: 'Rank: ERROR (smaller)', col: '#ff9ab0' }, { t: 'Signatures: 2', col: '#ffd6ea' }] });
+      api.postFor();
+    },
     nextTitle(lt, d, t) {
       const a = inv(0, 0.8, lt); GFX.fill('#050406');
       GFX.txt('NEXT EPISODE', 640, 250, { font: '700 15px ' + GFX.FONT.sub, fill: '#e8343c', ls: 10, a }); GFX.txt('第五話', 640, 300, { font: '400 26px ' + GFX.FONT.jp, fill: '#bdb6b0', ls: 8, a });

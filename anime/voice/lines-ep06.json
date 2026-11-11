@@ -1,0 +1,1528 @@
+{
+ "cast": {
+  "TAKUTO": {
+   "voice": [
+    [
+     "am_michael",
+     0.6
+    ],
+    [
+     "am_puck",
+     0.4
+    ]
+   ],
+   "speed": 1.02
+  },
+  "NEMU": {
+   "voice": [
+    [
+     "af_nicole",
+     0.65
+    ],
+    [
+     "af_bella",
+     0.35
+    ]
+   ],
+   "speed": 1.02
+  },
+  "SIEG": {
+   "voice": [
+    [
+     "bm_george",
+     1
+    ]
+   ],
+   "speed": 1.06
+  },
+  "AKURO": {
+   "voice": [
+    [
+     "am_fenrir",
+     1
+    ]
+   ],
+   "speed": 0.8,
+   "fx": "demon"
+  },
+  "RIN": {
+   "voice": [
+    [
+     "af_kore",
+     0.6
+    ],
+    [
+     "bf_emma",
+     0.4
+    ]
+   ],
+   "speed": 1.05
+  },
+  "VALENTINE": {
+   "voice": [
+    [
+     "bf_isabella",
+     0.55
+    ],
+    [
+     "af_nova",
+     0.45
+    ]
+   ],
+   "speed": 1.06
+  },
+  "CLERK": {
+   "voice": [
+    [
+     "af_aoede",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "CROWD": {
+   "voice": [
+    [
+     "am_echo",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "CROWD2": {
+   "voice": [
+    [
+     "af_river",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "VENDOR": {
+   "voice": [
+    [
+     "bm_daniel",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "HUNTER": {
+   "voice": [
+    [
+     "am_onyx",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "SABLE": {
+   "voice": [
+    [
+     "bm_fable",
+     1
+    ]
+   ],
+   "speed": 0.92,
+   "fx": "static"
+  },
+  "WICK": {
+   "voice": [
+    [
+     "am_puck",
+     0.5
+    ],
+    [
+     "am_liam",
+     0.5
+    ]
+   ],
+   "speed": 1.12
+  },
+  "GIDEON": {
+   "voice": [
+    [
+     "bm_lewis",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "EXAMINER": {
+   "voice": [
+    [
+     "bf_alice",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "HARUKI": {
+   "voice": [
+    [
+     "am_liam",
+     0.6
+    ],
+    [
+     "am_eric",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "LUCIEN": {
+   "voice": [
+    [
+     "bm_daniel",
+     0.5
+    ],
+    [
+     "am_adam",
+     0.5
+    ]
+   ],
+   "speed": 0.94
+  },
+  "VESPER": {
+   "voice": [
+    [
+     "bf_lily",
+     0.6
+    ],
+    [
+     "af_sky",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "KUROZANE": {
+   "voice": [
+    [
+     "am_onyx",
+     0.7
+    ],
+    [
+     "am_fenrir",
+     0.3
+    ]
+   ],
+   "speed": 0.9
+  },
+  "OGRE": {
+   "voice": [
+    [
+     "am_santa",
+     1
+    ]
+   ],
+   "speed": 0.9,
+   "fx": "demon"
+  },
+  "NARRATOR": {
+   "voice": [
+    [
+     "bm_george",
+     0.4
+    ],
+    [
+     "am_adam",
+     0.6
+    ]
+   ],
+   "speed": 0.98
+  }
+ },
+ "lines": [
+  {
+   "id": "ep06_001",
+   "who": "TAKUTO",
+   "text": "Previously. A Hydra in the lake at Marrowmere. Every head I cut grew back.",
+   "mono": true
+  },
+  {
+   "id": "ep06_002",
+   "who": "TAKUTO",
+   "text": "Rin tied all seven heads into one knot, and tied herself to it. I broke the heart.",
+   "mono": true
+  },
+  {
+   "id": "ep06_003",
+   "who": "TAKUTO",
+   "text": "Someone had burned the seal from inside. And there were feathers on the shore.",
+   "mono": true
+  },
+  {
+   "id": "ep06_004",
+   "who": "TAKUTO",
+   "text": "Then a hawk came. Fort Cinder needed every Hunter it could get.",
+   "mono": true
+  },
+  {
+   "id": "ep06_005",
+   "who": "HUNTER",
+   "text": "Quiet night on the plain."
+  },
+  {
+   "id": "ep06_006",
+   "who": "CROWD",
+   "text": "Too hot to be quiet."
+  },
+  {
+   "id": "ep06_007",
+   "who": "HUNTER",
+   "text": "Lights. On the plain. Red ones."
+  },
+  {
+   "id": "ep06_008",
+   "who": "CROWD",
+   "text": "Those are eyes. Hundreds of them."
+  },
+  {
+   "id": "ep06_009",
+   "who": "HUNTER",
+   "text": "Listen. They are marching in step."
+  },
+  {
+   "id": "ep06_010",
+   "who": "HUNTER",
+   "text": "Ring the bell! RING THE BELL!"
+  },
+  {
+   "id": "ep06_011",
+   "who": "WICK",
+   "text": "I love this place. Finally, somewhere warmer than my head."
+  },
+  {
+   "id": "ep06_012",
+   "who": "NEMU",
+   "text": "I hate this place. My tail is sweating. I didn't know tails could sweat."
+  },
+  {
+   "id": "ep06_013",
+   "who": "RIN",
+   "text": "Sieg. Tell us about Red Giants. Properly. Not the way the Guild posters do.",
+   "tts": "Seeg. Tell us about Red Giants. Properly. Not the way the Guild posters do."
+  },
+  {
+   "id": "ep06_014",
+   "who": "SIEG",
+   "text": "You know the Iron Giants of the north mountains? Slow, huge, mostly harmless. They sleep for years."
+  },
+  {
+   "id": "ep06_015",
+   "who": "SIEG",
+   "text": "Sometimes one wanders into a Rift and comes back out. Red. Hot inside. And angry at everything that moves."
+  },
+  {
+   "id": "ep06_016",
+   "who": "TAKUTO",
+   "text": "How many at the fort?"
+  },
+  {
+   "id": "ep06_017",
+   "who": "SIEG",
+   "text": "The hawk said forty."
+  },
+  {
+   "id": "ep06_018",
+   "who": "WICK",
+   "text": "Forty?! Forty giants?!"
+  },
+  {
+   "id": "ep06_019",
+   "who": "SIEG",
+   "text": "Red Giants never travel together. One, sometimes two. Forty is not a raid. Forty is an army."
+  },
+  {
+   "id": "ep06_020",
+   "who": "RIN",
+   "text": "Armies need generals."
+  },
+  {
+   "id": "ep06_021",
+   "who": "SIEG",
+   "text": "Yes. They do."
+  },
+  {
+   "id": "ep06_022",
+   "who": "NEMU",
+   "text": "Takuto. Your axe is glowing.",
+   "tts": "Tah-koo-toh. Your axe is glowing."
+  },
+  {
+   "id": "ep06_023",
+   "who": "TAKUTO",
+   "text": "It's the heat."
+  },
+  {
+   "id": "ep06_024",
+   "who": "AKURO",
+   "text": "It isn't the heat. Can you smell it, boy? Iron and fire. A battlefield. I haven't smelled one in three hundred years.",
+   "mono": true
+  },
+  {
+   "id": "ep06_025",
+   "who": "TAKUTO",
+   "text": "Calm down."
+  },
+  {
+   "id": "ep06_026",
+   "who": "AKURO",
+   "text": "I'm perfectly calm. I'm just... looking forward to it.",
+   "mono": true
+  },
+  {
+   "id": "ep06_027",
+   "who": "CROWD",
+   "text": "Water to the east wall!"
+  },
+  {
+   "id": "ep06_028",
+   "who": "CROWD2",
+   "text": "More arrows! Anybody, more arrows!"
+  },
+  {
+   "id": "ep06_029",
+   "who": "HUNTER",
+   "text": "Valen. Thank the gods. Commander Hale. You brought Hunters."
+  },
+  {
+   "id": "ep06_030",
+   "who": "HUNTER",
+   "text": "Rank C and up to the north wall. Everyone else, supply and the infirmary."
+  },
+  {
+   "id": "ep06_031",
+   "who": "TAKUTO",
+   "text": "I'm going to the wall."
+  },
+  {
+   "id": "ep06_032",
+   "who": "SIEG",
+   "text": "You're rank F."
+  },
+  {
+   "id": "ep06_033",
+   "who": "TAKUTO",
+   "text": "I killed a Behemoth. And a Hydra."
+  },
+  {
+   "id": "ep06_034",
+   "who": "SIEG",
+   "text": "With help. On the wall there is no help. There is only the person next to you, and the drop."
+  },
+  {
+   "id": "ep06_035",
+   "who": "RIN",
+   "text": "Stay in the yard, Takuto. Carry water. Nobody ever died carrying water.",
+   "tts": "Stay in the yard, Tah-koo-toh. Carry water. Nobody ever died carrying water."
+  },
+  {
+   "id": "ep06_036",
+   "who": "WICK",
+   "text": "I did almost die carrying water once."
+  },
+  {
+   "id": "ep06_037",
+   "who": "RIN",
+   "text": "Nobody normal."
+  },
+  {
+   "id": "ep06_038",
+   "who": "VESPER",
+   "text": "The Laughing Blade. And his students. How sweet."
+  },
+  {
+   "id": "ep06_039",
+   "who": "SIEG",
+   "text": "Vesper."
+  },
+  {
+   "id": "ep06_040",
+   "who": "TAKUTO",
+   "text": "Who is she?"
+  },
+  {
+   "id": "ep06_041",
+   "who": "SIEG",
+   "text": "The Guild sends her when a Branded loses control. She is the one who stops them."
+  },
+  {
+   "id": "ep06_042",
+   "who": "WICK",
+   "text": "Stops them how?"
+  },
+  {
+   "id": "ep06_043",
+   "who": "VESPER",
+   "text": "Permanently."
+  },
+  {
+   "id": "ep06_044",
+   "who": "VESPER",
+   "text": "Relax. I'm here for the giants. Forty Red Giants is a lot of loose Brands waiting to happen."
+  },
+  {
+   "id": "ep06_045",
+   "who": "VESPER",
+   "text": "You must be the error. White hair. Red jacket. An axe with a reputation."
+  },
+  {
+   "id": "ep06_046",
+   "who": "TAKUTO",
+   "text": "What reputation?"
+  },
+  {
+   "id": "ep06_047",
+   "who": "VESPER",
+   "text": "The last man who carried it destroyed three cities. Did nobody tell you?"
+  },
+  {
+   "id": "ep06_048",
+   "who": "VESPER",
+   "text": "Carry water, error. If I see that axe glow red on my battlefield, I'll take it from you. And your hands with it."
+  },
+  {
+   "id": "ep06_049",
+   "who": "NEMU",
+   "text": "I don't like her."
+  },
+  {
+   "id": "ep06_050",
+   "who": "AKURO",
+   "text": "I do. She smells like a storm. Like the last one who tried.",
+   "mono": true
+  },
+  {
+   "id": "ep06_051",
+   "who": "VESPER",
+   "text": "Six years, Sieg. You still laugh at everything?",
+   "tts": "Six years, Seeg. You still laugh at everything?"
+  },
+  {
+   "id": "ep06_052",
+   "who": "SIEG",
+   "text": "Only at things that deserve it. You still visit old friends with a knife?"
+  },
+  {
+   "id": "ep06_053",
+   "who": "VESPER",
+   "text": "I visited you once. At Grey Hollow. You were the only one left standing, and the Guild wanted to know why."
+  },
+  {
+   "id": "ep06_054",
+   "who": "SIEG",
+   "text": "And you decided I was still me."
+  },
+  {
+   "id": "ep06_055",
+   "who": "VESPER",
+   "text": "You were sitting in the mud, counting the dead out loud. Over and over. A monster does not count."
+  },
+  {
+   "id": "ep06_056",
+   "who": "SIEG",
+   "text": "...I never thanked you for that."
+  },
+  {
+   "id": "ep06_057",
+   "who": "VESPER",
+   "text": "Don't. I would have done it if I had to. That's the job."
+  },
+  {
+   "id": "ep06_058",
+   "who": "SIEG",
+   "text": "The boy is not a monster, Vesper."
+  },
+  {
+   "id": "ep06_059",
+   "who": "VESPER",
+   "text": "Nobody is, until the day they are. You know what is inside that axe. You've read the old records, same as me."
+  },
+  {
+   "id": "ep06_060",
+   "who": "SIEG",
+   "text": "Akuro. The Crimson Calamity.",
+   "tts": "Ah-koo-roh. The Crimson Calamity."
+  },
+  {
+   "id": "ep06_061",
+   "who": "VESPER",
+   "text": "Three cities. Sealed in a headsman's axe in a graveyard nobody visits. And now a Skyfallen boy carries it around like a lunchbox."
+  },
+  {
+   "id": "ep06_062",
+   "who": "SIEG",
+   "text": "He carries it like someone who has nothing else."
+  },
+  {
+   "id": "ep06_063",
+   "who": "VESPER",
+   "text": "...Then let us hope that is enough."
+  },
+  {
+   "id": "ep06_064",
+   "who": "WICK",
+   "text": "Forty giants. You know what forty giants is? That is a whole baseball team. Four baseball teams."
+  },
+  {
+   "id": "ep06_065",
+   "who": "NEMU",
+   "text": "I don't know what baseball is."
+  },
+  {
+   "id": "ep06_066",
+   "who": "WICK",
+   "text": "It's a game where you hit a ball with a stick and then run away."
+  },
+  {
+   "id": "ep06_067",
+   "who": "NEMU",
+   "text": "That's what we're doing tomorrow."
+  },
+  {
+   "id": "ep06_068",
+   "who": "WICK",
+   "text": "...Yeah. Yeah, it kind of is."
+  },
+  {
+   "id": "ep06_069",
+   "who": "TAKUTO",
+   "text": "Rin. You haven't said anything all night."
+  },
+  {
+   "id": "ep06_070",
+   "who": "RIN",
+   "text": "I've never been on a wall before. A real siege. With a commander and bells and a line."
+  },
+  {
+   "id": "ep06_071",
+   "who": "TAKUTO",
+   "text": "You'll be fine. You're rank C."
+  },
+  {
+   "id": "ep06_072",
+   "who": "RIN",
+   "text": "My brother was rank B."
+  },
+  {
+   "id": "ep06_073",
+   "who": "TAKUTO",
+   "text": "...I'll be in the yard. If anything comes over the wall, it comes through me."
+  },
+  {
+   "id": "ep06_074",
+   "who": "RIN",
+   "text": "Through you. With an axe that can't block, and one harness block a day."
+  },
+  {
+   "id": "ep06_075",
+   "who": "TAKUTO",
+   "text": "Then it'll only come through me once."
+  },
+  {
+   "id": "ep06_076",
+   "who": "RIN",
+   "text": "...That's not funny."
+  },
+  {
+   "id": "ep06_077",
+   "who": "TAKUTO",
+   "text": "You smiled."
+  },
+  {
+   "id": "ep06_078",
+   "who": "RIN",
+   "text": "I did not."
+  },
+  {
+   "id": "ep06_079",
+   "who": "NEMU",
+   "text": "She did."
+  },
+  {
+   "id": "ep06_080",
+   "who": "WICK",
+   "text": "She definitely did."
+  },
+  {
+   "id": "ep06_081",
+   "who": "RIN",
+   "text": "Go to sleep! All of you!"
+  },
+  {
+   "id": "ep06_082",
+   "who": "AKURO",
+   "text": "Forty giants, boy. Let me out a little tomorrow. Just a little.",
+   "mono": true
+  },
+  {
+   "id": "ep06_083",
+   "who": "TAKUTO",
+   "text": "No."
+  },
+  {
+   "id": "ep06_084",
+   "who": "HUNTER",
+   "text": "Here they come! Archers, draw!"
+  },
+  {
+   "id": "ep06_085",
+   "who": "RIN",
+   "text": "They're walking in lines. Like soldiers."
+  },
+  {
+   "id": "ep06_086",
+   "who": "SIEG",
+   "text": "Like someone taught them."
+  },
+  {
+   "id": "ep06_087",
+   "who": "SIEG",
+   "text": "First one at the wall! Rin, its knees!"
+  },
+  {
+   "id": "ep06_088",
+   "who": "RIN",
+   "text": "Red Thread! Its knee to the rock!"
+  },
+  {
+   "id": "ep06_089",
+   "who": "SIEG",
+   "text": "Afterimage!"
+  },
+  {
+   "id": "ep06_090",
+   "who": "HUNTER",
+   "text": "BOULDER! Down, down!"
+  },
+  {
+   "id": "ep06_091",
+   "who": "VESPER",
+   "text": "Clumsy."
+  },
+  {
+   "id": "ep06_092",
+   "who": "VESPER",
+   "text": "White Gale."
+  },
+  {
+   "id": "ep06_093",
+   "who": "VESPER",
+   "text": "Down you go."
+  },
+  {
+   "id": "ep06_094",
+   "who": "RIN",
+   "text": "That's one. There are thirty-nine more."
+  },
+  {
+   "id": "ep06_095",
+   "who": "SIEG",
+   "text": "Then we'd better not stop at one."
+  },
+  {
+   "id": "ep06_096",
+   "who": "HUNTER",
+   "text": "Second one on the ladder!"
+  },
+  {
+   "id": "ep06_097",
+   "who": "SIEG",
+   "text": "Rin, the hand on the battlement! Tie it!"
+  },
+  {
+   "id": "ep06_098",
+   "who": "RIN",
+   "text": "Tied to the wall! Pull and you fall!"
+  },
+  {
+   "id": "ep06_099",
+   "who": "VESPER",
+   "text": "Not bad, little thread. Your brother taught you that?"
+  },
+  {
+   "id": "ep06_100",
+   "who": "RIN",
+   "text": "You knew my brother?"
+  },
+  {
+   "id": "ep06_101",
+   "who": "VESPER",
+   "text": "Everyone on the frontier knew Kaito Ashveil. He was the only B-rank who ever made me laugh.",
+   "tts": "Everyone on the frontier knew Kaito Ash-vale. He was the only B-rank who ever made me laugh."
+  },
+  {
+   "id": "ep06_102",
+   "who": "RIN",
+   "text": "...He laughed at everything. It drove me crazy."
+  },
+  {
+   "id": "ep06_103",
+   "who": "VESPER",
+   "text": "Then fight like he would. Laughing. Behind you!"
+  },
+  {
+   "id": "ep06_104",
+   "who": "RIN",
+   "text": "I see it!"
+  },
+  {
+   "id": "ep06_105",
+   "who": "SIEG",
+   "text": "Twice! Always twice!"
+  },
+  {
+   "id": "ep06_106",
+   "who": "CROWD",
+   "text": "They broke the east gate!"
+  },
+  {
+   "id": "ep06_107",
+   "who": "CROWD2",
+   "text": "Medic! I need a medic!"
+  },
+  {
+   "id": "ep06_108",
+   "who": "HUNTER",
+   "text": "Water! Water to the north wall! Move!"
+  },
+  {
+   "id": "ep06_109",
+   "who": "WICK",
+   "text": "Nemu! Two buckets! You only have one bucket!",
+   "tts": "Neh-moo! Two buckets! You only have one bucket!"
+  },
+  {
+   "id": "ep06_110",
+   "who": "NEMU",
+   "text": "I have one bucket and one tail. The tail is helping."
+  },
+  {
+   "id": "ep06_111",
+   "who": "WICK",
+   "text": "The tail is not helping! The tail is dipping in the water!"
+  },
+  {
+   "id": "ep06_112",
+   "who": "NEMU",
+   "text": "It is cooling the water."
+  },
+  {
+   "id": "ep06_113",
+   "who": "WICK",
+   "text": "That is not how cooling works!"
+  },
+  {
+   "id": "ep06_114",
+   "who": "NEMU",
+   "text": "Wick. Is your head getting brighter? You said that happens when you are scared."
+  },
+  {
+   "id": "ep06_115",
+   "who": "WICK",
+   "text": "I said that happens when I am CALM. And in CONTROL."
+  },
+  {
+   "id": "ep06_116",
+   "who": "NEMU",
+   "text": "...You are very calm right now."
+  },
+  {
+   "id": "ep06_117",
+   "who": "WICK",
+   "text": "I am TERRIFIED, Nemu.",
+   "tts": "I am TERRIFIED, Neh-moo."
+  },
+  {
+   "id": "ep06_118",
+   "who": "WICK",
+   "text": "I carried forty buckets. FORTY. One for every giant."
+  },
+  {
+   "id": "ep06_119",
+   "who": "TAKUTO",
+   "text": "The east gate."
+  },
+  {
+   "id": "ep06_120",
+   "who": "NEMU",
+   "text": "Takuto. Sieg said the yard.",
+   "tts": "Tah-koo-toh. Seeg said the yard."
+  },
+  {
+   "id": "ep06_121",
+   "who": "TAKUTO",
+   "text": "Sieg said nothing comes over the wall. Something is coming through the gate.",
+   "tts": "Seeg said nothing comes over the wall. Something is coming through the gate."
+  },
+  {
+   "id": "ep06_122",
+   "who": "NEMU",
+   "text": "Then I come with you."
+  },
+  {
+   "id": "ep06_123",
+   "who": "TAKUTO",
+   "text": "Stay with Wick. Keep the water coming. The wall needs it."
+  },
+  {
+   "id": "ep06_124",
+   "who": "NEMU",
+   "text": "...You're going to do something stupid."
+  },
+  {
+   "id": "ep06_125",
+   "who": "TAKUTO",
+   "text": "I'm going to do something useful."
+  },
+  {
+   "id": "ep06_126",
+   "who": "WICK",
+   "text": "In my experience those are the same thing!"
+  },
+  {
+   "id": "ep06_127",
+   "who": "TAKUTO",
+   "text": "You. Big one. Over here."
+  },
+  {
+   "id": "ep06_128",
+   "who": "TAKUTO",
+   "text": "Break!"
+  },
+  {
+   "id": "ep06_129",
+   "who": "AKURO",
+   "text": "Its shell broke. Now its bones.",
+   "mono": true
+  },
+  {
+   "id": "ep06_130",
+   "who": "TAKUTO",
+   "text": "It's hot inside. Like hitting a furnace."
+  },
+  {
+   "id": "ep06_131",
+   "who": "TAKUTO",
+   "text": "Again!"
+  },
+  {
+   "id": "ep06_132",
+   "who": "TAKUTO",
+   "text": "Three more."
+  },
+  {
+   "id": "ep06_133",
+   "who": "AKURO",
+   "text": "Four. Five. Oh, boy. Look at them all.",
+   "mono": true
+  },
+  {
+   "id": "ep06_134",
+   "who": "RIN",
+   "text": "Takuto! You idiot! I saw you from the wall!",
+   "tts": "Tah-koo-toh! You idiot! I saw you from the wall!"
+  },
+  {
+   "id": "ep06_135",
+   "who": "TAKUTO",
+   "text": "Go back up!"
+  },
+  {
+   "id": "ep06_136",
+   "who": "RIN",
+   "text": "You're surrounded! Red Thread!"
+  },
+  {
+   "id": "ep06_137",
+   "who": "RIN",
+   "text": "Hold still, you overgrown oven!"
+  },
+  {
+   "id": "ep06_138",
+   "who": "RIN",
+   "text": "It snapped the threads! Let go of me!"
+  },
+  {
+   "id": "ep06_139",
+   "who": "TAKUTO",
+   "text": "RIN!"
+  },
+  {
+   "id": "ep06_140",
+   "who": "AKURO",
+   "text": "You can't reach her, boy. Not like this. Not with only your hands.",
+   "mono": true
+  },
+  {
+   "id": "ep06_141",
+   "who": "AKURO",
+   "text": "Open the door. Just a crack. Let me see.",
+   "mono": true
+  },
+  {
+   "id": "ep06_142",
+   "who": "TAKUTO",
+   "text": "...Just a crack."
+  },
+  {
+   "id": "ep06_143",
+   "who": "AKURO",
+   "text": "Ahh. There you are.",
+   "mono": true
+  },
+  {
+   "id": "ep06_144",
+   "who": "AKURO",
+   "text": "Break! Break! BREAK!",
+   "mono": true
+  },
+  {
+   "id": "ep06_145",
+   "who": "AKURO",
+   "text": "Ha ha ha ha!",
+   "mono": true
+  },
+  {
+   "id": "ep06_146",
+   "who": "RIN",
+   "text": "Takuto, stop! Takuto!",
+   "tts": "Tah-koo-toh, stop! Tah-koo-toh!"
+  },
+  {
+   "id": "ep06_147",
+   "who": "VESPER",
+   "text": "White Gale. Bind."
+  },
+  {
+   "id": "ep06_148",
+   "who": "VESPER",
+   "text": "One more step, error, and the ribbons go through you instead of around you."
+  },
+  {
+   "id": "ep06_149",
+   "who": "NEMU",
+   "text": "TAKUTO!"
+  },
+  {
+   "id": "ep06_150",
+   "who": "TAKUTO",
+   "text": "...Nemu?",
+   "tts": "...Neh-moo?"
+  },
+  {
+   "id": "ep06_151",
+   "who": "SIEG",
+   "text": "He's back. Vesper, look at him. Look at his eyes. He's back."
+  },
+  {
+   "id": "ep06_152",
+   "who": "VESPER",
+   "text": "...This time."
+  },
+  {
+   "id": "ep06_153",
+   "who": "TAKUTO",
+   "text": "Where is Rin?"
+  },
+  {
+   "id": "ep06_154",
+   "who": "NEMU",
+   "text": "Takuto. Look behind you.",
+   "tts": "Tah-koo-toh. Look behind you."
+  },
+  {
+   "id": "ep06_155",
+   "who": "TAKUTO",
+   "text": "Rin..."
+  },
+  {
+   "id": "ep06_156",
+   "who": "TAKUTO",
+   "text": "Did I... did I do that?"
+  },
+  {
+   "id": "ep06_157",
+   "who": "WICK",
+   "text": "The medic says three ribs. And her arm. And she hit her head on the rocks."
+  },
+  {
+   "id": "ep06_158",
+   "who": "NEMU",
+   "text": "She'll wake up. She's too angry not to."
+  },
+  {
+   "id": "ep06_159",
+   "who": "WICK",
+   "text": "Where's Takuto?",
+   "tts": "Where's Tah-koo-toh?"
+  },
+  {
+   "id": "ep06_160",
+   "who": "NEMU",
+   "text": "Outside the door. He's been outside the door for four hours."
+  },
+  {
+   "id": "ep06_161",
+   "who": "WICK",
+   "text": "He won't come in?"
+  },
+  {
+   "id": "ep06_162",
+   "who": "NEMU",
+   "text": "He thinks if he comes in, he'll break something else."
+  },
+  {
+   "id": "ep06_163",
+   "who": "WICK",
+   "text": "The giants ran. Did you know that? After he... after the red. The rest of them turned around and walked away. In step."
+  },
+  {
+   "id": "ep06_164",
+   "who": "NEMU",
+   "text": "Like someone called them home."
+  },
+  {
+   "id": "ep06_165",
+   "who": "WICK",
+   "text": "Thirty-one dead giants. The commander wants to give him a medal."
+  },
+  {
+   "id": "ep06_166",
+   "who": "NEMU",
+   "text": "Don't tell him that. Not tonight."
+  },
+  {
+   "id": "ep06_167",
+   "who": "SIEG",
+   "text": "Can I sit?"
+  },
+  {
+   "id": "ep06_168",
+   "who": "TAKUTO",
+   "text": "It's your fort."
+  },
+  {
+   "id": "ep06_169",
+   "who": "SIEG",
+   "text": "It's Commander Hale's fort. He's very proud of it. He keeps calling the walls she."
+  },
+  {
+   "id": "ep06_170",
+   "who": "SIEG",
+   "text": "What did it feel like?"
+  },
+  {
+   "id": "ep06_171",
+   "who": "TAKUTO",
+   "text": "Like being on fire and not caring. Like everything in front of me was made of glass."
+  },
+  {
+   "id": "ep06_172",
+   "who": "TAKUTO",
+   "text": "And I liked it. Sieg, I liked it. That's the worst part.",
+   "tts": "And I liked it. Seeg, I liked it. That's the worst part."
+  },
+  {
+   "id": "ep06_173",
+   "who": "SIEG",
+   "text": "Of course you liked it. It's the strongest you've ever been. That is how it gets you."
+  },
+  {
+   "id": "ep06_174",
+   "who": "TAKUTO",
+   "text": "Is there a way to stop it?"
+  },
+  {
+   "id": "ep06_175",
+   "who": "SIEG",
+   "text": "There is one way that always works. Vesper would be happy to show you."
+  },
+  {
+   "id": "ep06_176",
+   "who": "TAKUTO",
+   "text": "And the other way?"
+  },
+  {
+   "id": "ep06_177",
+   "who": "SIEG",
+   "text": "Have people worth coming back for. Shout their names. Hear them shout yours."
+  },
+  {
+   "id": "ep06_178",
+   "who": "SIEG",
+   "text": "Nemu brought you back today. Not Vesper. Not me. One little girl who sleeps all day screamed your name, and you came back.",
+   "tts": "Neh-moo brought you back today. Not Vesper. Not me. One little girl who sleeps all day screamed your name, and you came back."
+  },
+  {
+   "id": "ep06_179",
+   "who": "TAKUTO",
+   "text": "Rin shouted too. I didn't hear her."
+  },
+  {
+   "id": "ep06_180",
+   "who": "SIEG",
+   "text": "...Then next time, listen harder."
+  },
+  {
+   "id": "ep06_181",
+   "who": "VESPER",
+   "text": "Couldn't sleep, error?"
+  },
+  {
+   "id": "ep06_182",
+   "who": "TAKUTO",
+   "text": "You stopped me today."
+  },
+  {
+   "id": "ep06_183",
+   "who": "VESPER",
+   "text": "I bound you. Your little cat girl stopped you. I want to be very clear about that."
+  },
+  {
+   "id": "ep06_184",
+   "who": "VESPER",
+   "text": "I have stopped eleven Hunters who lost control. Every single one of them told me it would never happen again."
+  },
+  {
+   "id": "ep06_185",
+   "who": "TAKUTO",
+   "text": "Then I won't say it."
+  },
+  {
+   "id": "ep06_186",
+   "who": "VESPER",
+   "text": "...Good. That's the first honest thing a Branded has said to me in years."
+  },
+  {
+   "id": "ep06_187",
+   "who": "VESPER",
+   "text": "The Guild will hear about today. They'll send me a letter. The letter will have your name in it."
+  },
+  {
+   "id": "ep06_188",
+   "who": "TAKUTO",
+   "text": "And you'll come."
+  },
+  {
+   "id": "ep06_189",
+   "who": "VESPER",
+   "text": "I always come. Make sure that when I do, I find a Hunter. Not the thing in your axe."
+  },
+  {
+   "id": "ep06_190",
+   "who": "AKURO",
+   "text": "She means me. I am flattered. Truly.",
+   "mono": true
+  },
+  {
+   "id": "ep06_191",
+   "who": "VESPER",
+   "text": "And error. The giants were marching in step. Someone was walking them. You felt it too."
+  },
+  {
+   "id": "ep06_192",
+   "who": "TAKUTO",
+   "text": "Static."
+  },
+  {
+   "id": "ep06_193",
+   "who": "VESPER",
+   "text": "...So you have met him."
+  },
+  {
+   "id": "ep06_194",
+   "who": "TAKUTO",
+   "text": "Haruki used to say I only had two settings. Asleep, and in a fight.",
+   "tts": "Hah-roo-kee used to say I only had two settings. Asleep, and in a fight."
+  },
+  {
+   "id": "ep06_195",
+   "who": "TAKUTO",
+   "text": "He was the one who stopped me. Every time. He would just put a hand on my shoulder, and the fight would go out of me."
+  },
+  {
+   "id": "ep06_196",
+   "who": "TAKUTO",
+   "text": "Then he was gone. And I had nobody to stop me."
+  },
+  {
+   "id": "ep06_197",
+   "who": "TAKUTO",
+   "text": "Today Nemu did it. I need to be the one who does it, next time.",
+   "tts": "Today Neh-moo did it. I need to be the one who does it, next time."
+  },
+  {
+   "id": "ep06_198",
+   "who": "RIN",
+   "text": "You came in."
+  },
+  {
+   "id": "ep06_199",
+   "who": "TAKUTO",
+   "text": "Nemu pushed me.",
+   "tts": "Neh-moo pushed me."
+  },
+  {
+   "id": "ep06_200",
+   "who": "RIN",
+   "text": "...Good for Nemu.",
+   "tts": "...Good for Neh-moo."
+  },
+  {
+   "id": "ep06_201",
+   "who": "TAKUTO",
+   "text": "Rin. I'm sorry."
+  },
+  {
+   "id": "ep06_202",
+   "who": "RIN",
+   "text": "You looked like someone else. Your eyes. Your voice. You were laughing, Takuto.",
+   "tts": "You looked like someone else. Your eyes. Your voice. You were laughing, Tah-koo-toh."
+  },
+  {
+   "id": "ep06_203",
+   "who": "TAKUTO",
+   "text": "It wasn't me laughing."
+  },
+  {
+   "id": "ep06_204",
+   "who": "RIN",
+   "text": "I know. That's what scared me."
+  },
+  {
+   "id": "ep06_205",
+   "who": "RIN",
+   "text": "Don't be sorry. Be useful. That's what I said in the Wastes, isn't it?"
+  },
+  {
+   "id": "ep06_206",
+   "who": "TAKUTO",
+   "text": "You remember."
+  },
+  {
+   "id": "ep06_207",
+   "who": "RIN",
+   "text": "I remember everything I say. It's one of my best qualities."
+  },
+  {
+   "id": "ep06_208",
+   "who": "RIN",
+   "text": "Promise me something. When the axe talks to you, tell me. Every time. I don't care if it sounds crazy."
+  },
+  {
+   "id": "ep06_209",
+   "who": "TAKUTO",
+   "text": "Every time?"
+  },
+  {
+   "id": "ep06_210",
+   "who": "RIN",
+   "text": "Every time. If I know, I can tie you down before you go."
+  },
+  {
+   "id": "ep06_211",
+   "who": "TAKUTO",
+   "text": "...It says you're loud."
+  },
+  {
+   "id": "ep06_212",
+   "who": "RIN",
+   "text": "It does not."
+  },
+  {
+   "id": "ep06_213",
+   "who": "AKURO",
+   "text": "I did, actually.",
+   "mono": true
+  },
+  {
+   "id": "ep06_214",
+   "who": "TAKUTO",
+   "text": "It did, actually."
+  },
+  {
+   "id": "ep06_215",
+   "who": "RIN",
+   "text": "...Tell it I said thank you. For leaving."
+  },
+  {
+   "id": "ep06_216",
+   "who": "HUNTER",
+   "text": "Kirishima. Thirty-one Red Giants. The fort owes you its walls.",
+   "tts": "Kee-ree-shee-mah. Thirty-one Red Giants. The fort owes you its walls."
+  },
+  {
+   "id": "ep06_217",
+   "who": "HUNTER",
+   "text": "The Order of the Ember. Take it, son. You earned it."
+  },
+  {
+   "id": "ep06_218",
+   "who": "TAKUTO",
+   "text": "I don't want it."
+  },
+  {
+   "id": "ep06_219",
+   "who": "HUNTER",
+   "text": "Nobody refuses the Ember."
+  },
+  {
+   "id": "ep06_220",
+   "who": "CROWD",
+   "text": "Did he just refuse the Ember?"
+  },
+  {
+   "id": "ep06_221",
+   "who": "TAKUTO",
+   "text": "Give it to the people who stayed on the wall. They did what they were told. I did not."
+  },
+  {
+   "id": "ep06_222",
+   "who": "SIEG",
+   "text": "Commander. He means it. Put his name on the list of the dead giants instead. He will like that better."
+  },
+  {
+   "id": "ep06_223",
+   "who": "WICK",
+   "text": "I would have taken the medal."
+  },
+  {
+   "id": "ep06_224",
+   "who": "NEMU",
+   "text": "You carried water."
+  },
+  {
+   "id": "ep06_225",
+   "who": "WICK",
+   "text": "Forty buckets!"
+  },
+  {
+   "id": "ep06_226",
+   "who": "SIEG",
+   "text": "Pack up. A letter came from the Guild with the dawn hawk. We go west, through the forest villages, toward the capital."
+  },
+  {
+   "id": "ep06_227",
+   "who": "TAKUTO",
+   "text": "The capital. Saint Lumen?"
+  },
+  {
+   "id": "ep06_228",
+   "who": "SIEG",
+   "text": "The Gilded Order wants to look at you. After yesterday, everybody wants to look at you."
+  },
+  {
+   "id": "ep06_229",
+   "who": "TAKUTO",
+   "text": "Haruki is in Saint Lumen. Wick heard about him. A Skyfallen who stops things.",
+   "tts": "Hah-roo-kee is in Saint Lumen. Wick heard about him. A Skyfallen who stops things."
+  },
+  {
+   "id": "ep06_230",
+   "who": "SIEG",
+   "text": "...I know. Valentine told me. That is why I said yes."
+  },
+  {
+   "id": "ep06_231",
+   "who": "NEMU",
+   "text": "And Rin?"
+  },
+  {
+   "id": "ep06_232",
+   "who": "SIEG",
+   "text": "Rin rides in the cart, with a blanket and a very bad temper. The medic says ten days."
+  },
+  {
+   "id": "ep06_233",
+   "who": "NEMU",
+   "text": "She'll walk in three."
+  },
+  {
+   "id": "ep06_234",
+   "who": "SIEG",
+   "text": "She'll walk in two, just to prove the medic wrong."
+  },
+  {
+   "id": "ep06_235",
+   "who": "AKURO",
+   "text": "Six seconds, boy. You let me out for six seconds. Do you know how long three hundred years is, compared to six seconds?",
+   "mono": true
+  },
+  {
+   "id": "ep06_236",
+   "who": "TAKUTO",
+   "text": "You hurt her."
+  },
+  {
+   "id": "ep06_237",
+   "who": "AKURO",
+   "text": "You hurt her. My hands were your hands. You were very proud of them, too.",
+   "mono": true
+  },
+  {
+   "id": "ep06_238",
+   "who": "TAKUTO",
+   "text": "It won't happen again."
+  },
+  {
+   "id": "ep06_239",
+   "who": "AKURO",
+   "text": "Ha. Vesper's favourite sentence. Say it to her and see what happens.",
+   "mono": true
+  },
+  {
+   "id": "ep06_240",
+   "who": "TAKUTO",
+   "text": "...Then I won't say it. I'll just do it."
+  },
+  {
+   "id": "ep06_241",
+   "who": "AKURO",
+   "text": "We will see, boy. Next time, ten seconds.",
+   "mono": true
+  },
+  {
+   "id": "ep06_242",
+   "who": "LUCIEN",
+   "text": "The Calamity woke."
+  },
+  {
+   "id": "ep06_243",
+   "who": "SABLE",
+   "text": "For six seconds. Thirty-one of my giants. I was quite fond of them."
+  },
+  {
+   "id": "ep06_244",
+   "who": "LUCIEN",
+   "text": "Then bring him to me. Before six seconds becomes sixty."
+  },
+  {
+   "id": "ep06_245",
+   "who": "SABLE",
+   "text": "Bring him? Oh, Lucien. He'll walk to you himself. You have his friend."
+  },
+  {
+   "id": "ep06_246",
+   "who": "TAKUTO",
+   "text": "Next time: a farming village on the edge of the great forest."
+  },
+  {
+   "id": "ep06_247",
+   "who": "TAKUTO",
+   "text": "Plume Ogres attack. But they are not hunting. They are running."
+  },
+  {
+   "id": "ep06_248",
+   "who": "TAKUTO",
+   "text": "Some Fiends can be talked to. And some of them are being herded."
+  },
+  {
+   "id": "ep06_249",
+   "who": "TAKUTO",
+   "text": "Episode seven. Feathers and Ash."
+  }
+ ]
+}

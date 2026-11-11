@@ -1,0 +1,1508 @@
+{
+ "cast": {
+  "TAKUTO": {
+   "voice": [
+    [
+     "am_michael",
+     0.6
+    ],
+    [
+     "am_puck",
+     0.4
+    ]
+   ],
+   "speed": 1.02
+  },
+  "NEMU": {
+   "voice": [
+    [
+     "af_nicole",
+     0.65
+    ],
+    [
+     "af_bella",
+     0.35
+    ]
+   ],
+   "speed": 1.02
+  },
+  "SIEG": {
+   "voice": [
+    [
+     "bm_george",
+     1
+    ]
+   ],
+   "speed": 1.06
+  },
+  "AKURO": {
+   "voice": [
+    [
+     "am_fenrir",
+     1
+    ]
+   ],
+   "speed": 0.8,
+   "fx": "demon"
+  },
+  "RIN": {
+   "voice": [
+    [
+     "af_kore",
+     0.6
+    ],
+    [
+     "bf_emma",
+     0.4
+    ]
+   ],
+   "speed": 1.05
+  },
+  "VALENTINE": {
+   "voice": [
+    [
+     "bf_isabella",
+     0.55
+    ],
+    [
+     "af_nova",
+     0.45
+    ]
+   ],
+   "speed": 1.06
+  },
+  "CLERK": {
+   "voice": [
+    [
+     "af_aoede",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "CROWD": {
+   "voice": [
+    [
+     "am_echo",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "CROWD2": {
+   "voice": [
+    [
+     "af_river",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "VENDOR": {
+   "voice": [
+    [
+     "bm_daniel",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "HUNTER": {
+   "voice": [
+    [
+     "am_onyx",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "SABLE": {
+   "voice": [
+    [
+     "bm_fable",
+     1
+    ]
+   ],
+   "speed": 0.92,
+   "fx": "static"
+  },
+  "WICK": {
+   "voice": [
+    [
+     "am_puck",
+     0.5
+    ],
+    [
+     "am_liam",
+     0.5
+    ]
+   ],
+   "speed": 1.12
+  },
+  "GIDEON": {
+   "voice": [
+    [
+     "bm_lewis",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "EXAMINER": {
+   "voice": [
+    [
+     "bf_alice",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "HARUKI": {
+   "voice": [
+    [
+     "am_liam",
+     0.6
+    ],
+    [
+     "am_eric",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "LUCIEN": {
+   "voice": [
+    [
+     "bm_daniel",
+     0.5
+    ],
+    [
+     "am_adam",
+     0.5
+    ]
+   ],
+   "speed": 0.94
+  },
+  "VESPER": {
+   "voice": [
+    [
+     "bf_lily",
+     0.6
+    ],
+    [
+     "af_sky",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "KUROZANE": {
+   "voice": [
+    [
+     "am_onyx",
+     0.7
+    ],
+    [
+     "am_fenrir",
+     0.3
+    ]
+   ],
+   "speed": 0.9
+  },
+  "OGRE": {
+   "voice": [
+    [
+     "am_santa",
+     1
+    ]
+   ],
+   "speed": 0.9,
+   "fx": "demon"
+  },
+  "NARRATOR": {
+   "voice": [
+    [
+     "bm_george",
+     0.4
+    ],
+    [
+     "am_adam",
+     0.6
+    ]
+   ],
+   "speed": 0.98
+  }
+ },
+ "lines": [
+  {
+   "id": "ep04_001",
+   "who": "TAKUTO",
+   "text": "Previously. I passed the Hunters' exam, with Rin and a guy whose head is on fire.",
+   "mono": true
+  },
+  {
+   "id": "ep04_002",
+   "who": "TAKUTO",
+   "text": "Wick told me nobody has ever gone home. Not one. Not ever.",
+   "mono": true
+  },
+  {
+   "id": "ep04_003",
+   "who": "TAKUTO",
+   "text": "We killed a Greater Fiend that should never have been there. Somebody herded it to us.",
+   "mono": true
+  },
+  {
+   "id": "ep04_004",
+   "who": "TAKUTO",
+   "text": "And the axe keeps saying one word. Static.",
+   "mono": true
+  },
+  {
+   "id": "ep04_005",
+   "who": "VALENTINE",
+   "text": "Gideon. It is midnight. Even your gears should be asleep."
+  },
+  {
+   "id": "ep04_006",
+   "who": "GIDEON",
+   "text": "Gears never sleep, Valentine. They only wait to be useful."
+  },
+  {
+   "id": "ep04_007",
+   "who": "VALENTINE",
+   "text": "What are you building?"
+  },
+  {
+   "id": "ep04_008",
+   "who": "GIDEON",
+   "text": "A problem. A boy with an axe that breaks everything and protects nothing."
+  },
+  {
+   "id": "ep04_009",
+   "who": "VALENTINE",
+   "text": "Our little error. Sieg told you about the block?",
+   "tts": "Our little error. Seeg told you about the block?"
+  },
+  {
+   "id": "ep04_010",
+   "who": "GIDEON",
+   "text": "Sieg told me the boy took a hit from a Behemoth trying to block with it. Any other Hunter would be soup.",
+   "tts": "Seeg told me the boy took a hit from a Behemoth trying to block with it. Any other Hunter would be soup."
+  },
+  {
+   "id": "ep04_011",
+   "who": "GIDEON",
+   "text": "You cannot change what a Brand is, Valentine. But you can change what holds it."
+  },
+  {
+   "id": "ep04_012",
+   "who": "VALENTINE",
+   "text": "Gears and chains for a three hundred year old curse. You are a romantic."
+  },
+  {
+   "id": "ep04_013",
+   "who": "GIDEON",
+   "text": "I am an engineer. It is the same thing with more burns."
+  },
+  {
+   "id": "ep04_014",
+   "who": "CLERK",
+   "text": "Good morning, Hunters! Your first official quests!"
+  },
+  {
+   "id": "ep04_015",
+   "who": "WICK",
+   "text": "Our first quest! What is it? A dragon? A cursed castle?"
+  },
+  {
+   "id": "ep04_016",
+   "who": "CLERK",
+   "text": "Rats in the bakery cellar."
+  },
+  {
+   "id": "ep04_017",
+   "who": "WICK",
+   "text": "...Rats."
+  },
+  {
+   "id": "ep04_018",
+   "who": "CLERK",
+   "text": "Very large rats. Rank F large."
+  },
+  {
+   "id": "ep04_019",
+   "who": "SIEG",
+   "text": "Not you, Takuto. You have a different appointment.",
+   "tts": "Not you, Tah-koo-toh. You have a different appointment."
+  },
+  {
+   "id": "ep04_020",
+   "who": "TAKUTO",
+   "text": "With who?"
+  },
+  {
+   "id": "ep04_021",
+   "who": "SIEG",
+   "text": "Gideon Halloway. The Guild artificer. He builds things for Hunters who can't survive without them."
+  },
+  {
+   "id": "ep04_022",
+   "who": "TAKUTO",
+   "text": "You think I can't survive?"
+  },
+  {
+   "id": "ep04_023",
+   "who": "SIEG",
+   "text": "I watched you try to block a rock the size of a house with an axe that refuses to block."
+  },
+  {
+   "id": "ep04_024",
+   "who": "RIN",
+   "text": "Twice."
+  },
+  {
+   "id": "ep04_025",
+   "who": "TAKUTO",
+   "text": "Once was a reflex."
+  },
+  {
+   "id": "ep04_026",
+   "who": "RIN",
+   "text": "And the second time?"
+  },
+  {
+   "id": "ep04_027",
+   "who": "TAKUTO",
+   "text": "...Also a reflex."
+  },
+  {
+   "id": "ep04_028",
+   "who": "SIEG",
+   "text": "Gideon is a genius. He is also strange. Don't touch anything that ticks."
+  },
+  {
+   "id": "ep04_029",
+   "who": "WICK",
+   "text": "Can I come? I want to see a genius! I've only ever seen regular people!"
+  },
+  {
+   "id": "ep04_030",
+   "who": "SIEG",
+   "text": "You have rats."
+  },
+  {
+   "id": "ep04_031",
+   "who": "WICK",
+   "text": "I have rats."
+  },
+  {
+   "id": "ep04_032",
+   "who": "RIN",
+   "text": "I'll go with Takuto. Someone has to make sure he doesn't touch anything that ticks.",
+   "tts": "I'll go with Tah-koo-toh. Someone has to make sure he doesn't touch anything that ticks."
+  },
+  {
+   "id": "ep04_033",
+   "who": "WICK",
+   "text": "Hey! Why does she get the genius and I get the rats?"
+  },
+  {
+   "id": "ep04_034",
+   "who": "SIEG",
+   "text": "Because she's rank C, and you set the last cellar on fire."
+  },
+  {
+   "id": "ep04_035",
+   "who": "GIDEON",
+   "text": "Ah! The error! Come in, come in. Don't touch anything that ticks."
+  },
+  {
+   "id": "ep04_036",
+   "who": "TAKUTO",
+   "text": "Sieg said that.",
+   "tts": "Seeg said that."
+  },
+  {
+   "id": "ep04_037",
+   "who": "GIDEON",
+   "text": "Sieg learned it the hard way. Ask him about his eyebrows sometime.",
+   "tts": "Seeg learned it the hard way. Ask him about his eyebrows sometime."
+  },
+  {
+   "id": "ep04_038",
+   "who": "RIN",
+   "text": "Is that why he wears the headband?"
+  },
+  {
+   "id": "ep04_039",
+   "who": "GIDEON",
+   "text": "I could not possibly say."
+  },
+  {
+   "id": "ep04_040",
+   "who": "GIDEON",
+   "text": "Arms out, boy. Let me see how you hold it."
+  },
+  {
+   "id": "ep04_041",
+   "who": "TAKUTO",
+   "text": "Like this?"
+  },
+  {
+   "id": "ep04_042",
+   "who": "GIDEON",
+   "text": "Like a man carrying a plank. Wonderful. Terrible. Wonderful."
+  },
+  {
+   "id": "ep04_043",
+   "who": "GIDEON",
+   "text": "Here is your problem. Ruinbreaker refuses to defend. When you raise it to block, the Brand lets go of your hands."
+  },
+  {
+   "id": "ep04_044",
+   "who": "TAKUTO",
+   "text": "That's what it felt like. Like it slid out of my grip on purpose."
+  },
+  {
+   "id": "ep04_045",
+   "who": "GIDEON",
+   "text": "On purpose is exactly right. A Brand is a will, boy. Yours has opinions."
+  },
+  {
+   "id": "ep04_046",
+   "who": "AKURO",
+   "text": "Opinions. Ha. I like this old man.",
+   "mono": true
+  },
+  {
+   "id": "ep04_047",
+   "who": "GIDEON",
+   "text": "So we do not ask the Brand to block. We ask the metal."
+  },
+  {
+   "id": "ep04_048",
+   "who": "RIN",
+   "text": "What does that mean?"
+  },
+  {
+   "id": "ep04_049",
+   "who": "GIDEON",
+   "text": "My Brand, Cogwheel Core. Anything metal I touch becomes a machine that obeys me."
+  },
+  {
+   "id": "ep04_050",
+   "who": "GIDEON",
+   "text": "A chain harness, wound into the haft. When something strikes at you, the chains lock the axe crossways, all by themselves."
+  },
+  {
+   "id": "ep04_051",
+   "who": "TAKUTO",
+   "text": "So the axe can block."
+  },
+  {
+   "id": "ep04_052",
+   "who": "GIDEON",
+   "text": "Once."
+  },
+  {
+   "id": "ep04_053",
+   "who": "TAKUTO",
+   "text": "Once?"
+  },
+  {
+   "id": "ep04_054",
+   "who": "GIDEON",
+   "text": "Once. After that the Brand notices what we did and snaps the chains like threads. No offense, young lady."
+  },
+  {
+   "id": "ep04_055",
+   "who": "RIN",
+   "text": "Some offense."
+  },
+  {
+   "id": "ep04_056",
+   "who": "GIDEON",
+   "text": "Then I rewind them. That takes a night. One block per day, boy. Spend it wisely."
+  },
+  {
+   "id": "ep04_057",
+   "who": "TAKUTO",
+   "text": "One block a day."
+  },
+  {
+   "id": "ep04_058",
+   "who": "GIDEON",
+   "text": "It is one more than you have now."
+  },
+  {
+   "id": "ep04_059",
+   "who": "RIN",
+   "text": "Why are you helping him? The Guild doesn't pay you for this."
+  },
+  {
+   "id": "ep04_060",
+   "who": "GIDEON",
+   "text": "Because thirty years ago a boy with a broken Brand came into this forge, and I told him there was nothing I could do."
+  },
+  {
+   "id": "ep04_061",
+   "who": "RIN",
+   "text": "What happened to him?"
+  },
+  {
+   "id": "ep04_062",
+   "who": "GIDEON",
+   "text": "He believed me."
+  },
+  {
+   "id": "ep04_063",
+   "who": "GIDEON",
+   "text": "I have not said those words since. Arms out again, boy."
+  },
+  {
+   "id": "ep04_064",
+   "who": "GIDEON",
+   "text": "And you, young lady. That scarf. Let me weave steel into it. Your threads would cut through stone."
+  },
+  {
+   "id": "ep04_065",
+   "who": "RIN",
+   "text": "No."
+  },
+  {
+   "id": "ep04_066",
+   "who": "GIDEON",
+   "text": "No? Just no? I am offering you a masterpiece."
+  },
+  {
+   "id": "ep04_067",
+   "who": "RIN",
+   "text": "It was my brother's. It stays the way he wore it."
+  },
+  {
+   "id": "ep04_068",
+   "who": "GIDEON",
+   "text": "...Then I will only mend the frayed end. With his colour. Nobody will know but you."
+  },
+  {
+   "id": "ep04_069",
+   "who": "RIN",
+   "text": "...Thank you."
+  },
+  {
+   "id": "ep04_070",
+   "who": "TAKUTO",
+   "text": "You can say thank you?"
+  },
+  {
+   "id": "ep04_071",
+   "who": "RIN",
+   "text": "Not to you."
+  },
+  {
+   "id": "ep04_072",
+   "who": "WICK",
+   "text": "Okay. Rats. We can do rats. Rats are just very small Fiends with bad manners."
+  },
+  {
+   "id": "ep04_073",
+   "who": "NEMU",
+   "text": "These are not small."
+  },
+  {
+   "id": "ep04_074",
+   "who": "WICK",
+   "text": "What?"
+  },
+  {
+   "id": "ep04_075",
+   "who": "CROWD",
+   "text": "Squeeeeak!"
+  },
+  {
+   "id": "ep04_076",
+   "who": "CROWD2",
+   "text": "Squeak squeak squeak!"
+  },
+  {
+   "id": "ep04_077",
+   "who": "WICK",
+   "text": "That one is wearing a hat! Why is that rat wearing a hat?!"
+  },
+  {
+   "id": "ep04_078",
+   "who": "NEMU",
+   "text": "It's a flour sack. It got stuck on its head."
+  },
+  {
+   "id": "ep04_079",
+   "who": "WICK",
+   "text": "It looks like a chef! It looks like a tiny angry chef!"
+  },
+  {
+   "id": "ep04_080",
+   "who": "NEMU",
+   "text": "Wick. Your head is getting brighter."
+  },
+  {
+   "id": "ep04_081",
+   "who": "WICK",
+   "text": "That's normal! That's what happens when I'm calm and in control!"
+  },
+  {
+   "id": "ep04_082",
+   "who": "NEMU",
+   "text": "Wick. We are standing in a room full of flour."
+  },
+  {
+   "id": "ep04_083",
+   "who": "WICK",
+   "text": "So?"
+  },
+  {
+   "id": "ep04_084",
+   "who": "NEMU",
+   "text": "Flour in the air burns."
+  },
+  {
+   "id": "ep04_085",
+   "who": "WICK",
+   "text": "...Oh no."
+  },
+  {
+   "id": "ep04_086",
+   "who": "NEMU",
+   "text": "Run."
+  },
+  {
+   "id": "ep04_087",
+   "who": "GIDEON",
+   "text": "Sieg! Swing at him. Properly. Not your polite swing.",
+   "tts": "Seeg! Swing at him. Properly. Not your polite swing."
+  },
+  {
+   "id": "ep04_088",
+   "who": "SIEG",
+   "text": "I don't have a polite swing."
+  },
+  {
+   "id": "ep04_089",
+   "who": "TAKUTO",
+   "text": "He does. I've seen the other one."
+  },
+  {
+   "id": "ep04_090",
+   "who": "SIEG",
+   "text": "Ready?"
+  },
+  {
+   "id": "ep04_091",
+   "who": "TAKUTO",
+   "text": "It blocked. It actually blocked!"
+  },
+  {
+   "id": "ep04_092",
+   "who": "GIDEON",
+   "text": "Of course it blocked. I built it."
+  },
+  {
+   "id": "ep04_093",
+   "who": "SIEG",
+   "text": "Again."
+  },
+  {
+   "id": "ep04_094",
+   "who": "TAKUTO",
+   "text": "Wait, he said only once..."
+  },
+  {
+   "id": "ep04_095",
+   "who": "TAKUTO",
+   "text": "Ow."
+  },
+  {
+   "id": "ep04_096",
+   "who": "GIDEON",
+   "text": "Once! I said once! Nobody ever listens to the engineer!"
+  },
+  {
+   "id": "ep04_097",
+   "who": "RIN",
+   "text": "That was the best thing I've seen all week."
+  },
+  {
+   "id": "ep04_098",
+   "who": "SIEG",
+   "text": "Good. Now you know exactly how much one block is worth. Spend it on someone else."
+  },
+  {
+   "id": "ep04_099",
+   "who": "TAKUTO",
+   "text": "Someone else?"
+  },
+  {
+   "id": "ep04_100",
+   "who": "SIEG",
+   "text": "You can dodge for yourself. You can't dodge for the person standing behind you."
+  },
+  {
+   "id": "ep04_101",
+   "who": "TAKUTO",
+   "text": "...Yeah. That's what it's for."
+  },
+  {
+   "id": "ep04_102",
+   "who": "SIEG",
+   "text": "You flinched before the second swing. You knew the block was gone, and you flinched anyway."
+  },
+  {
+   "id": "ep04_103",
+   "who": "TAKUTO",
+   "text": "I thought it might work twice."
+  },
+  {
+   "id": "ep04_104",
+   "who": "SIEG",
+   "text": "Hope is not a technique, Takuto. Let me tell you about mine. Afterimage. Every cut I make, happens again a heartbeat later.",
+   "tts": "Hope is not a technique, Tah-koo-toh. Let me tell you about mine. Afterimage. Every cut I make, happens again a heartbeat later."
+  },
+  {
+   "id": "ep04_105",
+   "who": "TAKUTO",
+   "text": "So you hit twice."
+  },
+  {
+   "id": "ep04_106",
+   "who": "SIEG",
+   "text": "So I have to be right twice. If my first cut is wrong, the second one is wrong in exactly the same way."
+  },
+  {
+   "id": "ep04_107",
+   "who": "SIEG",
+   "text": "A Brand is not a gift. It is a rule. You are not strong because of it. You are strong when you stop fighting the rule."
+  },
+  {
+   "id": "ep04_108",
+   "who": "TAKUTO",
+   "text": "My rule is I can't defend."
+  },
+  {
+   "id": "ep04_109",
+   "who": "SIEG",
+   "text": "Your rule is that you must always be the one who moves first."
+  },
+  {
+   "id": "ep04_110",
+   "who": "SIEG",
+   "text": "Every fight you've had, you waited to see what the Fiend would do. Stop waiting. Make it react to you."
+  },
+  {
+   "id": "ep04_111",
+   "who": "AKURO",
+   "text": "Finally, someone in this world talks sense. Attack, boy. Always attack. That's what we're for.",
+   "mono": true
+  },
+  {
+   "id": "ep04_112",
+   "who": "TAKUTO",
+   "text": "The axe agrees with you."
+  },
+  {
+   "id": "ep04_113",
+   "who": "SIEG",
+   "text": "...I'm not sure I like that."
+  },
+  {
+   "id": "ep04_114",
+   "who": "SIEG",
+   "text": "Come. Gideon wants the harness back by nightfall. And I want dinner."
+  },
+  {
+   "id": "ep04_115",
+   "who": "WICK",
+   "text": "Quest complete! Rats defeated! Bakery mostly standing!"
+  },
+  {
+   "id": "ep04_116",
+   "who": "CLERK",
+   "text": "Mostly?"
+  },
+  {
+   "id": "ep04_117",
+   "who": "NEMU",
+   "text": "The east wall is a little bit gone."
+  },
+  {
+   "id": "ep04_118",
+   "who": "WICK",
+   "text": "The rats were very big! I panicked! My head panicked!"
+  },
+  {
+   "id": "ep04_119",
+   "who": "CLERK",
+   "text": "Nemu, why are you covered in flour?",
+   "tts": "Neh-moo, why are you covered in flour?"
+  },
+  {
+   "id": "ep04_120",
+   "who": "NEMU",
+   "text": "I took a nap in the flour sacks. It was very soft. Then the wall exploded."
+  },
+  {
+   "id": "ep04_121",
+   "who": "CLERK",
+   "text": "You came along to help?"
+  },
+  {
+   "id": "ep04_122",
+   "who": "NEMU",
+   "text": "I came along for the free bread. The baker gave us a reward. Burnt."
+  },
+  {
+   "id": "ep04_123",
+   "who": "WICK",
+   "text": "He said it was a reward. He said it while crying."
+  },
+  {
+   "id": "ep04_124",
+   "who": "CLERK",
+   "text": "I'll put down quest complete. With an asterisk."
+  },
+  {
+   "id": "ep04_125",
+   "who": "WICK",
+   "text": "An asterisk! Like Takuto's star!",
+   "tts": "An asterisk! Like Tah-koo-toh's star!"
+  },
+  {
+   "id": "ep04_126",
+   "who": "CLERK",
+   "text": "It is not like Takuto's star.",
+   "tts": "It is not like Tah-koo-toh's star."
+  },
+  {
+   "id": "ep04_127",
+   "who": "NEMU",
+   "text": "Where is Takuto?",
+   "tts": "Where is Tah-koo-toh?"
+  },
+  {
+   "id": "ep04_128",
+   "who": "CLERK",
+   "text": "At the forge with Gideon all day. And Rin. Rin volunteered."
+  },
+  {
+   "id": "ep04_129",
+   "who": "NEMU",
+   "text": "Rin volunteered."
+  },
+  {
+   "id": "ep04_130",
+   "who": "WICK",
+   "text": "Rin volunteered!"
+  },
+  {
+   "id": "ep04_131",
+   "who": "NEMU",
+   "text": "Interesting."
+  },
+  {
+   "id": "ep04_132",
+   "who": "WICK",
+   "text": "They were the size of dogs. Dogs, Takuto. Dogs with teeth.",
+   "tts": "They were the size of dogs. Dogs, Tah-koo-toh. Dogs with teeth."
+  },
+  {
+   "id": "ep04_133",
+   "who": "TAKUTO",
+   "text": "Did you set the cellar on fire?"
+  },
+  {
+   "id": "ep04_134",
+   "who": "WICK",
+   "text": "Only a little bit."
+  },
+  {
+   "id": "ep04_135",
+   "who": "RIN",
+   "text": "The baker says the whole cellar."
+  },
+  {
+   "id": "ep04_136",
+   "who": "WICK",
+   "text": "The baker exaggerates."
+  },
+  {
+   "id": "ep04_137",
+   "who": "RIN",
+   "text": "What was that?!"
+  },
+  {
+   "id": "ep04_138",
+   "who": "TAKUTO",
+   "text": "That came from the artisans' quarter."
+  },
+  {
+   "id": "ep04_139",
+   "who": "RIN",
+   "text": "The forge. Gideon's forge!"
+  },
+  {
+   "id": "ep04_140",
+   "who": "WICK",
+   "text": "Gideon! Where are you?"
+  },
+  {
+   "id": "ep04_141",
+   "who": "GIDEON",
+   "text": "Here! Mind the floor! Mind the hole in the floor!"
+  },
+  {
+   "id": "ep04_142",
+   "who": "RIN",
+   "text": "That's a Rift. Inside a building."
+  },
+  {
+   "id": "ep04_143",
+   "who": "TAKUTO",
+   "text": "Rifts open in the sky. Everyone keeps saying that."
+  },
+  {
+   "id": "ep04_144",
+   "who": "WICK",
+   "text": "Shieldbearer! In the middle of town!"
+  },
+  {
+   "id": "ep04_145",
+   "who": "GIDEON",
+   "text": "It came through the floor. Someone opened that. I felt it, like a key turning in a lock."
+  },
+  {
+   "id": "ep04_146",
+   "who": "TAKUTO",
+   "text": "Out of the way!"
+  },
+  {
+   "id": "ep04_147",
+   "who": "RIN",
+   "text": "It's faster than the one in the canyon!"
+  },
+  {
+   "id": "ep04_148",
+   "who": "WICK",
+   "text": "The fire's spreading to the coal store! If that goes up, the whole street goes!"
+  },
+  {
+   "id": "ep04_149",
+   "who": "RIN",
+   "text": "Wick, can you pull the fire back?"
+  },
+  {
+   "id": "ep04_150",
+   "who": "WICK",
+   "text": "I can tell my fire what to do! That fire isn't mine!"
+  },
+  {
+   "id": "ep04_151",
+   "who": "GIDEON",
+   "text": "The bellows! Smash the bellows and it will starve of air!"
+  },
+  {
+   "id": "ep04_152",
+   "who": "WICK",
+   "text": "Smashing things isn't my department!"
+  },
+  {
+   "id": "ep04_153",
+   "who": "RIN",
+   "text": "Then I'll hold it! Takuto, the bellows!",
+   "tts": "Then I'll hold it! Tah-koo-toh, the bellows!"
+  },
+  {
+   "id": "ep04_154",
+   "who": "RIN",
+   "text": "It broke the threads! Gideon, move!"
+  },
+  {
+   "id": "ep04_155",
+   "who": "GIDEON",
+   "text": "My knee! I can't, my knee is fused! Bad joint!"
+  },
+  {
+   "id": "ep04_156",
+   "who": "TAKUTO",
+   "text": "Get behind me!"
+  },
+  {
+   "id": "ep04_157",
+   "who": "AKURO",
+   "text": "You spent it on the old man? Ha!",
+   "mono": true
+  },
+  {
+   "id": "ep04_158",
+   "who": "TAKUTO",
+   "text": "That's what it's for."
+  },
+  {
+   "id": "ep04_159",
+   "who": "GIDEON",
+   "text": "You... you used it on me."
+  },
+  {
+   "id": "ep04_160",
+   "who": "TAKUTO",
+   "text": "You built it. It's only fair."
+  },
+  {
+   "id": "ep04_161",
+   "who": "GIDEON",
+   "text": "Then let me return the favor. Cogwheel Core!"
+  },
+  {
+   "id": "ep04_162",
+   "who": "GIDEON",
+   "text": "Every chain in this forge is mine! Bind it!"
+  },
+  {
+   "id": "ep04_163",
+   "who": "WICK",
+   "text": "And burn it! Only it!"
+  },
+  {
+   "id": "ep04_164",
+   "who": "TAKUTO",
+   "text": "Ruinbreaker!"
+  },
+  {
+   "id": "ep04_165",
+   "who": "RIN",
+   "text": "The Rift is closing."
+  },
+  {
+   "id": "ep04_166",
+   "who": "TAKUTO",
+   "text": "Something's on the other side of the smoke."
+  },
+  {
+   "id": "ep04_167",
+   "who": "SABLE",
+   "text": "Good catch."
+  },
+  {
+   "id": "ep04_168",
+   "who": "RIN",
+   "text": "Who was that?! There was someone there, in a suit!"
+  },
+  {
+   "id": "ep04_169",
+   "who": "TAKUTO",
+   "text": "He was smiling."
+  },
+  {
+   "id": "ep04_170",
+   "who": "AKURO",
+   "text": "Static, boy. Didn't I tell you? He smells like static.",
+   "mono": true
+  },
+  {
+   "id": "ep04_171",
+   "who": "VALENTINE",
+   "text": "A Rift. Inside the walls of Ashford. Opened sideways, through a floor."
+  },
+  {
+   "id": "ep04_172",
+   "who": "SIEG",
+   "text": "That's twice now. Once at the boy's crossing. Once here."
+  },
+  {
+   "id": "ep04_173",
+   "who": "GIDEON",
+   "text": "It was opened from this side. Like a door. Someone stood in my forge and turned a key."
+  },
+  {
+   "id": "ep04_174",
+   "who": "TAKUTO",
+   "text": "There was a man. In a black suit. In the smoke. He said good catch."
+  },
+  {
+   "id": "ep04_175",
+   "who": "SIEG",
+   "text": "...What did he look like?"
+  },
+  {
+   "id": "ep04_176",
+   "who": "TAKUTO",
+   "text": "I couldn't see a face. Just a grin. Like lightning. And one eye."
+  },
+  {
+   "id": "ep04_177",
+   "who": "VALENTINE",
+   "text": "Sieg. Say it.",
+   "tts": "Seeg. Say it."
+  },
+  {
+   "id": "ep04_178",
+   "who": "SIEG",
+   "text": "Six years ago, my squad was holding the pass at Grey Hollow. The night before Morvudd came, a man walked into our camp."
+  },
+  {
+   "id": "ep04_179",
+   "who": "SIEG",
+   "text": "Black suit. No face. He asked us which way the wind was blowing, and then he was gone."
+  },
+  {
+   "id": "ep04_180",
+   "who": "SIEG",
+   "text": "By morning there was a Rift above the pass, and I was the only one left."
+  },
+  {
+   "id": "ep04_181",
+   "who": "TAKUTO",
+   "text": "You think it's the same man."
+  },
+  {
+   "id": "ep04_182",
+   "who": "SIEG",
+   "text": "I think he opens doors for monsters. And I think he's interested in you."
+  },
+  {
+   "id": "ep04_183",
+   "who": "GIDEON",
+   "text": "Then he made a mistake tonight. He showed us his face."
+  },
+  {
+   "id": "ep04_184",
+   "who": "VALENTINE",
+   "text": "He showed us his grin, Gideon. That is not the same thing."
+  },
+  {
+   "id": "ep04_185",
+   "who": "RIN",
+   "text": "What do we do?"
+  },
+  {
+   "id": "ep04_186",
+   "who": "SIEG",
+   "text": "We get stronger. Faster than he expects."
+  },
+  {
+   "id": "ep04_187",
+   "who": "GIDEON",
+   "text": "And I rewind the chains. Tomorrow, boy, you'll have your one block again."
+  },
+  {
+   "id": "ep04_188",
+   "who": "TAKUTO",
+   "text": "Thanks, Gideon."
+  },
+  {
+   "id": "ep04_189",
+   "who": "GIDEON",
+   "text": "Thank you. You spent it well."
+  },
+  {
+   "id": "ep04_190",
+   "who": "VALENTINE",
+   "text": "Before you sleep, darling. Tofu wants to look at the harness. He has been jealous all evening."
+  },
+  {
+   "id": "ep04_191",
+   "who": "TAKUTO",
+   "text": "He's a cube."
+  },
+  {
+   "id": "ep04_192",
+   "who": "VALENTINE",
+   "text": "He is a very sensitive cube."
+  },
+  {
+   "id": "ep04_193",
+   "who": "VALENTINE",
+   "text": "Error. As always. But look, a smaller error."
+  },
+  {
+   "id": "ep04_194",
+   "who": "TAKUTO",
+   "text": "A smaller error?"
+  },
+  {
+   "id": "ep04_195",
+   "who": "VALENTINE",
+   "text": "Gideon's chains are holding part of your Brand still. Tofu can almost read it now. Almost."
+  },
+  {
+   "id": "ep04_196",
+   "who": "VALENTINE",
+   "text": "...How strange. There are two signatures on this axe, Takuto. Two wills. Like two people holding the same handle.",
+   "tts": "...How strange. There are two signatures on this axe, Tah-koo-toh. Two wills. Like two people holding the same handle."
+  },
+  {
+   "id": "ep04_197",
+   "who": "AKURO",
+   "text": "Clever box. Tell it to mind its own business.",
+   "mono": true
+  },
+  {
+   "id": "ep04_198",
+   "who": "TAKUTO",
+   "text": "It's an old axe. Lots of people held it."
+  },
+  {
+   "id": "ep04_199",
+   "who": "VALENTINE",
+   "text": "Mm. Lots of people. Of course."
+  },
+  {
+   "id": "ep04_200",
+   "who": "VALENTINE",
+   "text": "Good night, Takuto. If the other one ever wants to talk, Tofu and I are excellent listeners.",
+   "tts": "Good night, Tah-koo-toh. If the other one ever wants to talk, Tofu and I are excellent listeners."
+  },
+  {
+   "id": "ep04_201",
+   "who": "GIDEON",
+   "text": "Rewound. Tighter than before. You'll feel it pull when it locks."
+  },
+  {
+   "id": "ep04_202",
+   "who": "TAKUTO",
+   "text": "Your forge is gone, Gideon. You stayed up rewinding my chains?"
+  },
+  {
+   "id": "ep04_203",
+   "who": "GIDEON",
+   "text": "An engineer without a forge is still an engineer. I did it on the fountain."
+  },
+  {
+   "id": "ep04_204",
+   "who": "NEMU",
+   "text": "He did. The town guard tried to arrest him twice."
+  },
+  {
+   "id": "ep04_205",
+   "who": "GIDEON",
+   "text": "And you, flame boy. Hold out your hands."
+  },
+  {
+   "id": "ep04_206",
+   "who": "WICK",
+   "text": "Me? Why me?"
+  },
+  {
+   "id": "ep04_207",
+   "who": "GIDEON",
+   "text": "Gloves. Woven steel. Your fire obeys you, but your hands are still made of meat. These will hold heat, and throw it."
+  },
+  {
+   "id": "ep04_208",
+   "who": "WICK",
+   "text": "Throw it? I can THROW fire now?"
+  },
+  {
+   "id": "ep04_209",
+   "who": "GIDEON",
+   "text": "You can aim it. Whether you hit anything is between you and your gods."
+  },
+  {
+   "id": "ep04_210",
+   "who": "WICK",
+   "text": "Thank you! Thank you! Nobody ever gives me presents! I'll name them! Left one's Takoyaki!"
+  },
+  {
+   "id": "ep04_211",
+   "who": "GIDEON",
+   "text": "Please do not name the gloves."
+  },
+  {
+   "id": "ep04_212",
+   "who": "WICK",
+   "text": "Right one's also Takoyaki."
+  },
+  {
+   "id": "ep04_213",
+   "who": "GIDEON",
+   "text": "Thank you for the shield, boy. I meant it. I've built a thousand things. Nobody ever stood in front of me with one."
+  },
+  {
+   "id": "ep04_214",
+   "who": "TAKUTO",
+   "text": "Build a thousand and one. I'll keep standing there."
+  },
+  {
+   "id": "ep04_215",
+   "who": "NEMU",
+   "text": "The man in the suit. Rin told me."
+  },
+  {
+   "id": "ep04_216",
+   "who": "TAKUTO",
+   "text": "Rin tells you everything."
+  },
+  {
+   "id": "ep04_217",
+   "who": "NEMU",
+   "text": "Rin tells me nothing. I listen at doors."
+  },
+  {
+   "id": "ep04_218",
+   "who": "NEMU",
+   "text": "I saw a man like that once. When I was little. Before my first life."
+  },
+  {
+   "id": "ep04_219",
+   "who": "TAKUTO",
+   "text": "Where?"
+  },
+  {
+   "id": "ep04_220",
+   "who": "NEMU",
+   "text": "My village. He stood in the square and asked which way the wind was blowing. The next day, a Rift."
+  },
+  {
+   "id": "ep04_221",
+   "who": "NEMU",
+   "text": "That was the first time I died."
+  },
+  {
+   "id": "ep04_222",
+   "who": "TAKUTO",
+   "text": "...Nemu.",
+   "tts": "...Neh-moo."
+  },
+  {
+   "id": "ep04_223",
+   "who": "NEMU",
+   "text": "It's okay. It was a long time ago. I just... if he's looking at you, I don't want to die again for nothing."
+  },
+  {
+   "id": "ep04_224",
+   "who": "TAKUTO",
+   "text": "You're not dying again. I'll break him first."
+  },
+  {
+   "id": "ep04_225",
+   "who": "NEMU",
+   "text": "You can't break everything, Takuto.",
+   "tts": "You can't break everything, Tah-koo-toh."
+  },
+  {
+   "id": "ep04_226",
+   "who": "TAKUTO",
+   "text": "Watch me."
+  },
+  {
+   "id": "ep04_227",
+   "who": "NEMU",
+   "text": "...Mm. I'll watch."
+  },
+  {
+   "id": "ep04_228",
+   "who": "RIN",
+   "text": "You didn't hesitate. With Gideon."
+  },
+  {
+   "id": "ep04_229",
+   "who": "TAKUTO",
+   "text": "Sieg told me what it was for.",
+   "tts": "Seeg told me what it was for."
+  },
+  {
+   "id": "ep04_230",
+   "who": "RIN",
+   "text": "My brother would have done the same thing."
+  },
+  {
+   "id": "ep04_231",
+   "who": "TAKUTO",
+   "text": "Then I'm in good company."
+  },
+  {
+   "id": "ep04_232",
+   "who": "RIN",
+   "text": "...You're not him, you know."
+  },
+  {
+   "id": "ep04_233",
+   "who": "TAKUTO",
+   "text": "I know."
+  },
+  {
+   "id": "ep04_234",
+   "who": "RIN",
+   "text": "He was taller."
+  },
+  {
+   "id": "ep04_235",
+   "who": "TAKUTO",
+   "text": "Of course he was."
+  },
+  {
+   "id": "ep04_236",
+   "who": "RIN",
+   "text": "That man in the suit. If he comes after you, he comes after all of us."
+  },
+  {
+   "id": "ep04_237",
+   "who": "TAKUTO",
+   "text": "Since when are you part of us?"
+  },
+  {
+   "id": "ep04_238",
+   "who": "RIN",
+   "text": "Since I got commended for keeping you alive. I'm not letting you ruin my record."
+  },
+  {
+   "id": "ep04_239",
+   "who": "AKURO",
+   "text": "She's fond of you, boy. Humans are so loud about it, even when they say nothing.",
+   "mono": true
+  },
+  {
+   "id": "ep04_240",
+   "who": "TAKUTO",
+   "text": "...Shut up."
+  },
+  {
+   "id": "ep04_241",
+   "who": "RIN",
+   "text": "What?"
+  },
+  {
+   "id": "ep04_242",
+   "who": "TAKUTO",
+   "text": "Not you."
+  },
+  {
+   "id": "ep04_243",
+   "who": "SABLE",
+   "text": "He spent his one block on an old man. Sentimental."
+  },
+  {
+   "id": "ep04_244",
+   "who": "SABLE",
+   "text": "The Saint will want to meet him. Sooner than he planned."
+  },
+  {
+   "id": "ep04_245",
+   "who": "TAKUTO",
+   "text": "Next time: the river town of Marrowmere."
+  },
+  {
+   "id": "ep04_246",
+   "who": "TAKUTO",
+   "text": "There's a Hydra in the lake. Every head I cut off grows back."
+  },
+  {
+   "id": "ep04_247",
+   "who": "TAKUTO",
+   "text": "Breaking a thing and killing it turn out to be different problems."
+  },
+  {
+   "id": "ep04_248",
+   "who": "TAKUTO",
+   "text": "Episode five. Seven Heads, One River."
+  }
+ ]
+}

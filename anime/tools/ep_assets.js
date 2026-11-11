@@ -9,4 +9,4 @@ const walk = v => { if (Array.isArray(v)) { if (v[0] === 'plate' && typeof v[1] 
   ((sc.envOpts || {}).plates || []).forEach(p => plates.add(p[0])); walk(sc.beats);
 }));
 ['takuto', 'nemu', 'sieg', 'sable'].forEach(n => vrm.add(n)); // the opening and ending always need these
-console.log([[...vrm], [...spr], [...plates]].map(a => a.join(',')).join(' '));
+console.log([[...vrm], [...spr], [...plates]].map(a => a.join(',') || '-').join(' '));
