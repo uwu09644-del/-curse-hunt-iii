@@ -1,0 +1,1488 @@
+{
+ "cast": {
+  "TAKUTO": {
+   "voice": [
+    [
+     "am_michael",
+     0.6
+    ],
+    [
+     "am_puck",
+     0.4
+    ]
+   ],
+   "speed": 1.02
+  },
+  "NEMU": {
+   "voice": [
+    [
+     "af_nicole",
+     0.65
+    ],
+    [
+     "af_bella",
+     0.35
+    ]
+   ],
+   "speed": 1.02
+  },
+  "SIEG": {
+   "voice": [
+    [
+     "bm_george",
+     1
+    ]
+   ],
+   "speed": 1.06
+  },
+  "AKURO": {
+   "voice": [
+    [
+     "am_fenrir",
+     1
+    ]
+   ],
+   "speed": 0.8,
+   "fx": "demon"
+  },
+  "RIN": {
+   "voice": [
+    [
+     "af_kore",
+     0.6
+    ],
+    [
+     "bf_emma",
+     0.4
+    ]
+   ],
+   "speed": 1.05
+  },
+  "VALENTINE": {
+   "voice": [
+    [
+     "bf_isabella",
+     0.55
+    ],
+    [
+     "af_nova",
+     0.45
+    ]
+   ],
+   "speed": 1.06
+  },
+  "CLERK": {
+   "voice": [
+    [
+     "af_aoede",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "CROWD": {
+   "voice": [
+    [
+     "am_echo",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "CROWD2": {
+   "voice": [
+    [
+     "af_river",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "VENDOR": {
+   "voice": [
+    [
+     "bm_daniel",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "HUNTER": {
+   "voice": [
+    [
+     "am_onyx",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "SABLE": {
+   "voice": [
+    [
+     "bm_fable",
+     1
+    ]
+   ],
+   "speed": 0.92,
+   "fx": "static"
+  },
+  "WICK": {
+   "voice": [
+    [
+     "am_puck",
+     0.5
+    ],
+    [
+     "am_liam",
+     0.5
+    ]
+   ],
+   "speed": 1.12
+  },
+  "GIDEON": {
+   "voice": [
+    [
+     "bm_lewis",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "EXAMINER": {
+   "voice": [
+    [
+     "bf_alice",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "HARUKI": {
+   "voice": [
+    [
+     "am_liam",
+     0.6
+    ],
+    [
+     "am_eric",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "LUCIEN": {
+   "voice": [
+    [
+     "bm_daniel",
+     0.5
+    ],
+    [
+     "am_adam",
+     0.5
+    ]
+   ],
+   "speed": 0.94
+  },
+  "VESPER": {
+   "voice": [
+    [
+     "bf_lily",
+     0.6
+    ],
+    [
+     "af_sky",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "KUROZANE": {
+   "voice": [
+    [
+     "am_onyx",
+     0.7
+    ],
+    [
+     "am_fenrir",
+     0.3
+    ]
+   ],
+   "speed": 0.9
+  },
+  "OGRE": {
+   "voice": [
+    [
+     "am_santa",
+     1
+    ]
+   ],
+   "speed": 0.9,
+   "fx": "demon"
+  },
+  "NARRATOR": {
+   "voice": [
+    [
+     "bm_george",
+     0.4
+    ],
+    [
+     "am_adam",
+     0.6
+    ]
+   ],
+   "speed": 0.98
+  }
+ },
+ "lines": [
+  {
+   "id": "ep08_001",
+   "who": "TAKUTO",
+   "text": "Previously. Plume Ogres raided a village. They were not hunting. They were running.",
+   "mono": true
+  },
+  {
+   "id": "ep08_002",
+   "who": "TAKUTO",
+   "text": "Their chieftain could talk. He told us about the grey pack, and a wolf who walks like a man.",
+   "mono": true
+  },
+  {
+   "id": "ep08_003",
+   "who": "TAKUTO",
+   "text": "His name is Kurozane. And he remembers Grey Hollow.",
+   "mono": true
+  },
+  {
+   "id": "ep08_004",
+   "who": "TAKUTO",
+   "text": "That is where Sieg lost his whole squad.",
+   "tts": "That is where Seeg lost his whole squad.",
+   "mono": true
+  },
+  {
+   "id": "ep08_005",
+   "who": "CROWD",
+   "text": "Sieg! Tell the one about the bear and the bishop again!",
+   "tts": "Seeg! Tell the one about the bear and the bishop again!"
+  },
+  {
+   "id": "ep08_006",
+   "who": "CROWD2",
+   "text": "Not again. He tells it wrong every time."
+  },
+  {
+   "id": "ep08_007",
+   "who": "SIEG",
+   "text": "I tell it right. The bear is the one who changes."
+  },
+  {
+   "id": "ep08_008",
+   "who": "SABLE",
+   "text": "Excuse me. Which way is the wind blowing tonight?"
+  },
+  {
+   "id": "ep08_009",
+   "who": "CROWD",
+   "text": "Who are you? How did you get past the..."
+  },
+  {
+   "id": "ep08_010",
+   "who": "SIEG",
+   "text": "The ropes! Somebody cut the alarm ropes!"
+  },
+  {
+   "id": "ep08_011",
+   "who": "SIEG",
+   "text": "MARA! JOSS! Everyone, UP!"
+  },
+  {
+   "id": "ep08_012",
+   "who": "VENDOR",
+   "text": "Hunters, going up? Turn back, if you are wise. The wolf is on the mountain again."
+  },
+  {
+   "id": "ep08_013",
+   "who": "VENDOR",
+   "text": "A wolf who walks like a man and wears a blade like a lord. He stops Hunters on the road and asks for a duel."
+  },
+  {
+   "id": "ep08_014",
+   "who": "VENDOR",
+   "text": "Forty Hunters said yes. Forty Hunters are buried at the shrine."
+  },
+  {
+   "id": "ep08_015",
+   "who": "WICK",
+   "text": "Forty. Why is it always forty?"
+  },
+  {
+   "id": "ep08_016",
+   "who": "NEMU",
+   "text": "Forty is a number that likes to be scary."
+  },
+  {
+   "id": "ep08_017",
+   "who": "VENDOR",
+   "text": "He never kills the ones who refuse. That is the strange part. Only the ones who draw."
+  },
+  {
+   "id": "ep08_018",
+   "who": "RIN",
+   "text": "He has rules."
+  },
+  {
+   "id": "ep08_019",
+   "who": "SIEG",
+   "text": "He has a sense of theatre. It is not the same thing."
+  },
+  {
+   "id": "ep08_020",
+   "who": "TAKUTO",
+   "text": "Would you refuse?"
+  },
+  {
+   "id": "ep08_021",
+   "who": "SIEG",
+   "text": "...Ask me when he asks."
+  },
+  {
+   "id": "ep08_022",
+   "who": "WICK",
+   "text": "A hot spring. An actual hot spring. Takuto, this is the most Japanese thing that has ever happened to me here.",
+   "tts": "A hot spring. An actual hot spring. Tah-koo-toh, this is the most Japanese thing that has ever happened to me here."
+  },
+  {
+   "id": "ep08_023",
+   "who": "TAKUTO",
+   "text": "You live in a world with a cat girl and a robot cube."
+  },
+  {
+   "id": "ep08_024",
+   "who": "WICK",
+   "text": "And THIS is the most Japanese thing! That should tell you how weird this world is!"
+  },
+  {
+   "id": "ep08_025",
+   "who": "NEMU",
+   "text": "Water that is already warm. I am going to live in it."
+  },
+  {
+   "id": "ep08_026",
+   "who": "RIN",
+   "text": "Your arm is healed. My ribs are healed. We have earned one night."
+  },
+  {
+   "id": "ep08_027",
+   "who": "SIEG",
+   "text": "One night. The pass shrine is a day up the road. Then two more to the capital."
+  },
+  {
+   "id": "ep08_028",
+   "who": "RIN",
+   "text": "You keep looking up the road."
+  },
+  {
+   "id": "ep08_029",
+   "who": "SIEG",
+   "text": "Old habit."
+  },
+  {
+   "id": "ep08_030",
+   "who": "RIN",
+   "text": "Sieg. You have not laughed since the village.",
+   "tts": "Seeg. You have not laughed since the village."
+  },
+  {
+   "id": "ep08_031",
+   "who": "SIEG",
+   "text": "...Haven't I?"
+  },
+  {
+   "id": "ep08_032",
+   "who": "WICK",
+   "text": "Ahhh. Okay. I take it back. This is better than Osaka.",
+   "tts": "Ahhh. Okay. I take it back. This is better than Oh-sah-kah."
+  },
+  {
+   "id": "ep08_033",
+   "who": "NEMU",
+   "text": "Wick. Your head is boiling the water."
+  },
+  {
+   "id": "ep08_034",
+   "who": "WICK",
+   "text": "Is it? Oh. Oh no. Everyone is getting out. Sorry! Sorry!"
+  },
+  {
+   "id": "ep08_035",
+   "who": "NEMU",
+   "text": "I am staying. It is perfect now."
+  },
+  {
+   "id": "ep08_036",
+   "who": "TAKUTO",
+   "text": "Nemu is going to fall asleep in there.",
+   "tts": "Neh-moo is going to fall asleep in there."
+  },
+  {
+   "id": "ep08_037",
+   "who": "RIN",
+   "text": "Then she will be the cleanest cat on the mountain."
+  },
+  {
+   "id": "ep08_038",
+   "who": "NEMU",
+   "text": "You like him."
+  },
+  {
+   "id": "ep08_039",
+   "who": "RIN",
+   "text": "I do not."
+  },
+  {
+   "id": "ep08_040",
+   "who": "NEMU",
+   "text": "You stitched his arm. You tied your wrist to his. You throw pebbles at him."
+  },
+  {
+   "id": "ep08_041",
+   "who": "RIN",
+   "text": "Those are all training."
+  },
+  {
+   "id": "ep08_042",
+   "who": "NEMU",
+   "text": "The pebbles were not training. I watched. You were smiling."
+  },
+  {
+   "id": "ep08_043",
+   "who": "RIN",
+   "text": "...He is an idiot who walks ten steps behind everyone so he cannot hurt them. Somebody has to walk back and get him."
+  },
+  {
+   "id": "ep08_044",
+   "who": "NEMU",
+   "text": "That is what liking someone is. Walking back to get them."
+  },
+  {
+   "id": "ep08_045",
+   "who": "RIN",
+   "text": "Then you like him too."
+  },
+  {
+   "id": "ep08_046",
+   "who": "NEMU",
+   "text": "I do. He is my first friend in this life. I have only had seven, so it is a short list."
+  },
+  {
+   "id": "ep08_047",
+   "who": "RIN",
+   "text": "...You are impossible to argue with."
+  },
+  {
+   "id": "ep08_048",
+   "who": "NEMU",
+   "text": "I know. I am too sleepy to lose."
+  },
+  {
+   "id": "ep08_049",
+   "who": "TAKUTO",
+   "text": "You are counting again."
+  },
+  {
+   "id": "ep08_050",
+   "who": "SIEG",
+   "text": "You noticed."
+  },
+  {
+   "id": "ep08_051",
+   "who": "TAKUTO",
+   "text": "Your lips move."
+  },
+  {
+   "id": "ep08_052",
+   "who": "SIEG",
+   "text": "...Mara. She could hit a bird at a hundred paces with a thrown knife. Joss, who snored like a landslide."
+  },
+  {
+   "id": "ep08_053",
+   "who": "SIEG",
+   "text": "Little Pell, sixteen, who lied about her age to join. Bram and Bren, the twins. Old Hask, the cook."
+  },
+  {
+   "id": "ep08_054",
+   "who": "SIEG",
+   "text": "Tova. Corin. Dace. Ilse, who wanted to see the sea. And Wen, who I was going to marry in the spring."
+  },
+  {
+   "id": "ep08_055",
+   "who": "SIEG",
+   "text": "Eleven. I count them every night so I remember they were people, not a number on a Guild report."
+  },
+  {
+   "id": "ep08_056",
+   "who": "TAKUTO",
+   "text": "And Kurozane was there."
+  },
+  {
+   "id": "ep08_057",
+   "who": "SIEG",
+   "text": "Kurozane cut the ropes that would have woken us. Then he walked through our tents while the Rift opened above the pass."
+  },
+  {
+   "id": "ep08_058",
+   "who": "SIEG",
+   "text": "I took his eye. He took Wen. That is the whole story, Takuto. There is no bear and no bishop in it.",
+   "tts": "I took his eye. He took Wen. That is the whole story, Tah-koo-toh. There is no bear and no bishop in it."
+  },
+  {
+   "id": "ep08_059",
+   "who": "TAKUTO",
+   "text": "I am sorry, Sieg.",
+   "tts": "I am sorry, Seeg."
+  },
+  {
+   "id": "ep08_060",
+   "who": "SIEG",
+   "text": "Don't be sorry. Rin would say be useful. Go to sleep. That would be useful."
+  },
+  {
+   "id": "ep08_061",
+   "who": "WICK",
+   "text": "How did you meet him? Haruki.",
+   "tts": "How did you meet him? Hah-roo-kee."
+  },
+  {
+   "id": "ep08_062",
+   "who": "TAKUTO",
+   "text": "Middle school. Three guys from the high school had me against a vending machine."
+  },
+  {
+   "id": "ep08_063",
+   "who": "WICK",
+   "text": "And he beat them up?"
+  },
+  {
+   "id": "ep08_064",
+   "who": "TAKUTO",
+   "text": "No. I was beating them up. Badly. He put his hand on my shoulder and said, that is enough, they get it."
+  },
+  {
+   "id": "ep08_065",
+   "who": "TAKUTO",
+   "text": "And I stopped. I never stopped for anyone. I stopped for him."
+  },
+  {
+   "id": "ep08_066",
+   "who": "WICK",
+   "text": "Then he bought you a corn soup."
+  },
+  {
+   "id": "ep08_067",
+   "who": "TAKUTO",
+   "text": "...Coffee milk. For the cat. There was a stray cat behind the machine, watching the whole thing."
+  },
+  {
+   "id": "ep08_068",
+   "who": "WICK",
+   "text": "The cat. THE cat."
+  },
+  {
+   "id": "ep08_069",
+   "who": "TAKUTO",
+   "text": "We fed it every night for three years. Then one night he did not come, and I kept feeding it alone."
+  },
+  {
+   "id": "ep08_070",
+   "who": "WICK",
+   "text": "And now you are almost there. Two days."
+  },
+  {
+   "id": "ep08_071",
+   "who": "TAKUTO",
+   "text": "What if he does not want to see me?"
+  },
+  {
+   "id": "ep08_072",
+   "who": "WICK",
+   "text": "Then you feed him coffee milk until he does. It worked on the cat."
+  },
+  {
+   "id": "ep08_073",
+   "who": "NEMU",
+   "text": "There is a letter on the gate. Nailed with a tooth."
+  },
+  {
+   "id": "ep08_074",
+   "who": "RIN",
+   "text": "To the Laughing Blade. At moonrise, at this gate. Come alone."
+  },
+  {
+   "id": "ep08_075",
+   "who": "RIN",
+   "text": "Or I visit the little cat first. Kurozane."
+  },
+  {
+   "id": "ep08_076",
+   "who": "NEMU",
+   "text": "I am the little cat."
+  },
+  {
+   "id": "ep08_077",
+   "who": "WICK",
+   "text": "He knows about Nemu? How does he know about Nemu?",
+   "tts": "He knows about Neh-moo? How does he know about Neh-moo?"
+  },
+  {
+   "id": "ep08_078",
+   "who": "SIEG",
+   "text": "Because he has been watching us since the Greatwood."
+  },
+  {
+   "id": "ep08_079",
+   "who": "TAKUTO",
+   "text": "We all go."
+  },
+  {
+   "id": "ep08_080",
+   "who": "SIEG",
+   "text": "No."
+  },
+  {
+   "id": "ep08_081",
+   "who": "TAKUTO",
+   "text": "Sieg.",
+   "tts": "Seeg."
+  },
+  {
+   "id": "ep08_082",
+   "who": "SIEG",
+   "text": "He wants a duel. If he sees five of us, he will not fight. He will run, and he will come back for Nemu on a night I am asleep.",
+   "tts": "He wants a duel. If he sees five of us, he will not fight. He will run, and he will come back for Neh-moo on a night I am asleep."
+  },
+  {
+   "id": "ep08_083",
+   "who": "SIEG",
+   "text": "If I go alone, it ends tonight. One way or the other."
+  },
+  {
+   "id": "ep08_084",
+   "who": "RIN",
+   "text": "One way or the other is not good enough."
+  },
+  {
+   "id": "ep08_085",
+   "who": "SIEG",
+   "text": "It is the only way there is, Rin. I have waited six years for him to stop running."
+  },
+  {
+   "id": "ep08_086",
+   "who": "NEMU",
+   "text": "...I do not want to be the reason you fight."
+  },
+  {
+   "id": "ep08_087",
+   "who": "SIEG",
+   "text": "You are not the reason, Nemu. You are just the threat. The reason is eleven names long.",
+   "tts": "You are not the reason, Neh-moo. You are just the threat. The reason is eleven names long."
+  },
+  {
+   "id": "ep08_088",
+   "who": "SIEG",
+   "text": "One more lesson. Before moonrise. Pick up the axe."
+  },
+  {
+   "id": "ep08_089",
+   "who": "TAKUTO",
+   "text": "Why now?"
+  },
+  {
+   "id": "ep08_090",
+   "who": "SIEG",
+   "text": "Because if tonight goes badly, I want my last lesson to be a good one."
+  },
+  {
+   "id": "ep08_091",
+   "who": "SIEG",
+   "text": "Attack me. First move. Always the first move."
+  },
+  {
+   "id": "ep08_092",
+   "who": "SIEG",
+   "text": "Again. And look where my second cut will be, not my first."
+  },
+  {
+   "id": "ep08_093",
+   "who": "TAKUTO",
+   "text": "Your second cut comes from the same place as the first."
+  },
+  {
+   "id": "ep08_094",
+   "who": "SIEG",
+   "text": "Every time. Afterimage is honest. That is its weakness. Kurozane knows it. He has known for six years."
+  },
+  {
+   "id": "ep08_095",
+   "who": "TAKUTO",
+   "text": "Then how do you beat him?"
+  },
+  {
+   "id": "ep08_096",
+   "who": "SIEG",
+   "text": "You make your honest cut lie. You miss on purpose, so the echo lands where he runs."
+  },
+  {
+   "id": "ep08_097",
+   "who": "TAKUTO",
+   "text": "Does that work?"
+  },
+  {
+   "id": "ep08_098",
+   "who": "SIEG",
+   "text": "I have never tried it. I have been saving it. For one person."
+  },
+  {
+   "id": "ep08_099",
+   "who": "SIEG",
+   "text": "Takuto. If I lose tonight, do not chase him. Do not open the door in that axe for me.",
+   "tts": "Tah-koo-toh. If I lose tonight, do not chase him. Do not open the door in that axe for me."
+  },
+  {
+   "id": "ep08_100",
+   "who": "SIEG",
+   "text": "Go to Saint Lumen. Find your friend. That is what I want. Promise me."
+  },
+  {
+   "id": "ep08_101",
+   "who": "TAKUTO",
+   "text": "...I promise to go to Saint Lumen."
+  },
+  {
+   "id": "ep08_102",
+   "who": "SIEG",
+   "text": "That is not the whole promise."
+  },
+  {
+   "id": "ep08_103",
+   "who": "TAKUTO",
+   "text": "It is the part I can keep."
+  },
+  {
+   "id": "ep08_104",
+   "who": "SIEG",
+   "text": "...Ha. You are getting clever. I hate it."
+  },
+  {
+   "id": "ep08_105",
+   "who": "RIN",
+   "text": "He said alone. He did not say how far away we have to stay."
+  },
+  {
+   "id": "ep08_106",
+   "who": "TAKUTO",
+   "text": "The bamboo above the gate. You can see the whole shrine from there."
+  },
+  {
+   "id": "ep08_107",
+   "who": "WICK",
+   "text": "Are we disobeying Sieg? We are disobeying Sieg. I love it. I hate it. I love it.",
+   "tts": "Are we disobeying Seeg? We are disobeying Seeg. I love it. I hate it. I love it."
+  },
+  {
+   "id": "ep08_108",
+   "who": "NEMU",
+   "text": "If the wolf wins, he comes for me anyway. I would rather be there when he does."
+  },
+  {
+   "id": "ep08_109",
+   "who": "RIN",
+   "text": "Nobody interferes unless Sieg is going to die. Nobody. Not even if he is losing.",
+   "tts": "Nobody interferes unless Seeg is going to die. Nobody. Not even if he is losing."
+  },
+  {
+   "id": "ep08_110",
+   "who": "TAKUTO",
+   "text": "How do we know the difference?"
+  },
+  {
+   "id": "ep08_111",
+   "who": "RIN",
+   "text": "Losing is when he is still laughing. Dying is when he stops."
+  },
+  {
+   "id": "ep08_112",
+   "who": "WICK",
+   "text": "He has not laughed in a week."
+  },
+  {
+   "id": "ep08_113",
+   "who": "RIN",
+   "text": "...Then we watch very closely."
+  },
+  {
+   "id": "ep08_114",
+   "who": "SIEG",
+   "text": "Valentine. If this letter reaches you, I lost a duel I picked myself. Please do not cry. Blame the allergies."
+  },
+  {
+   "id": "ep08_115",
+   "who": "SIEG",
+   "text": "The boy is good. Better than he knows. Keep Vesper away from him, and keep Gideon making him things."
+  },
+  {
+   "id": "ep08_116",
+   "who": "SIEG",
+   "text": "And tell Tofu I was sorry about calling him a breadbox. He was a very good breadbox."
+  },
+  {
+   "id": "ep08_117",
+   "who": "KUROZANE",
+   "text": "You came alone. I almost did not believe it."
+  },
+  {
+   "id": "ep08_118",
+   "who": "SIEG",
+   "text": "You said moonrise. It is moonrise."
+  },
+  {
+   "id": "ep08_119",
+   "who": "KUROZANE",
+   "text": "Six years, Valen. I wear your mark every day. I cannot see your face on my left side."
+  },
+  {
+   "id": "ep08_120",
+   "who": "SIEG",
+   "text": "Then stand on my right. I will try to make it quick."
+  },
+  {
+   "id": "ep08_121",
+   "who": "KUROZANE",
+   "text": "There. That laugh. I hated that laugh. I came for that laugh."
+  },
+  {
+   "id": "ep08_122",
+   "who": "KUROZANE",
+   "text": "Kurozane, Fang of the Grey. Draw."
+  },
+  {
+   "id": "ep08_123",
+   "who": "SIEG",
+   "text": "Sieg Valen. Laughing Blade. Already drawn.",
+   "tts": "Seeg Valen. Laughing Blade. Already drawn."
+  },
+  {
+   "id": "ep08_124",
+   "who": "KUROZANE",
+   "text": "Fang Draw."
+  },
+  {
+   "id": "ep08_125",
+   "who": "SIEG",
+   "text": "Fast. Faster than before."
+  },
+  {
+   "id": "ep08_126",
+   "who": "KUROZANE",
+   "text": "You are slower, Valen. Six years of counting the dead makes an old man."
+  },
+  {
+   "id": "ep08_127",
+   "who": "SIEG",
+   "text": "Afterimage!"
+  },
+  {
+   "id": "ep08_128",
+   "who": "KUROZANE",
+   "text": "I know your echo, old man! I have dreamed about it!"
+  },
+  {
+   "id": "ep08_129",
+   "who": "KUROZANE",
+   "text": "Second Fang!"
+  },
+  {
+   "id": "ep08_130",
+   "who": "SIEG",
+   "text": "Ngh!"
+  },
+  {
+   "id": "ep08_131",
+   "who": "KUROZANE",
+   "text": "Do you know what I was, Valen, before the suit found me? A hound of the Rift. A Calamity's dog, on a chain."
+  },
+  {
+   "id": "ep08_132",
+   "who": "KUROZANE",
+   "text": "He broke my chain and gave me a name. I have owed him for every breath since. Even this one."
+  },
+  {
+   "id": "ep08_133",
+   "who": "SIEG",
+   "text": "So you paid him in my squad."
+  },
+  {
+   "id": "ep08_134",
+   "who": "KUROZANE",
+   "text": "I paid him in my honour. Your squad was the price of the paper it was written on."
+  },
+  {
+   "id": "ep08_135",
+   "who": "KUROZANE",
+   "text": "Third Fang!"
+  },
+  {
+   "id": "ep08_136",
+   "who": "SIEG",
+   "text": "Echo!"
+  },
+  {
+   "id": "ep08_137",
+   "who": "KUROZANE",
+   "text": "Ha!"
+  },
+  {
+   "id": "ep08_138",
+   "who": "SIEG",
+   "text": "...Mara. Joss. Pell."
+  },
+  {
+   "id": "ep08_139",
+   "who": "KUROZANE",
+   "text": "Are you praying?"
+  },
+  {
+   "id": "ep08_140",
+   "who": "SIEG",
+   "text": "Counting. Bram. Bren. Hask."
+  },
+  {
+   "id": "ep08_141",
+   "who": "SIEG",
+   "text": "Tova. Corin. Dace. Ilse."
+  },
+  {
+   "id": "ep08_142",
+   "who": "KUROZANE",
+   "text": "Missed! You MISSED!"
+  },
+  {
+   "id": "ep08_143",
+   "who": "SIEG",
+   "text": "Wen."
+  },
+  {
+   "id": "ep08_144",
+   "who": "KUROZANE",
+   "text": "The echo... came from where I ran. You lied. Your blade lied."
+  },
+  {
+   "id": "ep08_145",
+   "who": "SIEG",
+   "text": "Once. I saved it for you."
+  },
+  {
+   "id": "ep08_146",
+   "who": "SABLE",
+   "text": "Oh, how lovely. A song. I do hate to interrupt."
+  },
+  {
+   "id": "ep08_147",
+   "who": "KUROZANE",
+   "text": "Sable. This is MY duel."
+  },
+  {
+   "id": "ep08_148",
+   "who": "SABLE",
+   "text": "Everything is yours, Kurozane, until I need it. Pack. Eat the teacher."
+  },
+  {
+   "id": "ep08_149",
+   "who": "SIEG",
+   "text": "Of course."
+  },
+  {
+   "id": "ep08_150",
+   "who": "TAKUTO",
+   "text": "Sieg!",
+   "tts": "Seeg!"
+  },
+  {
+   "id": "ep08_151",
+   "who": "SIEG",
+   "text": "You followed me. All of you. I told you to stay at the inn!"
+  },
+  {
+   "id": "ep08_152",
+   "who": "RIN",
+   "text": "You told us. We did not listen. You are a terrible influence."
+  },
+  {
+   "id": "ep08_153",
+   "who": "TAKUTO",
+   "text": "Back to back! Rin, the thread!"
+  },
+  {
+   "id": "ep08_154",
+   "who": "RIN",
+   "text": "Wrist to wrist! Go!"
+  },
+  {
+   "id": "ep08_155",
+   "who": "WICK",
+   "text": "Fire head! Only wolves! I am getting really good at only wolves!"
+  },
+  {
+   "id": "ep08_156",
+   "who": "AKURO",
+   "text": "The suit is here, boy. In the trees. I can taste him. Let me...",
+   "mono": true
+  },
+  {
+   "id": "ep08_157",
+   "who": "TAKUTO",
+   "text": "Rin. It wants out."
+  },
+  {
+   "id": "ep08_158",
+   "who": "RIN",
+   "text": "I feel it. Your wrist is hot. Stay with me. Count with Sieg.",
+   "tts": "I feel it. Your wrist is hot. Stay with me. Count with Seeg."
+  },
+  {
+   "id": "ep08_159",
+   "who": "TAKUTO",
+   "text": "...One. Two. Three."
+  },
+  {
+   "id": "ep08_160",
+   "who": "NEMU",
+   "text": "Takuto, behind!",
+   "tts": "Tah-koo-toh, behind!"
+  },
+  {
+   "id": "ep08_161",
+   "who": "TAKUTO",
+   "text": "Four! Break!"
+  },
+  {
+   "id": "ep08_162",
+   "who": "KUROZANE",
+   "text": "I am not your dog, Sable."
+  },
+  {
+   "id": "ep08_163",
+   "who": "KUROZANE",
+   "text": "Grey Fang. Full Moon."
+  },
+  {
+   "id": "ep08_164",
+   "who": "SIEG",
+   "text": "He cut his own pack."
+  },
+  {
+   "id": "ep08_165",
+   "who": "SABLE",
+   "text": "How disappointing. Well. Dogs bite. I knew that when I bought you."
+  },
+  {
+   "id": "ep08_166",
+   "who": "TAKUTO",
+   "text": "Sable!"
+  },
+  {
+   "id": "ep08_167",
+   "who": "KUROZANE",
+   "text": "Valen. This was ours. He made it his. I will not forgive that."
+  },
+  {
+   "id": "ep08_168",
+   "who": "KUROZANE",
+   "text": "We finish this another night. Without him watching."
+  },
+  {
+   "id": "ep08_169",
+   "who": "SIEG",
+   "text": "Kurozane. My eleven. Did you laugh when you killed them?"
+  },
+  {
+   "id": "ep08_170",
+   "who": "KUROZANE",
+   "text": "...No. I was told to. I did not. That is the only thing I have that is mine."
+  },
+  {
+   "id": "ep08_171",
+   "who": "RIN",
+   "text": "You held on again. With the suit right there."
+  },
+  {
+   "id": "ep08_172",
+   "who": "TAKUTO",
+   "text": "I counted. Like Sieg. One, two, three. It worked.",
+   "tts": "I counted. Like Seeg. One, two, three. It worked."
+  },
+  {
+   "id": "ep08_173",
+   "who": "RIN",
+   "text": "Your wrist was so hot it burned me. Look."
+  },
+  {
+   "id": "ep08_174",
+   "who": "TAKUTO",
+   "text": "...Rin, I..."
+  },
+  {
+   "id": "ep08_175",
+   "who": "RIN",
+   "text": "If you say sorry I will tie your mouth shut. I mean it. I have been practising."
+  },
+  {
+   "id": "ep08_176",
+   "who": "TAKUTO",
+   "text": "...Thank you, then."
+  },
+  {
+   "id": "ep08_177",
+   "who": "RIN",
+   "text": "Better."
+  },
+  {
+   "id": "ep08_178",
+   "who": "RIN",
+   "text": "I was scared tonight. Not of the wolves. Of the moment the thread would pull, and I would not be strong enough."
+  },
+  {
+   "id": "ep08_179",
+   "who": "TAKUTO",
+   "text": "Then we both get stronger."
+  },
+  {
+   "id": "ep08_180",
+   "who": "RIN",
+   "text": "Faster than he expects. Sieg said that.",
+   "tts": "Faster than he expects. Seeg said that."
+  },
+  {
+   "id": "ep08_181",
+   "who": "TAKUTO",
+   "text": "Sieg says a lot of things.",
+   "tts": "Seeg says a lot of things."
+  },
+  {
+   "id": "ep08_182",
+   "who": "RIN",
+   "text": "Most of them are even true."
+  },
+  {
+   "id": "ep08_183",
+   "who": "RIN",
+   "text": "Hold still. That is two cuts across your ribs. He was not playing."
+  },
+  {
+   "id": "ep08_184",
+   "who": "SIEG",
+   "text": "Kurozane never plays. That is why he is good at it."
+  },
+  {
+   "id": "ep08_185",
+   "who": "RIN",
+   "text": "You stitched Takuto once. Now I stitch you. This is a very stupid family.",
+   "tts": "You stitched Tah-koo-toh once. Now I stitch you. This is a very stupid family."
+  },
+  {
+   "id": "ep08_186",
+   "who": "SIEG",
+   "text": "...Family?"
+  },
+  {
+   "id": "ep08_187",
+   "who": "RIN",
+   "text": "Do not make a thing of it."
+  },
+  {
+   "id": "ep08_188",
+   "who": "SIEG",
+   "text": "Ha. Ha ha ha!"
+  },
+  {
+   "id": "ep08_189",
+   "who": "TAKUTO",
+   "text": "You laughed."
+  },
+  {
+   "id": "ep08_190",
+   "who": "SIEG",
+   "text": "I did. Ow. Ha. It hurts to laugh. Rin, stop stitching while I laugh."
+  },
+  {
+   "id": "ep08_191",
+   "who": "WICK",
+   "text": "He laughed! The Laughing Blade laughed! Somebody write it down!"
+  },
+  {
+   "id": "ep08_192",
+   "who": "NEMU",
+   "text": "I will remember it. I am very good at remembering."
+  },
+  {
+   "id": "ep08_193",
+   "who": "SIEG",
+   "text": "The trick worked. I made the honest blade lie. I am going to be unbearable about this for weeks."
+  },
+  {
+   "id": "ep08_194",
+   "who": "TAKUTO",
+   "text": "You were already unbearable."
+  },
+  {
+   "id": "ep08_195",
+   "who": "SIEG",
+   "text": "Now I am unbearable with reasons."
+  },
+  {
+   "id": "ep08_196",
+   "who": "TAKUTO",
+   "text": "Sable was there. He bought Kurozane. He said so."
+  },
+  {
+   "id": "ep08_197",
+   "who": "SIEG",
+   "text": "Then Sable was at Grey Hollow. Not just Kurozane. The man in the suit opened that Rift on my squad himself."
+  },
+  {
+   "id": "ep08_198",
+   "who": "RIN",
+   "text": "The giants. The Hydra. The ogres. Grey Hollow. Nerima. It is all him.",
+   "tts": "The giants. The Hydra. The ogres. Grey Hollow. Neh-ree-mah. It is all him."
+  },
+  {
+   "id": "ep08_199",
+   "who": "TAKUTO",
+   "text": "And he is going where we are going."
+  },
+  {
+   "id": "ep08_200",
+   "who": "NEMU",
+   "text": "Are you counting?"
+  },
+  {
+   "id": "ep08_201",
+   "who": "SIEG",
+   "text": "A different list tonight."
+  },
+  {
+   "id": "ep08_202",
+   "who": "NEMU",
+   "text": "Who is on it?"
+  },
+  {
+   "id": "ep08_203",
+   "who": "SIEG",
+   "text": "A girl who sleeps all day. A boy whose head is on fire. A girl with her brother's scarf. A boy with an axe that talks back."
+  },
+  {
+   "id": "ep08_204",
+   "who": "SIEG",
+   "text": "Five. All five. Still here."
+  },
+  {
+   "id": "ep08_205",
+   "who": "NEMU",
+   "text": "You forgot one."
+  },
+  {
+   "id": "ep08_206",
+   "who": "SIEG",
+   "text": "Who?"
+  },
+  {
+   "id": "ep08_207",
+   "who": "NEMU",
+   "text": "You. You never count yourself. Six."
+  },
+  {
+   "id": "ep08_208",
+   "who": "SIEG",
+   "text": "...Six."
+  },
+  {
+   "id": "ep08_209",
+   "who": "AKURO",
+   "text": "The wolf. Three hundred years ago I knew wolves like him. They die standing up.",
+   "mono": true
+  },
+  {
+   "id": "ep08_210",
+   "who": "TAKUTO",
+   "text": "You liked him."
+  },
+  {
+   "id": "ep08_211",
+   "who": "AKURO",
+   "text": "I liked that he refused. Everybody kneels to the suit eventually. That one did not.",
+   "mono": true
+  },
+  {
+   "id": "ep08_212",
+   "who": "TAKUTO",
+   "text": "Did you kneel? Three hundred years ago?"
+  },
+  {
+   "id": "ep08_213",
+   "who": "AKURO",
+   "text": "...Go to sleep, boy. Tomorrow you see the golden city. Look at it carefully. Gold is very good at hiding rot.",
+   "mono": true
+  },
+  {
+   "id": "ep08_214",
+   "who": "WICK",
+   "text": "Whoa. Whoa. It is so shiny."
+  },
+  {
+   "id": "ep08_215",
+   "who": "RIN",
+   "text": "Saint Lumen. The golden capital."
+  },
+  {
+   "id": "ep08_216",
+   "who": "NEMU",
+   "text": "It looks like someone dropped the sun and built houses on it."
+  },
+  {
+   "id": "ep08_217",
+   "who": "SIEG",
+   "text": "Home of the Gilded Order, the Cathedral, and the Golden Saint himself. Lucien Aurel."
+  },
+  {
+   "id": "ep08_218",
+   "who": "TAKUTO",
+   "text": "Haruki is down there.",
+   "tts": "Hah-roo-kee is down there."
+  },
+  {
+   "id": "ep08_219",
+   "who": "SIEG",
+   "text": "If Wick heard right."
+  },
+  {
+   "id": "ep08_220",
+   "who": "WICK",
+   "text": "I always hear right. I just do not always hear the important parts."
+  },
+  {
+   "id": "ep08_221",
+   "who": "TAKUTO",
+   "text": "...Two years. I am coming, Haruki.",
+   "tts": "...Two years. I am coming, Hah-roo-kee."
+  },
+  {
+   "id": "ep08_222",
+   "who": "HUNTER",
+   "text": "Halt. State your names and your business in the holy city."
+  },
+  {
+   "id": "ep08_223",
+   "who": "SIEG",
+   "text": "Sieg Valen, rank A, of the Ashford Guild. With four Hunters. The Order sent for us.",
+   "tts": "Seeg Valen, rank A, of the Ashford Guild. With four Hunters. The Order sent for us."
+  },
+  {
+   "id": "ep08_224",
+   "who": "HUNTER",
+   "text": "Valen. And the white-haired one is the Skyfallen?"
+  },
+  {
+   "id": "ep08_225",
+   "who": "HUNTER",
+   "text": "The Saint expects you. All of you. A carriage is waiting."
+  },
+  {
+   "id": "ep08_226",
+   "who": "WICK",
+   "text": "A carriage. A golden carriage."
+  },
+  {
+   "id": "ep08_227",
+   "who": "TAKUTO",
+   "text": "Haruki got into a golden carriage. Two years ago. The guild clerk said he waved.",
+   "tts": "Hah-roo-kee got into a golden carriage. Two years ago. The guild clerk said he waved."
+  },
+  {
+   "id": "ep08_228",
+   "who": "NEMU",
+   "text": "You are not going to wave, are you?"
+  },
+  {
+   "id": "ep08_229",
+   "who": "TAKUTO",
+   "text": "No."
+  },
+  {
+   "id": "ep08_230",
+   "who": "AKURO",
+   "text": "Gold, boy. Everything smells of gold here. And underneath it, something I have smelled before.",
+   "mono": true
+  },
+  {
+   "id": "ep08_231",
+   "who": "TAKUTO",
+   "text": "Rin. It is talking."
+  },
+  {
+   "id": "ep08_232",
+   "who": "RIN",
+   "text": "What does it say?"
+  },
+  {
+   "id": "ep08_233",
+   "who": "TAKUTO",
+   "text": "That this city is hiding something."
+  },
+  {
+   "id": "ep08_234",
+   "who": "RIN",
+   "text": "...Every city is. Let's go find out what."
+  },
+  {
+   "id": "ep08_235",
+   "who": "LUCIEN",
+   "text": "A boy with white hair and a red jacket is coming down the mountain road. He says he is your friend."
+  },
+  {
+   "id": "ep08_236",
+   "who": "HARUKI",
+   "text": "...Takuto?",
+   "tts": "...Tah-koo-toh?"
+  },
+  {
+   "id": "ep08_237",
+   "who": "LUCIEN",
+   "text": "You told me nobody would come looking for you."
+  },
+  {
+   "id": "ep08_238",
+   "who": "HARUKI",
+   "text": "I told you nobody should. He never listens. He never, ever listens."
+  },
+  {
+   "id": "ep08_239",
+   "who": "TAKUTO",
+   "text": "Next time: Saint Lumen, the golden capital."
+  },
+  {
+   "id": "ep08_240",
+   "who": "TAKUTO",
+   "text": "The Golden Saint invites me to join the Gilded Order."
+  },
+  {
+   "id": "ep08_241",
+   "who": "TAKUTO",
+   "text": "And Haruki is standing at his side. He doesn't want to be rescued.",
+   "tts": "And Hah-roo-kee is standing at his side. He doesn't want to be rescued."
+  },
+  {
+   "id": "ep08_242",
+   "who": "TAKUTO",
+   "text": "Episode nine. Saint Lumen."
+  }
+ ]
+}

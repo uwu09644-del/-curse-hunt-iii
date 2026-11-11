@@ -348,6 +348,6 @@ const EP06_SCRIPT = (() => {
     ['custom', 'nextTitle', 6, [[0.5, 'TAK', 'Episode seven. Feathers and Ash.']]],
   ] }];
 
-  return { id: 'ep06', number: 6, title: { jpNo: '第六話', jp: '赤き巨人の行進', en: 'THE RED GIANTS MARCH' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
+  return { id: 'ep06', number: 6, pace: 0.55, title: { jpNo: '第六話', jp: '赤き巨人の行進', en: 'THE RED GIANTS MARCH' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
 })();
 if (typeof module !== 'undefined') module.exports = EP06_SCRIPT;

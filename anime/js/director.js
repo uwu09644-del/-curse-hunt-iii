@@ -244,7 +244,7 @@ const DIRECTOR = (() => {
         if (o.emote === 'angry' && onScreen && hash(lineNo, 8) > 0.5) kind = 'low';
       }
       SC.pairShots++; SC.count++; SC.lastShot = kind; if (onScreen) SC.prevSpeaker = actor;
-      const pre = o.pre ?? 0.45, post = o.post ?? 0.6, d = Math.max(o.min || 0, pre + dur + post), seed = lineNo;
+      const pre = o.pre ?? 0.45, post = o.post ?? 0.6 + (spec.pace || 0), d = Math.max(o.min || 0, pre + dur + post), seed = lineNo;
       const splitReact = !o.noReact && onScreen && partner && dur > 3.4 && (kind === 'cu' || kind === 'mcu') && hash(seed, 6) > 0.4;
       const style = kind === 'two' || kind === 'wide' ? 'drift' : hash(seed, 3) > 0.5 ? 'push' : 'still';
       const emo = {}; if (o.emote && actor) emo[actor] = { emote: o.emote }; if (o.react && partner) emo[partner] = { emote: o.react };

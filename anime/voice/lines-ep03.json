@@ -412,1296 +412,1422 @@
   },
   {
    "id": "ep03_035",
+   "who": "VALENTINE",
+   "text": "A good-luck charm, darling. From Tofu. He insisted."
+  },
+  {
+   "id": "ep03_036",
+   "who": "TAKUTO",
+   "text": "It's a pebble with a face drawn on it."
+  },
+  {
+   "id": "ep03_037",
+   "who": "VALENTINE",
+   "text": "It is a very lucky pebble. Tofu drew the face himself. He has no hands, so it took him all night."
+  },
+  {
+   "id": "ep03_038",
+   "who": "NEMU",
+   "text": "The face is crying."
+  },
+  {
+   "id": "ep03_039",
+   "who": "VALENTINE",
+   "text": "The face is moved. There is a difference."
+  },
+  {
+   "id": "ep03_040",
+   "who": "TAKUTO",
+   "text": "...Tell him thank you."
+  },
+  {
+   "id": "ep03_041",
+   "who": "VALENTINE",
+   "text": "Come back alive, Takuto. Errors are so rare. I would hate to lose my favourite.",
+   "tts": "Come back alive, Tah-koo-toh. Errors are so rare. I would hate to lose my favourite."
+  },
+  {
+   "id": "ep03_042",
+   "who": "NEMU",
+   "text": "Come back with food."
+  },
+  {
+   "id": "ep03_043",
+   "who": "TAKUTO",
+   "text": "In that order?"
+  },
+  {
+   "id": "ep03_044",
+   "who": "NEMU",
+   "text": "Either order is fine."
+  },
+  {
+   "id": "ep03_045",
    "who": "TAKUTO",
    "text": "So. Rin Ashveil.",
    "tts": "So. Rin Ash-vale."
   },
   {
-   "id": "ep03_036",
+   "id": "ep03_046",
    "who": "RIN",
    "text": "Don't."
   },
   {
-   "id": "ep03_037",
+   "id": "ep03_047",
    "who": "TAKUTO",
    "text": "I haven't said anything."
   },
   {
-   "id": "ep03_038",
+   "id": "ep03_048",
    "who": "RIN",
    "text": "You were going to say something about the hair."
   },
   {
-   "id": "ep03_039",
+   "id": "ep03_049",
    "who": "TAKUTO",
    "text": "I was going to say we should talk about a plan."
   },
   {
-   "id": "ep03_040",
+   "id": "ep03_050",
    "who": "RIN",
    "text": "...Oh."
   },
   {
-   "id": "ep03_041",
+   "id": "ep03_051",
    "who": "TAKUTO",
    "text": "And also the hair."
   },
   {
-   "id": "ep03_042",
+   "id": "ep03_052",
    "who": "RIN",
    "text": "I knew it."
   },
   {
-   "id": "ep03_043",
+   "id": "ep03_053",
    "who": "TAKUTO",
    "text": "Plan. You tie things up. I break things. We don't break each other."
   },
   {
-   "id": "ep03_044",
+   "id": "ep03_054",
    "who": "RIN",
    "text": "That's not a plan. That's a list of hobbies."
   },
   {
-   "id": "ep03_045",
+   "id": "ep03_055",
    "who": "TAKUTO",
    "text": "It's more of a plan than you had."
   },
   {
-   "id": "ep03_046",
+   "id": "ep03_056",
    "who": "RIN",
    "text": "My plan was to leave you at the entrance."
   },
   {
-   "id": "ep03_047",
+   "id": "ep03_057",
    "who": "TAKUTO",
    "text": "See? That one's worse."
   },
   {
-   "id": "ep03_048",
+   "id": "ep03_058",
    "who": "RIN",
    "text": "Stop. Brambles. Don't touch them, the thorns are poisoned."
   },
   {
-   "id": "ep03_049",
+   "id": "ep03_059",
    "who": "TAKUTO",
    "text": "Everything here is poisoned or wants to eat me."
   },
   {
-   "id": "ep03_050",
+   "id": "ep03_060",
    "who": "RIN",
    "text": "Welcome to the March."
   },
   {
-   "id": "ep03_051",
+   "id": "ep03_061",
    "who": "TAKUTO",
    "text": "Can't I just break them?"
   },
   {
-   "id": "ep03_052",
+   "id": "ep03_062",
    "who": "RIN",
    "text": "You can break one. There are ten thousand."
   },
   {
-   "id": "ep03_053",
+   "id": "ep03_063",
    "who": "TAKUTO",
    "text": "I can break ten thousand."
   },
   {
-   "id": "ep03_054",
+   "id": "ep03_064",
    "who": "RIN",
    "text": "Slowly. While the Lesser Fiends hear you and come for lunch."
   },
   {
-   "id": "ep03_055",
+   "id": "ep03_065",
    "who": "TAKUTO",
    "text": "...We go around."
   },
   {
-   "id": "ep03_056",
+   "id": "ep03_066",
    "who": "RIN",
    "text": "We go around."
   },
   {
-   "id": "ep03_057",
+   "id": "ep03_067",
    "who": "RIN",
    "text": "Stop. Something's moving behind the rocks."
   },
   {
-   "id": "ep03_058",
+   "id": "ep03_068",
    "who": "TAKUTO",
    "text": "Not again."
   },
   {
-   "id": "ep03_059",
+   "id": "ep03_069",
    "who": "RIN",
    "text": "A Shieldbearer. A lone one. Lesser class."
   },
   {
-   "id": "ep03_060",
+   "id": "ep03_070",
    "who": "TAKUTO",
    "text": "I broke one of these on my first day."
   },
   {
-   "id": "ep03_061",
+   "id": "ep03_071",
    "who": "RIN",
    "text": "Then this is your second day. Go left, I'll bind it from the right."
   },
   {
-   "id": "ep03_062",
+   "id": "ep03_072",
    "who": "RIN",
    "text": "Your LEFT!"
   },
   {
-   "id": "ep03_063",
+   "id": "ep03_073",
    "who": "TAKUTO",
    "text": "You said go left! I went left!"
   },
   {
-   "id": "ep03_064",
+   "id": "ep03_074",
    "who": "RIN",
    "text": "MY left!"
   },
   {
-   "id": "ep03_065",
+   "id": "ep03_075",
    "who": "TAKUTO",
    "text": "How was I supposed to know that?!"
   },
   {
-   "id": "ep03_066",
+   "id": "ep03_076",
    "who": "RIN",
    "text": "Fine! Your left, my right! Count of three! One..."
   },
   {
-   "id": "ep03_067",
+   "id": "ep03_077",
    "who": "RIN",
    "text": "Two!"
   },
   {
-   "id": "ep03_068",
+   "id": "ep03_078",
    "who": "TAKUTO",
    "text": "Three!"
   },
   {
-   "id": "ep03_069",
+   "id": "ep03_079",
    "who": "RIN",
    "text": "...Huh. That worked."
   },
   {
-   "id": "ep03_070",
+   "id": "ep03_080",
    "who": "TAKUTO",
    "text": "Don't sound so surprised."
   },
   {
-   "id": "ep03_071",
+   "id": "ep03_081",
    "who": "RIN",
    "text": "I'm surprised it worked with YOU."
   },
   {
-   "id": "ep03_072",
+   "id": "ep03_082",
    "who": "WICK",
    "text": "Boo!"
   },
   {
-   "id": "ep03_073",
+   "id": "ep03_083",
    "who": "TAKUTO",
    "text": "AAH!"
   },
   {
-   "id": "ep03_074",
+   "id": "ep03_084",
    "who": "RIN",
    "text": "Fiend!"
   },
   {
-   "id": "ep03_075",
+   "id": "ep03_085",
    "who": "WICK",
    "text": "Whoa whoa whoa! Not a Fiend! Human! Mostly human! Applicant number forty-four!"
   },
   {
-   "id": "ep03_076",
+   "id": "ep03_086",
    "who": "RIN",
    "text": "Your head is on fire."
   },
   {
-   "id": "ep03_077",
+   "id": "ep03_087",
    "who": "WICK",
    "text": "It's always on fire! It's my Brand! It doesn't hurt! Please put the knife down!"
   },
   {
-   "id": "ep03_078",
+   "id": "ep03_088",
    "who": "TAKUTO",
    "text": "Rin."
   },
   {
-   "id": "ep03_079",
+   "id": "ep03_089",
    "who": "RIN",
    "text": "...Fine."
   },
   {
-   "id": "ep03_080",
+   "id": "ep03_090",
    "who": "WICK",
    "text": "Thank you. Hiro Aoyama. Everyone calls me Wick, for obvious reasons.",
    "tts": "Thank you. Hiro Ah-oh-yah-mah. Everyone calls me Wick, for obvious reasons."
   },
   {
-   "id": "ep03_081",
+   "id": "ep03_091",
    "who": "TAKUTO",
    "text": "Hiro Aoyama? That's a Japanese name.",
    "tts": "Hiro Ah-oh-yah-mah? That's a Japanese name."
   },
   {
-   "id": "ep03_082",
+   "id": "ep03_092",
    "who": "WICK",
    "text": "Wait. You said Japanese. Nobody here says Japanese."
   },
   {
-   "id": "ep03_083",
+   "id": "ep03_093",
    "who": "TAKUTO",
    "text": "Kirishima Takuto. Nerima. Tokyo.",
    "tts": "Kee-ree-shee-mah Tah-koo-toh. Neh-ree-mah. Tokyo."
   },
   {
-   "id": "ep03_084",
+   "id": "ep03_094",
    "who": "WICK",
    "text": "No way. NO WAY. Osaka! I'm from Osaka! Tennoji! You're Skyfallen!",
    "tts": "No way. NO WAY. Oh-sah-kah! I'm from Oh-sah-kah! Ten-noh-jee! You're Skyfallen!"
   },
   {
-   "id": "ep03_085",
+   "id": "ep03_095",
    "who": "TAKUTO",
    "text": "You too?"
   },
   {
-   "id": "ep03_086",
+   "id": "ep03_096",
    "who": "WICK",
    "text": "Three years! Three years, and you're the first person who knows what a convenience store is!"
   },
   {
-   "id": "ep03_087",
+   "id": "ep03_097",
    "who": "TAKUTO",
    "text": "I miss the onigiri.",
    "tts": "I miss the oh-nee-gee-ree."
   },
   {
-   "id": "ep03_088",
+   "id": "ep03_098",
    "who": "WICK",
    "text": "The tuna mayo ones!"
   },
   {
-   "id": "ep03_089",
+   "id": "ep03_099",
    "who": "TAKUTO",
    "text": "The tuna mayo ones."
   },
   {
-   "id": "ep03_090",
+   "id": "ep03_100",
    "who": "RIN",
    "text": "I don't know what either of you are talking about, and I hate it."
   },
   {
-   "id": "ep03_091",
+   "id": "ep03_101",
    "who": "TAKUTO",
    "text": "Where's your partner?"
   },
   {
-   "id": "ep03_092",
+   "id": "ep03_102",
    "who": "WICK",
    "text": "Mine ran away when my head caught fire this morning. Again. Third partner this year."
   },
   {
-   "id": "ep03_093",
+   "id": "ep03_103",
    "who": "TAKUTO",
    "text": "You can come with us."
   },
   {
-   "id": "ep03_094",
+   "id": "ep03_104",
    "who": "RIN",
    "text": "He can NOT."
   },
   {
-   "id": "ep03_095",
+   "id": "ep03_105",
    "who": "TAKUTO",
    "text": "He knows about tuna mayo."
   },
   {
-   "id": "ep03_096",
+   "id": "ep03_106",
    "who": "RIN",
    "text": "That is not a combat skill!"
   },
   {
-   "id": "ep03_097",
+   "id": "ep03_107",
    "who": "WICK",
    "text": "I can also light campfires! And see in the dark! And I'm very cheap to feed!"
   },
   {
-   "id": "ep03_098",
+   "id": "ep03_108",
    "who": "RIN",
    "text": "...We leave him behind the moment he slows us down."
   },
   {
-   "id": "ep03_099",
+   "id": "ep03_109",
    "who": "WICK",
    "text": "Deal! I'm very fast when I'm scared, and I'm always scared!"
   },
   {
-   "id": "ep03_100",
+   "id": "ep03_110",
    "who": "WICK",
    "text": "Okay. So. Before anything happens. I should mention I have never actually fought a Fiend."
   },
   {
-   "id": "ep03_101",
+   "id": "ep03_111",
    "who": "RIN",
    "text": "You have been here three years."
   },
   {
-   "id": "ep03_102",
+   "id": "ep03_112",
    "who": "WICK",
    "text": "And I have been running for three years! Very successfully!"
   },
   {
-   "id": "ep03_103",
+   "id": "ep03_113",
    "who": "TAKUTO",
    "text": "Something is standing in the path."
   },
   {
-   "id": "ep03_104",
+   "id": "ep03_114",
    "who": "RIN",
    "text": "Another Shieldbearer. Fine. Same as before. Takuto, the shield. I take the legs.",
    "tts": "Another Shieldbearer. Fine. Same as before. Tah-koo-toh, the shield. I take the legs."
   },
   {
-   "id": "ep03_105",
+   "id": "ep03_115",
    "who": "WICK",
    "text": "And me? What do I take?"
   },
   {
-   "id": "ep03_106",
+   "id": "ep03_116",
    "who": "RIN",
    "text": "Cover."
   },
   {
-   "id": "ep03_107",
+   "id": "ep03_117",
    "who": "TAKUTO",
    "text": "Break."
   },
   {
-   "id": "ep03_108",
+   "id": "ep03_118",
    "who": "WICK",
    "text": "Why is it coming for ME?!"
   },
   {
-   "id": "ep03_109",
+   "id": "ep03_119",
    "who": "RIN",
    "text": "Because you are the one screaming!"
   },
   {
-   "id": "ep03_110",
+   "id": "ep03_120",
    "who": "WICK",
    "text": "Fine! FINE! Will-o'-Wisp!"
   },
   {
-   "id": "ep03_111",
+   "id": "ep03_121",
    "who": "WICK",
    "text": "Only the bones! Burn only the bones!"
   },
   {
-   "id": "ep03_112",
+   "id": "ep03_122",
    "who": "RIN",
    "text": "Red Thread!"
   },
   {
-   "id": "ep03_113",
+   "id": "ep03_123",
    "who": "TAKUTO",
    "text": "Ruinbreaker."
   },
   {
-   "id": "ep03_114",
+   "id": "ep03_124",
    "who": "WICK",
    "text": "I did it. I fought a Fiend. I fought a Fiend and I did not run away!"
   },
   {
-   "id": "ep03_115",
+   "id": "ep03_125",
    "who": "TAKUTO",
    "text": "You did good."
   },
   {
-   "id": "ep03_116",
+   "id": "ep03_126",
    "who": "RIN",
    "text": "You burned my scarf."
   },
   {
-   "id": "ep03_117",
+   "id": "ep03_127",
    "who": "WICK",
    "text": "Only a little! It only burns what I tell it to! I told it the bones and the scarf was near the bones!"
   },
   {
-   "id": "ep03_118",
+   "id": "ep03_128",
    "who": "RIN",
    "text": "...It's fine. My brother burned it worse once."
   },
   {
-   "id": "ep03_119",
+   "id": "ep03_129",
    "who": "WICK",
    "text": "So how'd you fall through?"
   },
   {
-   "id": "ep03_120",
+   "id": "ep03_130",
    "who": "TAKUTO",
    "text": "Railway crossing. Two in the morning. The sky cracked."
   },
   {
-   "id": "ep03_121",
+   "id": "ep03_131",
    "who": "WICK",
    "text": "Mine was a shrine. I was buying a charm for exams. The ground opened under the gate."
   },
   {
-   "id": "ep03_122",
+   "id": "ep03_132",
    "who": "WICK",
    "text": "Funny, right? I was buying a charm to pass exams, and now I'm taking one in a desert full of monsters."
   },
   {
-   "id": "ep03_123",
+   "id": "ep03_133",
    "who": "TAKUTO",
    "text": "...Three years."
   },
   {
-   "id": "ep03_124",
+   "id": "ep03_134",
    "who": "WICK",
    "text": "Three years."
   },
   {
-   "id": "ep03_125",
+   "id": "ep03_135",
    "who": "TAKUTO",
    "text": "Have you looked for a way back?"
   },
   {
-   "id": "ep03_126",
+   "id": "ep03_136",
    "who": "WICK",
    "text": "Everybody looks. The first year, I looked every day. Rifts, old books, fortune tellers."
   },
   {
-   "id": "ep03_127",
+   "id": "ep03_137",
    "who": "WICK",
    "text": "I met an old man in Fort Cinder who fell through forty years ago. Forty. He has a family here now."
   },
   {
-   "id": "ep03_128",
+   "id": "ep03_138",
    "who": "WICK",
    "text": "He told me the same thing everyone tells you, eventually."
   },
   {
-   "id": "ep03_129",
+   "id": "ep03_139",
    "who": "TAKUTO",
    "text": "What?"
   },
   {
-   "id": "ep03_130",
+   "id": "ep03_140",
    "who": "WICK",
    "text": "Nobody goes home. Not one. Not ever. The Rifts only open one way."
   },
   {
-   "id": "ep03_131",
+   "id": "ep03_141",
    "who": "WICK",
    "text": "Sorry. I always say it too fast. My mom used to say I had no brakes."
   },
   {
-   "id": "ep03_132",
+   "id": "ep03_142",
    "who": "TAKUTO",
    "text": "Somebody fell through at my crossing two years ago. My friend."
   },
   {
-   "id": "ep03_133",
+   "id": "ep03_143",
    "who": "WICK",
    "text": "Then you're not looking for a way home. You're looking for him."
   },
   {
-   "id": "ep03_134",
+   "id": "ep03_144",
    "who": "TAKUTO",
    "text": "Yeah."
   },
   {
-   "id": "ep03_135",
+   "id": "ep03_145",
    "who": "WICK",
    "text": "That's a better thing to look for. That one, you can find."
   },
   {
-   "id": "ep03_136",
+   "id": "ep03_146",
    "who": "RIN",
    "text": "There. The flag. The core is at the bottom of the canyon."
   },
   {
-   "id": "ep03_137",
+   "id": "ep03_147",
    "who": "RIN",
    "text": "We camp here and climb down at first light."
   },
   {
-   "id": "ep03_138",
+   "id": "ep03_148",
    "who": "TAKUTO",
    "text": "Why not now?"
   },
   {
-   "id": "ep03_139",
+   "id": "ep03_149",
    "who": "RIN",
    "text": "Because things in the Wastes hunt by sound at night, and you two never stop talking."
   },
   {
-   "id": "ep03_140",
+   "id": "ep03_150",
    "who": "WICK",
    "text": "She's got us there."
   },
   {
-   "id": "ep03_141",
+   "id": "ep03_151",
    "who": "WICK",
    "text": "And then the vending machine ate my coin, so I kicked it, and the security guard..."
   },
   {
-   "id": "ep03_142",
+   "id": "ep03_152",
    "who": "WICK",
    "text": "Anyway, he never caught me. I was the fastest kid in Tennoji. Still am. Fear is a great coach.",
    "tts": "Anyway, he never caught me. I was the fastest kid in Ten-noh-jee. Still am. Fear is a great coach."
   },
   {
-   "id": "ep03_143",
+   "id": "ep03_153",
    "who": "TAKUTO",
    "text": "Do you miss it? Osaka?",
    "tts": "Do you miss it? Oh-sah-kah?"
   },
   {
-   "id": "ep03_144",
+   "id": "ep03_154",
    "who": "WICK",
    "text": "Every day. My mom ran a little okonomiyaki shop. Four tables. I used to flip the pancakes when she was tired."
   },
   {
-   "id": "ep03_145",
+   "id": "ep03_155",
    "who": "WICK",
    "text": "Sometimes I make them here. No flour that tastes right. No sauce. They're terrible."
   },
   {
-   "id": "ep03_146",
+   "id": "ep03_156",
    "who": "WICK",
    "text": "I make them anyway. So I don't forget the smell."
   },
   {
-   "id": "ep03_147",
+   "id": "ep03_157",
    "who": "TAKUTO",
    "text": "Make me one sometime."
   },
   {
-   "id": "ep03_148",
+   "id": "ep03_158",
    "who": "WICK",
    "text": "They're really bad."
   },
   {
-   "id": "ep03_149",
+   "id": "ep03_159",
    "who": "TAKUTO",
    "text": "I'll eat it anyway."
   },
   {
-   "id": "ep03_150",
+   "id": "ep03_160",
    "who": "WICK",
    "text": "...Okay. Okay! Deal! I knew I liked you."
   },
   {
-   "id": "ep03_151",
+   "id": "ep03_161",
    "who": "RIN",
    "text": "He's asleep."
   },
   {
-   "id": "ep03_152",
+   "id": "ep03_162",
    "who": "TAKUTO",
    "text": "He fell asleep in the middle of his own story."
   },
   {
-   "id": "ep03_153",
+   "id": "ep03_163",
    "who": "RIN",
    "text": "His head is still on fire. Is that safe?"
   },
   {
-   "id": "ep03_154",
+   "id": "ep03_164",
    "who": "TAKUTO",
    "text": "It kept us warm."
   },
   {
-   "id": "ep03_155",
+   "id": "ep03_165",
    "who": "RIN",
    "text": "...It did."
   },
   {
-   "id": "ep03_156",
+   "id": "ep03_166",
    "who": "TAKUTO",
    "text": "Nemu told me about your brother.",
    "tts": "Neh-moo told me about your brother."
   },
   {
-   "id": "ep03_157",
+   "id": "ep03_167",
    "who": "RIN",
    "text": "Nemu has a big mouth for someone who sleeps all day.",
    "tts": "Neh-moo has a big mouth for someone who sleeps all day."
   },
   {
-   "id": "ep03_158",
+   "id": "ep03_168",
    "who": "TAKUTO",
    "text": "I'm sorry."
   },
   {
-   "id": "ep03_159",
+   "id": "ep03_169",
    "who": "RIN",
    "text": "Don't be sorry. Be useful. That's what he would have said."
   },
   {
-   "id": "ep03_160",
+   "id": "ep03_170",
    "who": "RIN",
    "text": "He used to say a Hunter is just a person who stands between a Fiend and someone who can't run."
   },
   {
-   "id": "ep03_161",
+   "id": "ep03_171",
    "who": "TAKUTO",
    "text": "That's a good thing to be."
   },
   {
-   "id": "ep03_162",
+   "id": "ep03_172",
    "who": "RIN",
    "text": "It got him killed."
   },
   {
-   "id": "ep03_163",
+   "id": "ep03_173",
    "who": "TAKUTO",
    "text": "It saved somebody first, though. Didn't it?"
   },
   {
-   "id": "ep03_164",
+   "id": "ep03_174",
    "who": "RIN",
    "text": "...A whole caravan. Eleven people."
   },
   {
-   "id": "ep03_165",
+   "id": "ep03_175",
    "who": "TAKUTO",
    "text": "Then he was right."
   },
   {
-   "id": "ep03_166",
+   "id": "ep03_176",
    "who": "RIN",
    "text": "Why do you even want this? You could stay in Ashford, sweep floors, live a quiet life."
   },
   {
-   "id": "ep03_167",
+   "id": "ep03_177",
    "who": "TAKUTO",
    "text": "Because the axe came out for me. That has to be for something."
   },
   {
-   "id": "ep03_168",
+   "id": "ep03_178",
    "who": "AKURO",
    "text": "It was for something, boy. For me.",
    "mono": true
   },
   {
-   "id": "ep03_169",
+   "id": "ep03_179",
    "who": "RIN",
    "text": "You do that a lot. Go quiet and look at the axe."
   },
   {
-   "id": "ep03_170",
+   "id": "ep03_180",
    "who": "TAKUTO",
    "text": "It talks."
   },
   {
-   "id": "ep03_171",
+   "id": "ep03_181",
    "who": "RIN",
    "text": "Very funny."
   },
   {
-   "id": "ep03_172",
+   "id": "ep03_182",
    "who": "TAKUTO",
    "text": "...Yeah. Very funny."
   },
   {
-   "id": "ep03_173",
+   "id": "ep03_183",
    "who": "WICK",
    "text": "Wh-what was that?"
   },
   {
-   "id": "ep03_174",
+   "id": "ep03_184",
    "who": "RIN",
    "text": "The ground. Something under the ground."
   },
   {
-   "id": "ep03_175",
+   "id": "ep03_185",
    "who": "WICK",
    "text": "That is NOT a Lesser Fiend!"
   },
   {
-   "id": "ep03_176",
+   "id": "ep03_186",
    "who": "RIN",
    "text": "A Stonehide Behemoth. A Greater Fiend. In the exam zone."
   },
   {
-   "id": "ep03_177",
+   "id": "ep03_187",
    "who": "TAKUTO",
    "text": "The examiner said fire the flare and run."
   },
   {
-   "id": "ep03_178",
+   "id": "ep03_188",
    "who": "RIN",
    "text": "It's between us and the canyon exit."
   },
   {
-   "id": "ep03_179",
+   "id": "ep03_189",
    "who": "WICK",
    "text": "So we fire the flare and run... somewhere else?"
   },
   {
-   "id": "ep03_180",
+   "id": "ep03_190",
    "who": "RIN",
    "text": "Move!"
   },
   {
-   "id": "ep03_181",
+   "id": "ep03_191",
    "who": "TAKUTO",
    "text": "Its skin is rock. Swords won't cut it."
   },
   {
-   "id": "ep03_182",
+   "id": "ep03_192",
    "who": "RIN",
    "text": "Swords won't. You might."
   },
   {
-   "id": "ep03_183",
+   "id": "ep03_193",
    "who": "TAKUTO",
    "text": "You're trusting me?"
   },
   {
-   "id": "ep03_184",
+   "id": "ep03_194",
    "who": "RIN",
    "text": "I'm trusting the axe. Don't make it weird."
   },
   {
-   "id": "ep03_185",
+   "id": "ep03_195",
    "who": "TAKUTO",
    "text": "Break!"
   },
   {
-   "id": "ep03_186",
+   "id": "ep03_196",
    "who": "WICK",
    "text": "He cracked it! He cracked the rock!"
   },
   {
-   "id": "ep03_187",
+   "id": "ep03_197",
    "who": "RIN",
    "text": "Takuto!",
    "tts": "Tah-koo-toh!"
   },
   {
-   "id": "ep03_188",
+   "id": "ep03_198",
    "who": "TAKUTO",
    "text": "I'm fine. I tried to block again."
   },
   {
-   "id": "ep03_189",
+   "id": "ep03_199",
    "who": "RIN",
    "text": "Stop trying to block!"
   },
   {
-   "id": "ep03_190",
+   "id": "ep03_200",
    "who": "RIN",
    "text": "Red Thread! Its legs are bound! Wick, its eyes!"
   },
   {
-   "id": "ep03_191",
+   "id": "ep03_201",
    "who": "WICK",
    "text": "Will-o'-Wisp! Only burns what I tell it to! Burn its eyes!"
   },
   {
-   "id": "ep03_192",
+   "id": "ep03_202",
    "who": "RIN",
    "text": "It can't see and it can't move! Now, Takuto!",
    "tts": "It can't see and it can't move! Now, Tah-koo-toh!"
   },
   {
-   "id": "ep03_193",
+   "id": "ep03_203",
    "who": "AKURO",
    "text": "Ah. Finally, something worth breaking.",
    "mono": true
   },
   {
-   "id": "ep03_194",
+   "id": "ep03_204",
    "who": "TAKUTO",
    "text": "Ruinbreaker!"
   },
   {
-   "id": "ep03_195",
-   "who": "WICK",
-   "text": "We're alive. We're ALIVE!"
-  },
-  {
-   "id": "ep03_196",
-   "who": "TAKUTO",
-   "text": "Mostly."
-  },
-  {
-   "id": "ep03_197",
-   "who": "RIN",
-   "text": "You're bleeding."
-  },
-  {
-   "id": "ep03_198",
-   "who": "TAKUTO",
-   "text": "You're worried."
-  },
-  {
-   "id": "ep03_199",
-   "who": "RIN",
-   "text": "I'm calculating whether I pass if my partner bleeds to death."
-  },
-  {
-   "id": "ep03_200",
-   "who": "TAKUTO",
-   "text": "And?"
-  },
-  {
-   "id": "ep03_201",
-   "who": "RIN",
-   "text": "Don't bleed to death."
-  },
-  {
-   "id": "ep03_202",
-   "who": "WICK",
-   "text": "Rin. That's the nicest thing you've ever said."
-  },
-  {
-   "id": "ep03_203",
-   "who": "RIN",
-   "text": "Nobody asked you, fire boy."
-  },
-  {
-   "id": "ep03_204",
-   "who": "EXAMINER",
-   "text": "Applicants! We saw the flare... you didn't fire it. We saw the explosion."
-  },
-  {
    "id": "ep03_205",
-   "who": "EXAMINER",
-   "text": "Is that... a Stonehide Behemoth? You killed a Greater Fiend? You're applicants!"
+   "who": "RIN",
+   "text": "Hold still. Your arm is open to the bone."
   },
   {
    "id": "ep03_206",
    "who": "TAKUTO",
-   "text": "It was in the way."
+   "text": "What are you doing?"
   },
   {
    "id": "ep03_207",
    "who": "RIN",
-   "text": "He says that."
+   "text": "Stitching it. With thread. What does it look like?"
   },
   {
    "id": "ep03_208",
-   "who": "EXAMINER",
-   "text": "Greater Fiends don't come into the exam zone. We clear it every season. Something drove this one here."
+   "who": "TAKUTO",
+   "text": "Your Brand thread?"
   },
   {
    "id": "ep03_209",
    "who": "RIN",
-   "text": "Drove it? Fiends don't take orders."
+   "text": "It ties two things together so they move as one. Skin is two things. Usually."
   },
   {
    "id": "ep03_210",
-   "who": "EXAMINER",
-   "text": "They don't. That's what worries me."
+   "who": "TAKUTO",
+   "text": "...That actually works?"
   },
   {
    "id": "ep03_211",
-   "who": "EXAMINER",
-   "text": "You pass. All three of you. Hunters, rank F, effective immediately. Congratulations."
+   "who": "RIN",
+   "text": "My brother came home cut up so often I got very good at it. Hold. Still."
   },
   {
    "id": "ep03_212",
-   "who": "WICK",
-   "text": "Rank F! I'm a real Hunter! Mom! I'm a Hunter!"
+   "who": "TAKUTO",
+   "text": "Ow."
   },
   {
    "id": "ep03_213",
-   "who": "TAKUTO",
-   "text": "Rank F. For killing a Greater Fiend."
+   "who": "RIN",
+   "text": "You took a Behemoth to the chest and you say ow to a needle."
   },
   {
    "id": "ep03_214",
-   "who": "RIN",
-   "text": "Everyone starts at F. Even my brother."
+   "who": "TAKUTO",
+   "text": "The Behemoth didn't enjoy it."
   },
   {
    "id": "ep03_215",
    "who": "RIN",
-   "text": "...You're not completely useless, Skyfallen."
+   "text": "...I am not enjoying it."
   },
   {
    "id": "ep03_216",
    "who": "TAKUTO",
-   "text": "That's the nicest thing you've ever said."
+   "text": "You are smiling."
   },
   {
    "id": "ep03_217",
    "who": "RIN",
-   "text": "Don't get used to it."
+   "text": "It is the firelight. Done. Don't bend it until morning."
   },
   {
    "id": "ep03_218",
    "who": "TAKUTO",
-   "text": "Wick. How did your Brand wake up?"
+   "text": "Thank you, Rin."
   },
   {
    "id": "ep03_219",
+   "who": "RIN",
+   "text": "Don't thank me. Be useful."
+  },
+  {
+   "id": "ep03_220",
+   "who": "WICK",
+   "text": "We're alive. We're ALIVE!"
+  },
+  {
+   "id": "ep03_221",
+   "who": "TAKUTO",
+   "text": "Mostly."
+  },
+  {
+   "id": "ep03_222",
+   "who": "RIN",
+   "text": "You're bleeding."
+  },
+  {
+   "id": "ep03_223",
+   "who": "TAKUTO",
+   "text": "You're worried."
+  },
+  {
+   "id": "ep03_224",
+   "who": "RIN",
+   "text": "I'm calculating whether I pass if my partner bleeds to death."
+  },
+  {
+   "id": "ep03_225",
+   "who": "TAKUTO",
+   "text": "And?"
+  },
+  {
+   "id": "ep03_226",
+   "who": "RIN",
+   "text": "Don't bleed to death."
+  },
+  {
+   "id": "ep03_227",
+   "who": "WICK",
+   "text": "Rin. That's the nicest thing you've ever said."
+  },
+  {
+   "id": "ep03_228",
+   "who": "RIN",
+   "text": "Nobody asked you, fire boy."
+  },
+  {
+   "id": "ep03_229",
+   "who": "EXAMINER",
+   "text": "Applicants! We saw the flare... you didn't fire it. We saw the explosion."
+  },
+  {
+   "id": "ep03_230",
+   "who": "EXAMINER",
+   "text": "Is that... a Stonehide Behemoth? You killed a Greater Fiend? You're applicants!"
+  },
+  {
+   "id": "ep03_231",
+   "who": "TAKUTO",
+   "text": "It was in the way."
+  },
+  {
+   "id": "ep03_232",
+   "who": "RIN",
+   "text": "He says that."
+  },
+  {
+   "id": "ep03_233",
+   "who": "EXAMINER",
+   "text": "Greater Fiends don't come into the exam zone. We clear it every season. Something drove this one here."
+  },
+  {
+   "id": "ep03_234",
+   "who": "RIN",
+   "text": "Drove it? Fiends don't take orders."
+  },
+  {
+   "id": "ep03_235",
+   "who": "EXAMINER",
+   "text": "They don't. That's what worries me."
+  },
+  {
+   "id": "ep03_236",
+   "who": "EXAMINER",
+   "text": "You pass. All three of you. Hunters, rank F, effective immediately. Congratulations."
+  },
+  {
+   "id": "ep03_237",
+   "who": "WICK",
+   "text": "Rank F! I'm a real Hunter! Mom! I'm a Hunter!"
+  },
+  {
+   "id": "ep03_238",
+   "who": "TAKUTO",
+   "text": "Rank F. For killing a Greater Fiend."
+  },
+  {
+   "id": "ep03_239",
+   "who": "RIN",
+   "text": "Everyone starts at F. Even my brother."
+  },
+  {
+   "id": "ep03_240",
+   "who": "RIN",
+   "text": "...You're not completely useless, Skyfallen."
+  },
+  {
+   "id": "ep03_241",
+   "who": "TAKUTO",
+   "text": "That's the nicest thing you've ever said."
+  },
+  {
+   "id": "ep03_242",
+   "who": "RIN",
+   "text": "Don't get used to it."
+  },
+  {
+   "id": "ep03_243",
+   "who": "TAKUTO",
+   "text": "Wick. How did your Brand wake up?"
+  },
+  {
+   "id": "ep03_244",
    "who": "WICK",
    "text": "You really want to know? It is not a cool story."
   },
   {
-   "id": "ep03_220",
+   "id": "ep03_245",
    "who": "TAKUTO",
    "text": "Mine was a girl dying in a graveyard. Mine is not a cool story either."
   },
   {
-   "id": "ep03_221",
+   "id": "ep03_246",
    "who": "WICK",
    "text": "My first winter here, I got lost in the Wastes. No coat. Just my hoodie. Three days."
   },
   {
-   "id": "ep03_222",
+   "id": "ep03_247",
    "who": "WICK",
    "text": "On the third night, I couldn't feel my hands. I lay down in the sand and I thought, okay. This is it. I just want to be warm one more time."
   },
   {
-   "id": "ep03_223",
+   "id": "ep03_248",
    "who": "WICK",
    "text": "And then I was. My whole head went up like a gas stove. Blue. I could see for a mile."
   },
   {
-   "id": "ep03_224",
+   "id": "ep03_249",
    "who": "TAKUTO",
    "text": "You wanted to be warm."
   },
   {
-   "id": "ep03_225",
+   "id": "ep03_250",
    "who": "WICK",
    "text": "A Brand is what you want most, at the moment you are about to die. That is what Valentine told me."
   },
   {
-   "id": "ep03_226",
+   "id": "ep03_251",
    "who": "WICK",
    "text": "I wanted to be warm. You wanted... what did you want?"
   },
   {
-   "id": "ep03_227",
+   "id": "ep03_252",
    "who": "TAKUTO",
    "text": "...To break the thing that was killing her."
   },
   {
-   "id": "ep03_228",
+   "id": "ep03_253",
    "who": "WICK",
    "text": "Huh. Yeah. That tracks."
   },
   {
-   "id": "ep03_229",
+   "id": "ep03_254",
    "who": "RIN",
    "text": "Mine was a thread. I wanted to hold on to something that was falling."
   },
   {
-   "id": "ep03_230",
+   "id": "ep03_255",
    "who": "WICK",
    "text": "...Okay, so that is the saddest one. Rin wins."
   },
   {
-   "id": "ep03_231",
+   "id": "ep03_256",
    "who": "RIN",
    "text": "It is not a contest, Wick."
   },
   {
-   "id": "ep03_232",
+   "id": "ep03_257",
    "who": "WICK",
    "text": "Everything is a contest when you are rank F."
   },
   {
-   "id": "ep03_233",
+   "id": "ep03_258",
    "who": "NEMU",
    "text": "Welcome back. I made a sign."
   },
   {
-   "id": "ep03_234",
+   "id": "ep03_259",
    "who": "TAKUTO",
    "text": "It says welcome back, hunter's. With an apostrophe."
   },
   {
-   "id": "ep03_235",
+   "id": "ep03_260",
    "who": "NEMU",
    "text": "I ran out of paint for the rest of the plural."
   },
   {
-   "id": "ep03_236",
+   "id": "ep03_261",
    "who": "WICK",
    "text": "You made us a sign? Nobody has ever made me a sign!"
   },
   {
-   "id": "ep03_237",
+   "id": "ep03_262",
    "who": "NEMU",
    "text": "I didn't make it for you. Who are you? Your head is on fire."
   },
   {
-   "id": "ep03_238",
+   "id": "ep03_263",
    "who": "WICK",
    "text": "Hiro Aoyama! Osaka! Hunter, rank F! Everyone calls me Wick!",
    "tts": "Hiro Ah-oh-yah-mah! Oh-sah-kah! Hunter, rank F! Everyone calls me Wick!"
   },
   {
-   "id": "ep03_239",
+   "id": "ep03_264",
    "who": "NEMU",
    "text": "...You can stand under the sign too. It is a big sign."
   },
   {
-   "id": "ep03_240",
+   "id": "ep03_265",
    "who": "RIN",
    "text": "Did you wait here the whole time?"
   },
   {
-   "id": "ep03_241",
+   "id": "ep03_266",
    "who": "NEMU",
    "text": "I slept here the whole time. Waiting is just sleeping where people can see you."
   },
   {
-   "id": "ep03_242",
+   "id": "ep03_267",
    "who": "TAKUTO",
    "text": "Thanks, Nemu.",
    "tts": "Thanks, Neh-moo."
   },
   {
-   "id": "ep03_243",
+   "id": "ep03_268",
    "who": "NEMU",
    "text": "Mm. You smell like rocks. Take a bath before the ceremony."
   },
   {
-   "id": "ep03_244",
+   "id": "ep03_269",
    "who": "VALENTINE",
    "text": "Three applicants. One Greater Fiend. Zero dead. I may cry."
   },
   {
-   "id": "ep03_245",
+   "id": "ep03_270",
    "who": "SIEG",
    "text": "She cried at the last ceremony too."
   },
   {
-   "id": "ep03_246",
+   "id": "ep03_271",
    "who": "VALENTINE",
    "text": "That was allergies!"
   },
   {
-   "id": "ep03_247",
+   "id": "ep03_272",
    "who": "CLERK",
    "text": "Kirishima Takuto, Hunter rank F. Rin Ashveil, Hunter rank C, commended. Hiro Aoyama, Hunter rank F.",
    "tts": "Kee-ree-shee-mah Tah-koo-toh, Hunter rank F. Rin Ash-vale, Hunter rank C, commended. Hiro Ah-oh-yah-mah, Hunter rank F."
   },
   {
-   "id": "ep03_248",
+   "id": "ep03_273",
    "who": "RIN",
    "text": "Commended?"
   },
   {
-   "id": "ep03_249",
+   "id": "ep03_274",
    "who": "VALENTINE",
    "text": "For keeping two Skyfallen alive in the Wastes. That is harder than killing a Behemoth, darling."
   },
   {
-   "id": "ep03_250",
+   "id": "ep03_275",
    "who": "WICK",
    "text": "Hey!"
   },
   {
-   "id": "ep03_251",
+   "id": "ep03_276",
    "who": "TAKUTO",
    "text": "She's not wrong."
   },
   {
-   "id": "ep03_252",
+   "id": "ep03_277",
    "who": "SIEG",
    "text": "Takuto. The examiner's report says something drove that Behemoth into the zone.",
    "tts": "Tah-koo-toh. The examiner's report says something drove that Behemoth into the zone."
   },
   {
-   "id": "ep03_253",
+   "id": "ep03_278",
    "who": "TAKUTO",
    "text": "The axe said the same thing."
   },
   {
-   "id": "ep03_254",
+   "id": "ep03_279",
    "who": "SIEG",
    "text": "...The axe said."
   },
   {
-   "id": "ep03_255",
+   "id": "ep03_280",
    "who": "TAKUTO",
    "text": "Forget it."
   },
   {
-   "id": "ep03_256",
+   "id": "ep03_281",
    "who": "SIEG",
    "text": "No. I won't. Next time it says something, you tell me."
   },
   {
-   "id": "ep03_257",
+   "id": "ep03_282",
    "who": "VALENTINE",
    "text": "And bring Tofu a present. He sulked for two days after the error."
   },
   {
-   "id": "ep03_258",
+   "id": "ep03_283",
    "who": "VALENTINE",
    "text": "Two Skyfallen on one license list. In one season. That has never happened, Sieg.",
    "tts": "Two Skyfallen on one license list. In one season. That has never happened, Seeg."
   },
   {
-   "id": "ep03_259",
+   "id": "ep03_284",
    "who": "SIEG",
    "text": "Wick has been here three years. That only leaves one new one."
   },
   {
-   "id": "ep03_260",
+   "id": "ep03_285",
    "who": "VALENTINE",
    "text": "Do you know what the Guild does with its Skyfallen reports? It sends them to Saint Lumen. Sealed. And nothing comes back."
   },
   {
-   "id": "ep03_261",
+   "id": "ep03_286",
    "who": "SIEG",
    "text": "Nothing ever?"
   },
   {
-   "id": "ep03_262",
+   "id": "ep03_287",
    "who": "VALENTINE",
    "text": "Once. A boy with black hair, two winters ago. The Order sent a golden carriage for him personally."
   },
   {
-   "id": "ep03_263",
+   "id": "ep03_288",
    "who": "SIEG",
    "text": "Haruki. Takuto's friend.",
    "tts": "Hah-roo-kee. Tah-koo-toh's friend."
   },
   {
-   "id": "ep03_264",
+   "id": "ep03_289",
    "who": "VALENTINE",
    "text": "If the Saint sends a carriage for Takuto too, I want to know why before he gets in.",
    "tts": "If the Saint sends a carriage for Tah-koo-toh too, I want to know why before he gets in."
   },
   {
-   "id": "ep03_265",
+   "id": "ep03_290",
    "who": "SIEG",
    "text": "He would get in. To see his friend, he would get into anything."
   },
   {
-   "id": "ep03_266",
+   "id": "ep03_291",
    "who": "VALENTINE",
    "text": "Then we had better make him strong enough to get out again."
   },
   {
-   "id": "ep03_267",
+   "id": "ep03_292",
    "who": "SIEG",
    "text": "Gideon."
   },
   {
-   "id": "ep03_268",
+   "id": "ep03_293",
    "who": "VALENTINE",
    "text": "Gideon. I'll write to him tonight. He loves a hopeless project."
   },
   {
-   "id": "ep03_269",
+   "id": "ep03_294",
    "who": "NEMU",
    "text": "Rank F. Look at you."
   },
   {
-   "id": "ep03_270",
+   "id": "ep03_295",
    "who": "TAKUTO",
    "text": "The clerk drew a star on mine."
   },
   {
-   "id": "ep03_271",
+   "id": "ep03_296",
    "who": "NEMU",
    "text": "And a little crown."
   },
   {
-   "id": "ep03_272",
+   "id": "ep03_297",
    "who": "TAKUTO",
    "text": "Valentine made her."
   },
   {
-   "id": "ep03_273",
+   "id": "ep03_298",
    "who": "WICK",
    "text": "Hey, Takuto. When you find your friend... can I come?",
    "tts": "Hey, Tah-koo-toh. When you find your friend... can I come?"
   },
   {
-   "id": "ep03_274",
+   "id": "ep03_299",
    "who": "TAKUTO",
    "text": "Why?"
   },
   {
-   "id": "ep03_275",
+   "id": "ep03_300",
    "who": "WICK",
    "text": "Because I want to see somebody get what they're looking for. Just once. It'd be nice."
   },
   {
-   "id": "ep03_276",
+   "id": "ep03_301",
    "who": "TAKUTO",
    "text": "...Yeah. You can come."
   },
   {
-   "id": "ep03_277",
+   "id": "ep03_302",
    "who": "NEMU",
    "text": "Hm. You're collecting strays."
   },
   {
-   "id": "ep03_278",
+   "id": "ep03_303",
    "who": "TAKUTO",
    "text": "Says the girl I found on the train tracks."
   },
   {
-   "id": "ep03_279",
+   "id": "ep03_304",
    "who": "NEMU",
    "text": "I found you."
   },
   {
-   "id": "ep03_280",
+   "id": "ep03_305",
    "who": "AKURO",
    "text": "Something herded that beast to you, boy. Something that knows exactly what I am.",
    "mono": true
   },
   {
-   "id": "ep03_281",
+   "id": "ep03_306",
    "who": "TAKUTO",
    "text": "...Who?"
   },
   {
-   "id": "ep03_282",
+   "id": "ep03_307",
    "who": "AKURO",
    "text": "Someone who smells like static.",
    "mono": true
   },
   {
-   "id": "ep03_283",
+   "id": "ep03_308",
    "who": "SABLE",
    "text": "It broke a Behemoth on his third day."
   },
   {
-   "id": "ep03_284",
+   "id": "ep03_309",
    "who": "SABLE",
    "text": "...Faster than I hoped. Let's give the Guild something to worry about."
   },
   {
-   "id": "ep03_285",
+   "id": "ep03_310",
    "who": "TAKUTO",
    "text": "Next time: the Guild's artificer builds me a chain harness."
   },
   {
-   "id": "ep03_286",
+   "id": "ep03_311",
    "who": "TAKUTO",
    "text": "It lets my axe block exactly once. Once."
   },
   {
-   "id": "ep03_287",
+   "id": "ep03_312",
    "who": "TAKUTO",
    "text": "Then somebody sets the forge on fire, and a man in a black suit is smiling in the smoke."
   },
   {
-   "id": "ep03_288",
+   "id": "ep03_313",
    "who": "TAKUTO",
    "text": "Episode four. Cogwheel Heart."
   }

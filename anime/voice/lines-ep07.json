@@ -1,0 +1,1540 @@
+{
+ "cast": {
+  "TAKUTO": {
+   "voice": [
+    [
+     "am_michael",
+     0.6
+    ],
+    [
+     "am_puck",
+     0.4
+    ]
+   ],
+   "speed": 1.02
+  },
+  "NEMU": {
+   "voice": [
+    [
+     "af_nicole",
+     0.65
+    ],
+    [
+     "af_bella",
+     0.35
+    ]
+   ],
+   "speed": 1.02
+  },
+  "SIEG": {
+   "voice": [
+    [
+     "bm_george",
+     1
+    ]
+   ],
+   "speed": 1.06
+  },
+  "AKURO": {
+   "voice": [
+    [
+     "am_fenrir",
+     1
+    ]
+   ],
+   "speed": 0.8,
+   "fx": "demon"
+  },
+  "RIN": {
+   "voice": [
+    [
+     "af_kore",
+     0.6
+    ],
+    [
+     "bf_emma",
+     0.4
+    ]
+   ],
+   "speed": 1.05
+  },
+  "VALENTINE": {
+   "voice": [
+    [
+     "bf_isabella",
+     0.55
+    ],
+    [
+     "af_nova",
+     0.45
+    ]
+   ],
+   "speed": 1.06
+  },
+  "CLERK": {
+   "voice": [
+    [
+     "af_aoede",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "CROWD": {
+   "voice": [
+    [
+     "am_echo",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "CROWD2": {
+   "voice": [
+    [
+     "af_river",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "VENDOR": {
+   "voice": [
+    [
+     "bm_daniel",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "HUNTER": {
+   "voice": [
+    [
+     "am_onyx",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "SABLE": {
+   "voice": [
+    [
+     "bm_fable",
+     1
+    ]
+   ],
+   "speed": 0.92,
+   "fx": "static"
+  },
+  "WICK": {
+   "voice": [
+    [
+     "am_puck",
+     0.5
+    ],
+    [
+     "am_liam",
+     0.5
+    ]
+   ],
+   "speed": 1.12
+  },
+  "GIDEON": {
+   "voice": [
+    [
+     "bm_lewis",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "EXAMINER": {
+   "voice": [
+    [
+     "bf_alice",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "HARUKI": {
+   "voice": [
+    [
+     "am_liam",
+     0.6
+    ],
+    [
+     "am_eric",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "LUCIEN": {
+   "voice": [
+    [
+     "bm_daniel",
+     0.5
+    ],
+    [
+     "am_adam",
+     0.5
+    ]
+   ],
+   "speed": 0.94
+  },
+  "VESPER": {
+   "voice": [
+    [
+     "bf_lily",
+     0.6
+    ],
+    [
+     "af_sky",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "KUROZANE": {
+   "voice": [
+    [
+     "am_onyx",
+     0.7
+    ],
+    [
+     "am_fenrir",
+     0.3
+    ]
+   ],
+   "speed": 0.9
+  },
+  "OGRE": {
+   "voice": [
+    [
+     "am_santa",
+     1
+    ]
+   ],
+   "speed": 0.9,
+   "fx": "demon"
+  },
+  "NARRATOR": {
+   "voice": [
+    [
+     "bm_george",
+     0.4
+    ],
+    [
+     "am_adam",
+     0.6
+    ]
+   ],
+   "speed": 0.98
+  }
+ },
+ "lines": [
+  {
+   "id": "ep07_001",
+   "who": "TAKUTO",
+   "text": "Previously. Forty Red Giants marched on Fort Cinder, in step, like soldiers.",
+   "mono": true
+  },
+  {
+   "id": "ep07_002",
+   "who": "TAKUTO",
+   "text": "I opened the door in the axe. Just a crack. Akuro looked out through my eyes.",
+   "tts": "I opened the door in the axe. Just a crack. Ah-koo-roh looked out through my eyes.",
+   "mono": true
+  },
+  {
+   "id": "ep07_003",
+   "who": "TAKUTO",
+   "text": "Rin got hurt. I did that.",
+   "mono": true
+  },
+  {
+   "id": "ep07_004",
+   "who": "TAKUTO",
+   "text": "And the Guild executioner told me she always comes.",
+   "mono": true
+  },
+  {
+   "id": "ep07_005",
+   "who": "OGRE",
+   "text": "Run. Run, little ones. Do not look back."
+  },
+  {
+   "id": "ep07_006",
+   "who": "OGRE",
+   "text": "The grey is in the trees."
+  },
+  {
+   "id": "ep07_007",
+   "who": "OGRE",
+   "text": "The grey that walks like a man."
+  },
+  {
+   "id": "ep07_008",
+   "who": "RIN",
+   "text": "I am walking. I am not riding in that cart for one more hour."
+  },
+  {
+   "id": "ep07_009",
+   "who": "SIEG",
+   "text": "The medic said ten days."
+  },
+  {
+   "id": "ep07_010",
+   "who": "RIN",
+   "text": "The medic said a lot of things. He also said Wick was a lamp."
+  },
+  {
+   "id": "ep07_011",
+   "who": "WICK",
+   "text": "He did! He tried to hang a pot over me!"
+  },
+  {
+   "id": "ep07_012",
+   "who": "SIEG",
+   "text": "Two days, Nemu. You called it.",
+   "tts": "Two days, Neh-moo. You called it."
+  },
+  {
+   "id": "ep07_013",
+   "who": "NEMU",
+   "text": "I always call it. I just never say it loud enough."
+  },
+  {
+   "id": "ep07_014",
+   "who": "RIN",
+   "text": "...Why is he walking so far behind?"
+  },
+  {
+   "id": "ep07_015",
+   "who": "NEMU",
+   "text": "He's been walking behind since the fort. Ten steps. Always ten."
+  },
+  {
+   "id": "ep07_016",
+   "who": "RIN",
+   "text": "Takuto! Walk with us!",
+   "tts": "Tah-koo-toh! Walk with us!"
+  },
+  {
+   "id": "ep07_017",
+   "who": "TAKUTO",
+   "text": "I'm fine here."
+  },
+  {
+   "id": "ep07_018",
+   "who": "RIN",
+   "text": "You are ten steps away so you can swing the axe without hitting anybody. I know what you are doing."
+  },
+  {
+   "id": "ep07_019",
+   "who": "TAKUTO",
+   "text": "...Eleven, then."
+  },
+  {
+   "id": "ep07_020",
+   "who": "RIN",
+   "text": "Idiot."
+  },
+  {
+   "id": "ep07_021",
+   "who": "NEMU",
+   "text": "I'll walk with him. Ten steps behind is a good place for a nap anyway."
+  },
+  {
+   "id": "ep07_022",
+   "who": "SIEG",
+   "text": "Nemu. Wait. Look at the road.",
+   "tts": "Neh-moo. Wait. Look at the road."
+  },
+  {
+   "id": "ep07_023",
+   "who": "WICK",
+   "text": "Feathers? Big ones. Red and black."
+  },
+  {
+   "id": "ep07_024",
+   "who": "SIEG",
+   "text": "Plume Ogres. The same feathers we found at Marrowmere."
+  },
+  {
+   "id": "ep07_025",
+   "who": "RIN",
+   "text": "Plume Ogres live deep in the Greatwood. They never come out to the roads."
+  },
+  {
+   "id": "ep07_026",
+   "who": "SIEG",
+   "text": "Never is a word that keeps getting broken lately."
+  },
+  {
+   "id": "ep07_027",
+   "who": "NEMU",
+   "text": "Can I tell you what dying feels like?"
+  },
+  {
+   "id": "ep07_028",
+   "who": "TAKUTO",
+   "text": "...You want to?"
+  },
+  {
+   "id": "ep07_029",
+   "who": "NEMU",
+   "text": "Nobody ever asks. So I want to."
+  },
+  {
+   "id": "ep07_030",
+   "who": "NEMU",
+   "text": "First it is cold. Like falling into the river in winter. Then it is warm, like a blanket. Then nothing for a while."
+  },
+  {
+   "id": "ep07_031",
+   "who": "NEMU",
+   "text": "Then you wake up, and you are very, very hungry. And everyone around you is crying."
+  },
+  {
+   "id": "ep07_032",
+   "who": "TAKUTO",
+   "text": "That is why you sleep so much."
+  },
+  {
+   "id": "ep07_033",
+   "who": "NEMU",
+   "text": "Sleeping is the warm part, without the cold part first. It is cheating."
+  },
+  {
+   "id": "ep07_034",
+   "who": "TAKUTO",
+   "text": "...At the fort. You shouted my name. I heard it from very far away."
+  },
+  {
+   "id": "ep07_035",
+   "who": "NEMU",
+   "text": "I am very loud when I want to be. I just almost never want to."
+  },
+  {
+   "id": "ep07_036",
+   "who": "NEMU",
+   "text": "If you go red again, I will shout again. Every time. Even if you are a hundred steps behind."
+  },
+  {
+   "id": "ep07_037",
+   "who": "TAKUTO",
+   "text": "And if I don't hear you?"
+  },
+  {
+   "id": "ep07_038",
+   "who": "NEMU",
+   "text": "Then I will bite you."
+  },
+  {
+   "id": "ep07_039",
+   "who": "TAKUTO",
+   "text": "...Fair."
+  },
+  {
+   "id": "ep07_040",
+   "who": "CROWD",
+   "text": "Hunters! On the road! Hunters!"
+  },
+  {
+   "id": "ep07_041",
+   "who": "CROWD2",
+   "text": "Finally. Somebody fetch the elder."
+  },
+  {
+   "id": "ep07_042",
+   "who": "HUNTER",
+   "text": "Welcome, Hunters. I am Abel, elder of this ford. You came about the ogres?"
+  },
+  {
+   "id": "ep07_043",
+   "who": "HUNTER",
+   "text": "Three raids in four nights. They take grain. Only grain. And they burned the mill."
+  },
+  {
+   "id": "ep07_044",
+   "who": "SIEG",
+   "text": "Anyone hurt?"
+  },
+  {
+   "id": "ep07_045",
+   "who": "HUNTER",
+   "text": "Old Merrick broke his leg running. And the Pell boy was knocked into the river. No one dead. Yet."
+  },
+  {
+   "id": "ep07_046",
+   "who": "CROWD2",
+   "text": "Yet!"
+  },
+  {
+   "id": "ep07_047",
+   "who": "WICK",
+   "text": "Everybody keeps saying yet. I really hate yet."
+  },
+  {
+   "id": "ep07_048",
+   "who": "NEMU",
+   "text": "Yet is just tomorrow being rude."
+  },
+  {
+   "id": "ep07_049",
+   "who": "RIN",
+   "text": "Plume Ogres eat meat. Why would they steal grain?"
+  },
+  {
+   "id": "ep07_050",
+   "who": "SIEG",
+   "text": "Because whatever they are running from does not let them hunt."
+  },
+  {
+   "id": "ep07_051",
+   "who": "TAKUTO",
+   "text": "Running from what?"
+  },
+  {
+   "id": "ep07_052",
+   "who": "SIEG",
+   "text": "That's the question. And the village wants an answer with a sword in it."
+  },
+  {
+   "id": "ep07_053",
+   "who": "HUNTER",
+   "text": "Kill them, Hunters. Whatever the Guild charges. Before they come back."
+  },
+  {
+   "id": "ep07_054",
+   "who": "SIEG",
+   "text": "We will stand watch tonight. And then we will see."
+  },
+  {
+   "id": "ep07_055",
+   "who": "WICK",
+   "text": "Real flour. Real wheat flour. Fresh eggs. Cabbage. Takuto. TAKUTO.",
+   "tts": "Real flour. Real wheat flour. Fresh eggs. Cabbage. Tah-koo-toh. TAKUTO."
+  },
+  {
+   "id": "ep07_056",
+   "who": "TAKUTO",
+   "text": "You can make it."
+  },
+  {
+   "id": "ep07_057",
+   "who": "WICK",
+   "text": "I can make it! Okonomiyaki! Proper! Almost proper! No sauce, but almost!"
+  },
+  {
+   "id": "ep07_058",
+   "who": "WICK",
+   "text": "Will-o'-Wisp, very gently. Only the pan. Only the PAN."
+  },
+  {
+   "id": "ep07_059",
+   "who": "WICK",
+   "text": "And... flip!"
+  },
+  {
+   "id": "ep07_060",
+   "who": "NEMU",
+   "text": "It is a pancake with cabbage in it."
+  },
+  {
+   "id": "ep07_061",
+   "who": "WICK",
+   "text": "It is my mother's pancake with cabbage in it. Eat it with respect."
+  },
+  {
+   "id": "ep07_062",
+   "who": "NEMU",
+   "text": "...Mm. Oh. Oh no. It's good."
+  },
+  {
+   "id": "ep07_063",
+   "who": "SIEG",
+   "text": "It IS good. Wick. Why have you been feeding us burned rabbit for a month?"
+  },
+  {
+   "id": "ep07_064",
+   "who": "WICK",
+   "text": "Because nobody gave me flour!"
+  },
+  {
+   "id": "ep07_065",
+   "who": "TAKUTO",
+   "text": "...It tastes like Osaka.",
+   "tts": "...It tastes like Oh-sah-kah."
+  },
+  {
+   "id": "ep07_066",
+   "who": "WICK",
+   "text": "You've never been to Osaka.",
+   "tts": "You've never been to Oh-sah-kah."
+  },
+  {
+   "id": "ep07_067",
+   "who": "TAKUTO",
+   "text": "It tastes like what I thought Osaka would taste like.",
+   "tts": "It tastes like what I thought Oh-sah-kah would taste like."
+  },
+  {
+   "id": "ep07_068",
+   "who": "WICK",
+   "text": "...That's the nicest thing anyone's said to me in three years. Shut up. Eat."
+  },
+  {
+   "id": "ep07_069",
+   "who": "RIN",
+   "text": "Takuto. Pass the salt.",
+   "tts": "Tah-koo-toh. Pass the salt."
+  },
+  {
+   "id": "ep07_070",
+   "who": "RIN",
+   "text": "It's salt. Not my arm. You won't break it."
+  },
+  {
+   "id": "ep07_071",
+   "who": "TAKUTO",
+   "text": "I'm sorry. About the fort. I keep thinking about it."
+  },
+  {
+   "id": "ep07_072",
+   "who": "RIN",
+   "text": "Stop. I heard you the first time. And the second. And the ninth. Say it again and I'll tie your mouth shut."
+  },
+  {
+   "id": "ep07_073",
+   "who": "TAKUTO",
+   "text": "Can you do that?"
+  },
+  {
+   "id": "ep07_074",
+   "who": "RIN",
+   "text": "Do you want to find out?"
+  },
+  {
+   "id": "ep07_075",
+   "who": "TAKUTO",
+   "text": "...Here is the salt."
+  },
+  {
+   "id": "ep07_076",
+   "who": "RIN",
+   "text": "Thank you."
+  },
+  {
+   "id": "ep07_077",
+   "who": "CROWD",
+   "text": "OGRES! The granary! OGRES!"
+  },
+  {
+   "id": "ep07_078",
+   "who": "CROWD2",
+   "text": "They are taking the sacks!"
+  },
+  {
+   "id": "ep07_079",
+   "who": "CROWD",
+   "text": "The barn is on fire!"
+  },
+  {
+   "id": "ep07_080",
+   "who": "SIEG",
+   "text": "That's the chieftain. The one with the mask. Takuto, careful.",
+   "tts": "That's the chieftain. The one with the mask. Tah-koo-toh, careful."
+  },
+  {
+   "id": "ep07_081",
+   "who": "AKURO",
+   "text": "A big one. Feathers and bone. Let me look, boy.",
+   "mono": true
+  },
+  {
+   "id": "ep07_082",
+   "who": "TAKUTO",
+   "text": "No."
+  },
+  {
+   "id": "ep07_083",
+   "who": "RIN",
+   "text": "Spear! Low!"
+  },
+  {
+   "id": "ep07_084",
+   "who": "TAKUTO",
+   "text": "Break!"
+  },
+  {
+   "id": "ep07_085",
+   "who": "NEMU",
+   "text": "He broke its spear!"
+  },
+  {
+   "id": "ep07_086",
+   "who": "RIN",
+   "text": "One arm is enough for this! Red Thread!"
+  },
+  {
+   "id": "ep07_087",
+   "who": "SIEG",
+   "text": "Afterimage! Finish it, Takuto!",
+   "tts": "Afterimage! Finish it, Tah-koo-toh!"
+  },
+  {
+   "id": "ep07_088",
+   "who": "OGRE",
+   "text": "Not you. Not fighting you."
+  },
+  {
+   "id": "ep07_089",
+   "who": "OGRE",
+   "text": "Grain. For the little ones. Hungry. We run from the grey."
+  },
+  {
+   "id": "ep07_090",
+   "who": "TAKUTO",
+   "text": "...It talked."
+  },
+  {
+   "id": "ep07_091",
+   "who": "SIEG",
+   "text": "Fiends do not talk."
+  },
+  {
+   "id": "ep07_092",
+   "who": "NEMU",
+   "text": "That one did."
+  },
+  {
+   "id": "ep07_093",
+   "who": "OGRE",
+   "text": "Kill me, white one. Then they starve slower. Or let me go. Then they starve faster. You choose."
+  },
+  {
+   "id": "ep07_094",
+   "who": "AKURO",
+   "text": "Well? It is asking you, boy. Break it, or do not. I am curious too.",
+   "mono": true
+  },
+  {
+   "id": "ep07_095",
+   "who": "TAKUTO",
+   "text": "...Go."
+  },
+  {
+   "id": "ep07_096",
+   "who": "RIN",
+   "text": "Takuto!",
+   "tts": "Tah-koo-toh!"
+  },
+  {
+   "id": "ep07_097",
+   "who": "TAKUTO",
+   "text": "Take one sack. Only one. And do not come back to this village."
+  },
+  {
+   "id": "ep07_098",
+   "who": "OGRE",
+   "text": "White one. Remember. The grey is coming. For all of us."
+  },
+  {
+   "id": "ep07_099",
+   "who": "HUNTER",
+   "text": "You let it go. You had it on its knees, and you let it go!"
+  },
+  {
+   "id": "ep07_100",
+   "who": "CROWD2",
+   "text": "Half the barn is ash!"
+  },
+  {
+   "id": "ep07_101",
+   "who": "CROWD",
+   "text": "What kind of Hunter lets a Fiend walk away?"
+  },
+  {
+   "id": "ep07_102",
+   "who": "TAKUTO",
+   "text": "The kind who heard it talk."
+  },
+  {
+   "id": "ep07_103",
+   "who": "HUNTER",
+   "text": "Fiends do not talk, boy!"
+  },
+  {
+   "id": "ep07_104",
+   "who": "NEMU",
+   "text": "Everyone keeps saying that. Like if they say it enough, it will be true."
+  },
+  {
+   "id": "ep07_105",
+   "who": "RIN",
+   "text": "...My brother died to a Fiend, Takuto.",
+   "tts": "...My brother died to a Fiend, Tah-koo-toh."
+  },
+  {
+   "id": "ep07_106",
+   "who": "TAKUTO",
+   "text": "I know."
+  },
+  {
+   "id": "ep07_107",
+   "who": "RIN",
+   "text": "If that ogre had said please before it killed him, would that make it better?"
+  },
+  {
+   "id": "ep07_108",
+   "who": "TAKUTO",
+   "text": "No. But it didn't kill anyone here. It took grain. It was starving."
+  },
+  {
+   "id": "ep07_109",
+   "who": "SIEG",
+   "text": "Rin. He's not wrong. And you're not wrong. That's the worst kind of problem."
+  },
+  {
+   "id": "ep07_110",
+   "who": "WICK",
+   "text": "Can I say something? Three years ago, a farmer chased me out of his barn with a pitchfork. Because my head was on fire."
+  },
+  {
+   "id": "ep07_111",
+   "who": "WICK",
+   "text": "He thought I was a Fiend. I was just cold and hungry. Like that ogre."
+  },
+  {
+   "id": "ep07_112",
+   "who": "SIEG",
+   "text": "...What do you want to do, Takuto?",
+   "tts": "...What do you want to do, Tah-koo-toh?"
+  },
+  {
+   "id": "ep07_113",
+   "who": "TAKUTO",
+   "text": "Find their camp. Find out what the grey is. If they are being pushed, something is pushing them."
+  },
+  {
+   "id": "ep07_114",
+   "who": "SIEG",
+   "text": "Static."
+  },
+  {
+   "id": "ep07_115",
+   "who": "TAKUTO",
+   "text": "Static."
+  },
+  {
+   "id": "ep07_116",
+   "who": "SIEG",
+   "text": "Fine. I'll stay and keep the village from hanging us. Nemu and Wick, go with him. Rin...",
+   "tts": "Fine. I'll stay and keep the village from hanging us. Neh-moo and Wick, go with him. Rin..."
+  },
+  {
+   "id": "ep07_117",
+   "who": "RIN",
+   "text": "I'm going too. Someone has to tie him down if he starts laughing."
+  },
+  {
+   "id": "ep07_118",
+   "who": "WICK",
+   "text": "This forest is very big and very quiet, and I would like to state for the record that I hate it."
+  },
+  {
+   "id": "ep07_119",
+   "who": "NEMU",
+   "text": "Forests are quiet when something big is listening."
+  },
+  {
+   "id": "ep07_120",
+   "who": "WICK",
+   "text": "Why would you say that?! Why would you say that out loud?!"
+  },
+  {
+   "id": "ep07_121",
+   "who": "RIN",
+   "text": "Takuto. Since the fort. Has it said anything?",
+   "tts": "Tah-koo-toh. Since the fort. Has it said anything?"
+  },
+  {
+   "id": "ep07_122",
+   "who": "TAKUTO",
+   "text": "Last night. During the fight. It said let me look."
+  },
+  {
+   "id": "ep07_123",
+   "who": "RIN",
+   "text": "And?"
+  },
+  {
+   "id": "ep07_124",
+   "who": "TAKUTO",
+   "text": "And I said no. And then it said it was curious what I would do. With the ogre."
+  },
+  {
+   "id": "ep07_125",
+   "who": "RIN",
+   "text": "...Thank you for telling me."
+  },
+  {
+   "id": "ep07_126",
+   "who": "TAKUTO",
+   "text": "You made me promise."
+  },
+  {
+   "id": "ep07_127",
+   "who": "RIN",
+   "text": "I know. Thank you for keeping it. Most people don't."
+  },
+  {
+   "id": "ep07_128",
+   "who": "AKURO",
+   "text": "Telling on me to the girl. That is low, boy. I am wounded.",
+   "mono": true
+  },
+  {
+   "id": "ep07_129",
+   "who": "TAKUTO",
+   "text": "It says it is wounded."
+  },
+  {
+   "id": "ep07_130",
+   "who": "RIN",
+   "text": "Good."
+  },
+  {
+   "id": "ep07_131",
+   "who": "CROWD",
+   "text": "Where did your boy go, Hunter? To warn his friends?"
+  },
+  {
+   "id": "ep07_132",
+   "who": "HUNTER",
+   "text": "Valen. My people want torches and the forest. Tonight."
+  },
+  {
+   "id": "ep07_133",
+   "who": "SIEG",
+   "text": "Then your people will die in the forest tonight, Abel. With torches in their hands."
+  },
+  {
+   "id": "ep07_134",
+   "who": "CROWD2",
+   "text": "They burned our barn!"
+  },
+  {
+   "id": "ep07_135",
+   "who": "CROWD",
+   "text": "They took our grain!"
+  },
+  {
+   "id": "ep07_136",
+   "who": "SIEG",
+   "text": "They took grain. And they could have taken children. Four nights, three raids, and not one of you is dead. Think about that."
+  },
+  {
+   "id": "ep07_137",
+   "who": "SIEG",
+   "text": "I have fought Fiends for twenty years. The ones that want you dead do not stop at the granary."
+  },
+  {
+   "id": "ep07_138",
+   "who": "HUNTER",
+   "text": "And if you are wrong?"
+  },
+  {
+   "id": "ep07_139",
+   "who": "SIEG",
+   "text": "Then I will stand at your gate myself, with both swords, and I will not move until it is morning."
+  },
+  {
+   "id": "ep07_140",
+   "who": "SIEG",
+   "text": "Go home. Lock your doors. Let the boy do something nobody has tried before."
+  },
+  {
+   "id": "ep07_141",
+   "who": "NEMU",
+   "text": "There are small ones. Look. Children."
+  },
+  {
+   "id": "ep07_142",
+   "who": "WICK",
+   "text": "There must be fifty of them. All hiding."
+  },
+  {
+   "id": "ep07_143",
+   "who": "OGRE",
+   "text": "White one. You followed."
+  },
+  {
+   "id": "ep07_144",
+   "who": "TAKUTO",
+   "text": "You said the grey is coming. I want to know what it is."
+  },
+  {
+   "id": "ep07_145",
+   "who": "OGRE",
+   "text": "Wolves. A grey pack. Hundreds. Red eyes. They do not eat. They only chase."
+  },
+  {
+   "id": "ep07_146",
+   "who": "OGRE",
+   "text": "They chase us from the deep wood. Out to the roads. Out to your farms. Out to your swords."
+  },
+  {
+   "id": "ep07_147",
+   "who": "RIN",
+   "text": "They are pushing you at the villages. On purpose."
+  },
+  {
+   "id": "ep07_148",
+   "who": "OGRE",
+   "text": "At the head of the pack walks a wolf with a man's back. With a long blade. He laughs when we run."
+  },
+  {
+   "id": "ep07_149",
+   "who": "OGRE",
+   "text": "And beside him, sometimes, a thing in a black skin. It crackles. Like lightning in a jar."
+  },
+  {
+   "id": "ep07_150",
+   "who": "TAKUTO",
+   "text": "Static."
+  },
+  {
+   "id": "ep07_151",
+   "who": "RIN",
+   "text": "He is herding them. The giants. The Hydra. The ogres. All of them."
+  },
+  {
+   "id": "ep07_152",
+   "who": "WICK",
+   "text": "Herding them where?"
+  },
+  {
+   "id": "ep07_153",
+   "who": "OGRE",
+   "text": "West. Always west. Toward the golden city."
+  },
+  {
+   "id": "ep07_154",
+   "who": "NEMU",
+   "text": "Saint Lumen."
+  },
+  {
+   "id": "ep07_155",
+   "who": "TAKUTO",
+   "text": "Why can you talk? Everyone says Fiends can't talk."
+  },
+  {
+   "id": "ep07_156",
+   "who": "OGRE",
+   "text": "Everyone says. Nobody asks. My grandmother's grandmother came from the Rift. We stayed. We learned. We are not all teeth, white one."
+  },
+  {
+   "id": "ep07_157",
+   "who": "OGRE",
+   "text": "You. You have something in your axe that is all teeth. I can smell it."
+  },
+  {
+   "id": "ep07_158",
+   "who": "AKURO",
+   "text": "Rude. Accurate, but rude.",
+   "mono": true
+  },
+  {
+   "id": "ep07_159",
+   "who": "TAKUTO",
+   "text": "I know. I keep the door shut."
+  },
+  {
+   "id": "ep07_160",
+   "who": "OGRE",
+   "text": "Good. Keep it shut. The grey likes open doors."
+  },
+  {
+   "id": "ep07_161",
+   "who": "WICK",
+   "text": "Hey. Hey, little guys. Want to see a trick?"
+  },
+  {
+   "id": "ep07_162",
+   "who": "WICK",
+   "text": "Three blue fireballs. Watch. Watch!"
+  },
+  {
+   "id": "ep07_163",
+   "who": "CROWD2",
+   "text": "Ha ha ha!"
+  },
+  {
+   "id": "ep07_164",
+   "who": "OGRE",
+   "text": "They have not laughed since the grey came. Thank you, fire head."
+  },
+  {
+   "id": "ep07_165",
+   "who": "WICK",
+   "text": "Fire head. I like that. Nobody has ever called me that with respect."
+  },
+  {
+   "id": "ep07_166",
+   "who": "NEMU",
+   "text": "Eyes. In the trees. So many eyes."
+  },
+  {
+   "id": "ep07_167",
+   "who": "OGRE",
+   "text": "The grey! The grey is here! Little ones, RUN!"
+  },
+  {
+   "id": "ep07_168",
+   "who": "WICK",
+   "text": "Get behind the fire! Only the wolves burn! Only the wolves!"
+  },
+  {
+   "id": "ep07_169",
+   "who": "RIN",
+   "text": "Left! Three of them!"
+  },
+  {
+   "id": "ep07_170",
+   "who": "TAKUTO",
+   "text": "Break!"
+  },
+  {
+   "id": "ep07_171",
+   "who": "AKURO",
+   "text": "So many, boy. Hundreds. You will never stop them with one axe and two hands. Let me help.",
+   "mono": true
+  },
+  {
+   "id": "ep07_172",
+   "who": "TAKUTO",
+   "text": "Rin. It's talking. Now."
+  },
+  {
+   "id": "ep07_173",
+   "who": "RIN",
+   "text": "Then hold still. Red Thread. Wrist to wrist."
+  },
+  {
+   "id": "ep07_174",
+   "who": "RIN",
+   "text": "If you go red, I feel it. And I pull."
+  },
+  {
+   "id": "ep07_175",
+   "who": "TAKUTO",
+   "text": "Then don't let go."
+  },
+  {
+   "id": "ep07_176",
+   "who": "TAKUTO",
+   "text": "Behind the ogres! Nemu, the children!",
+   "tts": "Behind the ogres! Neh-moo, the children!"
+  },
+  {
+   "id": "ep07_177",
+   "who": "NEMU",
+   "text": "Got them!"
+  },
+  {
+   "id": "ep07_178",
+   "who": "WICK",
+   "text": "Fire head coming through! Little ones, behind me!"
+  },
+  {
+   "id": "ep07_179",
+   "who": "NEMU",
+   "text": "Two of the children ran the wrong way! Into the trees!"
+  },
+  {
+   "id": "ep07_180",
+   "who": "TAKUTO",
+   "text": "Go. I have the front."
+  },
+  {
+   "id": "ep07_181",
+   "who": "NEMU",
+   "text": "Don't go red while I'm gone."
+  },
+  {
+   "id": "ep07_182",
+   "who": "RIN",
+   "text": "Takuto, they are trying to split us!",
+   "tts": "Tah-koo-toh, they are trying to split us!"
+  },
+  {
+   "id": "ep07_183",
+   "who": "TAKUTO",
+   "text": "Let them try!"
+  },
+  {
+   "id": "ep07_184",
+   "who": "NEMU",
+   "text": "Got them! Both of them! One bit me!"
+  },
+  {
+   "id": "ep07_185",
+   "who": "OGRE",
+   "text": "White one! Together!"
+  },
+  {
+   "id": "ep07_186",
+   "who": "TAKUTO",
+   "text": "Together!"
+  },
+  {
+   "id": "ep07_187",
+   "who": "TAKUTO",
+   "text": "Ruinbreaker!"
+  },
+  {
+   "id": "ep07_188",
+   "who": "KUROZANE",
+   "text": "Ha. The little F-rank who talks to monsters."
+  },
+  {
+   "id": "ep07_189",
+   "who": "KUROZANE",
+   "text": "Tell the Laughing Blade. Kurozane remembers Grey Hollow."
+  },
+  {
+   "id": "ep07_190",
+   "who": "WICK",
+   "text": "Was that... was that a wolf? Standing up? With a sword?"
+  },
+  {
+   "id": "ep07_191",
+   "who": "RIN",
+   "text": "Kurozane. The Fang Ronin. There are posters for him in every Guild hall. Rank A bounty."
+  },
+  {
+   "id": "ep07_192",
+   "who": "TAKUTO",
+   "text": "Grey Hollow. That is where Sieg lost his squad.",
+   "tts": "Grey Hollow. That is where Seeg lost his squad."
+  },
+  {
+   "id": "ep07_193",
+   "who": "RIN",
+   "text": "...You held on. The thread never pulled. Not once."
+  },
+  {
+   "id": "ep07_194",
+   "who": "TAKUTO",
+   "text": "I could feel you on the other end. It was enough."
+  },
+  {
+   "id": "ep07_195",
+   "who": "OGRE",
+   "text": "We go north. Away from the gold city. Away from the grey."
+  },
+  {
+   "id": "ep07_196",
+   "who": "TAKUTO",
+   "text": "The village will give you grain for the road. Sieg paid for it. Wick paid too.",
+   "tts": "The village will give you grain for the road. Seeg paid for it. Wick paid too."
+  },
+  {
+   "id": "ep07_197",
+   "who": "WICK",
+   "text": "All my reward money. Every coin. I am a broke Hunter now. Please clap."
+  },
+  {
+   "id": "ep07_198",
+   "who": "NEMU",
+   "text": "I will clap later. I am tired."
+  },
+  {
+   "id": "ep07_199",
+   "who": "OGRE",
+   "text": "Take this, white one. A feather from my mother. If you meet my people, show it. They will not fight you."
+  },
+  {
+   "id": "ep07_200",
+   "who": "TAKUTO",
+   "text": "...Thank you."
+  },
+  {
+   "id": "ep07_201",
+   "who": "OGRE",
+   "text": "And you, thread girl. You held him. I saw. That is a strong thread."
+  },
+  {
+   "id": "ep07_202",
+   "who": "RIN",
+   "text": "It is my brother's."
+  },
+  {
+   "id": "ep07_203",
+   "who": "OGRE",
+   "text": "Then he is strong too. Still."
+  },
+  {
+   "id": "ep07_204",
+   "who": "OGRE",
+   "text": "Do not go to the gold city, white one. The gold city is where the grey is going."
+  },
+  {
+   "id": "ep07_205",
+   "who": "NEMU",
+   "text": "We are going to the gold city."
+  },
+  {
+   "id": "ep07_206",
+   "who": "TAKUTO",
+   "text": "I know."
+  },
+  {
+   "id": "ep07_207",
+   "who": "OGRE",
+   "text": "White one. Before we go. The thing in your axe. Do you know its name?"
+  },
+  {
+   "id": "ep07_208",
+   "who": "TAKUTO",
+   "text": "Akuro. The Crimson Calamity.",
+   "tts": "Ah-koo-roh. The Crimson Calamity."
+  },
+  {
+   "id": "ep07_209",
+   "who": "OGRE",
+   "text": "My people have a song about the red one. The one who broke the sky."
+  },
+  {
+   "id": "ep07_210",
+   "who": "TAKUTO",
+   "text": "Broke the sky?"
+  },
+  {
+   "id": "ep07_211",
+   "who": "OGRE",
+   "text": "Three hundred winters ago, there were no Rifts. Then the red one fought something in the clouds, and the sky cracked."
+  },
+  {
+   "id": "ep07_212",
+   "who": "OGRE",
+   "text": "The cracks never healed. That is what the song says. Every Rift is a scar from that fight."
+  },
+  {
+   "id": "ep07_213",
+   "who": "AKURO",
+   "text": "...Songs. Ogres and their songs. They always get the order of things wrong.",
+   "mono": true
+  },
+  {
+   "id": "ep07_214",
+   "who": "TAKUTO",
+   "text": "It says your song gets the order wrong."
+  },
+  {
+   "id": "ep07_215",
+   "who": "OGRE",
+   "text": "Ha. Then ask it what the right order is. And listen carefully, when it lies."
+  },
+  {
+   "id": "ep07_216",
+   "who": "TAKUTO",
+   "text": "Akuro. What did you fight in the sky?",
+   "tts": "Ah-koo-roh. What did you fight in the sky?"
+  },
+  {
+   "id": "ep07_217",
+   "who": "AKURO",
+   "text": "...Something that wears a suit now. Go away, boy. I am tired.",
+   "mono": true
+  },
+  {
+   "id": "ep07_218",
+   "who": "RIN",
+   "text": "Nemu. At the fort. You were the one who shouted.",
+   "tts": "Neh-moo. At the fort. You were the one who shouted."
+  },
+  {
+   "id": "ep07_219",
+   "who": "NEMU",
+   "text": "Mm."
+  },
+  {
+   "id": "ep07_220",
+   "who": "RIN",
+   "text": "I shouted too. He did not hear me. He heard you."
+  },
+  {
+   "id": "ep07_221",
+   "who": "NEMU",
+   "text": "He did not hear you because you were flying. It is hard to hear someone who is flying."
+  },
+  {
+   "id": "ep07_222",
+   "who": "RIN",
+   "text": "...Is that a joke?"
+  },
+  {
+   "id": "ep07_223",
+   "who": "NEMU",
+   "text": "Half a joke. The other half is true. You were very high up."
+  },
+  {
+   "id": "ep07_224",
+   "who": "RIN",
+   "text": "Thank you. For bringing him back."
+  },
+  {
+   "id": "ep07_225",
+   "who": "NEMU",
+   "text": "You are tying him down now. With your thread. That is better than shouting. Shouting is tiring."
+  },
+  {
+   "id": "ep07_226",
+   "who": "RIN",
+   "text": "Then we take turns."
+  },
+  {
+   "id": "ep07_227",
+   "who": "NEMU",
+   "text": "Mm. Deal. You go first. I am going to sleep."
+  },
+  {
+   "id": "ep07_228",
+   "who": "TAKUTO",
+   "text": "Sieg. There was a wolf in the forest. Standing on two legs. With a sword.",
+   "tts": "Seeg. There was a wolf in the forest. Standing on two legs. With a sword."
+  },
+  {
+   "id": "ep07_229",
+   "who": "TAKUTO",
+   "text": "He said to tell you. Kurozane remembers Grey Hollow."
+  },
+  {
+   "id": "ep07_230",
+   "who": "SIEG",
+   "text": "...So he is still alive."
+  },
+  {
+   "id": "ep07_231",
+   "who": "TAKUTO",
+   "text": "Who is he?"
+  },
+  {
+   "id": "ep07_232",
+   "who": "SIEG",
+   "text": "The night before Morvudd came, he walked into our camp. Behind the man in the black suit. He was the one who cut the alarm ropes."
+  },
+  {
+   "id": "ep07_233",
+   "who": "SIEG",
+   "text": "I cut out his left eye. He took the last of my squad while I was doing it."
+  },
+  {
+   "id": "ep07_234",
+   "who": "TAKUTO",
+   "text": "He wants you."
+  },
+  {
+   "id": "ep07_235",
+   "who": "SIEG",
+   "text": "He always did. A duel. The Laughing Blade against the Fang Ronin. He thinks it is a song."
+  },
+  {
+   "id": "ep07_236",
+   "who": "TAKUTO",
+   "text": "Is it?"
+  },
+  {
+   "id": "ep07_237",
+   "who": "SIEG",
+   "text": "...Ask me tomorrow, Takuto. Tonight I want to sit here and count the stars. All of them. Twice.",
+   "tts": "...Ask me tomorrow, Tah-koo-toh. Tonight I want to sit here and count the stars. All of them. Twice."
+  },
+  {
+   "id": "ep07_238",
+   "who": "HUNTER",
+   "text": "The ogres are gone north. No blood on our fields. I was wrong about you, boy."
+  },
+  {
+   "id": "ep07_239",
+   "who": "HUNTER",
+   "text": "I do not say that often. Do not make me say it twice."
+  },
+  {
+   "id": "ep07_240",
+   "who": "CROWD2",
+   "text": "Mister white hair! This is for you. My mum baked it. It is only a little burnt."
+  },
+  {
+   "id": "ep07_241",
+   "who": "TAKUTO",
+   "text": "...Thank you."
+  },
+  {
+   "id": "ep07_242",
+   "who": "WICK",
+   "text": "Only a little burnt. That is the highest praise in this world. Trust me."
+  },
+  {
+   "id": "ep07_243",
+   "who": "NEMU",
+   "text": "Can I have half?"
+  },
+  {
+   "id": "ep07_244",
+   "who": "TAKUTO",
+   "text": "You can have half."
+  },
+  {
+   "id": "ep07_245",
+   "who": "NEMU",
+   "text": "Can I have the bigger half?"
+  },
+  {
+   "id": "ep07_246",
+   "who": "SIEG",
+   "text": "Come on. The pass is two days up the mountain. And then the capital."
+  },
+  {
+   "id": "ep07_247",
+   "who": "KUROZANE",
+   "text": "You want me to kill the boy who talks to monsters?"
+  },
+  {
+   "id": "ep07_248",
+   "who": "SABLE",
+   "text": "No, no. Kill the teacher. The boy will follow him anywhere. Even into the ground."
+  },
+  {
+   "id": "ep07_249",
+   "who": "KUROZANE",
+   "text": "Valen. Finally. I have waited six years for that laugh to stop."
+  },
+  {
+   "id": "ep07_250",
+   "who": "TAKUTO",
+   "text": "Next time: the old shrine on the mountain pass."
+  },
+  {
+   "id": "ep07_251",
+   "who": "TAKUTO",
+   "text": "Kurozane challenges Sieg to a duel. Sieg says yes.",
+   "tts": "Kurozane challenges Seeg to a duel. Seeg says yes."
+  },
+  {
+   "id": "ep07_252",
+   "who": "TAKUTO",
+   "text": "Afterimage against the wolf's blade. Six years of waiting, in one cut."
+  },
+  {
+   "id": "ep07_253",
+   "who": "TAKUTO",
+   "text": "Episode eight. The Fang Ronin."
+  }
+ ]
+}

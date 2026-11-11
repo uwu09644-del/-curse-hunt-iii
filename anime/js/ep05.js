@@ -358,6 +358,6 @@ const EP05_SCRIPT = (() => {
     ['custom', 'nextTitle', 6, [[0.5, 'TAK', 'Episode six. The Red Giants March.']]],
   ] }];
 
-  return { id: 'ep05', number: 5, title: { jpNo: '第五話', jp: '七つ首の河', en: 'SEVEN HEADS, ONE RIVER' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
+  return { id: 'ep05', number: 5, pace: 0.45, title: { jpNo: '第五話', jp: '七つ首の河', en: 'SEVEN HEADS, ONE RIVER' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
 })();
 if (typeof module !== 'undefined') module.exports = EP05_SCRIPT;
