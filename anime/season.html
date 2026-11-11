@@ -1,0 +1,125 @@
+<title>Ruinbreaker Season 1</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Dela+Gothic+One&family=Noto+Sans:wght@500;600;700;800&display=swap">
+<style>
+/* Layout: a broadcast key-art banner, then the twelve episodes as a two-column run of painted stills, like a Blu-ray menu. */
+:root {
+  --bg: #0c0a0d; --panel: #151217; --line: #2b252b; --fg: #f1ebe6; --muted: #a59ca1; --accent: #e8343c; --accent-soft: #ff8f8f;
+  --f-disp: "Big Shoulders Display", "Oswald", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Noto Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --f-jp: "Dela Gothic One", "Hiragino Sans", "Yu Gothic", sans-serif;
+  color-scheme: dark;
+}
+html, body { background: var(--bg); color: var(--fg); }
+body { margin: 0; font: 500 15px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 18px 64px; display: grid; gap: 40px; }
+a { color: inherit; }
+a:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 3px; }
+
+.key { position: relative; border-radius: 6px; overflow: hidden; background: var(--panel); aspect-ratio: 16 / 7; max-width: 100%; min-height: 300px; display: grid; align-items: end; }
+.key img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.key::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,10,13,0) 30%, rgba(12,10,13,0.92) 100%), linear-gradient(90deg, rgba(12,10,13,0.75), rgba(12,10,13,0) 60%); }
+.key .copy { position: relative; z-index: 1; padding: clamp(18px, 4vw, 40px); display: grid; gap: 10px; max-width: 640px; }
+.jp-mark { font: 400 clamp(16px, 2.2vw, 22px)/1 var(--f-jp); color: var(--accent); letter-spacing: 0.3em; }
+h1 { margin: 0; font: 900 clamp(54px, 10vw, 118px)/0.86 var(--f-disp); letter-spacing: 0.02em; text-wrap: balance; }
+h1 b { color: var(--accent); font-weight: 900; }
+.tag { margin: 0; color: var(--fg); font-size: clamp(15px, 1.8vw, 17px); max-width: 52ch; }
+.meta { color: var(--muted); font: 700 12px/1.4 var(--f-body); letter-spacing: 0.14em; text-transform: uppercase; }
+.play { justify-self: start; display: inline-flex; align-items: center; gap: 10px; margin-top: 6px; padding: 12px 20px; background: var(--accent); color: #fff; text-decoration: none; font: 800 14px/1 var(--f-body); letter-spacing: 0.08em; text-transform: uppercase; border-radius: 3px; }
+.play:hover { background: #ff4a52; }
+.play svg { width: 12px; height: 12px; fill: currentColor; }
+
+.head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+h2 { margin: 0; font: 800 30px/1 var(--f-disp); letter-spacing: 0.04em; text-transform: uppercase; }
+.head span { color: var(--muted); font-size: 13px; }
+
+.eps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 22px; }
+.ep a { display: grid; grid-template-columns: 168px minmax(0, 1fr); gap: 16px; text-decoration: none; padding: 10px; margin: -10px; border-radius: 6px; }
+.ep a:hover { background: var(--panel); }
+.ep a:hover h3 { color: var(--accent-soft); }
+.thumb { position: relative; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 3px; overflow: hidden; background: var(--panel); align-self: start; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.thumb .no { position: absolute; left: 8px; bottom: 6px; font: 900 30px/1 var(--f-disp); color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+.ep .txt { min-width: 0; display: grid; gap: 3px; align-content: start; }
+.ep .jp { font: 400 12px/1.3 var(--f-jp); color: var(--accent); letter-spacing: 0.12em; }
+.ep h3 { margin: 0; font: 800 18px/1.2 var(--f-body); text-wrap: balance; }
+.ep p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.ep .rt { color: var(--muted); font: 700 11px/1 var(--f-body); letter-spacing: 0.14em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.finale .no { color: var(--accent); }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.chip { font: 700 10.5px/1 var(--f-body); letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 7px; border-radius: 2px; border: 1px solid var(--line); color: var(--muted); }
+.chip.seen { color: var(--fg); border-color: var(--muted); }
+.chip.soon { color: var(--accent-soft); border-color: var(--accent); }
+.ep.soon a { cursor: default; }
+.ep.soon .thumb img { filter: grayscale(0.7) brightness(0.55); }
+.ep.soon a:hover { background: none; }
+.ep.soon a:hover h3 { color: inherit; }
+.resume { display: inline-flex; align-items: center; gap: 10px; margin-top: 6px; padding: 11px 18px; border: 1px solid var(--muted); color: var(--fg); text-decoration: none; font: 800 14px/1 var(--f-body); letter-spacing: 0.08em; text-transform: uppercase; border-radius: 3px; }
+.resume:hover { border-color: var(--fg); }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.notes { display: grid; gap: 6px; color: var(--muted); font-size: 13px; max-width: 75ch; border-top: 1px solid var(--line); padding-top: 16px; }
+.notes p { margin: 0; }
+@media (max-width: 520px) { .ep a { grid-template-columns: 120px minmax(0, 1fr); gap: 12px; } .thumb .no { font-size: 24px; } .ep p { -webkit-line-clamp: 2; } }
+@media (prefers-reduced-motion: no-preference) { .key img { animation: drift 30s ease-in-out infinite alternate; } @keyframes drift { from { transform: scale(1.04); } to { transform: scale(1.1) translateX(-1.5%); } } }
+</style>
+
+<div class="wrap">
+  <section class="key" aria-label="Ruinbreaker Season 1">
+    <img src="plates/barrow_blood.webp" alt="The Barrow Fields under a blood-red sky">
+    <div class="copy">
+      <span class="jp-mark">ルインブレイカー</span>
+      <h1>RUIN<b>/</b>BREAKER</h1>
+      <p class="tag">A boy from Tokyo, an axe nobody else could lift, and a man in a black suit who opened the sky on purpose.</p>
+      <span class="meta">Season 1 · 12 episodes · 24 min each</span>
+      <div class="actions"><a class="play" href="ep1.html"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>Watch Episode 1</a><a class="resume" id="resume" href="ep1.html" hidden>Continue: Episode 1</a></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="eps-h">
+    <div class="head"><h2 id="eps-h">Episodes</h2><span id="count">Tap an episode to watch. Sound on.</span></div>
+    <ol class="eps" style="margin-top:22px">
+      <li class="ep" data-n="1" data-voice="voice/voices.mp3"><a href="ep1.html"><span class="thumb"><img src="plates/nerima_night.webp" alt="" loading="lazy"><span class="no">01</span></span><span class="txt"><span class="jp">第一話「踏切」</span><h3>The Crossing</h3><p>2:14 a.m., Nerima. Takuto is feeding his missing best friend's cat when the sky cracks open over the railway crossing.</p><span class="chips"><span class="rt">24 min</span></span></span></a></li>
+      <li class="ep" data-n="2" data-voice="voice/ep02.mp3"><a href="ep2.html"><span class="thumb"><img src="plates/ashford_street.webp" alt="" loading="lazy"><span class="no">02</span></span><span class="txt"><span class="jp">第二話「烙印」</span><h3>Branded</h3><p>At the Hunters' Guild in Ashford, the appraisal cube reads Takuto's rank as ERROR, and Rin Ashveil challenges him on sight.</p><span class="chips"><span class="rt">24 min</span></span></span></a></li>
+      <li class="ep" data-n="3" data-voice="voice/ep03.mp3"><a href="ep3.html"><span class="thumb"><img src="plates/wastes_canyon.webp" alt="" loading="lazy"><span class="no">03</span></span><span class="txt"><span class="jp">第三話「故郷の炎」</span><h3>A Flame From Home</h3><p>The licensing exam in the Bramble Wastes. Wick, a Skyfallen from Osaka, says nobody has ever gone home. Then the Behemoth wakes.</p><span class="chips"><span class="rt">24 min</span></span></span></a></li>
+      <li class="ep" data-n="4" data-voice="voice/ep04.mp3"><a href="ep4.html"><span class="thumb"><img src="plates/forge.webp" alt="" loading="lazy"><span class="no">04</span></span><span class="txt"><span class="jp">第四話「歯車の心臓」</span><h3>Cogwheel Heart</h3><p>Gideon builds a harness so the axe can block exactly once. Someone opens a Rift inside the town walls.</p><span class="chips"><span class="rt">24 min</span></span></span></a></li>
+      <li class="ep" data-n="5" data-voice="voice/ep05.mp3"><a href="ep5.html"><span class="thumb"><img src="plates/marrowmere_lake.webp" alt="" loading="lazy"><span class="no">05</span></span><span class="txt"><span class="jp">第五話「七つ首の河」</span><h3>Seven Heads, One River</h3><p>In Marrowmere, the Hydra regrows every head Takuto cuts off, and Rin has to tie herself to the answer.</p><span class="chips"><span class="rt">24 min</span></span></span></a></li>
+      <li class="ep" data-n="6" data-voice="voice/ep06.mp3"><a href="ep6.html"><span class="thumb"><img src="plates/fort_battle.webp" alt="" loading="lazy"><span class="no">06</span></span><span class="txt"><span class="jp">第六話「赤き巨人の行進」</span><h3>The Red Giants March</h3><p>Red Giants march on Fort Cinder in step. Takuto loses control for the first time, and Akuro opens his eye.</p><span class="chips"><span class="rt">24 min</span></span></span></a></li>
+      <li class="ep" data-n="7" data-voice="voice/ep07.mp3"><a href="ep7.html"><span class="thumb"><img src="plates/village_burning.webp" alt="" loading="lazy"><span class="no">07</span></span><span class="txt"><span class="jp">第七話「羽と灰」</span><h3>Feathers and Ash</h3><p>Plume Ogres raid a village because they are running from something. Some Fiends can be talked to.</p><span class="chips"><span class="rt">24 min</span></span></span></a></li>
+      <li class="ep" data-n="8" data-voice="voice/ep08.mp3"><a href="ep8.html"><span class="thumb"><img src="plates/pass_rain.webp" alt="" loading="lazy"><span class="no">08</span></span><span class="txt"><span class="jp">第八話「牙の浪人」</span><h3>The Fang Ronin</h3><p>Kurozane challenges Sieg to a duel at the pass shrine, six years after Grey Hollow.</p><span class="chips"><span class="rt">24 min</span></span></span></a></li>
+      <li class="ep" data-n="9" data-voice="voice/ep09.mp3"><a href="ep9.html"><span class="thumb"><img src="plates/lumen_plaza.webp" alt="" loading="lazy"><span class="no">09</span></span><span class="txt"><span class="jp">第九話「聖都ルーメン」</span><h3>Saint Lumen</h3><p>The Golden Saint invites Takuto into the Gilded Order. Haruki is at his side, and does not want to be rescued.</p><span class="chips"><span class="rt">24 min</span></span></span></a></li>
+      <li class="ep" data-n="10" data-voice="voice/ep10.mp3"><a href="ep10.html"><span class="thumb"><img src="plates/plains_battle.webp" alt="" loading="lazy"><span class="no">10</span></span><span class="txt"><span class="jp">第十話「モルヴッド」</span><h3>Morvudd</h3><p>Sieg holds the old stone bridge against a Calamity, and Mr. Sable tells Takuto why he is here.</p><span class="chips"><span class="rt">24 min</span></span></span></a></li>
+      <li class="ep" data-n="11" data-voice="voice/ep11.mp3"><a href="ep11.html"><span class="thumb"><img src="plates/lumen_frozen.webp" alt="" loading="lazy"><span class="no">11</span></span><span class="txt"><span class="jp">第十一話「厄災」</span><h3>Calamity</h3><p>Tyr the Frost Titan comes to Saint Lumen. Takuto lets Akuro out, and Nemu spends her eighth life to reach him.</p><span class="chips"><span class="rt">24 min</span></span></span></a></li>
+      <li class="ep finale" data-n="12" data-voice="voice/ep12.mp3"><a href="ep12.html"><span class="thumb"><img src="plates/lumen_dome.webp" alt="" loading="lazy"><span class="no">12</span></span><span class="txt"><span class="jp">最終話「ルインブレイカー」</span><h3>Ruinbreaker</h3><p>The Great Sanctum rises over the city. Haruki gives Takuto three seconds, and a Rift to Earth flickers open.</p><span class="chips"><span class="rt">24 min · Finale</span></span></span></a></li>
+    </ol>
+  </section>
+
+  <footer class="notes">
+    <p>Each episode plays in the browser: cel-shaded 3D characters over painted backgrounds, with a voiced cast, score and subtitles. The first load of an episode fetches its characters and voice track, which can take a moment on a phone.</p>
+    <p>Backgrounds painted with Stable Diffusion, voices by Kokoro-82M, characters built from CC0 VRoid models. The character and creature illustrations are reference art from the series creator.</p>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const KEY = 'rb-season1';
+  let saved = { last: 0, seen: [] };
+  try { saved = { ...saved, ...JSON.parse(localStorage.getItem(KEY) || '{}') }; } catch (e) {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {} };
+  const items = [...document.querySelectorAll('.ep')];
+  const chip = (li, cls, text) => { const c = document.createElement('span'); c.className = 'chip ' + cls; c.textContent = text; li.querySelector('.chips').appendChild(c); };
+  items.forEach(li => {
+    const n = +li.dataset.n, a = li.querySelector('a');
+    if (saved.seen.includes(n)) chip(li, 'seen', 'Watched');
+    a.addEventListener('click', e => { if (li.classList.contains('soon')) { e.preventDefault(); return; } saved.last = n; if (!saved.seen.includes(n)) saved.seen.push(n); save(); });
+  });
+  if (saved.last) { const r = document.getElementById('resume'); r.href = 'ep' + saved.last + '.html'; r.textContent = 'Continue: Episode ' + saved.last; r.hidden = false; }
+  // an episode is ready once its voice track is published alongside this page
+  Promise.all(items.map(li => fetch(li.dataset.voice, { method: 'HEAD' }).then(r => r.ok, () => true).then(ok => {
+    if (ok) return 1;
+    li.classList.add('soon'); li.querySelector('a').setAttribute('aria-disabled', 'true'); chip(li, 'soon', 'Coming soon'); return 0;
+  }))).then(r => { const ready = r.reduce((a, b) => a + b, 0); document.getElementById('count').textContent = ready === items.length ? 'All 12 episodes ready. Sound on.' : ready + ' of 12 ready to watch. The rest are being voiced.'; });
+})();
+</script>
