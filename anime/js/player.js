@@ -179,10 +179,12 @@
   let lock = null; async function wakeLock() { try { if ('wakeLock' in navigator && !lock) { lock = await navigator.wakeLock.request('screen'); lock.addEventListener('release', () => { lock = null; }); } } catch (e) {} }
 
   /* ---------- main loop ---------- */
+  let lastDrawn = -1;
   function frame(now) {
     const p = currentPos();
     if (playing && p >= DUR) { pause(); ended = true; pausedPos = DUR - 0.01; endOv.hidden = false; }
-    if (playing || dragging) { draw(p); updateBar(Math.min(p, DUR)); adapt(now); }
+    // animated on twos: a new drawing every 1/12 s, like TV anime (window.RB_TWOS = false for smooth motion)
+    if (playing || dragging) { const q = window.RB_TWOS === false ? p : Math.floor(p * 12) / 12; if (q !== lastDrawn || dragging) { draw(q); lastDrawn = q; } updateBar(Math.min(p, DUR)); adapt(now); }
     requestAnimationFrame(frame);
   }
 

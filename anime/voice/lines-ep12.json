@@ -1369,56 +1369,121 @@
   },
   {
    "id": "ep12_220",
-   "who": "NEMU",
-   "text": "This is where I first died in front of you."
+   "who": "CROWD",
+   "text": "What is that smell?"
   },
   {
    "id": "ep12_221",
-   "who": "TAKUTO",
-   "text": "You say it like it is a nice memory."
+   "who": "CROWD2",
+   "text": "It smells like a pancake had an argument with a cabbage."
   },
   {
    "id": "ep12_222",
-   "who": "NEMU",
-   "text": "It is. It is where I met you. The dying part was only a little bit of it."
+   "who": "WICK",
+   "text": "Welcome! Welcome to Four Tables! The only okonomiyaki in this entire world!"
   },
   {
    "id": "ep12_223",
-   "who": "NEMU",
-   "text": "Do you remember what the axe asked you? Here. That night."
+   "who": "TAKUTO",
+   "text": "You opened a shop."
   },
   {
    "id": "ep12_224",
-   "who": "TAKUTO",
-   "text": "What is it you want to break."
+   "who": "WICK",
+   "text": "A stall. Gideon built it. It only caught fire once. Okay, twice."
   },
   {
    "id": "ep12_225",
    "who": "NEMU",
-   "text": "And? What do you want to break? Now?"
+   "text": "There is only one table."
   },
   {
    "id": "ep12_226",
+   "who": "WICK",
+   "text": "It is called Four Tables because of my mom's shop. This is the first table. I will get the other three."
+  },
+  {
+   "id": "ep12_227",
+   "who": "RIN",
+   "text": "And when you get all four?"
+  },
+  {
+   "id": "ep12_228",
+   "who": "WICK",
+   "text": "Then I will have her shop. Here. Until I can go back and tell her about it."
+  },
+  {
+   "id": "ep12_229",
+   "who": "TAKUTO",
+   "text": "Two please. No. Three."
+  },
+  {
+   "id": "ep12_230",
+   "who": "WICK",
+   "text": "Three? Who is the third..."
+  },
+  {
+   "id": "ep12_231",
+   "who": "NEMU",
+   "text": "Me. Both of the extra ones are me."
+  },
+  {
+   "id": "ep12_232",
+   "who": "WICK",
+   "text": "...Coming right up. Takoyaki, left hand. Very gently."
+  },
+  {
+   "id": "ep12_233",
+   "who": "NEMU",
+   "text": "This is where I first died in front of you."
+  },
+  {
+   "id": "ep12_234",
+   "who": "TAKUTO",
+   "text": "You say it like it is a nice memory."
+  },
+  {
+   "id": "ep12_235",
+   "who": "NEMU",
+   "text": "It is. It is where I met you. The dying part was only a little bit of it."
+  },
+  {
+   "id": "ep12_236",
+   "who": "NEMU",
+   "text": "Do you remember what the axe asked you? Here. That night."
+  },
+  {
+   "id": "ep12_237",
+   "who": "TAKUTO",
+   "text": "What is it you want to break."
+  },
+  {
+   "id": "ep12_238",
+   "who": "NEMU",
+   "text": "And? What do you want to break? Now?"
+  },
+  {
+   "id": "ep12_239",
    "who": "TAKUTO",
    "text": "...Sable. Someday. The scar in the sky. The idea that somebody has to sit in a chair so everybody else can be safe."
   },
   {
-   "id": "ep12_227",
+   "id": "ep12_240",
    "who": "TAKUTO",
    "text": "But today? Nothing. Not today."
   },
   {
-   "id": "ep12_228",
+   "id": "ep12_241",
    "who": "NEMU",
    "text": "Good. Today is for sleeping."
   },
   {
-   "id": "ep12_229",
+   "id": "ep12_242",
    "who": "SABLE",
    "text": "Hello, kitty. Waiting for someone?"
   },
   {
-   "id": "ep12_230",
+   "id": "ep12_243",
    "who": "SABLE",
    "text": "He is not coming tonight. But I am sure he will. Everyone always comes."
   }

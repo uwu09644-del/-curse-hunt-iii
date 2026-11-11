@@ -140,5 +140,22 @@ const VFX = (() => {
     c.restore();
   }
 
-  return { build, slash, aura, sparks, debris, ring, shafts, converge, bolt, holo };
+  // manga focus lines (集中線): thin wedges rushing to a clear centre; redrawn on twos so they flicker like hand-drawn ones
+  function focus(t, o = {}) {
+    const { x = 640, y = 360, r0 = 250, n = 110, a = 1, color = '#ffffff', seed = 5 } = o; if (a <= 0) return;
+    const c = G.ctx, f = G.twos(t, 12), R = 1600; c.save(); c.globalAlpha = a; c.fillStyle = color;
+    for (let i = 0; i < n; i++) { const ang = hash(i, seed + f) * Math.PI * 2, w = 0.003 + hash(i, seed + 1 + f) * 0.011, r1 = r0 * (0.85 + hash(i, seed + 2 + f) * 0.7);
+      c.beginPath(); c.moveTo(x + Math.cos(ang - w) * R, y + Math.sin(ang - w) * R); c.lineTo(x + Math.cos(ang) * r1, y + Math.sin(ang) * r1 * 0.72); c.lineTo(x + Math.cos(ang + w) * R, y + Math.sin(ang + w) * R); c.closePath(); c.fill(); }
+    c.restore();
+  }
+  // speed streaks: horizontal motion lines across the frame for a run or a dash
+  function streaks(t, o = {}) {
+    const { dir = 1, n = 46, a = 0.8, color = '#ffffff', seed = 9, y0 = 60, y1 = 660 } = o; if (a <= 0) return;
+    const c = G.ctx, f = G.twos(t, 12); c.save(); c.globalAlpha = a; c.strokeStyle = color; c.lineCap = 'round';
+    for (let i = 0; i < n; i++) { const y = y0 + hash(i, seed + f) * (y1 - y0), len = 120 + hash(i, seed + 1 + f) * 420, x = hash(i, seed + 2 + f) * 1500 - 110;
+      c.lineWidth = 1 + hash(i, seed + 3) * 3; c.beginPath(); c.moveTo(x, y); c.lineTo(x - dir * len, y); c.stroke(); }
+    c.restore();
+  }
+
+  return { build, slash, aura, sparks, debris, ring, shafts, converge, bolt, holo, focus, streaks };
 })();

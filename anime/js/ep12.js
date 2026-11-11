@@ -281,6 +281,22 @@ const EP12_SCRIPT = (() => {
         ['plate', 'pass_shrine', 6.5, { zoom: 1.1 }, [[0.5, 'TAK', 'There are forty graves at the pass shrine. Kurozane cleans them every morning. He says it is for practice.']]],
         ['plate', 'lumen_garden', 6.5, { pan: 0.05, fadeOut: 1.2 }, [[0.5, 'TAK', 'And in Saint Lumen, forty people who slept in crystal are learning how to buy bread. Haruki is teaching them.']]],
       ] },
+    { env: 'town', mood: 'day', music: 'comedy', side: 1, wideDir: [0.85, 0.5],
+      cast: { wick: [0.2, -22.0, PI], takuto: [0.9, -20.4, PI + 0.4], nemu: [-0.6, -20.0, PI - 0.4], rin: [1.8, -19.6, PI + 0.6, { weapon: false }] },
+      beats: [
+        ['plate', 'ashford_square', 6.5, { card: ['ASHFORD', 'The market square'], zoom: 1.1 }, [[1.2, 'CRW', 'What is that smell?'], [3.8, 'CRF', 'It smells like a pancake had an argument with a cabbage.']]],
+        ['WIC', 'Welcome! Welcome to Four Tables! The only okonomiyaki in this entire world!', { to: 'takuto', emote: 'happy' }],
+        ['TAK', 'You opened a shop.', { to: 'wick', emote: 'surprised' }],
+        ['WIC', 'A stall. Gideon built it. It only caught fire once. Okay, twice.', { to: 'takuto', emote: 'happy' }],
+        ['NEM', 'There is only one table.', { to: 'wick', emote: 'tired' }],
+        ['WIC', 'It is called Four Tables because of my mom\'s shop. This is the first table. I will get the other three.', { to: 'nemu', emote: 'happy' }],
+        ['RIN', 'And when you get all four?', { to: 'wick' }],
+        ['WIC', 'Then I will have her shop. Here. Until I can go back and tell her about it.', { to: 'rin', emote: 'sad' }],
+        ['TAK', 'Two please. No. Three.', { to: 'wick' }],
+        ['WIC', 'Three? Who is the third...', { to: 'takuto', emote: 'surprised' }],
+        ['NEM', 'Me. Both of the extra ones are me.', { to: 'wick', emote: 'smug' }],
+        ['WIC', '...Coming right up. Takoyaki, left hand. Very gently.', { to: 'nemu', emote: 'happy' }],
+      ] },
     { env: 'barrow', mood: 'dusk', music: 'emotional', side: 1, wideDir: [0.5, 1],
       cast: { takuto: [0.5, 0.2, -0.3, { pose: sit }], nemu: [-0.5, 0.3, 0.3, { pose: sit }] },
       beats: [
@@ -308,6 +324,6 @@ const EP12_SCRIPT = (() => {
     ['custom', 'returnCard', 9],
   ] }];
 
-  return { id: 'ep12', number: 12, pace: 0.55, title: { jpNo: '最終話', jp: 'ルインブレイカー', en: 'RUINBREAKER' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
+  return { id: 'ep12', number: 12, pace: 0.75, title: { jpNo: '最終話', jp: 'ルインブレイカー', en: 'RUINBREAKER' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
 })();
 if (typeof module !== 'undefined') module.exports = EP12_SCRIPT;

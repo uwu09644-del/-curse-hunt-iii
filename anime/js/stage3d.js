@@ -381,7 +381,7 @@ const S3 = (() => {
     if (kind === 'vesper') { const hb = new THREE.Group(); hb.rotation.y = Math.PI; N('head').add(hb); const hood = new THREE.Mesh(new THREE.SphereGeometry(0.15, 20, 14, 0, Math.PI * 2, 0, Math.PI * 0.62), toon('#f0f0f4', { side: THREE.DoubleSide })); hood.scale.set(1, 1.12, 1.15); hb.add(at(hood, 0, 0.07, -0.02, -0.35, 0, 0)); const tip = cone(0.06, 0.16, toon('#f0f0f4'), 's', 10); hb.add(at(tip, 0, 0.12, -0.15, -1.9, 0, 0)); }
     if (kind === 'valentine') { const mask = new THREE.Mesh(new THREE.SphereGeometry(0.1, 20, 12, Math.PI * 0.18, Math.PI * 0.64, Math.PI * 0.3, Math.PI * 0.32), toon('#f6f2f4', { side: THREE.DoubleSide })); const hb = new THREE.Group(); hb.rotation.y = Math.PI; N('head').add(hb); mask.rotation.y = -Math.PI / 2; mask.position.set(0, 0.06, 0.012); mask.scale.set(1.0, 1.0, 1.08); hb.add(mask); const gem = sph(0.012, basic('#ff5aa8'), null); hb.add(at(gem, 0, 0.1, 0.105)); }
     if (kind === 'nemu') { J.tail = []; let prev = back; const hm = toon('#25222c'); for (let i = 0; i < 10; i++) { const g = new THREE.Group(); g.position.set(0, i ? 0.065 : -0.03, i ? 0 : -0.1); prev.add(g); const seg = cap(0.02 - i * 0.0008, 0.05, hm, 's'); seg.position.y = 0.03; g.add(seg); J.tail.push(g); prev = g; } J.tail[0].rotation.x = -2.1; }
-    const mats = []; vrm.scene.traverse(o => { if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => { if (m.isMToonMaterial && !mats.includes(m)) { mats.push(m); if (m.color) m.color.multiplyScalar(0.84); if (m.outlineWidthFactor != null) m.outlineWidthFactor *= 1.7; if (m.shadingToonyFactor != null) m.shadingToonyFactor = Math.max(m.shadingToonyFactor, 0.93); if (m.outlineColorFactor) m.outlineColorFactor.set('#1a0f16'); } }); });
+    const mats = []; vrm.scene.traverse(o => { if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => { if (m.isMToonMaterial && !mats.includes(m)) { mats.push(m); const cel = window.RB_CEL !== false; /* 2D cel: bold ink, hard two-tone shading, flat light, no gloss */ if (m.color) m.color.multiplyScalar(cel ? 0.96 : 0.84); if (m.outlineWidthFactor != null) m.outlineWidthFactor *= cel ? 3.0 : 1.7; if (m.shadingToonyFactor != null) m.shadingToonyFactor = cel ? 1.0 : Math.max(m.shadingToonyFactor, 0.93); if (cel && m.giEqualizationFactor != null) m.giEqualizationFactor = 1.0; if (cel && m.matcapFactor) m.matcapFactor.set(0, 0, 0); if (m.outlineColorFactor) m.outlineColorFactor.set('#140a10'); } }); });
     return { J, kind, vrm, spec, mats, isVRM: true, headR: 0.1 };
   }
   function setPoseVRM(ch, p, t, o) {
@@ -818,15 +818,53 @@ const S3 = (() => {
     const cm = spec.cam; cam.fov = cm.fov || 32; cam.updateProjectionMatrix(); cam.position.set(...cm.pos); cam.up.set(Math.sin(cm.roll || 0), Math.cos(cm.roll || 0), 0); cam.lookAt(...cm.look);
     animateEnv(spec.env, spec.t, spec.envOpts || {}, sc);
     (spec.cast || []).forEach(([n]) => { const c = chars[n]; if (c && c.sprite) { const r = c.J.root; r.rotation.set(0, Math.atan2(cam.position.x - r.position.x, cam.position.z - r.position.z), 0); } });
-    (spec.cast || []).forEach(([n]) => { const c = chars[n]; if (c && c.mats) c.mats.forEach(m => { if (m.parametricRimColorFactor) { m.parametricRimColorFactor.copy(RIM.uRim.value).multiplyScalar(Math.min(1, RIM.uRimK.value * 0.55)); m.parametricRimFresnelPowerFactor = 4.5; m.parametricRimLiftFactor = 0; } }); });
+    (spec.cast || []).forEach(([n]) => { const c = chars[n]; if (c && c.mats) c.mats.forEach(m => { if (m.parametricRimColorFactor) { m.parametricRimColorFactor.copy(RIM.uRim.value).multiplyScalar(Math.min(1, RIM.uRimK.value * (window.RB_CEL === false ? 0.55 : 0.3))); m.parametricRimFresnelPowerFactor = 4.5; m.parametricRimLiftFactor = 0; } }); });
     cam.updateMatrixWorld(); const ud = sc.userData;
     RIM.uRim.value.set(spec.rim || ud.rim || '#ffb070'); RIM.uRimK.value = spec.rimK ?? ud.rimK ?? 0.7; RIM.uRimDir.value.copy(spec.rimDir ? V3(...spec.rimDir) : (ud.rimDir || V3(0, 0.3, -1))).normalize().transformDirection(cam.matrixWorldInverse);
     let fog0 = null; if (pl && sc.fog) { fog0 = sc.fog.color.getHex(); sc.fog.color.set(plateImg[pl.id].horizon); }
-    R.render(sc, cam); hidden.forEach(ch => { ch.visible = true; }); if (fog0 != null) sc.fog.color.setHex(fog0);
+    const bg0 = sc.background; if (pl) sc.background = null; // a painted plate shows through: the 3D set must not paint its own backdrop
+    if (window.RB_CEL === false) R.render(sc, cam); else renderCel(sc, cam, w, h);
+    sc.background = bg0; hidden.forEach(ch => { ch.visible = true; }); if (fog0 != null) sc.fog.color.setHex(fog0);
     if (pl) { drawPlate(spec.ctx || ctx, pl, w, h); if (pl.set.mode === 'full') contactShadows(spec.ctx || ctx, spec.cast || []); }
     if (spec.under) { const u = spec.ctx || ctx; u.save(); u.setTransform(G.K, 0, 0, G.K, 0, 0); spec.under(u); u.restore(); } // 2D art that belongs behind the characters (a distant horde, eyes in the trees)
     const tg = spec.ctx || ctx; tg.save(); tg.setTransform(1, 0, 0, 1, 0, 0); tg.globalAlpha = spec.alpha ?? 1; tg.drawImage(R.domElement, 0, 0, tg.canvas.width, tg.canvas.height); tg.restore();
     return true;
+  }
+  /* ---------- 2D cel look: render to a target, then ink it ----------
+     The scene is drawn into an offscreen target with its depth. A full-screen pass then inks a black line wherever a
+     nearer surface meets a farther one (silhouettes, an arm across a body, hair over a face), on the nearer side only,
+     like a key animator's line. Colours get a flatter, brighter cel treatment. Line width follows the frame height. */
+  let celRT = null, celScene = null, celCam = null, celMat = null;
+  function renderCel(sc, cam3, w, h) {
+    const SS = 1.5, rw = Math.round(w * SS), rh = Math.round(h * SS); // supersampled: smooth edges, and the depth stays readable for inking
+    if (!celRT || celRT.width !== rw || celRT.height !== rh) {
+      if (celRT) celRT.dispose();
+      celRT = new THREE.WebGLRenderTarget(rw, rh, { depthTexture: new THREE.DepthTexture(rw, rh), depthBuffer: true, type: THREE.HalfFloatType, minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter });
+      if (!celMat) {
+        celMat = new THREE.ShaderMaterial({
+          uniforms: { tColor: { value: null }, tDepth: { value: null }, px: { value: new THREE.Vector2() }, cNear: { value: 0.05 }, cFar: { value: 900 }, width: { value: 1.6 }, ink: { value: new THREE.Color('#1a0f16') }, sat: { value: 1.2 } },
+          vertexShader: 'varying vec2 vUv; void main() { vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }',
+          fragmentShader: [
+            'uniform sampler2D tColor; uniform sampler2D tDepth; uniform vec2 px; uniform float cNear; uniform float cFar; uniform float width; uniform vec3 ink; uniform float sat; varying vec2 vUv;',
+            'float lin(float d) { return (2.0 * cNear * cFar) / (cFar + cNear - (d * 2.0 - 1.0) * (cFar - cNear)); }',
+            'void main() {',
+            '  vec4 c = texture2D(tColor, vUv); float d0 = lin(texture2D(tDepth, vUv).x); float e = 0.0;',
+            '  for (int i = 0; i < 8; i++) { float a = float(i) * 0.7853982; vec2 o = vec2(cos(a), sin(a)) * px * width;',
+            '    float d = lin(texture2D(tDepth, vUv + o).x); e = max(e, (d - d0) / d0); }',
+            '  float line = smoothstep(0.018, 0.055, e) * step(0.01, c.a);',
+            '  float l = dot(c.rgb, vec3(0.299, 0.587, 0.114)); vec3 col = mix(vec3(l), c.rgb, sat);',
+            '  col = mix(col, ink, line * 0.94);',
+            '  gl_FragColor = linearToOutputTexel(vec4(col, c.a));',
+            '}'].join('\n'),
+          depthTest: false, depthWrite: false, blending: THREE.NoBlending, transparent: true });
+        celScene = new THREE.Scene(); celCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+        celScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), celMat));
+      }
+    }
+    const enc = R.outputEncoding; R.outputEncoding = THREE.LinearEncoding;
+    R.setRenderTarget(celRT); R.clear(true, true, true); R.render(sc, cam3); R.setRenderTarget(null); R.outputEncoding = enc;
+    const u = celMat.uniforms; u.tColor.value = celRT.texture; u.tDepth.value = celRT.depthTexture; u.px.value.set(1 / rw, 1 / rh); u.cNear.value = cam3.near; u.cFar.value = cam3.far; u.width.value = 2.4 * rh / 720;
+    R.clear(true, true, true); R.render(celScene, celCam);
   }
   // project a world point to logical screen px (for 2D effects over the 3D frame)
   function project(x, y, z) { const v = V3(x, y, z).project(cam); return [(v.x * 0.5 + 0.5) * G.W, (-v.y * 0.5 + 0.5) * G.H]; }

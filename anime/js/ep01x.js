@@ -202,6 +202,6 @@ const EP01X_SCRIPT = (() => {
   const postCredits = [{ borrow: C.after }];
   const preview = [{ borrow: C.next }];
 
-  return { id: 'ep01x', number: 1, pace: 0.45, title: { jpNo: '第一話', jp: '踏切', en: 'THE CROSSING' }, coldOpen, partA, partB, postCredits, preview, cast: {}, extraLines: 'voice/lines.json', extraVoice: 'js/voice-data.js' };
+  return { id: 'ep01x', number: 1, pace: 0.8, title: { jpNo: '第一話', jp: '踏切', en: 'THE CROSSING' }, coldOpen, partA, partB, postCredits, preview, cast: {}, extraLines: 'voice/lines.json', extraVoice: 'js/voice-data.js' };
 })();
 if (typeof module !== 'undefined') module.exports = EP01X_SCRIPT;
