@@ -25,6 +25,7 @@ const DIRECTOR = (() => {
   function build(spec) {
     const G = GFX, S = SND, V = VOICE, X = VFX, n = S.n, { clamp, lerp, inv, ease, hash, W, H } = G;
     const shots = [], subs = [], ev = [], chapters = []; let T = 0, lineNo = 0;
+    const prior = V.placed.splice(0, V.placed.length); // lines another episode already placed (Episode 1), re-timed when borrowed
     const at = (t, f, d = 0.2, long = false) => ev.push({ t, d, f, long });
     const chapter = name => chapters.push({ t: T, name });
     const nextId = () => spec.id + '_' + String(++lineNo).padStart(3, '0');
@@ -41,6 +42,8 @@ const DIRECTOR = (() => {
       const off = T - t0;
       ep.shots.filter(s => s.t0 >= t0 - 1e-6 && s.t0 < t1 - 1e-6).forEach(s => { shots.push({ t0: s.t0 + off, d: s.d, draw: patch ? (lt, d, t) => patch(s, lt, d, t) : s.draw, vig: s.vig }); });
       ep.ev.filter(e => e.t >= t0 - 1e-6 && e.t < t1 - 1e-6).forEach(e => ev.push({ ...e, t: e.t + off }));
+      (ep.subs || []).filter(u => u.t0 >= t0 - 1e-6 && u.t0 < t1 - 1e-6).forEach(u => subs.push({ ...u, t0: u.t0 + off, t1: u.t1 + off }));
+      prior.filter(p => p.t >= t0 - 1e-6 && p.t < t1 - 1e-6).forEach(p => V.placed.push({ ...p, t: p.t + off }));
       T += t1 - t0;
     }
 
@@ -293,6 +296,7 @@ const DIRECTOR = (() => {
       return [];
     }
     function runScene(sc, custom) {
+      if (sc.borrow) { if (sc.chapter) chapter(sc.chapter); borrow(sc.from || EP01, sc.borrow[0], sc.borrow[1]); return; } // a stretch of another episode, as it was
       const t0 = T;
       SC.env = sc.env; SC.envOpts = sc.envOpts || {}; SC.mood = sc.mood || 'day'; SC.side = sc.side || 1; SC.count = 0; SC.pairShots = 0; SC.prevSpeaker = null; SC.handheld = !!sc.handheld; SC.wideDir = sc.wideDir || [0, 1]; SC.overlay = sc.overlay || null; SC.lastPartner = {};
       SC.marks = {}; Object.entries(sc.cast || {}).forEach(([k, v]) => { SC.marks[k] = { x: v[0], z: v[1], ry: v[2] ?? 0, ...(v[3] || {}) }; });

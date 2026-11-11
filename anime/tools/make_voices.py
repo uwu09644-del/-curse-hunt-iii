@@ -62,9 +62,16 @@ meta = {}
 for ln in spec['lines']:
     cast = spec['cast'][ln['who']]
     text = ln.get('tts', ln['text'])
+    if ln.get('src'):  # an existing recording: cut it out of its voice track, unchanged
+        f, off, dur = ln['src']
+        y = librosa.load(os.path.join(os.path.dirname(os.path.abspath(lines_path)), '..', f), sr=SR, offset=off, duration=dur)[0].astype(np.float32)
+        cached = None
+    else:
+        y = None
     key = hashlib.sha1(json.dumps([text, cast, ln.get('speed')], sort_keys=True).encode()).hexdigest()[:16]
     cached = os.path.join(cache_dir, key + '.npy')
-    if os.path.exists(cached): y = np.load(cached)
+    if y is not None: pass
+    elif os.path.exists(cached): y = np.load(cached)
     else:
         y, _ = tts.create(text, voice=style(cast), speed=ln.get('speed', cast['speed']), lang='en-us')
         y = y.astype(np.float32)

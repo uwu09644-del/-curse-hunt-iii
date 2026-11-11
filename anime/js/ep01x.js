@@ -1,0 +1,207 @@
+/* RUINBREAKER — Episode 1 "The Crossing" (第一話「踏切」), full-length cut.
+   Episode 1's own hand-directed timeline, with new scenes around it: Takuto's life in Nerima before the crossing
+   (Haruki, the cat, the posters), and the night after Sieg arrives (the campfire, Nemu's crypt, the road to Ashford). */
+'use strict';
+
+const EP01X_SCRIPT = (() => {
+  const PI = Math.PI, H = PI / 2;
+  const W = (light, ...plates) => ({ plates: plates.map((p, i) => [p, [PI, 0, H, -H][i % 4]]), light });
+  const sit = { crouch: 0.52, lean: -0.05, thL: [1.5, 0.15], knL: 1.6, thR: [1.5, 0.2], knR: 1.5, uaL: [-0.3, 0.3], elL: 0.3, uaR: [-0.3, 0.3], elR: 0.3 };
+  const rain = (lt) => GFX.motes(lt * 3, { n: 160, vy: 900, vx: -120, color: '#a8b8d0', size: 1.3, glow: false, seed: 21, a: 0.5 });
+  const cic = (lt) => GFX.motes(lt, { n: 30, vy: -10, color: '#fff8e0', size: 2, glow: false, seed: 5, a: 0.4 });
+  // where Episode 1's own timeline is cut (read from it, so the splice follows any change in its timing)
+  const ch = n => typeof EP01 !== 'undefined' ? EP01.chapters.find(c => c.name === n).t : 0;
+  const C = { coldOpen: [0, ch('Nerima, 2:14 a.m.')], crossing: [ch('Nerima, 2:14 a.m.'), ch('Opening')], partA: [ch('Part A'), ch('Part B') - 8], partB: [ch('Part B'), ch('Ending')],
+    after: [ch('After the credits'), ch('Next episode')], next: [ch('Next episode'), typeof EP01 !== 'undefined' ? EP01.duration - 3 : 0] };
+
+  const coldOpen = [
+    { borrow: C.coldOpen },
+    { env: 'earth', music: 'emotional', cast: {}, beats: [
+      ['plate', 'nerima_day', 7, { card: ['NERIMA, TOKYO', 'Summer'], fadeIn: 1.2, zoom: 1.08, fx: cic }, [[1.2, 'TAK', 'My name is Takuto Kirishima. Seventeen. Nerima ward, Tokyo.']]],
+      ['plate', 'train_platform', 7, { pan: 0.05 }, [[0.6, 'TAK', 'I go to school. I sleep in class. I get into fights I do not start, and finish them anyway.']]],
+      ['plate', 'nerima_street', 7, { zoom: 1.12 }, [[0.6, 'TAK', 'Two years ago, my best friend walked to the railway crossing to feed a stray cat, and never came home.']]],
+      ['plate', 'nerima_night', 6.5, { fadeOut: 1.2, fx: rain }, [[0.6, 'TAK', 'I still go every night. Somebody has to feed the cat.']]],
+    ] },
+    { env: 'earth', envOpts: { gate: 1, cat: true }, mood: 'night', music: 'calm', side: 1, wideDir: [0.6, 0.8],
+      cast: { takuto: [-1.0, 4.2, PI - 0.5], haruki: [-0.1, 4.0, PI + 0.6] },
+      beats: [
+        ['plate', 'nerima_night', 6, { card: ['THE CROSSING', 'Three years ago'], zoom: 1.1 }],
+        ['HAR', 'Your knuckles are bleeding.', { to: 'takuto' }],
+        ['TAK', 'They started it.', { to: 'haruki' }],
+        ['HAR', 'There were three of them, and they are in high school, and you are fourteen. They definitely started it. You definitely finished it.', { to: 'takuto', emote: 'happy' }],
+        ['TAK', 'Why did you stop me?', { to: 'haruki' }],
+        ['HAR', 'Because they got it. You were just going to keep going. You looked like you would keep going forever.', { to: 'takuto' }],
+        ['TAK', '...Nobody ever stops me.', { to: 'haruki' }],
+        ['HAR', 'Then I will. Haruki Shinjo. Class two-B. You are Kirishima, right? Everybody is scared of you.', { to: 'takuto', emote: 'happy' }],
+        ['TAK', 'You are not.', { to: 'haruki' }],
+        ['HAR', 'I am terrified. I just hide it well. Hey, look. Behind the vending machine.', { to: 'takuto', emote: 'surprised' }],
+        ['custom', 'catLook', 6, [[1.4, 'HAR', 'A cat. It watched the whole fight.'], [4.0, 'TAK', 'It looks hungry.']]],
+        ['HAR', 'What do cats drink? Milk?', { to: 'takuto' }],
+        ['TAK', 'The machine only has coffee milk.', { to: 'haruki' }],
+        ['HAR', 'Then it is getting coffee milk. Terrible idea. Let us do it.', { to: 'takuto', emote: 'happy' }],
+        ['custom', 'catFeed', 7, [[2.0, 'HAR', 'Ha! It likes it! It actually likes it!'], [4.6, 'TAK', 'It is making a face.']]],
+        ['HAR', 'We should name it. I am calling it Mister Tuesday. I met it on a Tuesday.', { to: 'takuto', emote: 'happy' }],
+        ['TAK', 'That is a terrible name.', { to: 'haruki' }],
+        ['HAR', 'What would you call it?', { to: 'takuto' }],
+        ['TAK', '...Coffee.', { to: 'haruki' }],
+        ['HAR', 'That is worse! That is so much worse!', { to: 'takuto', emote: 'happy' }],
+        ['HAR', 'Same time tomorrow? Somebody has to feed it.', { to: 'takuto' }],
+        ['TAK', '...Same time tomorrow.', { to: 'haruki', emote: 'happy' }],
+      ] },
+    { env: 'earth', music: 'mystery', cast: {}, beats: [
+      ['plate', 'nerima_night', 6.5, { card: ['NERIMA', 'Two years ago  ·  2:09 a.m.'], fadeIn: 1, zoom: 1.08, fx: rain }, [[1.0, 'HAR', 'You are late. You are always late. The cat is going to give up on us.'], [4.6, 'TAK', 'Ten minutes. My dad caught me on the stairs.']]],
+      ['plate', 'nerima_street', 6.5, { zoom: 1.14, fx: rain }, [[0.6, 'HAR', 'Takuto. The sky looks weird tonight. Is it supposed to crackle like that?'], [4.4, 'TAK', 'Crackle?']]],
+      ['plate', 'nerima_night', 6, { zoom: 1.2, fadeOut: 0.6, fx: (lt) => { rain(lt); if (lt > 3.4) GFX.fill('#ffffff', Math.max(0, 1 - (lt - 3.4) * 2)); } }, [[0.4, 'HAR', 'There is a crack in it. Takuto, there is a crack in the—']]],
+      ['plate', 'nerima_street', 5, { fadeIn: 1.4, zoom: 1.06 }, [[1.0, 'TAK', 'When I got there, there was a bag of cat food on the ground, and nobody else.']]],
+    ] },
+    { env: 'earth', envOpts: W('night', 'nerima_street', 'nerima_night', 'nerima_street', 'nerima_night'), mood: 'night', music: 'emotional', side: -1, wideDir: [0.5, 1],
+      cast: { takuto: [0.4, 0.2, -0.3] },
+      beats: [
+        ['plate', 'nerima_street', 6, { card: ['NERIMA', 'Now  ·  1:40 a.m.'], zoom: 1.1, fx: rain }, [[1.2, 'CRF', 'Takuto? Is that you? Out so late again?']]],
+        ['TAK', 'Mrs. Shinjo. You are putting up posters at one in the morning?', { on: 'takuto', shot: 'mcu' }],
+        ['plate', 'nerima_street', 6.5, { zoom: 1.16, fx: rain }, [[0.4, 'CRF', 'The old ones get wet. Nobody reads a wet poster.'], [3.6, 'CRF', 'Two years. Nobody calls anymore. Not even the police.']]],
+        ['TAK', 'I will help.', { on: 'takuto', shot: 'mcu' }],
+        ['plate', 'nerima_street', 6, { zoom: 1.2, fx: rain }, [[0.4, 'CRF', 'You always say that. You are a good boy, Takuto. He always said so.'], [3.8, 'CRF', 'Are you still feeding the cat?']]],
+        ['TAK', 'Every night.', { on: 'takuto', shot: 'cu' }],
+        ['plate', 'nerima_street', 6, { zoom: 1.24, fx: rain }, [[0.4, 'CRF', 'Then he will know where to find you. When he comes back.'], [3.6, 'CRF', 'Go on. It is almost two. Do not keep it waiting.']]],
+        ['TAK', '...Good night, Mrs. Shinjo.', { on: 'takuto', shot: 'cu', emote: 'sad' }],
+        ['plate', 'nerima_night', 5, { zoom: 1.1, fadeOut: 1, fx: rain }],
+      ] },
+    { borrow: C.crossing },
+  ];
+
+  const partA = [{ borrow: C.partA }];
+
+  const partB = [
+    { borrow: C.partB },
+    { env: 'barrow', envOpts: { fire: true }, mood: 'night', music: 'night', side: 1, wideDir: [0.6, 0.8],
+      cast: { takuto: [-1.4, 2.8, H + 0.5, { pose: sit }], nemu: [0.6, 3.0, -H - 0.5, { pose: sit }], sieg: [-0.4, 1.0, 0.1, { pose: sit }] },
+      beats: [
+        ['plate', 'barrow_night', 7, { card: ['THE BARROW FIELDS', 'That night'], zoom: 1.1 }],
+        ['SIE', 'Proper introductions, then. Sieg Valen. Hunter, rank A. Some people call me the Laughing Blade. I do not know why.', { to: 'takuto', emote: 'smug' }],
+        ['NEM', 'He winks a lot.', { to: 'takuto', emote: 'tired' }],
+        ['SIE', 'I wink exactly the right amount.', { to: 'nemu', emote: 'happy' }],
+        ['TAK', 'Takuto Kirishima. I fell out of the sky.', { to: 'sieg' }],
+        ['SIE', 'I noticed. A Skyfallen. You came through a Rift. The crack you saw in your sky. They open over this world, and Fiends crawl out of them.', { to: 'takuto' }],
+        ['TAK', 'The skeleton with the shield.', { to: 'sieg' }],
+        ['SIE', 'A Skeletal Shieldbearer. Lesser class. The weakest Fiend you will ever meet. You just broke its shield, which nobody has ever done.', { to: 'takuto', emote: 'surprised' }],
+        ['TAK', 'It was in the way.', { to: 'sieg' }],
+        ['SIE', 'Ha! It was in the way. I like you.', { to: 'takuto', emote: 'happy' }],
+        ['SIE', 'Ordinary weapons barely scratch a Fiend. To hurt one, you need a Brand. A power carved into your soul. It shows up as a mark.', { to: 'takuto' }],
+        ['SIE', 'It only wakes when you are close to death. When you want something so badly that dying is not enough to stop you.', { to: 'takuto' }],
+        ['TAK', 'The axe.', { to: 'sieg' }],
+        ['SIE', 'The axe woke yours. Or you woke the axe. I am not sure which yet.', { to: 'takuto', emote: 'sad' }],
+        ['NEM', 'Mine is Nine Lives. I can die nine times and get back up.', { to: 'takuto' }],
+        ['TAK', 'You died. Today. I watched you die.', { to: 'nemu', emote: 'sad' }],
+        ['NEM', 'Mm. That was number seven. Two left. Do not look so sad. It is a good Brand. Very practical.', { to: 'takuto', emote: 'smug' }],
+        ['TAK', '...Two left.', { to: 'nemu' }],
+        ['NEM', 'Two is a lot. Most people only get one.', { to: 'takuto', emote: 'happy' }],
+        ['TAK', 'Sieg. How do I get home?', { to: 'sieg' }],
+        ['SIE', '...', { to: 'takuto', emote: 'sad', min: 2.6 }],
+        ['SIE', 'Skyfallen do not go home, Takuto. Not that I have ever heard of. I am sorry.', { to: 'takuto', emote: 'sad' }],
+        ['TAK', 'My friend fell through two years ago. From the same crossing. Haruki Shinjo. Black hair. Blue eyes.', { to: 'sieg' }],
+        ['SIE', 'Then he could be anywhere in this world. Or nowhere. The Hunters\' Guild keeps records of every Skyfallen it finds.', { to: 'takuto' }],
+        ['TAK', 'Where is the Guild?', { to: 'sieg' }],
+        ['SIE', 'Ashford. Three days east. The frontier town. I am going there anyway. You two are coming with me.', { to: 'takuto' }],
+        ['NEM', 'Me?', { to: 'sieg', emote: 'surprised' }],
+        ['SIE', 'You died for him, little cat. That makes you his problem now. And his problem is my problem. That is how it works.', { to: 'nemu', emote: 'happy' }],
+      ] },
+    { env: 'void', music: 'mystery', side: 1, cast: { takuto: [0, 0, 0] },
+      beats: [
+        ['custom', 'voidFirst', 10, [[1.2, 'AKU', 'So. You can hear me now, boy. Properly. Not just in the screaming.'], [6.2, 'TAK', 'Who are you?']]],
+        ['AKU', 'The one in the axe. The one who asked you a question. Do you remember what I asked?', { on: 'takuto', shot: 'cu' }],
+        ['TAK', 'What is it you want to break.', { shot: 'cu' }],
+        ['AKU', 'And? You never really answered. You just swung. Very satisfying. Very rude.', { on: 'takuto', shot: 'cu' }],
+        ['TAK', 'I want to find Haruki.', { shot: 'cu' }],
+        ['AKU', 'That is not breaking, boy. That is finding. Those are different verbs. Think about it. We have time. I have had three hundred years of it.', { on: 'takuto', shot: 'cu' }],
+        ['TAK', 'What is your name?', { shot: 'cu' }],
+        ['AKU', '...Akuro. Remember it. Everyone else forgot.', { on: 'takuto', shot: 'cu' }],
+      ] },
+    { env: 'barrow', mood: 'night', music: 'emotional', side: -1, wideDir: [0.5, 1],
+      cast: { nemu: [3.0, 0.6, -H - 0.4, { pose: sit }], takuto: [1.8, 1.0, H + 0.6, { pose: sit }] },
+      beats: [
+        ['plate', 'barrow_night', 6, { card: ['THE BARROW FIELDS', 'Later'], pan: 0.05 }],
+        ['TAK', 'You live here? In a graveyard?', { to: 'nemu' }],
+        ['NEM', 'I am a grave scavenger. I find nice things the dead do not need, and I sell them in town for bread.', { to: 'takuto', emote: 'tired' }],
+        ['TAK', 'That sounds illegal.', { to: 'nemu' }],
+        ['NEM', 'It is very illegal. But I ask them first. I always ask. If they say no, I leave it.', { to: 'takuto' }],
+        ['TAK', 'They say no?', { to: 'nemu', emote: 'surprised' }],
+        ['NEM', 'Sometimes. You can feel it. A grave that says no feels heavy. Like a held breath.', { to: 'takuto' }],
+        ['NEM', 'The Headsman\'s grave always said no. For years. I tried to pull that axe out once. I hurt my back for a week.', { to: 'takuto', emote: 'sad' }],
+        ['TAK', 'It came out for me.', { to: 'nemu' }],
+        ['NEM', 'It said yes to you. I have never heard a grave say yes so loud.', { to: 'takuto' }],
+        ['NEM', 'Takuto. Thank you. For breaking the thing that was killing me.', { to: 'takuto', emote: 'happy' }],
+        ['TAK', 'You died anyway.', { to: 'nemu', emote: 'sad' }],
+        ['NEM', 'Only a little. You got there in time for the rest of me.', { to: 'takuto', emote: 'happy' }],
+      ] },
+    { env: 'barrow', envOpts: W('dusk', 'barrow_dusk', 'barrow_dusk'), mood: 'dusk', music: 'calm', side: 1, wideDir: [0.9, 0.45],
+      cast: { nemu: [0.6, 0.8, PI + 0.2], takuto: [-0.6, 1.0, PI - 0.2], sieg: [0.2, -0.6, 0.2] },
+      beats: [
+        ['plate', 'barrow_dusk', 6.5, { card: ['THE BARROW FIELDS', 'Dawn'], zoom: 1.1 }],
+        ['NEM', 'This is everything I own. A blanket. A spoon. A music box that plays half a song.', { to: 'takuto', emote: 'tired' }],
+        ['TAK', 'Half a song?', { to: 'nemu' }],
+        ['NEM', 'The other half is broken. Maybe you could break it back.', { to: 'takuto', emote: 'smug' }],
+        ['TAK', 'That is not how breaking works.', { to: 'nemu' }],
+        ['NEM', 'You do not know that yet.', { to: 'takuto', emote: 'happy' }],
+        ['NEM', 'Goodbye, everyone. I am going to Ashford. Do not let anyone else take your nice things while I am gone.', { to: 'takuto', emote: 'sad' }],
+        ['SIE', 'Takuto. Let me see the axe. Just look. I will not touch it.', { to: 'takuto' }],
+        ['custom', 'siegReads', 8, [[1.6, 'SIE', 'Three hundred years old. Older. Look at the marks on the haft.'], [5.0, 'SIE', 'This is the Headsman\'s Axe. The one from the stories.']]],
+        ['TAK', 'What stories?', { to: 'sieg' }],
+        ['SIE', 'Stories you tell children so they stay out of graveyards. They mostly do not work. Ask Nemu.', { to: 'takuto', emote: 'smug' }],
+        ['SIE', 'Do not swing it at anything you love, Takuto. And if it ever talks to you, tell me.', { to: 'takuto' }],
+        ['TAK', '...Okay.', { to: 'sieg' }],
+        ['AKU', 'Liar. Ha. We are going to get along so well, boy.', { on: 'takuto', shot: 'cu' }],
+      ] },
+    { env: 'road', envOpts: W('day', 'farm_road', 'wastes_day', 'farm_road', 'wastes_day'), mood: 'day', music: 'calm', side: -1, wideDir: [0.9, 0.45],
+      cast: { sieg: [0.2, -0.8, PI], takuto: [1.0, 0.4, PI + 0.2], nemu: [-0.8, 0.4, PI - 0.2] },
+      beats: [
+        ['plate', 'farm_road', 7, { card: ['THE ASHEN MARCH', 'The road east'], pan: 0.06 }],
+        ['NEM', 'How far is Ashford?', { to: 'sieg', emote: 'tired' }],
+        ['SIE', 'Three days.', { to: 'nemu' }],
+        ['NEM', 'Can you carry me for two of them?', { to: 'sieg' }],
+        ['SIE', 'Rank A Hunters do not carry cats.', { to: 'nemu', emote: 'smug' }],
+        ['NEM', 'I died yesterday.', { to: 'sieg', emote: 'sad' }],
+        ['SIE', '...One day. I will carry you for one day.', { to: 'nemu', emote: 'sad' }],
+        ['NEM', 'Mm. Deal.', { to: 'sieg', emote: 'happy' }],
+        ['TAK', 'Is everything in this world trying to kill us?', { to: 'sieg' }],
+        ['SIE', 'Only most things. The rest are trying to sell you something.', { to: 'takuto', emote: 'happy' }],
+        ['SIE', 'Watch the treeline. Fiends like dusk. Ashen Hounds, mostly. Small. Mean. Afraid of fire.', { to: 'takuto' }],
+        ['TAK', 'I do not have fire.', { to: 'sieg' }],
+        ['SIE', 'You have an axe that broke something unbreakable. I think the Hounds will be very polite to you.', { to: 'takuto', emote: 'smug' }],
+      ] },
+    { env: 'road', envOpts: W('night', 'wastes_camp', 'forest_camp', 'wastes_camp', 'forest_camp'), mood: 'night', music: 'night', side: 1, wideDir: [0.6, 0.8],
+      cast: { takuto: [-0.9, 0.9, H + 0.6, { pose: sit }], nemu: [0.9, 1.0, -H - 0.6, { pose: sit }], sieg: [0.1, -0.4, 0.05, { pose: sit }] },
+      beats: [
+        ['plate', 'wastes_camp', 6, { card: ['THE ROAD TO ASHFORD', 'The second night'], zoom: 1.1 }],
+        ['NEM', 'Takuto. What is your world like?', { to: 'takuto' }],
+        ['TAK', 'Loud. Bright. Too many people. Trains every three minutes.', { to: 'nemu' }],
+        ['NEM', 'What is a train?', { to: 'takuto' }],
+        ['TAK', 'A metal house that runs on rails. Very fast. You can sleep in it.', { to: 'nemu' }],
+        ['NEM', 'A house you can sleep in, that also takes you places? That is the best thing I have ever heard.', { to: 'takuto', emote: 'surprised' }],
+        ['TAK', 'There are vending machines on every corner. Boxes that give you drinks at two in the morning.', { to: 'nemu' }],
+        ['NEM', 'For free?', { to: 'takuto' }],
+        ['TAK', 'For coins. One of them has coffee milk. That is where I fed the cat.', { to: 'nemu' }],
+        ['NEM', 'What is the cat called?', { to: 'takuto' }],
+        ['TAK', 'Coffee. Haruki wanted Mister Tuesday.', { to: 'nemu' }],
+        ['NEM', 'Mister Tuesday is a much better name.', { to: 'takuto', emote: 'smug' }],
+        ['TAK', '...Everybody says that.', { to: 'nemu', emote: 'happy' }],
+        ['NEM', 'Who is feeding Coffee now?', { to: 'takuto', emote: 'sad' }],
+        ['TAK', '...Nobody.', { to: 'nemu', emote: 'sad' }],
+        ['NEM', 'Then we had better find your friend quickly. Cats do not wait forever.', { to: 'takuto' }],
+      ] },
+    { env: 'road', envOpts: W('night', 'wastes_camp', 'forest_night', 'wastes_camp', 'forest_night'), mood: 'night', music: 'mystery', side: -1, wideDir: [0.5, 1],
+      cast: { sieg: [0.4, 0.2, PI + 0.3] },
+      beats: [
+        ['custom', 'siegSky', 9, [[1.6, 'SIE', 'One. Two. Three...'], [5.4, 'SIE', 'Eleven. And now two more. Thirteen.']]],
+        ['SIE', 'A Rift that opens sideways. A Skyfallen boy with the Headsman\'s Axe. And static in the air, like before Grey Hollow.', { on: 'sieg', shot: 'mcu', emote: 'sad' }],
+        ['SIE', '...I do not like this at all.', { on: 'sieg', shot: 'cu', emote: 'sad' }],
+        ['plate', 'wastes_camp', 5, { zoom: 1.16, fadeOut: 1.2 }],
+      ] },
+  ];
+
+  const postCredits = [{ borrow: C.after }];
+  const preview = [{ borrow: C.next }];
+
+  return { id: 'ep01x', number: 1, pace: 0.45, title: { jpNo: '第一話', jp: '踏切', en: 'THE CROSSING' }, coldOpen, partA, partB, postCredits, preview, cast: {}, extraLines: 'voice/lines.json', extraVoice: 'js/voice-data.js' };
+})();
+if (typeof module !== 'undefined') module.exports = EP01X_SCRIPT;

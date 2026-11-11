@@ -17,7 +17,14 @@ const SERIES = {
   VESPER: { voice: [['bf_lily', 0.6], ['af_sky', 0.4]], speed: 1.0 }, KUROZANE: { voice: [['am_onyx', 0.7], ['am_fenrir', 0.3]], speed: 0.9 },
   OGRE: { voice: [['am_santa', 1]], speed: 0.9, fx: 'demon' }, NARRATOR: { voice: [['bm_george', 0.4], ['am_adam', 0.6]], speed: 0.98 },
 };
-const cast = { ...SERIES, ...(S.cast || {}) }, missing = [...new Set(lines.map(l => l.who))].filter(w => !cast[w]);
+// a full-length cut can carry another episode's recorded lines along (Episode 1's), ahead of its own
+const extra = S.extraLines ? JSON.parse(require('fs').readFileSync(require('path').resolve(require('path').dirname(process.argv[2]), '..', S.extraLines))) : { cast: {}, lines: [] };
+if (S.extraVoice) { // reuse those lines' original recordings rather than re-synthesizing them
+  const R = require('path').resolve(require('path').dirname(process.argv[2]), '..'), VD = new Function(require('fs').readFileSync(R + '/' + S.extraVoice, 'utf8') + '; return VOICE_DATA;')();
+  extra.lines.forEach(l => { const v = VD.lines[l.id]; if (v) l.src = [VD.file, v.off, v.dur]; });
+}
+lines.unshift(...extra.lines);
+const cast = { ...SERIES, ...extra.cast, ...(S.cast || {}) }, missing = [...new Set(lines.map(l => l.who))].filter(w => !cast[w]);
 if (missing.length) { console.error('no voice for', missing.join(', ')); process.exit(1); }
 require('fs').writeFileSync(process.argv[3], JSON.stringify({ cast, lines }, null, 1));
 console.log(lines.length, 'lines');
