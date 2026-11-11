@@ -766,11 +766,18 @@ const S3 = (() => {
     sc.userData.rim = L[5]; sc.userData.rimK = 0.7; sc.userData.rimDir = V3(0.6, 0.4, -0.6); sc.userData.stage = true;
     STAGES[light] = sc; return sc;
   }
+  // a seated character gets something to sit on: a low wooden crate under the hips (painted-only sets have no furniture)
+  function seatFor(c, pose = {}) {
+    if (c.sprite) return; const sit = (pose.crouch || 0) >= 0.45 && pose.thL && pose.thL[0] >= 1.2;
+    if (!c.seat) { if (!sit) return; const g = new THREE.Group(), box = new THREE.Mesh(new THREE.BoxGeometry(0.56, 0.44, 0.46), toon('#5a4232')), lid = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.05, 0.5), toon('#6e5240'));
+      box.position.y = 0.22; lid.position.y = 0.465; g.add(box, lid); g.position.set(0, 0, 0.16); c.J.root.add(g); c.seat = g; }
+    c.seat.visible = sit;
+  }
   function contactShadows(ctx, cast) { ctx.save(); ctx.setTransform(G.K, 0, 0, G.K, 0, 0); cast.forEach(([n, pose, o = {}]) => { const c = chars[n]; if (!c || o.visible === false || (pose && pose.y > 0.4)) return; const p = c.J.root.position; const a = project(p.x, 0, p.z), b = project(p.x + (c.shadowR || 0.35), 0, p.z), r = Math.abs(b[0] - a[0]) + 4; if (a[1] < 0 || a[1] > G.H + 40) return; const gr = ctx.createRadialGradient(a[0], a[1], 0, a[0], a[1], r); gr.addColorStop(0, 'rgba(10,6,12,0.45)'); gr.addColorStop(1, 'rgba(10,6,12,0)'); ctx.fillStyle = gr; ctx.beginPath(); ctx.ellipse(a[0], a[1], r, r * 0.32, 0, 0, 7); ctx.fill(); }); ctx.restore(); }
 
   /* ---------- per-frame updates ---------- */
-  function animateEnv(name, t, o = {}) {
-    const sc = scenes[name];
+  function animateEnv(name, t, o = {}, sc0) {
+    const sc = sc0 || scenes[name]; if (!sc) return; // painted-only locations render on a shared stage scene
     if (sc.userData.crowd) sc.userData.crowd.forEach(f => { f.rotation.z = Math.sin(t * 1.3 + f.userData.ph) * 0.02; f.position.y = Math.abs(Math.sin(t * 2 + f.userData.ph)) * 0.01; });
     if (sc.userData.motes) { const m = sc.userData.motes, a = m.geometry.attributes.position, b = m.userData.base; for (let i = 0; i < a.count; i++) { a.array[i * 3] = b[i * 3] + Math.sin(t * 0.5 + i) * 0.3; a.array[i * 3 + 1] = (b[i * 3 + 1] + t * (name === 'void' ? 0.6 : 0.15)) % 8; } a.needsUpdate = true; }
     if (sc.userData.rain) { const r = sc.userData.rain, a = r.geometry.attributes.position, b = r.userData.base; for (let i = 0; i < a.count / 2; i++) { const dy = ((t * 14 + i * 0.37) % 14); a.array[i * 6 + 1] = (b[i * 6 + 1] - dy + 14) % 14; a.array[i * 6 + 4] = a.array[i * 6 + 1] - 0.45; } a.needsUpdate = true; r.position.set(cam.position.x, 0, cam.position.z - 6); }
@@ -801,7 +808,7 @@ const S3 = (() => {
     if (!scenes[spec.env] && BUILD[spec.env]) scenes[spec.env] = BUILD[spec.env]();
     const sc = scenes[spec.env] || stageScene(spec.light || (spec.envOpts || {}).light || 'day');
     Object.values(chars).forEach(c => { if (c.J.root.parent) c.J.root.parent.remove(c.J.root); });
-    (spec.cast || []).forEach(([n, pose, o = {}]) => { const c = chars[n]; sc.add(c.J.root); setPose(c, pose, spec.t, o); c.J.root.visible = o.visible !== false; c.J.root.scale.setScalar(o.scale || 1); if (c.J.weapon) c.J.weapon.visible = o.weapon !== false; if (c.J.bag) c.J.bag.visible = !!o.bag; if (c.J.shield && n === 'shield') c.J.shield.visible = o.shieldOn !== false; });
+    (spec.cast || []).forEach(([n, pose, o = {}]) => { const c = chars[n]; sc.add(c.J.root); setPose(c, pose, spec.t, o); seatFor(c, pose); c.J.root.visible = o.visible !== false; c.J.root.scale.setScalar(o.scale || 1); if (c.J.weapon) c.J.weapon.visible = o.weapon !== false; if (c.J.bag) c.J.bag.visible = !!o.bag; if (c.J.shield && n === 'shield') c.J.shield.visible = o.shieldOn !== false; });
     const cm0 = spec.cam; cam.fov = cm0.fov || 32; cam.updateProjectionMatrix(); cam.position.set(...cm0.pos); cam.up.set(Math.sin(cm0.roll || 0), Math.cos(cm0.roll || 0), 0); cam.lookAt(...cm0.look); cam.updateMatrixWorld();
     spec_close = Math.hypot(cm0.pos[0] - cm0.look[0], cm0.pos[1] - cm0.look[1], cm0.pos[2] - cm0.look[2]) < 2.4;
     const pl = spec.only === 'cast' ? null : plateFor(spec);
@@ -809,7 +816,7 @@ const S3 = (() => {
     const hidden = []; if (castOnly) sc.children.forEach(ch => { if (!ch.isLight && !ch.userData.keep && !(spec.cast || []).some(([n]) => chars[n].J.root === ch) && ch.visible) { ch.visible = false; hidden.push(ch); } });
     else if (pl && pl.set.mode === 'sky') sc.children.forEach(ch => { if (ch.userData.far && ch.visible) { ch.visible = false; hidden.push(ch); } });
     const cm = spec.cam; cam.fov = cm.fov || 32; cam.updateProjectionMatrix(); cam.position.set(...cm.pos); cam.up.set(Math.sin(cm.roll || 0), Math.cos(cm.roll || 0), 0); cam.lookAt(...cm.look);
-    animateEnv(spec.env, spec.t, spec.envOpts || {});
+    animateEnv(spec.env, spec.t, spec.envOpts || {}, sc);
     (spec.cast || []).forEach(([n]) => { const c = chars[n]; if (c && c.sprite) { const r = c.J.root; r.rotation.set(0, Math.atan2(cam.position.x - r.position.x, cam.position.z - r.position.z), 0); } });
     (spec.cast || []).forEach(([n]) => { const c = chars[n]; if (c && c.mats) c.mats.forEach(m => { if (m.parametricRimColorFactor) { m.parametricRimColorFactor.copy(RIM.uRim.value).multiplyScalar(Math.min(1, RIM.uRimK.value * 0.55)); m.parametricRimFresnelPowerFactor = 4.5; m.parametricRimLiftFactor = 0; } }); });
     cam.updateMatrixWorld(); const ud = sc.userData;

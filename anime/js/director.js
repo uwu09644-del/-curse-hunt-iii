@@ -33,7 +33,7 @@ const DIRECTOR = (() => {
     function shot(d, draw, o = {}) {
       let lastEnd = 0; (o.say || []).forEach(([a, id]) => { const tt = typeof a === 'string' ? lastEnd + parseFloat(a) : a; const p = place(T + tt, id); lastEnd = tt + p.dur; });
       if (o.say && o.say.length) d = Math.max(d, lastEnd + (o.tail ?? 0.5));
-      const s = { t0: T, d, draw, vig: o.vig !== false }; shots.push(s);
+      const s = { t0: T, d, draw, vig: o.vig !== false, tag: o.tag }; shots.push(s);
       (o.sfx || []).forEach(([a, f, d2 = 0.2, long = false]) => ev.push({ t: T + a, d: d2, f, long }));
       T += d; return s;
     }
@@ -313,7 +313,7 @@ const DIRECTOR = (() => {
         if (kind === 'show') { SC.marks = { ...SC.marks, [bt[1]]: { ...SC.marks[bt[1]], hidden: false } }; return; }
         if (kind === 'side') { SC.side = bt[1]; return; }
         if (kind === 'custom') { const fn = custom[bt[1]]; const st = snap(); const lines = (bt[3] || []).map(([a, w2, txt, lo]) => { const id = (lo && lo.id) || nextId(); return [a, id]; });
-          shot(bt[2], (lt, dd, t) => { const leave = enter(st); fn(lt, dd, t, API); leave(); }, { say: lines, sfx: bt[4] }); return; }
+          shot(bt[2], (lt, dd, t) => { const leave = enter(st); fn(lt, dd, t, API); leave(); }, { say: lines, sfx: bt[4], tag: 'custom:' + bt[1] }); return; }
       });
       const dur = T - t0;
       music(sc.music, t0, dur); ambience(sc.ambience || sc.env, t0, dur, sc.mood);
