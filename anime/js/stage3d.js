@@ -290,7 +290,12 @@ const S3 = (() => {
     const keys = Object.keys(VRM_CAST);
     for (let i = 0; i < keys.length; i++) {
       const k = keys[i], spec = VRM_CAST[k];
-      const g = await L.loadAsync(base + spec.file, e => { if (progress && e.total) progress((i + e.loaded / e.total) / keys.length); });
+      let g;
+      if (window.RB_MODELS_B64) { // hosts that only serve web types get the model as base64 text
+        const txt = await (await fetch(base + spec.file + '.b64.txt')).text(), bin = atob(txt.trim()), u8 = new Uint8Array(bin.length);
+        for (let k = 0; k < bin.length; k++) u8[k] = bin.charCodeAt(k);
+        g = await L.parseAsync(u8.buffer, base); if (progress) progress((i + 1) / keys.length);
+      } else g = await L.loadAsync(base + spec.file, e => { if (progress && e.total) progress((i + e.loaded / e.total) / keys.length); });
       const vrm = g.userData.vrm; VRMUtils.rotateVRM0(vrm);
       const nr = vrm.humanoid.normalizedHumanBonesRoot; if (nr && !nr.parent) vrm.scene.add(nr);
       vrm.scene.traverse(o => { o.frustumCulled = false; });
