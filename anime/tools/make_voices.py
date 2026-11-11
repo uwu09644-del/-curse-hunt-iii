@@ -1,4 +1,4 @@
-"""Generate the Episode 1 voice track with Kokoro-82M (Apache-2.0).
+"""Generate an episode's voice track with Kokoro-82M (Apache-2.0).
 
 usage: python3 make_voices.py MODEL.onnx VOICES_DIR LINES.json OUT_DIR JS_OUT [MP3_NAME]
 
@@ -6,7 +6,7 @@ MODEL.onnx  - Kokoro-82M v1.0 ONNX export (input_ids/style/speed)
 VOICES_DIR  - folder of <voice>.bin style files (510x256 float32), e.g. from the kokoro-js npm package
 Writes OUT_DIR/voices.mp3 (one sprite of every line) and JS_OUT (timings + lip-sync envelopes).
 """
-import json, os, subprocess, sys, tempfile
+import hashlib, json, os, subprocess, sys, tempfile
 import numpy as np
 import soundfile as sf
 import librosa
@@ -50,6 +50,11 @@ def level(y, target_db=-19.0):
     pk = np.abs(y).max()
     return y * (0.89 / pk) if pk > 0.89 else y
 
+cache_dir = os.environ.get('VOICE_CACHE', os.path.join(out_dir, '.cache'))  # one .npy per synthesized line
+os.makedirs(cache_dir, exist_ok=True)
+missing = sorted({ln['who'] for ln in spec['lines']} - set(spec['cast']))
+if missing: sys.exit('no voice for ' + ', '.join(missing))
+
 pad0, gap = int(0.25 * SR), int(0.4 * SR)
 track = [np.zeros(pad0, np.float32)]
 pos = pad0
@@ -57,11 +62,16 @@ meta = {}
 for ln in spec['lines']:
     cast = spec['cast'][ln['who']]
     text = ln.get('tts', ln['text'])
-    y, _ = tts.create(text, voice=style(cast), speed=ln.get('speed', cast['speed']), lang='en-us')
-    y = y.astype(np.float32)
-    if cast.get('fx') == 'demon': y = demon(y)
-    if cast.get('fx') == 'static': y = static(y)
-    y = level(y).astype(np.float32)
+    key = hashlib.sha1(json.dumps([text, cast, ln.get('speed')], sort_keys=True).encode()).hexdigest()[:16]
+    cached = os.path.join(cache_dir, key + '.npy')
+    if os.path.exists(cached): y = np.load(cached)
+    else:
+        y, _ = tts.create(text, voice=style(cast), speed=ln.get('speed', cast['speed']), lang='en-us')
+        y = y.astype(np.float32)
+        if cast.get('fx') == 'demon': y = demon(y)
+        if cast.get('fx') == 'static': y = static(y)
+        y = level(y).astype(np.float32)
+        np.save(cached, y)
     hop = SR // 30  # lip-sync envelope at 30 fps
     env = [float(np.sqrt(np.mean(y[i:i + hop] ** 2))) for i in range(0, len(y), hop)]
     mx = max(env) or 1

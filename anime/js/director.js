@@ -7,8 +7,8 @@
 
 const DIRECTOR = (() => {
   const PI = Math.PI, HALF = PI / 2;
-  const WHO = { TAK: 'TAKUTO', NEM: 'NEMU', SIE: 'SIEG', AKU: 'AKURO', RIN: 'RIN', VAL: 'VALENTINE', CLK: 'CLERK', CRW: 'CROWD', CRF: 'CROWD2', VEN: 'VENDOR', HUN: 'HUNTER', SAB: 'SABLE', WIC: 'WICK' };
-  const ACTOR = { TAKUTO: 'takuto', NEMU: 'nemu', SIEG: 'sieg', RIN: 'rin', VALENTINE: 'valentine', CLERK: 'clerk', SABLE: 'sable' };
+  const WHO = { TAK: 'TAKUTO', NEM: 'NEMU', SIE: 'SIEG', AKU: 'AKURO', RIN: 'RIN', VAL: 'VALENTINE', CLK: 'CLERK', CRW: 'CROWD', CRF: 'CROWD2', VEN: 'VENDOR', HUN: 'HUNTER', SAB: 'SABLE', WIC: 'WICK', GID: 'GIDEON', HAR: 'HARUKI', LUC: 'LUCIEN', VES: 'VESPER', KUR: 'KUROZANE', OGR: 'OGRE', EXM: 'EXAMINER', NAR: 'NARRATOR' };
+  const ACTOR = { TAKUTO: 'takuto', NEMU: 'nemu', SIEG: 'sieg', RIN: 'rin', VALENTINE: 'valentine', CLERK: 'clerk', SABLE: 'sable', WICK: 'wick', GIDEON: 'gideon', HARUKI: 'haruki', LUCIEN: 'lucien', VESPER: 'vesper', KUROZANE: 'm_wolf', OGRE: 'm_plume', EXAMINER: 'clerk' };
   const EYE = { takuto: 1.66, nemu: 1.45, sieg: 1.76, rin: 1.5, valentine: 1.55, clerk: 1.45, sable: 1.8, tofu: 1.2 };
   const IDLE = {
     takuto: { uaR: [0.5, 0.25], elR: 2.3, weapon: 0, uaL: [0.05, 0.15], elL: 0.3 },
@@ -58,7 +58,7 @@ const DIRECTOR = (() => {
       if (o.pose) Object.assign(p, o.pose);
       return p;
     }
-    const VOICE_OF = { takuto: 'TAKUTO', nemu: 'NEMU', sieg: 'SIEG', rin: 'RIN', valentine: 'VALENTINE', clerk: 'CLERK', sable: 'SABLE' };
+    const VOICE_OF = { takuto: 'TAKUTO', nemu: 'NEMU', sieg: 'SIEG', rin: 'RIN', valentine: 'VALENTINE', clerk: 'CLERK', sable: 'SABLE', wick: 'WICK', gideon: 'GIDEON', haruki: 'HARUKI', lucien: 'LUCIEN', vesper: 'VESPER' };
     function castList(t, focus = {}, extra = {}) {
       return Object.keys(SC.marks).filter(k => !SC.marks[k].hidden).map(k => {
         const m = SC.marks[k], partner = focus[k] || m.faceTo || SC.lastPartner[k];
@@ -140,6 +140,90 @@ const DIRECTOR = (() => {
       if (mood === 'night' && loc === 'barrow') at(t0, (g, w, off) => S.noiseBed(g, w, off, dur, { vol: 0.04, bp: 4200, q: 6, lfo: 7, lfoDepth: 900, fin: 1.5, fout: 1.5 }), dur, true);
     }
 
+
+    /* ---------- painted establishing shots and reusable fight moves ---------- */
+    function plateShot(id, d, o = {}) {
+      const a = o.from || [0, 0, 1.0], b = o.to || [o.pan ?? -0.06, o.tilt ?? 0, o.zoom ?? 1.1];
+      shot(d, (lt, dd, t) => {
+        const im = S3.plateImage(id); const k = ease.io(clamp(lt / dd)), x = lerp(a[0], b[0], k), y = lerp(a[1], b[1], k), z = lerp(a[2], b[2], k);
+        if (im) { const c = G.ctx, s = Math.max(W / im.width, H / im.height) * z * 1.06; c.save(); c.drawImage(im, W / 2 - im.width * s / 2 + x * W, H / 2 - im.height * s / 2 + y * H, im.width * s, im.height * s); c.restore(); }
+        else G.fill('#101014');
+        if (o.fx) o.fx(lt, dd, t);
+        if (o.card) G.locationCard(lt - 0.6, Math.min(5, dd - 1), o.card[0], o.card[1]);
+        if (o.fadeIn) G.fill('#000', 1 - inv(0, o.fadeIn, lt)); if (o.fadeOut) G.fill('#000', inv(dd - o.fadeOut, dd, lt));
+        POST.set({ bloom: 0.35, thr: 0.74, sat: 1.08 });
+      }, { say: o.say, sfx: o.sfx });
+    }
+    const P = () => S3.POSES, V2 = (x, z) => [x, z];
+    function mk(name) { const m = SC.marks[name]; return m ? [m.x, m.z] : [0, 0]; }
+    function toward(a, b, dist) { const dx = b[0] - a[0], dz = b[1] - a[1], l = Math.hypot(dx, dz) || 1; return [b[0] - dx / l * dist, b[1] - dz / l * dist]; }
+    const yawTo = (a, b) => Math.atan2(b[0] - a[0], b[1] - a[1]);
+    const proj = p => S3.project(p[0], p[1], p[2]);
+    const jolt = (c, t, amt) => { if (amt <= 0) return c; const k = G.twos(t, 30); c.pos = c.pos.map((v, i) => v + (hash(k, i + 1) - 0.5) * amt); return c; };
+    function castWith(t, over) { return castList(t).map(c => over[c[0]] ? [c[0], { ...c[1], ...over[c[0]].pose }, { ...c[2], ...(over[c[0]].o || {}) }] : c); }
+    function sideCam(a, b, dist, h = 1.25, fov = 34, bias = 0) { const mx = (a[0] + b[0]) / 2, mz = (a[1] + b[1]) / 2, dx = b[0] - a[0], dz = b[1] - a[1], l = Math.hypot(dx, dz) || 1, nx = -dz / l * SC.side, nz = dx / l * SC.side; return { pos: [mx + nx * dist + dx / l * bias, h, mz + nz * dist + dz / l * bias], look: [mx, h * 0.9 + 0.2, mz], fov }; }
+    const MOVES = {
+      standoff(lt, d, t, o) {
+        const H0 = mk(o.hero || 'takuto'), F0 = mk(o.foe), fh = S3.SPRITE_H[o.foe] || 1.8, dx = H0[0] - F0[0], dz = H0[1] - F0[1], l = Math.hypot(dx, dz) || 1, roar = o.roar ? Math.max(0, 1 - Math.abs(lt - d * 0.55) / 0.6) : 0;
+        const a = { pos: [H0[0] + dx / l * 2.0 - dz / l * 0.9 * SC.side, 0.75, H0[1] + dz / l * 2.0 + dx / l * 0.9 * SC.side], look: [F0[0], fh * 0.55, F0[1]], fov: 38 };
+        const k = ease.io(clamp(lt / d)); a.pos = a.pos.map((v, i) => i === 1 ? v : lerp(v, [H0[0], 0, H0[1]][i], k * 0.25));
+        render(t, jolt(a, t, roar * 0.12), castWith(t, { [o.hero || 'takuto']: { pose: { ...P().ready, ry: yawTo(H0, F0) }, o: { axeGlow: o.glow || 0 } }, [o.foe]: { o: { lunge: roar * 0.6, shake: roar } } }));
+        if (roar > 0.5) { const [x, y] = proj([F0[0], fh * 0.8, F0[1]]); X.ring(lt - d * 0.55, { x, y, r1: 900, dur: 0.7, flat: 0.9 }); }
+      },
+      charge(lt, d, t, o) {
+        const hero = o.hero || 'takuto', H0 = mk(hero), F0 = mk(o.foe), end = toward(H0, F0, o.stop || 2.6), k = clamp(lt / d), pos = [lerp(H0[0], end[0], k), lerp(H0[1], end[1], k)];
+        const cam = sideCam(pos, [pos[0] + (F0[0] - H0[0]) * 0.15, pos[1] + (F0[1] - H0[1]) * 0.15], 4.2, 1.1, 36);
+        render(t, cam, castWith(t, { [hero]: { pose: { ...S3.run(t * 15, 1.1), x: pos[0], z: pos[1], ry: yawTo(H0, F0), ...(hero === 'takuto' ? { uaR: [1.0, 0.2], elR: 0.8, weapon: 0.6 } : {}) }, o: { vx: 3 } } }));
+        POST.set({ dir: [0.006, 0] });
+      },
+      strike(lt, d, t, o) {
+        const hero = o.hero || 'takuto', F0 = mk(o.foe), H1 = toward(mk(hero), F0, o.reach || 2.2), hit = d * (o.at || 0.55), fh = S3.SPRITE_H[o.foe] || 1.8;
+        const pose = S3.seq(lt, [[0, P().ready], [hit - 0.35, { ...P().windup, weapon: 2.0, y: o.jump ? 1.0 : 0 }, 'out'], [hit, { ...P().chop, weapon: 1.7 }, 'in'], [hit + 0.5, P().ready]]);
+        const after = lt > hit ? Math.exp(-(lt - hit) * 5) : 0;
+        const cam = jolt(sideCam(H1, F0, Math.max(5, fh * 1.25), Math.min(2.2, fh * 0.35 + 0.8), 36, -0.6), t, after * 0.25);
+        render(t, cam, castWith(t, { [hero]: { pose: { ...pose, x: H1[0], z: H1[1], ry: yawTo(H1, F0) }, o: { axeGlow: o.glow ?? 0.4, expr: { angry: 0.6 } } }, [o.foe]: { o: { flash: lt > hit && lt < hit + 0.1 ? 1 : 0, shake: after, lunge: -after * 0.8, tilt: -after * 0.08 } } }));
+        if (lt > hit) { const [x, y] = proj([F0[0], fh * 0.5, F0[1]]); X.sparks(lt - hit, { x, y, n: 70, spread: 2.4, speed: 1200, color: o.color || '#ffd0a0' }); X.debris(lt - hit, { x, y: proj([F0[0], 0, F0[1]])[1], n: 30, speed: 600, size: 10, seed: Math.round(t * 10) }); }
+        if (lt > hit && lt < hit + 0.07) G.fill('#fff', 0.8); else if (lt > hit + 0.07 && lt < hit + 0.13) G.impact('inv');
+      },
+      foeAttack(lt, d, t, o) {
+        const hero = o.hero || 'takuto', H0 = mk(hero), F0 = mk(o.foe), at = d * 0.42, fh = S3.SPRITE_H[o.foe] || 1.8, lunge = Math.max(0, 1 - Math.abs(lt - at) / 0.5);
+        const F1 = toward(H0, F0, -0.0); const fpos = [lerp(F0[0], H0[0], lunge * 0.35), lerp(F0[1], H0[1], lunge * 0.35)];
+        const hit = !!o.hit && lt > at, fly = hit ? ease.out(clamp((lt - at) / 0.8)) : 0, dodge = !o.hit ? Math.sin(clamp((lt - at + 0.25) / 0.6) * Math.PI) : 0;
+        const back = [H0[0] - (F0[0] - H0[0]) * 0.35 * fly, H0[1] - (F0[1] - H0[1]) * 0.35 * fly];
+        const hp = hit ? { ...P().hit, y: Math.sin(fly * Math.PI) * 0.6, pitch: fly * 0.9 } : dodge > 0.2 ? { ...P().duck, x: H0[0] + dodge * 0.8 * SC.side } : P().ready;
+        const cam = jolt({ pos: [H0[0] + (H0[0] - F0[0]) * 0.45, 1.1, H0[1] + (H0[1] - F0[1]) * 0.45 + 0.8 * SC.side], look: [F0[0], fh * 0.6, F0[1]], fov: 40 }, t, lunge * 0.15 + (hit && lt < at + 0.4 ? 0.2 : 0));
+        render(t, cam, castWith(t, { [hero]: { pose: { x: back[0], z: back[1], ry: yawTo(H0, F0), ...hp }, o: { expr: hit ? { Surprised: 0.6 } : { angry: 0.5 } } }, [o.foe]: { pose: { x: fpos[0], z: fpos[1] }, o: { lunge: lunge, tilt: lunge * 0.06 } } }));
+        if (hit && lt < at + 0.06) G.fill('#fff', 0.7);
+      },
+      special(lt, d, t, o) {
+        const hero = o.hero || 'takuto', H0 = mk(hero), F0 = mk(o.foe), fh = S3.SPRITE_H[o.foe] || 1.8, jumpAt = d * 0.45, hit = d * 0.62;
+        const glow = clamp(lt / (d * 0.4)), jump = clamp((lt - jumpAt) / (hit - jumpAt)), P1 = toward(H0, F0, 1.4);
+        const pos = [lerp(H0[0], P1[0], ease.io(jump)), lerp(H0[1], P1[1], ease.io(jump))], y = Math.sin(jump * Math.PI * 0.85) * (o.height || 2.4);
+        const pose = lt < jumpAt ? { ...P().ready, crouch: 0.15 * glow } : lt < hit ? { ...P().windup, weapon: 2.0, y } : { ...P().chop, weapon: 1.7, y: Math.max(0, y) };
+        let cam; if (lt < jumpAt) { const a = (lt / jumpAt) * 0.9 - 0.45, r = 3.2; cam = { pos: [H0[0] + Math.sin(a) * r, 0.9, H0[1] + Math.cos(a) * r], look: [H0[0], 1.3, H0[1]], fov: 34 }; }
+        else cam = jolt(sideCam(H0, F0, Math.max(7, fh * 1.6), 1.6, 38), t, lt > hit && lt < hit + 0.9 ? 0.35 * (1 - (lt - hit) / 0.9) : 0);
+        const broke = o.kill && lt > hit + 0.3, fade = broke ? clamp((lt - hit - 0.3) / 1.6) : 0;
+        render(t, cam, castWith(t, { [hero]: { pose: { ...pose, x: pos[0], z: pos[1], ry: yawTo(H0, F0) }, o: { axeGlow: glow, expr: { angry: 0.8 } } }, [o.foe]: { o: { flash: lt > hit && lt < hit + 0.15 ? 1 : 0, shake: lt > hit ? 1 - fade : 0, alpha: 1 - fade, tint: broke ? '#ff8a7a' : undefined } } }));
+        if (lt < jumpAt) { const [x, yy] = proj([H0[0], 1.0, H0[1]]); X.aura(t, { x, y: yy, w: 300, h: 420, n: 50, a: 0.7 * glow }); X.converge(t, { x, y: yy, r: 420, n: 60, a: glow * 0.7 }); }
+        if (lt > hit - 0.15) { const [x, yy] = proj([F0[0], fh * 0.55, F0[1]]); X.slash(lt - hit + 0.15, { x, y: yy - 60, r: 420, a0: -2.4, a1: 0.95, dur: 0.22, hold: 0.8, w: 130, flat: 0.75, rot: 0.15 }); if (lt > hit) { X.ring(lt - hit, { x, y: yy, r1: 1300, dur: 0.9, flat: 1, color: '#ffd0c0' }); X.sparks(lt - hit, { x, y: yy, n: 120, spread: 3.2, speed: 1600, color: '#ffc29a' }); } }
+        if (broke) { const [x, yy] = proj([F0[0], fh * 0.5, F0[1]]); X.debris(lt - hit - 0.3, { x, y: yy, n: 60, speed: 900, size: 14, seed: 77 }); G.motes(t, { n: 90, vy: -60, color: '#ff8a5a', size: 2.4, seed: 5, a: 1 - fade * 0.5 }); }
+        if (lt > hit && lt < hit + 0.06) G.fill('#fff'); else if (lt > hit + 0.06 && lt < hit + 0.12) G.impact('inv');
+        POST.set({ bloom: 0.9, thr: 0.5 });
+      },
+      ally(lt, d, t, o) { // an ally's Brand on the creature: threads (Rin), afterimage (Sieg), flame (Wick), freeze (Haruki)
+        const ally = o.ally, A0 = mk(ally), F0 = mk(o.foe), fh = S3.SPRITE_H[o.foe] || 1.8, k = clamp((lt - 0.4) / 0.8), kind = o.kind;
+        const cam = sideCam(A0, F0, Math.max(5, fh * 1.3), 1.3, 36);
+        const pose = { ...P().ready, ry: yawTo(A0, F0), uaR: [1.6, 0.2], elR: 0.2, ...(kind === 'afterimage' ? S3.seq(lt, [[0, P().ready], [0.5, P().windup, 'out'], [0.8, P().chop, 'in'], [1.6, P().ready]]) : {}) };
+        const tint = kind === 'freeze' ? '#9ad8ff' : kind === 'flame' ? '#a8c0ff' : undefined;
+        render(t, cam, castWith(t, { [ally]: { pose, o: { expr: { angry: 0.5 }, weapon: true } }, [o.foe]: { o: { tint: k > 0.5 ? tint : undefined, shake: kind === 'freeze' && k > 0.5 ? 0 : k * 0.4, flash: kind === 'afterimage' && ((lt > 0.8 && lt < 0.9) || (lt > 1.15 && lt < 1.25)) ? 1 : 0 } } }));
+        const [fx, fy] = proj([F0[0], fh * 0.5, F0[1]]);
+        if (kind === 'threads') { const h = S3.jointPos(ally, 'handR'); for (let i = 0; i < 5; i++) { const b = [F0[0] + (i - 2) * 0.4, fh * (0.2 + i * 0.15), F0[1]]; const a = proj(h), bb = proj([lerp(h[0], b[0], k), lerp(h[1], b[1], k), lerp(h[2], b[2], k)]); const c = G.ctx; c.save(); c.globalCompositeOperation = 'lighter'; c.lineCap = 'round'; [[10, 'rgba(255,30,50,0.2)'], [4, 'rgba(255,60,80,0.6)'], [1.5, 'rgba(255,230,230,1)']].forEach(([lw, col]) => { c.strokeStyle = col; c.lineWidth = lw; c.beginPath(); c.moveTo(a[0], a[1]); c.quadraticCurveTo((a[0] + bb[0]) / 2, (a[1] + bb[1]) / 2 + 30, bb[0], bb[1]); c.stroke(); }); c.restore(); } }
+        if (kind === 'afterimage' && lt > 0.8) { [0.8, 1.15].forEach(h0 => { if (lt > h0) X.slash(lt - h0, { x: fx, y: fy, r: 260, a0: -2.2, a1: 0.6, dur: 0.18, hold: 0.25, w: 60, color: '#bcd4ff', flat: 0.8 }); }); }
+        if (kind === 'flame' && k > 0) { X.aura(t, { x: fx, y: fy + 40, w: 260 * (fh / 3), h: 360 * (fh / 3), n: 70, a: k, color: '#5ab0ff' }); G.radial(fx, fy, 300, 'rgba(90,170,255,' + (0.35 * k).toFixed(2) + ')', 'rgba(0,0,0,0)', 1, 'lighter'); }
+        if (kind === 'freeze' && k > 0) { G.fill('#a0d8ff', 0.12 * k, 'screen'); G.radial(fx, fy, 260, 'rgba(200,240,255,' + (0.4 * k).toFixed(2) + ')', 'rgba(0,0,0,0)', 1, 'lighter'); G.txt('3', fx + 120, fy - 140, { font: '800 60px ' + G.FONT.disp, fill: '#d8f4ff', a: k * (Math.floor(lt * 2) % 2 ? 1 : 0.6) }); }
+      },
+    };
+
     /* ---------- interpreter ---------- */
     SC.lastPartner = {};
     function lineShot(who, text, o, pending) {
@@ -198,6 +282,16 @@ const DIRECTOR = (() => {
       }, { say: o.say, sfx: [[0.1, (g, w) => { for (let s2 = 0; s2 < d; s2 += 0.48) S.step(g, w + s2, 0.05); }], ...(o.sfx || [])] });
       SC.marks = { ...SC.marks, [who]: { ...SC.marks[who], x: to[0], z: to[1], ry, pose: null } }; others.forEach(([ow, off]) => { SC.marks = { ...SC.marks, [ow]: { ...SC.marks[ow], x: to[0] + off[0], z: to[1] + off[1], ry, pose: null } }; });
     }
+    function defaultSfx(move, d, o) {
+      const hit = d * (o.at || 0.55);
+      if (move === 'strike') return [[hit - 0.35, (g, w) => S.whoosh(g, w, 0.35, 0.3, 400, 3200)], [hit, (g, w) => { S.clang(g, w, 0.3); S.boom(g, w, 0.35); }]];
+      if (move === 'special') return [[0, (g, w) => S.riser(g, w, d * 0.6, 0.1)], [d * 0.62, (g, w) => { S.boom(g, w, 0.7); S.shatter(g, w, 0.16, 8); S.slash(g, w, 0.4); }]];
+      if (move === 'foeAttack') return [[d * 0.3, (g, w) => S.riftRoar(g, w, 1.2, 0.2)], [d * 0.42, (g, w) => S.whoosh(g, w, 0.45, 0.3, 1400, 300)], ...(o.hit ? [[d * 0.42, (g, w) => { S.boom(g, w, 0.5); S.thud(g, w + 0.1, 0.4); }]] : [])];
+      if (move === 'standoff' && o.roar) return [[d * 0.5, (g, w) => { S.riftRoar(g, w, 1.6, 0.28); S.boom(g, w, 0.3); }]];
+      if (move === 'charge') return [[0.1, (g, w) => { for (let s2 = 0; s2 < d; s2 += 0.26) S.step(g, w + s2, 0.1); }]];
+      if (move === 'ally') return [[0.4, (g, w) => S.whoosh(g, w, 0.6, 0.2, 600, 2400)], [0.8, (g, w) => S.clang(g, w, 0.15)]];
+      return [];
+    }
     function runScene(sc, custom) {
       const t0 = T;
       SC.env = sc.env; SC.envOpts = sc.envOpts || {}; SC.mood = sc.mood || 'day'; SC.side = sc.side || 1; SC.count = 0; SC.pairShots = 0; SC.prevSpeaker = null; SC.handheld = !!sc.handheld; SC.wideDir = sc.wideDir || [0, 1]; SC.overlay = sc.overlay || null; SC.lastPartner = {};
@@ -207,6 +301,8 @@ const DIRECTOR = (() => {
         const [kind] = bt;
         if (WHO[kind]) { const o = bt[2] || {}; lineShot(WHO[kind], bt[1], o); return; }
         if (kind === 'est') return estShot(bt[1], bt[2], bt[3] || {});
+        if (kind === 'plate') { const lines = (bt[4] || []).map(([a, w2, txt, lo]) => [a, (lo && lo.id) || nextId()]); return plateShot(bt[1], bt[2], { ...(bt[3] || {}), say: lines.length ? lines : (bt[3] || {}).say }); }
+        if (kind === 'fight') { const st = snap(), mv = MOVES[bt[1]], o = bt[3] || {}; const lines = (bt[4] || []).map(([a, w2, txt, lo]) => [a, (lo && lo.id) || nextId()]); shot(bt[2], (lt, dd, t) => { const leave = enter(st); mv(lt, dd, t, o); postFor(SC.mood); leave(); }, { say: lines, sfx: bt[5] || defaultSfx(bt[1], bt[2], o) }); return; }
         if (kind === 'walk') return walkShot(bt[1], bt[2], bt[3], bt[4] || {});
         if (kind === 'set') { const [, who, v] = bt; SC.marks = { ...SC.marks, [who]: { ...(SC.marks[who] || {}), ...v } }; return; }
         if (kind === 'hide') { SC.marks = { ...SC.marks, [bt[1]]: { ...SC.marks[bt[1]], hidden: true } }; return; }
@@ -245,11 +341,18 @@ const DIRECTOR = (() => {
     const scan = scs => (scs || []).forEach(sc => (sc.beats || []).forEach(bt => {
       if (WHO[bt[0]] && bt[1].trim() !== '...') out.push({ id: (bt[2] && bt[2].id) || id(), who: WHO[bt[0]], text: bt[1], tts: bt[2] && bt[2].tts });
       if (bt[0] === 'custom') (bt[3] || []).forEach(([a, w2, txt, lo]) => out.push({ id: (lo && lo.id) || id(), who: WHO[w2], text: txt, tts: lo && lo.tts }));
+      if (bt[0] === 'plate') (bt[4] || []).forEach(([a, w2, txt, lo]) => out.push({ id: (lo && lo.id) || id(), who: WHO[w2], text: txt, tts: lo && lo.tts }));
+      if (bt[0] === 'fight') (bt[4] || []).forEach(([a, w2, txt, lo]) => out.push({ id: (lo && lo.id) || id(), who: WHO[w2], text: txt, tts: lo && lo.tts }));
     }));
     // the build numbers lines in the order it meets them: cold open, A, B, preview (est/walk "say" lines are custom-only)
     scan(spec.coldOpen); scan(spec.partA); scan(spec.partB); scan(spec.postCredits); scan(spec.preview);
     return out;
   }
-  return { build, lines, WHO };
+  function episode(script, custom) {
+    const op = EP01.chapters.find(c => c.name === 'Opening'), pB = EP01.chapters.find(c => c.name === 'Part B'), ed = EP01.chapters.find(c => c.name === 'Ending'), after = EP01.chapters.find(c => c.name === 'After the credits');
+    const opEnd = EP01.shots.find(s => s.t0 > op.t + 1 && s.d > 6 && s.d < 6.5).t0;
+    return build({ ...script, custom: custom || {}, borrow: { opening: { ep: EP01, t0: op.t, t1: opEnd }, eyecatch: { ep: EP01, t0: pB.t - 8, t1: pB.t }, ending: { ep: EP01, t0: ed.t, t1: after.t } } });
+  }
+  return { build, lines, episode, WHO };
 })();
 if (typeof module !== 'undefined') module.exports = DIRECTOR;

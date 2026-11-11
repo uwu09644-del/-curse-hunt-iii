@@ -92,6 +92,25 @@ CAST = {
         'Hair_00': lambda im: tint(normalize(im), (0.6, 0.4, 0.26), 0.25, 1.0), 'HairBack': lambda im: tint(normalize(im), (0.6, 0.4, 0.26), 0.25, 1.0),
         'EyeIris': lambda im: tint(im, (0.35, 0.8, 0.45), 0.15, 1.05),
     }, {'HAIR': ((1, 1, 1, 1), (0.7, 0.6, 0.55, 1))}),
+    'wick': ('HairSample_Male.vrm', {  # Wick: a blue hoodie (his head is a flame, added in the engine)
+        'Tops_01': lambda im: tint(im, (0.3, 0.42, 0.62), 0.25, 1.05, 1.2), 'Bottoms': lambda im: tint(im, (0.25, 0.26, 0.3), 0.3, 1.0),
+    }, {}),
+    'haruki': ('HairSample_Male.vrm', {  # Haruki: black hair, blue eyes, a white coat over the hoodie
+        'EyeIris': lambda im: tint(im, (0.35, 0.6, 1.0), 0.15, 1.05), 'Tops_01': lambda im: tint(im, (0.94, 0.95, 0.98), 0.55, 1.05),
+    }, {}),
+    'gideon': ('Sakurada_Fumiriya.vrm', {  # Gideon: dark brown hair, leather vest, brass tie
+        'Hair_00': lambda im: tint(normalize(im), (0.36, 0.24, 0.16), 0.2, 1.0), 'HairBack': lambda im: tint(normalize(im), (0.36, 0.24, 0.16), 0.2, 1.0),
+        'Tops_01': lambda im: tint(im, (0.62, 0.42, 0.26), 0.2, 1.0), 'Accessory': lambda im: tint(im, (0.85, 0.66, 0.3), 0.4, 1.05), 'EyeIris': lambda im: tint(im, (0.7, 0.5, 0.25), 0.15, 1.05),
+    }, {'HAIR': ((1, 1, 1, 1), (0.6, 0.5, 0.45, 1))}),
+    'lucien': ('Sakurada_Fumiriya.vrm', {  # Lucien: chestnut hair, gold eyes, white and red
+        'Hair_00': lambda im: tint(normalize(im), (0.62, 0.4, 0.24), 0.3, 1.05), 'HairBack': lambda im: tint(normalize(im), (0.62, 0.4, 0.24), 0.3, 1.05),
+        'Tops_01': lambda im: tint(im, (0.95, 0.94, 0.9), 0.45, 1.05), 'Accessory': lambda im: tint(im, (0.75, 0.12, 0.16), 0.3, 1.05), 'EyeIris': lambda im: tint(im, (1.0, 0.8, 0.3), 0.15, 1.05),
+    }, {'HAIR': ((1, 1, 1, 1), (0.75, 0.6, 0.55, 1))}),
+    'vesper': ('Sendagaya_Shibu.vrm', {  # Vesper: the Guild's executioner, a shadow body in white
+        'Face_00': lambda im: tint(im, (0.12, 0.12, 0.16), 0.5, 1.1), 'Body_00': lambda im: tint(im, (0.12, 0.12, 0.16), 0.5, 1.1),
+        'Hair_00': lambda im: tint(normalize(im), (0.95, 0.95, 0.98), 0.6, 1.05), 'HairBack': lambda im: tint(normalize(im), (0.95, 0.95, 0.98), 0.6, 1.05),
+        'Tops_01': lambda im: tint(im, (0.92, 0.92, 0.95), 0.5, 1.05), 'Bottoms': lambda im: tint(im, (0.85, 0.86, 0.9), 0.4, 1.0), 'EyeIris': lambda im: tint(im, (0.85, 0.95, 1.0), 0.6, 1.1),
+    }, {'SKIN': ((1, 1, 1, 1), (0.6, 0.6, 0.7, 1)), 'HAIR': ((1, 1, 1, 1), (0.8, 0.8, 0.86, 1))}),
     'nemu': ('HairSample_Female.vrm', {
         'EyeIris': lambda im: tint(im, (1.0, 0.68, 0.22), 0.14, 1.05),
     }, {}),

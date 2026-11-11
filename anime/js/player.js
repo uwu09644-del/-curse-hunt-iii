@@ -198,6 +198,8 @@
     startLbl.textContent = 'Loading voices…';
     try { if (ensureAudio()) await VOICE.load(ac, VOICE_DATA.file || 'voice/voices.mp3'); } catch (e) { console.warn('voice track will load on play', e); }
     if (typeof S3 !== 'undefined' && S3.preload) { startLbl.textContent = 'Loading characters…'; try { await S3.preload('models/', f => { startLbl.textContent = 'Loading characters… ' + Math.round(f * 100) + '%'; }); } catch (e) { console.warn('3D characters fell back to simple models', e); } }
+    if (typeof S3 !== 'undefined' && S3.loadPlates) { startLbl.textContent = 'Loading backgrounds…'; const ids = new Set(window.RB_PLATES || []); Object.values(S3.PLATE_SETS).forEach(st => { st.plates.forEach(([id]) => ids.add(id)); Object.values(st.moods || {}).forEach(l => l.forEach(([id]) => ids.add(id))); }); try { await S3.loadPlates([...ids], 'plates/'); } catch (e) { console.warn('plates', e); } }
+    if (typeof S3 !== 'undefined' && S3.loadSprites && window.RB_SPRITES) { try { S3.init(); await S3.loadSprites(window.RB_SPRITES, 'sprites/'); } catch (e) { console.warn('sprites', e); } }
     startLbl.textContent = 'Loading fonts…'; await fontP;
     G.init(sctx, K); G.build(); PARTS.register(); VFX.build(); RIG.init(); RIG.setK(K);
     ready = true; startBtn.disabled = false; startLbl.textContent = 'Play Episode ' + (window.RB_EP_NO || 1);
