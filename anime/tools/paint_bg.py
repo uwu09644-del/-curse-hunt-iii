@@ -22,13 +22,14 @@ pipe.scheduler = LCMScheduler.from_config(pipe.scheduler.config)
 pipe.set_progress_bar_config(disable=True)
 STYLE = 'anime background art, scenery, no humans, masterpiece, best quality, detailed painted background, cel shading, studio anime film still, soft lighting, '
 NEG = 'person, people, human, character, girl, boy, face, text, watermark, signature, logo, lowres, blurry, jpeg artifacts, deformed'
-for p in json.load(open(plates_path)):
-    if only and p['id'] not in only: continue
+plates = json.load(open(plates_path)); order = sys.argv[5:]
+if order: plates = sorted([p for p in plates if p['id'] in only], key=lambda p: order.index(p['id']))
+for p in plates:
     out = os.path.join(out_dir, p['id'] + '.webp')
-    if os.path.exists(out) and not only: continue
+    if os.path.exists(out) and not os.environ.get('FORCE'): continue
     t0 = time.time()
     g = torch.Generator().manual_seed(p.get('seed', 1))
-    img = pipe(STYLE + p['prompt'], negative_prompt=NEG, num_inference_steps=p.get('steps', 6), guidance_scale=p.get('cfg', 1.6), width=p.get('w', 768), height=p.get('h', 432), generator=g).images[0]
+    img = pipe(STYLE + p['prompt'], negative_prompt=NEG, num_inference_steps=p.get('steps', int(os.environ.get('STEPS', 6))), guidance_scale=p.get('cfg', 1.6), width=p.get('w', 768), height=p.get('h', 432), generator=g).images[0]
     img = img.resize((img.width * 2, img.height * 2), Image.LANCZOS).filter(ImageFilter.UnsharpMask(radius=2, percent=60, threshold=2))
     img = ImageEnhance.Color(img).enhance(1.06)
     img.save(out, 'WEBP', quality=88)
