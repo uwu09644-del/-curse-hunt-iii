@@ -123,7 +123,7 @@ const EP11_CUSTOM = (() => {
     },
     nemuFalls(lt, d, t, api) {
       const m = api.marks(), nm = m.nemu, tk = m.takuto, hit = 1.4, np = { x: lerp(nm.x, tk.x + 0.2, 0.8), z: lerp(nm.z, tk.z + 1.0, 0.8) }, fall = ease.in(clamp((lt - hit - 0.2) / 1.0)), still = lt > 4.2;
-      const cam = K.jolt(lt < 4.2 ? { pos: [np.x + 2.4, 1.1, np.z + 1.6], look: [lerp(np.x, tk.x, 0.4), 1.0, lerp(np.z, tk.z, 0.4)], fov: 40 } : { pos: [np.x + 1.9, 0.55, np.z + 1.1], look: [np.x, 0.35, np.z + 0.3], fov: 32 }, t, lt > hit && lt < hit + 0.5 ? 0.15 : 0);
+      const cam = K.jolt(lt < 4.2 ? { pos: [np.x + 2.4, 1.1, np.z + 1.6], look: [lerp(np.x, tk.x, 0.4), 1.0, lerp(np.z, tk.z, 0.4)], fov: 40 } : (() => { const dx = np.x - tk.x, dz = np.z - tk.z, l = Math.hypot(dx, dz) || 1; return { pos: [tk.x - dx / l * 0.95 - dz / l * 0.3, 1.62, tk.z - dz / l * 0.95 + dx / l * 0.3], look: [tk.x, 1.58, tk.z], fov: 28 }; })(), t, lt > hit && lt < hit + 0.5 ? 0.15 : 0);
       const fade = inv(4.6, 7.2, lt);
       api.render(still ? 4.2 : t, cam, K.over(api, t, { nemu: { pose: { ...P().hit, x: np.x, z: np.z + fall * 0.6, pitch: fall * 1.4, y: 0, ry: K.yaw(np, tk) }, o: { expr: { relaxed: 0.9 } } }, takuto: { pose: lt < hit ? { ...P().windup, weapon: 2.0, ry: K.yaw(tk, np) } : { ...P().chop, weapon: 1.7, ry: K.yaw(tk, np) }, o: { axeGlow: 1 - fade, expr: lt > 6 ? { sad: 1 } : { happy: 0.5 } } } }));
       if (lt > hit && lt < hit + 0.1) GFX.fill('#fff', 0.9); if (lt > hit + 0.1 && lt < hit + 0.3) GFX.fill('#000', 0.9);
@@ -141,7 +141,7 @@ const EP11_CUSTOM = (() => {
       api.render(t, cam, api.castList(t)); POST.set({ sat: 0.35, vig: 0.8, bloom: 0.4, thr: 0.75 }); snow(t * 0.5, 0.8);
     },
     nemuWakes(lt, d, t, api) {
-      const nm = api.marks().nemu, cam = { pos: [nm.x + 0.4, 0.6, nm.z + 1.0], look: [nm.x, 0.35, nm.z], fov: 30 }, k = inv(2.6, 4, lt);
+      const nm = api.marks().nemu, cam = { pos: [nm.x + 1.3, 2.3, nm.z + 1.5], look: [nm.x, 0.5, nm.z], fov: 34 }, k = inv(2.6, 4, lt);
       api.render(t, cam, K.over(api, t, { nemu: { o: { expr: lt > 5 ? { happy: 0.5 } : { relaxed: 0.9 }, blink: lt < 2.6 ? 1 : undefined } } }));
       const [x, y] = K.proj(S3.jointPos('nemu', 'chest', 0)); GFX.radial(x, y, 300 * k, 'rgba(255,240,220,' + (0.35 * k * (1 - inv(5, d, lt))).toFixed(2) + ')', 'rgba(0,0,0,0)', 1, 'lighter');
       POST.set({ sat: lerp(0.35, 1, k), vig: 0.6, bloom: 0.6, thr: 0.6 }); snow(t * 0.5, 0.6);

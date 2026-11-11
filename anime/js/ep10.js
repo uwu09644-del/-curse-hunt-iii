@@ -345,6 +345,6 @@ const EP10_SCRIPT = (() => {
     ['custom', 'nextTitle', 6, [[0.5, 'TAK', 'Episode eleven. Calamity.']]],
   ] }];
 
-  return { id: 'ep10', number: 10, pace: 0.5, title: { jpNo: '第十話', jp: 'モルヴッド', en: 'MORVUDD' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
+  return { id: 'ep10', number: 10, pace: 0.7, title: { jpNo: '第十話', jp: 'モルヴッド', en: 'MORVUDD' }, coldOpen, partA, partB, postCredits, preview, cast: {} };
 })();
 if (typeof module !== 'undefined') module.exports = EP10_SCRIPT;
