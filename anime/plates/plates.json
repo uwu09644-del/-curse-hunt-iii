@@ -1,0 +1,472 @@
+[
+ {
+  "id": "ashford_street",
+  "prompt": "medieval fantasy town street at noon, timber-framed houses, red roofs, cobblestones, market stalls, stone guild hall with red banners at the end, blue sky, white clouds",
+  "seed": 11
+ },
+ {
+  "id": "ashford_gate",
+  "prompt": "medieval fantasy town entrance seen from inside, wooden gate and stone wall, timber houses, cobblestone road leading out to green hills, blue sky, white clouds",
+  "seed": 12
+ },
+ {
+  "id": "ashford_houses",
+  "prompt": "row of timber-framed medieval houses with flower boxes and lanterns, cobblestone street, sunny afternoon, blue sky",
+  "seed": 13
+ },
+ {
+  "id": "ashford_square",
+  "prompt": "medieval town square with a stone fountain, timber houses around, market stalls, pigeons, sunny day, blue sky",
+  "seed": 14
+ },
+ {
+  "id": "ashford_dusk",
+  "prompt": "medieval town square with a stone fountain at sunset, orange and pink sky, long shadows, lanterns starting to glow, timber houses",
+  "seed": 15
+ },
+ {
+  "id": "ashford_night",
+  "prompt": "medieval fantasy town street at night, glowing lanterns, warm windows, stone guild hall with banners, starry sky with two moons, quiet",
+  "seed": 16
+ },
+ {
+  "id": "guild_hall",
+  "prompt": "interior of a fantasy adventurers guild hall, wooden beams, stone walls, long reception counter, chandeliers with candles, tall windows with sunbeams, warm light",
+  "seed": 21
+ },
+ {
+  "id": "guild_board",
+  "prompt": "interior wall of a fantasy guild hall covered with a big wooden quest board full of pinned paper notices, candles, wooden tables, warm light",
+  "seed": 22
+ },
+ {
+  "id": "guild_door",
+  "prompt": "interior of a fantasy guild tavern hall looking toward the big wooden entrance doors, round tables, mugs, chandeliers, warm light, sunlight from the door",
+  "seed": 23
+ },
+ {
+  "id": "yard_wall",
+  "prompt": "outdoor training yard of a fantasy guild, sand arena, wooden fence, straw training dummies, tall stone wall, sunny day, blue sky",
+  "seed": 31
+ },
+ {
+  "id": "yard_hills",
+  "prompt": "outdoor sand training arena with wooden fence, wooden benches, green hills and distant mountains behind, blue sky, white clouds",
+  "seed": 32
+ },
+ {
+  "id": "barrow_dusk",
+  "prompt": "vast graveyard field at dusk, old tilted gravestones, dead trees, two moons in a purple and orange sunset sky, a distant castle on a cliff, mist",
+  "seed": 7
+ },
+ {
+  "id": "barrow_night",
+  "prompt": "graveyard field at night, tilted gravestones, dead trees, two moons, deep blue starry sky, faint mist, distant castle silhouette",
+  "seed": 8
+ },
+ {
+  "id": "barrow_blood",
+  "prompt": "graveyard field under a blood red sky, dead trees, black clouds, red moon, ominous, embers in the air",
+  "seed": 9
+ },
+ {
+  "id": "nerima_night",
+  "prompt": "japanese railway crossing at night in the rain, crossing gate, red warning lights, utility poles and power lines, wet asphalt reflections, vending machine glow, tokyo suburb",
+  "seed": 3
+ },
+ {
+  "id": "nerima_street",
+  "prompt": "quiet tokyo suburban street at night in the rain, utility poles, tangled power lines, small houses, convenience store glow in the distance, puddles",
+  "seed": 4
+ },
+ {
+  "id": "wastes_day",
+  "prompt": "vast thorny wasteland, dry cracked earth, giant thorn brambles, scattered boulders, harsh sunlight, pale yellow sky, dust in the air",
+  "seed": 41
+ },
+ {
+  "id": "wastes_dusk",
+  "prompt": "thorny wasteland at dusk, giant bramble thickets, rocky mesas, orange sky, long shadows",
+  "seed": 42
+ },
+ {
+  "id": "wastes_camp",
+  "prompt": "campsite in a rocky wasteland at night, small campfire glow, tents, starry sky with two moons, boulders",
+  "seed": 43
+ },
+ {
+  "id": "wastes_canyon",
+  "prompt": "narrow rocky canyon with thorny brambles, cliffs, dramatic light from above, dust",
+  "seed": 44
+ },
+ {
+  "id": "forge",
+  "prompt": "interior of a steampunk blacksmith workshop, glowing forge fire, anvils, hanging chains, brass gears and pipes, tools on the walls, warm orange light, smoke",
+  "seed": 51
+ },
+ {
+  "id": "forge_smoke",
+  "prompt": "medieval town at night with black smoke rising from a workshop, orange fire glow, timber houses, sparks in the air",
+  "seed": 52
+ },
+ {
+  "id": "marrowmere_canal",
+  "prompt": "fantasy river town with canals, stone bridges, houses on stilts, boats, misty morning light, reeds",
+  "seed": 61
+ },
+ {
+  "id": "marrowmere_river",
+  "prompt": "wide misty river with reeds and willow trees, a stone bridge in the distance, overcast sky, still water reflections",
+  "seed": 62
+ },
+ {
+  "id": "marrowmere_lake",
+  "prompt": "dark lake with ruins rising from the water, mist, overcast stormy sky, eerie",
+  "seed": 63
+ },
+ {
+  "id": "fort_wall",
+  "prompt": "massive stone fortress walls with towers on a volcanic plain, black rocks, red sky, banners, smoke in the distance",
+  "seed": 71
+ },
+ {
+  "id": "fort_inside",
+  "prompt": "inside courtyard of a stone fortress, wooden scaffolds, barrels, torches, stone towers, overcast sky",
+  "seed": 72
+ },
+ {
+  "id": "fort_battle",
+  "prompt": "volcanic battlefield plain outside a fortress, burning ground, smoke, red and black sky, broken siege weapons",
+  "seed": 73
+ },
+ {
+  "id": "village_fields",
+  "prompt": "peaceful farming village with thatched roof cottages, wheat fields, windmill, forest edge, sunny afternoon",
+  "seed": 81
+ },
+ {
+  "id": "village_burning",
+  "prompt": "farming village with burning thatched cottages, smoke, orange fire light, evening, forest edge, chaos",
+  "seed": 82
+ },
+ {
+  "id": "forest",
+  "prompt": "deep fantasy forest with huge old trees, moss, ferns, sunbeams through the canopy, quiet",
+  "seed": 83
+ },
+ {
+  "id": "pass_shrine",
+  "prompt": "old mountain shrine with a red torii gate, stone lanterns, pine trees, mountain pass, autumn leaves, misty",
+  "seed": 91
+ },
+ {
+  "id": "bamboo",
+  "prompt": "dense bamboo forest path, tall green bamboo, soft light, mist, quiet",
+  "seed": 92
+ },
+ {
+  "id": "mountain_cliff",
+  "prompt": "mountain cliff edge with a lone pine tree, sea of clouds below, dramatic sunset sky",
+  "seed": 93
+ },
+ {
+  "id": "lumen_plaza",
+  "prompt": "golden fantasy capital city plaza, white marble buildings, golden domes, a grand cathedral, fountains, flags, bright sunny sky",
+  "seed": 101
+ },
+ {
+  "id": "lumen_cathedral",
+  "prompt": "interior of a grand white and gold cathedral, tall columns, stained glass windows, golden light beams, marble floor",
+  "seed": 102
+ },
+ {
+  "id": "lumen_street",
+  "prompt": "elegant street in a white marble and gold fantasy capital, arches, flowers, banners with a golden sun emblem, sunny",
+  "seed": 103
+ },
+ {
+  "id": "lumen_balcony",
+  "prompt": "balcony of a white palace overlooking a golden fantasy city at sunset, marble railing, warm light",
+  "seed": 104
+ },
+ {
+  "id": "plains_dusk",
+  "prompt": "vast grassy plains at dusk, distant dark forest, storm clouds gathering, red sunset, wind in the grass",
+  "seed": 111
+ },
+ {
+  "id": "plains_battle",
+  "prompt": "battlefield on grassy plains under a dark stormy sky, broken banners, scorched earth, smoke",
+  "seed": 112
+ },
+ {
+  "id": "lumen_frozen",
+  "prompt": "golden fantasy capital city frozen in ice, blizzard, ice spikes through white marble buildings, pale blue light, snow storm",
+  "seed": 121
+ },
+ {
+  "id": "lumen_ruins",
+  "prompt": "ruined golden cathedral square covered in ice and snow, broken columns, dark sky, snow falling",
+  "seed": 122
+ },
+ {
+  "id": "lumen_dome",
+  "prompt": "golden fantasy capital city covered by a giant glowing golden barrier dome, sunset sky, light particles",
+  "seed": 131
+ },
+ {
+  "id": "rift_sky",
+  "prompt": "a giant red crack in the sky above a city at night, glowing red rift, clouds swirling around it, ominous",
+  "seed": 132
+ },
+ {
+  "id": "sunrise_hill",
+  "prompt": "grassy hill at sunrise overlooking a fantasy valley, warm golden light, soft clouds, peaceful",
+  "seed": 133
+ },
+ {
+  "id": "marrowmere_market",
+  "prompt": "fantasy river town floating market on canals, wooden boats full of fruit and fish, paper lanterns, stilt houses, morning sun",
+  "seed": 100,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "marrowmere_inn",
+  "prompt": "interior of a cosy riverside inn, wooden beams, round tables, lanterns, windows looking onto a canal, warm evening light",
+  "seed": 101,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "marrowmere_bridge",
+  "prompt": "old stone bridge over a canal at night, lanterns reflected in dark water, stilt houses with lit windows, mist",
+  "seed": 102,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "marrowmere_dock",
+  "prompt": "wooden docks at dawn on a misty lake, fishing boats, nets, reeds, pale pink sky",
+  "seed": 103,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "marrowmere_storm",
+  "prompt": "dark lake in a storm, huge waves, lightning in black clouds, ruined towers in the water, heavy rain",
+  "seed": 104,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "fort_night",
+  "prompt": "massive stone fortress walls at night, torches on battlements, red volcanic glow on the horizon, smoke",
+  "seed": 105,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "fort_barracks",
+  "prompt": "interior of stone fortress barracks, wooden bunks, weapon racks, torchlight, narrow windows",
+  "seed": 106,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "fort_infirmary",
+  "prompt": "stone infirmary room in a fortress, cots with white sheets, candles, herbs hanging, quiet night",
+  "seed": 107,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "volcano_road",
+  "prompt": "road through black volcanic rock fields, distant lava rivers glowing, ash sky, lonely signpost",
+  "seed": 108,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "village_inn",
+  "prompt": "cosy village tavern interior, thatched roof beams, fireplace, wooden tables, warm light, hanging herbs",
+  "seed": 109,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "village_night",
+  "prompt": "peaceful farming village at night, thatched cottages with warm windows, starry sky, fireflies over wheat",
+  "seed": 110,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "farm_road",
+  "prompt": "dirt road through golden wheat fields, wooden fence, a lone cart, big white clouds, summer afternoon",
+  "seed": 111,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "forest_night",
+  "prompt": "deep fantasy forest at night, huge old trees, moonbeams through the canopy, fireflies, blue mist",
+  "seed": 112,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "forest_camp",
+  "prompt": "small campfire in a forest clearing at night, logs to sit on, huge trees around, orange glow, stars",
+  "seed": 113,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "pass_rain",
+  "prompt": "old mountain shrine with a red torii gate in heavy rain, stone lanterns, pine trees, grey mist, puddles",
+  "seed": 114,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "bamboo_night",
+  "prompt": "dense bamboo forest at night, moonlight, blue shadows, stone path, mist, fireflies",
+  "seed": 115,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "dojo",
+  "prompt": "interior of an old wooden japanese dojo, tatami, wooden pillars, katana rack, afternoon light through shoji",
+  "seed": 116,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "waterfall",
+  "prompt": "tall waterfall in a mountain gorge, mossy rocks, deep green pool, mist, sunbeams",
+  "seed": 117,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "mountain_inn",
+  "prompt": "traditional japanese mountain inn at dusk, paper lanterns, wooden veranda, maple trees, hot spring steam",
+  "seed": 118,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "lumen_gate",
+  "prompt": "enormous white marble city gates of a golden fantasy capital, pilgrim road, golden statues, bright morning sky",
+  "seed": 119,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "lumen_garden",
+  "prompt": "palace garden with white marble fountains, white roses, hedges, golden domes behind, sunny afternoon",
+  "seed": 120,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "lumen_hall",
+  "prompt": "grand white and gold throne hall, tall pillars, red carpet, golden light from high windows, empty throne",
+  "seed": 121,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "lumen_library",
+  "prompt": "grand fantasy library with towering bookshelves, ladders, golden lamps, marble floor, quiet",
+  "seed": 122,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "lumen_night",
+  "prompt": "golden fantasy capital city at night, white marble buildings lit with warm golden lights, starry sky, cathedral",
+  "seed": 123,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "lumen_slums",
+  "prompt": "narrow dark alley in the lower city beneath a white marble capital, laundry lines, puddles, the golden city high above",
+  "seed": 124,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "grey_hollow",
+  "prompt": "ruined stone fort in a grey mountain pass, thick grey mist, broken walls, dead pine trees, overcast",
+  "seed": 125,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "storm_plains",
+  "prompt": "vast plains under a huge thunderstorm, lightning bolts, dark clouds, wind in tall grass, dramatic",
+  "seed": 126,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "tyr_crater",
+  "prompt": "giant crater in a scorched wasteland, red glowing rift light from the bottom, smoke, black sky",
+  "seed": 127,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "snow_forest",
+  "prompt": "snowy pine forest, deep snow, soft falling snow, blue cold light, quiet",
+  "seed": 128,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "sanctum",
+  "prompt": "vast underground crystal sanctum, glowing blue crystals, marble stairs, golden altar, light shafts from above",
+  "seed": 129,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "rift_inside",
+  "prompt": "inside a red void dimension, floating broken ruins and rocks, red mist, black lightning, otherworldly",
+  "seed": 130,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "dawn_city",
+  "prompt": "golden fantasy capital at dawn after a storm, rays of sunlight through breaking clouds, wet marble, hopeful",
+  "seed": 131,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "train_platform",
+  "prompt": "small japanese train station platform at sunset, empty bench, vending machine, power lines, orange sky",
+  "seed": 132,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "nerima_day",
+  "prompt": "quiet tokyo suburban street on a summer day, utility poles, blue sky, big white clouds, cicada summer",
+  "seed": 133,
+  "w": 768,
+  "h": 432
+ },
+ {
+  "id": "bakery_cellar",
+  "prompt": "medieval bakery cellar, stone vaulted ceiling, stacked flour sacks, wooden barrels, bread shelves, one hanging oil lantern, warm dim light, dust in the air",
+  "seed": 140,
+  "w": 768,
+  "h": 432
+ }
+]

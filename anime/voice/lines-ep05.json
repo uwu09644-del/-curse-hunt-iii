@@ -1,0 +1,1594 @@
+{
+ "cast": {
+  "TAKUTO": {
+   "voice": [
+    [
+     "am_michael",
+     0.6
+    ],
+    [
+     "am_puck",
+     0.4
+    ]
+   ],
+   "speed": 1.02
+  },
+  "NEMU": {
+   "voice": [
+    [
+     "af_nicole",
+     0.65
+    ],
+    [
+     "af_bella",
+     0.35
+    ]
+   ],
+   "speed": 1.02
+  },
+  "SIEG": {
+   "voice": [
+    [
+     "bm_george",
+     1
+    ]
+   ],
+   "speed": 1.06
+  },
+  "AKURO": {
+   "voice": [
+    [
+     "am_fenrir",
+     1
+    ]
+   ],
+   "speed": 0.8,
+   "fx": "demon"
+  },
+  "RIN": {
+   "voice": [
+    [
+     "af_kore",
+     0.6
+    ],
+    [
+     "bf_emma",
+     0.4
+    ]
+   ],
+   "speed": 1.05
+  },
+  "VALENTINE": {
+   "voice": [
+    [
+     "bf_isabella",
+     0.55
+    ],
+    [
+     "af_nova",
+     0.45
+    ]
+   ],
+   "speed": 1.06
+  },
+  "CLERK": {
+   "voice": [
+    [
+     "af_aoede",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "CROWD": {
+   "voice": [
+    [
+     "am_echo",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "CROWD2": {
+   "voice": [
+    [
+     "af_river",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "VENDOR": {
+   "voice": [
+    [
+     "bm_daniel",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "HUNTER": {
+   "voice": [
+    [
+     "am_onyx",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "SABLE": {
+   "voice": [
+    [
+     "bm_fable",
+     1
+    ]
+   ],
+   "speed": 0.92,
+   "fx": "static"
+  },
+  "WICK": {
+   "voice": [
+    [
+     "am_puck",
+     0.5
+    ],
+    [
+     "am_liam",
+     0.5
+    ]
+   ],
+   "speed": 1.12
+  },
+  "GIDEON": {
+   "voice": [
+    [
+     "bm_lewis",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "EXAMINER": {
+   "voice": [
+    [
+     "bf_alice",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "HARUKI": {
+   "voice": [
+    [
+     "am_liam",
+     0.6
+    ],
+    [
+     "am_eric",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "LUCIEN": {
+   "voice": [
+    [
+     "bm_daniel",
+     0.5
+    ],
+    [
+     "am_adam",
+     0.5
+    ]
+   ],
+   "speed": 0.94
+  },
+  "VESPER": {
+   "voice": [
+    [
+     "bf_lily",
+     0.6
+    ],
+    [
+     "af_sky",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "KUROZANE": {
+   "voice": [
+    [
+     "am_onyx",
+     0.7
+    ],
+    [
+     "am_fenrir",
+     0.3
+    ]
+   ],
+   "speed": 0.9
+  },
+  "OGRE": {
+   "voice": [
+    [
+     "am_santa",
+     1
+    ]
+   ],
+   "speed": 0.9,
+   "fx": "demon"
+  },
+  "NARRATOR": {
+   "voice": [
+    [
+     "bm_george",
+     0.4
+    ],
+    [
+     "am_adam",
+     0.6
+    ]
+   ],
+   "speed": 0.98
+  }
+ },
+ "lines": [
+  {
+   "id": "ep05_001",
+   "who": "TAKUTO",
+   "text": "Previously. Gideon built me a harness, so the axe can block exactly once.",
+   "mono": true
+  },
+  {
+   "id": "ep05_002",
+   "who": "TAKUTO",
+   "text": "Someone opened a Rift through the floor of his forge. From inside the town.",
+   "mono": true
+  },
+  {
+   "id": "ep05_003",
+   "who": "TAKUTO",
+   "text": "Sieg says a man in a black suit opens doors for monsters.",
+   "tts": "Seeg says a man in a black suit opens doors for monsters.",
+   "mono": true
+  },
+  {
+   "id": "ep05_004",
+   "who": "TAKUTO",
+   "text": "And he's interested in me.",
+   "mono": true
+  },
+  {
+   "id": "ep05_005",
+   "who": "HUNTER",
+   "text": "Easy now. Easy. River's quiet tonight."
+  },
+  {
+   "id": "ep05_006",
+   "who": "HUNTER",
+   "text": "Quiet as a grave. Never heard her this quiet."
+  },
+  {
+   "id": "ep05_007",
+   "who": "HUNTER",
+   "text": "What's that? Lights. Under the water."
+  },
+  {
+   "id": "ep05_008",
+   "who": "HUNTER",
+   "text": "One. Two. Five. Seven..."
+  },
+  {
+   "id": "ep05_009",
+   "who": "HUNTER",
+   "text": "Those are eyes."
+  },
+  {
+   "id": "ep05_010",
+   "who": "WICK",
+   "text": "Are we there yet?"
+  },
+  {
+   "id": "ep05_011",
+   "who": "RIN",
+   "text": "No."
+  },
+  {
+   "id": "ep05_012",
+   "who": "WICK",
+   "text": "Are we there now?"
+  },
+  {
+   "id": "ep05_013",
+   "who": "RIN",
+   "text": "You asked that four seconds ago."
+  },
+  {
+   "id": "ep05_014",
+   "who": "WICK",
+   "text": "Four seconds is a long time when your head is on fire."
+  },
+  {
+   "id": "ep05_015",
+   "who": "TAKUTO",
+   "text": "Sieg. Tell us about the job again. Slowly. So he stops asking.",
+   "tts": "Seeg. Tell us about the job again. Slowly. So he stops asking."
+  },
+  {
+   "id": "ep05_016",
+   "who": "SIEG",
+   "text": "Marrowmere. A river town built on stilts, where the Varrow opens into a lake."
+  },
+  {
+   "id": "ep05_017",
+   "who": "SIEG",
+   "text": "Three nights ago, a ferryman saw seven lights rise out of the water. The next morning the ferry was gone. So was half the east dock."
+  },
+  {
+   "id": "ep05_018",
+   "who": "NEMU",
+   "text": "Seven lights. That's a lot of lights."
+  },
+  {
+   "id": "ep05_019",
+   "who": "SIEG",
+   "text": "Seven heads, Nemu. The ferryman wasn't counting carefully. He was running.",
+   "tts": "Seven heads, Neh-moo. The ferryman wasn't counting carefully. He was running."
+  },
+  {
+   "id": "ep05_020",
+   "who": "RIN",
+   "text": "A Hydra. The Guild records say one was sealed under that lake two hundred years ago."
+  },
+  {
+   "id": "ep05_021",
+   "who": "TAKUTO",
+   "text": "Sealed by who?"
+  },
+  {
+   "id": "ep05_022",
+   "who": "RIN",
+   "text": "A Hunter named Maren. She cut off its heads for nine days, until she ran out of strength."
+  },
+  {
+   "id": "ep05_023",
+   "who": "RIN",
+   "text": "Then she tied it to the lake bed, and drowned with it."
+  },
+  {
+   "id": "ep05_024",
+   "who": "WICK",
+   "text": "...I'd like to go back to the part where we were asking if we were there yet."
+  },
+  {
+   "id": "ep05_025",
+   "who": "SIEG",
+   "text": "Every head you cut grows back. That is the problem. And our boy only knows how to cut."
+  },
+  {
+   "id": "ep05_026",
+   "who": "TAKUTO",
+   "text": "Break. I break things."
+  },
+  {
+   "id": "ep05_027",
+   "who": "SIEG",
+   "text": "Then you're about to learn the difference between breaking a thing and killing it."
+  },
+  {
+   "id": "ep05_028",
+   "who": "AKURO",
+   "text": "Oh, I like this one. A monster you can't kill by hitting it. You'll hate it, boy.",
+   "mono": true
+  },
+  {
+   "id": "ep05_029",
+   "who": "TAKUTO",
+   "text": "You sound happy about that."
+  },
+  {
+   "id": "ep05_030",
+   "who": "AKURO",
+   "text": "I'm always happy when you suffer. It's the only entertainment in here.",
+   "mono": true
+  },
+  {
+   "id": "ep05_031",
+   "who": "RIN",
+   "text": "Who are you talking to?"
+  },
+  {
+   "id": "ep05_032",
+   "who": "TAKUTO",
+   "text": "Nobody."
+  },
+  {
+   "id": "ep05_033",
+   "who": "NEMU",
+   "text": "He talks to the axe. It's fine. I talk to graves."
+  },
+  {
+   "id": "ep05_034",
+   "who": "RIN",
+   "text": "That is not reassuring."
+  },
+  {
+   "id": "ep05_035",
+   "who": "NEMU",
+   "text": "It's not supposed to be. It's just true."
+  },
+  {
+   "id": "ep05_036",
+   "who": "CROWD",
+   "text": "Fresh river eel! Two coppers!"
+  },
+  {
+   "id": "ep05_037",
+   "who": "CROWD2",
+   "text": "Hunters! The Guild sent Hunters!"
+  },
+  {
+   "id": "ep05_038",
+   "who": "WICK",
+   "text": "It smells like fish. Everything smells like fish. Even the air is a fish."
+  },
+  {
+   "id": "ep05_039",
+   "who": "NEMU",
+   "text": "I like it."
+  },
+  {
+   "id": "ep05_040",
+   "who": "RIN",
+   "text": "You like everything that smells like food."
+  },
+  {
+   "id": "ep05_041",
+   "who": "NEMU",
+   "text": "I like everything that is food."
+  },
+  {
+   "id": "ep05_042",
+   "who": "CLERK",
+   "text": "Hunters from Ashford! Welcome to the Marrowmere branch of the Hunters' Guild!"
+  },
+  {
+   "id": "ep05_043",
+   "who": "TAKUTO",
+   "text": "...Weren't you in Ashford?"
+  },
+  {
+   "id": "ep05_044",
+   "who": "CLERK",
+   "text": "That was my cousin. We are all cousins. Please do not ask."
+  },
+  {
+   "id": "ep05_045",
+   "who": "WICK",
+   "text": "How many cousins?"
+  },
+  {
+   "id": "ep05_046",
+   "who": "CLERK",
+   "text": "Enough. Please do not ask."
+  },
+  {
+   "id": "ep05_047",
+   "who": "CLERK",
+   "text": "The commission is rank B. The east docks are evacuated. Nobody has been eaten. Yet."
+  },
+  {
+   "id": "ep05_048",
+   "who": "SIEG",
+   "text": "Yet?"
+  },
+  {
+   "id": "ep05_049",
+   "who": "CLERK",
+   "text": "The fishermen keep going out. Fishermen are like that."
+  },
+  {
+   "id": "ep05_050",
+   "who": "RIN",
+   "text": "Has anyone seen it in daylight?"
+  },
+  {
+   "id": "ep05_051",
+   "who": "CLERK",
+   "text": "A little girl did. She said it has seven heads, and one of them looked sad."
+  },
+  {
+   "id": "ep05_052",
+   "who": "TAKUTO",
+   "text": "Sad?"
+  },
+  {
+   "id": "ep05_053",
+   "who": "CLERK",
+   "text": "She is six. I wrote it down anyway."
+  },
+  {
+   "id": "ep05_054",
+   "who": "SIEG",
+   "text": "We go out at dawn. Tonight we eat, and we listen."
+  },
+  {
+   "id": "ep05_055",
+   "who": "WICK",
+   "text": "Eat! Finally a part of the job I'm good at!"
+  },
+  {
+   "id": "ep05_056",
+   "who": "WICK",
+   "text": "You know what I miss most? Not my phone. Not my bed. Vending machines."
+  },
+  {
+   "id": "ep05_057",
+   "who": "TAKUTO",
+   "text": "Vending machines."
+  },
+  {
+   "id": "ep05_058",
+   "who": "WICK",
+   "text": "Hot corn soup in a can, at two in the morning, on a cold street. Best thing humanity ever made."
+  },
+  {
+   "id": "ep05_059",
+   "who": "TAKUTO",
+   "text": "There was one at the crossing. Where I fell through. I used to buy the cat milk there."
+  },
+  {
+   "id": "ep05_060",
+   "who": "WICK",
+   "text": "Cat milk? In a can?"
+  },
+  {
+   "id": "ep05_061",
+   "who": "TAKUTO",
+   "text": "Coffee milk. The cat liked coffee milk."
+  },
+  {
+   "id": "ep05_062",
+   "who": "WICK",
+   "text": "That's a terrible thing to give a cat."
+  },
+  {
+   "id": "ep05_063",
+   "who": "TAKUTO",
+   "text": "It was my friend's cat. He started it. I just kept going."
+  },
+  {
+   "id": "ep05_064",
+   "who": "WICK",
+   "text": "The friend you came here looking for."
+  },
+  {
+   "id": "ep05_065",
+   "who": "TAKUTO",
+   "text": "Haruki. Black hair. Blue eyes. He smiled at everyone like they owed him nothing.",
+   "tts": "Hah-roo-kee. Black hair. Blue eyes. He smiled at everyone like they owed him nothing."
+  },
+  {
+   "id": "ep05_066",
+   "who": "WICK",
+   "text": "...Hey. How long ago did he disappear?"
+  },
+  {
+   "id": "ep05_067",
+   "who": "TAKUTO",
+   "text": "Two years."
+  },
+  {
+   "id": "ep05_068",
+   "who": "WICK",
+   "text": "Last winter, I was on a caravan job near the capital. Saint Lumen. There was talk about a new Skyfallen in the Gilded Order. Young. Black hair."
+  },
+  {
+   "id": "ep05_069",
+   "who": "WICK",
+   "text": "They said he could freeze a Fiend mid-swing. Just stop it. Like pausing a video."
+  },
+  {
+   "id": "ep05_070",
+   "who": "TAKUTO",
+   "text": "Did you see him?"
+  },
+  {
+   "id": "ep05_071",
+   "who": "WICK",
+   "text": "No. The Order keeps its Skyfallen behind white walls. We never see them. They have better things than corn soup."
+  },
+  {
+   "id": "ep05_072",
+   "who": "TAKUTO",
+   "text": "...Saint Lumen."
+  },
+  {
+   "id": "ep05_073",
+   "who": "WICK",
+   "text": "Don't make that face. It's the face people make before they do something stupid."
+  },
+  {
+   "id": "ep05_074",
+   "who": "TAKUTO",
+   "text": "I don't have a face."
+  },
+  {
+   "id": "ep05_075",
+   "who": "WICK",
+   "text": "Everybody has a face, man. Even me. Mine's just on fire."
+  },
+  {
+   "id": "ep05_076",
+   "who": "WICK",
+   "text": "This fish is incredible. In Osaka, we'd fry it. Here they just wave it near a fire, and it's still incredible.",
+   "tts": "This fish is incredible. In Oh-sah-kah, we'd fry it. Here they just wave it near a fire, and it's still incredible."
+  },
+  {
+   "id": "ep05_077",
+   "who": "NEMU",
+   "text": "Are you going to eat the head?"
+  },
+  {
+   "id": "ep05_078",
+   "who": "WICK",
+   "text": "I wasn't planning to."
+  },
+  {
+   "id": "ep05_079",
+   "who": "NEMU",
+   "text": "Mm."
+  },
+  {
+   "id": "ep05_080",
+   "who": "WICK",
+   "text": "She took it. She just took the head."
+  },
+  {
+   "id": "ep05_081",
+   "who": "RIN",
+   "text": "Takuto. About tomorrow. If it regrows heads, we need a plan that isn't hit it until it stops.",
+   "tts": "Tah-koo-toh. About tomorrow. If it regrows heads, we need a plan that isn't hit it until it stops."
+  },
+  {
+   "id": "ep05_082",
+   "who": "TAKUTO",
+   "text": "That plan has worked so far."
+  },
+  {
+   "id": "ep05_083",
+   "who": "RIN",
+   "text": "That plan almost got you crushed by a Behemoth."
+  },
+  {
+   "id": "ep05_084",
+   "who": "TAKUTO",
+   "text": "Almost."
+  },
+  {
+   "id": "ep05_085",
+   "who": "SIEG",
+   "text": "She's right. So far you've only fought things that stay broken."
+  },
+  {
+   "id": "ep05_086",
+   "who": "TAKUTO",
+   "text": "Rin. Your threads. You said they tie two things so they move together."
+  },
+  {
+   "id": "ep05_087",
+   "who": "RIN",
+   "text": "Whatever happens to one happens to the other. Tie your ankle to a falling tree, and you fall."
+  },
+  {
+   "id": "ep05_088",
+   "who": "TAKUTO",
+   "text": "You did that to someone?"
+  },
+  {
+   "id": "ep05_089",
+   "who": "RIN",
+   "text": "To my brother. Once. He deserved it."
+  },
+  {
+   "id": "ep05_090",
+   "who": "TAKUTO",
+   "text": "How many things can you tie at once?"
+  },
+  {
+   "id": "ep05_091",
+   "who": "RIN",
+   "text": "Two is easy. Three is hard. More than three, I've never tried."
+  },
+  {
+   "id": "ep05_092",
+   "who": "TAKUTO",
+   "text": "Seven?"
+  },
+  {
+   "id": "ep05_093",
+   "who": "RIN",
+   "text": "...You want me to tie seven heads together."
+  },
+  {
+   "id": "ep05_094",
+   "who": "TAKUTO",
+   "text": "If they move together, maybe they break together."
+  },
+  {
+   "id": "ep05_095",
+   "who": "RIN",
+   "text": "That's insane."
+  },
+  {
+   "id": "ep05_096",
+   "who": "SIEG",
+   "text": "It's not insane. It's untested. That's different."
+  },
+  {
+   "id": "ep05_097",
+   "who": "WICK",
+   "text": "What about me? What do I do?"
+  },
+  {
+   "id": "ep05_098",
+   "who": "SIEG",
+   "text": "You keep the water warm."
+  },
+  {
+   "id": "ep05_099",
+   "who": "WICK",
+   "text": "Warm?"
+  },
+  {
+   "id": "ep05_100",
+   "who": "SIEG",
+   "text": "Hydras are cold things. Heat makes them slow, and angry. Mostly angry."
+  },
+  {
+   "id": "ep05_101",
+   "who": "WICK",
+   "text": "Great. Angry. My specialty."
+  },
+  {
+   "id": "ep05_102",
+   "who": "NEMU",
+   "text": "And me?"
+  },
+  {
+   "id": "ep05_103",
+   "who": "TAKUTO",
+   "text": "You stay on the dock."
+  },
+  {
+   "id": "ep05_104",
+   "who": "NEMU",
+   "text": "I have two lives left. That's two more than you."
+  },
+  {
+   "id": "ep05_105",
+   "who": "TAKUTO",
+   "text": "That's why you stay on the dock."
+  },
+  {
+   "id": "ep05_106",
+   "who": "NEMU",
+   "text": "...Fine. I'll stay on the dock. I'll be very bored on the dock."
+  },
+  {
+   "id": "ep05_107",
+   "who": "AKURO",
+   "text": "She won't stay on the dock.",
+   "mono": true
+  },
+  {
+   "id": "ep05_108",
+   "who": "TAKUTO",
+   "text": "I know."
+  },
+  {
+   "id": "ep05_109",
+   "who": "SIEG",
+   "text": "Quiet."
+  },
+  {
+   "id": "ep05_110",
+   "who": "RIN",
+   "text": "Too quiet."
+  },
+  {
+   "id": "ep05_111",
+   "who": "WICK",
+   "text": "Can we not say that? Every time somebody says that, something comes out of the water."
+  },
+  {
+   "id": "ep05_112",
+   "who": "NEMU",
+   "text": "The water's moving."
+  },
+  {
+   "id": "ep05_113",
+   "who": "WICK",
+   "text": "I SAID NOT TO SAY IT!"
+  },
+  {
+   "id": "ep05_114",
+   "who": "RIN",
+   "text": "Seven heads. Gods. The child was right."
+  },
+  {
+   "id": "ep05_115",
+   "who": "SIEG",
+   "text": "Takuto. One head. Just one. Show me what happens.",
+   "tts": "Tah-koo-toh. One head. Just one. Show me what happens."
+  },
+  {
+   "id": "ep05_116",
+   "who": "TAKUTO",
+   "text": "Break!"
+  },
+  {
+   "id": "ep05_117",
+   "who": "RIN",
+   "text": "It's growing back!"
+  },
+  {
+   "id": "ep05_118",
+   "who": "WICK",
+   "text": "It grew back TWO!"
+  },
+  {
+   "id": "ep05_119",
+   "who": "TAKUTO",
+   "text": "That's not fair."
+  },
+  {
+   "id": "ep05_120",
+   "who": "AKURO",
+   "text": "Nothing that lives is fair, boy. Cut a weed, it comes back thicker.",
+   "mono": true
+  },
+  {
+   "id": "ep05_121",
+   "who": "NEMU",
+   "text": "Takuto!",
+   "tts": "Tah-koo-toh!"
+  },
+  {
+   "id": "ep05_122",
+   "who": "SIEG",
+   "text": "Afterimage!"
+  },
+  {
+   "id": "ep05_123",
+   "who": "SIEG",
+   "text": "Back to the dock! Everyone back! We've seen enough!"
+  },
+  {
+   "id": "ep05_124",
+   "who": "TAKUTO",
+   "text": "I can take another one."
+  },
+  {
+   "id": "ep05_125",
+   "who": "SIEG",
+   "text": "You can take another eight. That's the problem. Back!"
+  },
+  {
+   "id": "ep05_126",
+   "who": "WICK",
+   "text": "Back, back, back! Hot water! Very hot water!"
+  },
+  {
+   "id": "ep05_127",
+   "who": "NEMU",
+   "text": "It's going back down."
+  },
+  {
+   "id": "ep05_128",
+   "who": "RIN",
+   "text": "It's not running. It's waiting."
+  },
+  {
+   "id": "ep05_129",
+   "who": "TAKUTO",
+   "text": "The middle head. It didn't attack. Not once."
+  },
+  {
+   "id": "ep05_130",
+   "who": "NEMU",
+   "text": "The sad one."
+  },
+  {
+   "id": "ep05_131",
+   "who": "SIEG",
+   "text": "Every cut, it doubles. Fight it head by head, and by sunset it has a hundred."
+  },
+  {
+   "id": "ep05_132",
+   "who": "TAKUTO",
+   "text": "Then I stop cutting heads."
+  },
+  {
+   "id": "ep05_133",
+   "who": "SIEG",
+   "text": "Then what do you cut? That's the question, Takuto.",
+   "tts": "Then what do you cut? That's the question, Tah-koo-toh."
+  },
+  {
+   "id": "ep05_134",
+   "who": "RIN",
+   "text": "I went to the town archive. Maren, the Hunter who sealed it. She wrote one line before she went into the lake."
+  },
+  {
+   "id": "ep05_135",
+   "who": "RIN",
+   "text": "The heads are not the Hydra."
+  },
+  {
+   "id": "ep05_136",
+   "who": "TAKUTO",
+   "text": "Then what is?"
+  },
+  {
+   "id": "ep05_137",
+   "who": "RIN",
+   "text": "She didn't write that part."
+  },
+  {
+   "id": "ep05_138",
+   "who": "WICK",
+   "text": "Classic. Great. Thank you, Maren."
+  },
+  {
+   "id": "ep05_139",
+   "who": "NEMU",
+   "text": "The sad head never bit. It just watched. Like it was being carried."
+  },
+  {
+   "id": "ep05_140",
+   "who": "SIEG",
+   "text": "The heart. A Hydra's heart sits in one head. The others are arms. Hungry arms."
+  },
+  {
+   "id": "ep05_141",
+   "who": "TAKUTO",
+   "text": "So I break the middle one."
+  },
+  {
+   "id": "ep05_142",
+   "who": "SIEG",
+   "text": "The others guard it. You'd never reach it alone."
+  },
+  {
+   "id": "ep05_143",
+   "who": "RIN",
+   "text": "Unless the others can't move without it."
+  },
+  {
+   "id": "ep05_144",
+   "who": "TAKUTO",
+   "text": "Your threads."
+  },
+  {
+   "id": "ep05_145",
+   "who": "RIN",
+   "text": "I tie the six to the seventh. They move as one. Whatever happens to the heart happens to all of them."
+  },
+  {
+   "id": "ep05_146",
+   "who": "TAKUTO",
+   "text": "One strike."
+  },
+  {
+   "id": "ep05_147",
+   "who": "RIN",
+   "text": "One strike. And there's a catch."
+  },
+  {
+   "id": "ep05_148",
+   "who": "TAKUTO",
+   "text": "There is always a catch."
+  },
+  {
+   "id": "ep05_149",
+   "who": "RIN",
+   "text": "To hold seven, I have to be the knot. They will be tied to me, too. If you miss, and it dives..."
+  },
+  {
+   "id": "ep05_150",
+   "who": "TAKUTO",
+   "text": "You go into the lake with it."
+  },
+  {
+   "id": "ep05_151",
+   "who": "RIN",
+   "text": "Like Maren."
+  },
+  {
+   "id": "ep05_152",
+   "who": "TAKUTO",
+   "text": "Then we don't do it."
+  },
+  {
+   "id": "ep05_153",
+   "who": "RIN",
+   "text": "We do it. That's the job."
+  },
+  {
+   "id": "ep05_154",
+   "who": "TAKUTO",
+   "text": "The job isn't drowning."
+  },
+  {
+   "id": "ep05_155",
+   "who": "RIN",
+   "text": "Don't decide what I risk, Takuto. You don't get to do that. Nobody does.",
+   "tts": "Don't decide what I risk, Tah-koo-toh. You don't get to do that. Nobody does."
+  },
+  {
+   "id": "ep05_156",
+   "who": "SIEG",
+   "text": "Enough. Both of you."
+  },
+  {
+   "id": "ep05_157",
+   "who": "SIEG",
+   "text": "Rin, it's your Brand and your life. Takuto, it's your strike. If either of you isn't sure, we wait for reinforcements.",
+   "tts": "Rin, it's your Brand and your life. Tah-koo-toh, it's your strike. If either of you isn't sure, we wait for reinforcements."
+  },
+  {
+   "id": "ep05_158",
+   "who": "WICK",
+   "text": "How long do reinforcements take?"
+  },
+  {
+   "id": "ep05_159",
+   "who": "SIEG",
+   "text": "Two weeks."
+  },
+  {
+   "id": "ep05_160",
+   "who": "WICK",
+   "text": "And how many heads by then?"
+  },
+  {
+   "id": "ep05_161",
+   "who": "SIEG",
+   "text": "I don't do math that sad, Wick."
+  },
+  {
+   "id": "ep05_162",
+   "who": "RIN",
+   "text": "Tonight. While it's still only nine."
+  },
+  {
+   "id": "ep05_163",
+   "who": "RIN",
+   "text": "You're angry with me."
+  },
+  {
+   "id": "ep05_164",
+   "who": "TAKUTO",
+   "text": "I'm angry with the lake."
+  },
+  {
+   "id": "ep05_165",
+   "who": "RIN",
+   "text": "...You can't break a lake."
+  },
+  {
+   "id": "ep05_166",
+   "who": "TAKUTO",
+   "text": "I haven't tried."
+  },
+  {
+   "id": "ep05_167",
+   "who": "RIN",
+   "text": "My brother used to say I tie things so they don't fall apart. Shoes. Sails. People."
+  },
+  {
+   "id": "ep05_168",
+   "who": "RIN",
+   "text": "He said it was the opposite of his Brand. He broke things. Like you."
+  },
+  {
+   "id": "ep05_169",
+   "who": "TAKUTO",
+   "text": "What happened to him?"
+  },
+  {
+   "id": "ep05_170",
+   "who": "RIN",
+   "text": "A Rift opened over our village. He went in after the thing that came out. I tied a thread to his wrist so I could pull him back."
+  },
+  {
+   "id": "ep05_171",
+   "who": "RIN",
+   "text": "The thread went slack."
+  },
+  {
+   "id": "ep05_172",
+   "who": "RIN",
+   "text": "So, no. I'm not going to drown. I'm not going to let you watch someone go slack."
+  },
+  {
+   "id": "ep05_173",
+   "who": "TAKUTO",
+   "text": "The axe can't block, Rin. If it goes for you, I can't stand in front of you."
+  },
+  {
+   "id": "ep05_174",
+   "who": "RIN",
+   "text": "Then don't block. Pull."
+  },
+  {
+   "id": "ep05_175",
+   "who": "TAKUTO",
+   "text": "Pull?"
+  },
+  {
+   "id": "ep05_176",
+   "who": "RIN",
+   "text": "I'll tie a thread to your wrist, too. If I go under, you pull. You're strong enough. You're too stubborn not to be."
+  },
+  {
+   "id": "ep05_177",
+   "who": "TAKUTO",
+   "text": "...I won't miss."
+  },
+  {
+   "id": "ep05_178",
+   "who": "RIN",
+   "text": "I know. That's why I'm doing it."
+  },
+  {
+   "id": "ep05_179",
+   "who": "AKURO",
+   "text": "Tied to a girl with a temper. Boy, you have terrible luck. I approve.",
+   "mono": true
+  },
+  {
+   "id": "ep05_180",
+   "who": "NEMU",
+   "text": "You're not sleeping either."
+  },
+  {
+   "id": "ep05_181",
+   "who": "SIEG",
+   "text": "Old men don't sleep before a fight. We count."
+  },
+  {
+   "id": "ep05_182",
+   "who": "NEMU",
+   "text": "Count what?"
+  },
+  {
+   "id": "ep05_183",
+   "who": "SIEG",
+   "text": "Who is standing where. Who is too brave. Who will do something stupid."
+  },
+  {
+   "id": "ep05_184",
+   "who": "NEMU",
+   "text": "Takuto.",
+   "tts": "Tah-koo-toh."
+  },
+  {
+   "id": "ep05_185",
+   "who": "SIEG",
+   "text": "Takuto. And Rin. And you.",
+   "tts": "Tah-koo-toh. And Rin. And you."
+  },
+  {
+   "id": "ep05_186",
+   "who": "NEMU",
+   "text": "I'm not stupid. I'm lazy. It's different."
+  },
+  {
+   "id": "ep05_187",
+   "who": "SIEG",
+   "text": "You have two lives left, Nemu. You said so to him like it was a lot.",
+   "tts": "You have two lives left, Neh-moo. You said so to him like it was a lot."
+  },
+  {
+   "id": "ep05_188",
+   "who": "NEMU",
+   "text": "It is a lot. Most people have one."
+  },
+  {
+   "id": "ep05_189",
+   "who": "SIEG",
+   "text": "My squad had one each. Eleven people. Eleven lives. I counted them every night, the way I'm counting you."
+  },
+  {
+   "id": "ep05_190",
+   "who": "SIEG",
+   "text": "One morning I counted, and I got to one."
+  },
+  {
+   "id": "ep05_191",
+   "who": "NEMU",
+   "text": "...Does it get easier? Counting?"
+  },
+  {
+   "id": "ep05_192",
+   "who": "SIEG",
+   "text": "No. But it's better than not counting. If you stop, you forget they were ever there."
+  },
+  {
+   "id": "ep05_193",
+   "who": "NEMU",
+   "text": "Then count me. I'll still be here in the morning. Probably asleep."
+  },
+  {
+   "id": "ep05_194",
+   "who": "SIEG",
+   "text": "...Deal. Go sleep for an hour. I'll wake you when the sky starts yelling."
+  },
+  {
+   "id": "ep05_195",
+   "who": "WICK",
+   "text": "Okay. Takoyaki left. Takoyaki right. Let's boil a lake."
+  },
+  {
+   "id": "ep05_196",
+   "who": "WICK",
+   "text": "Will-o'-Wisp! Only the water! Only the WATER!"
+  },
+  {
+   "id": "ep05_197",
+   "who": "SIEG",
+   "text": "It's coming up. Angry. Good. Angry things make mistakes."
+  },
+  {
+   "id": "ep05_198",
+   "who": "NEMU",
+   "text": "Nine heads now."
+  },
+  {
+   "id": "ep05_199",
+   "who": "TAKUTO",
+   "text": "Don't cut. Don't cut. Don't cut."
+  },
+  {
+   "id": "ep05_200",
+   "who": "SIEG",
+   "text": "Mine!"
+  },
+  {
+   "id": "ep05_201",
+   "who": "SIEG",
+   "text": "Afterimage! I'll keep the outer heads busy. Rin, start!"
+  },
+  {
+   "id": "ep05_202",
+   "who": "RIN",
+   "text": "Red Thread. One. Two. Three."
+  },
+  {
+   "id": "ep05_203",
+   "who": "RIN",
+   "text": "Four... five..."
+  },
+  {
+   "id": "ep05_204",
+   "who": "RIN",
+   "text": "It's heavy. It's so heavy."
+  },
+  {
+   "id": "ep05_205",
+   "who": "TAKUTO",
+   "text": "I can't reach the middle one! The others keep it back!"
+  },
+  {
+   "id": "ep05_206",
+   "who": "NEMU",
+   "text": "Hey! Sad head! Over here!"
+  },
+  {
+   "id": "ep05_207",
+   "who": "TAKUTO",
+   "text": "Nemu! The dock!",
+   "tts": "Neh-moo! The dock!"
+  },
+  {
+   "id": "ep05_208",
+   "who": "NEMU",
+   "text": "I was bored on the dock!"
+  },
+  {
+   "id": "ep05_209",
+   "who": "NEMU",
+   "text": "Look at me, not them!"
+  },
+  {
+   "id": "ep05_210",
+   "who": "WICK",
+   "text": "Hey! Leave the cat girl alone! Takoyaki, LEFT!"
+  },
+  {
+   "id": "ep05_211",
+   "who": "SIEG",
+   "text": "Rin, faster! I can't hold the outer heads much longer!"
+  },
+  {
+   "id": "ep05_212",
+   "who": "RIN",
+   "text": "Six! It turned! Seven!"
+  },
+  {
+   "id": "ep05_213",
+   "who": "TAKUTO",
+   "text": "Gideon, your chains, now!"
+  },
+  {
+   "id": "ep05_214",
+   "who": "AKURO",
+   "text": "Two blocks in two weeks. You're getting soft.",
+   "mono": true
+  },
+  {
+   "id": "ep05_215",
+   "who": "RIN",
+   "text": "Seven heads! One knot! Takuto, NOW!",
+   "tts": "Seven heads! One knot! Tah-koo-toh, NOW!"
+  },
+  {
+   "id": "ep05_216",
+   "who": "TAKUTO",
+   "text": "Ruinbreaker!"
+  },
+  {
+   "id": "ep05_217",
+   "who": "RIN",
+   "text": "It's diving! It's pulling me!"
+  },
+  {
+   "id": "ep05_218",
+   "who": "TAKUTO",
+   "text": "I've got you!"
+  },
+  {
+   "id": "ep05_219",
+   "who": "AKURO",
+   "text": "Pull, boy. Pull like you mean it.",
+   "mono": true
+  },
+  {
+   "id": "ep05_220",
+   "who": "RIN",
+   "text": "You... pulled."
+  },
+  {
+   "id": "ep05_221",
+   "who": "TAKUTO",
+   "text": "You said pull."
+  },
+  {
+   "id": "ep05_222",
+   "who": "RIN",
+   "text": "I didn't think you'd listen."
+  },
+  {
+   "id": "ep05_223",
+   "who": "SIEG",
+   "text": "It's done. All of it. Every head went still at once."
+  },
+  {
+   "id": "ep05_224",
+   "who": "WICK",
+   "text": "I boiled a lake. I boiled an entire lake. Nobody is ever going to believe me."
+  },
+  {
+   "id": "ep05_225",
+   "who": "NEMU",
+   "text": "I believe you. I can smell it."
+  },
+  {
+   "id": "ep05_226",
+   "who": "CROWD",
+   "text": "The lake is calm! The lake is calm!"
+  },
+  {
+   "id": "ep05_227",
+   "who": "CROWD2",
+   "text": "The Hunters did it!"
+  },
+  {
+   "id": "ep05_228",
+   "who": "VENDOR",
+   "text": "Free eel for the Hunters! Free eel, all day!"
+  },
+  {
+   "id": "ep05_229",
+   "who": "NEMU",
+   "text": "Free eel."
+  },
+  {
+   "id": "ep05_230",
+   "who": "TAKUTO",
+   "text": "Go. You earned it."
+  },
+  {
+   "id": "ep05_231",
+   "who": "NEMU",
+   "text": "I earned two."
+  },
+  {
+   "id": "ep05_232",
+   "who": "CLERK",
+   "text": "On behalf of the Marrowmere branch, thank you. I have filed the report. I wrote down that the sad head stopped looking sad."
+  },
+  {
+   "id": "ep05_233",
+   "who": "SIEG",
+   "text": "Did it?"
+  },
+  {
+   "id": "ep05_234",
+   "who": "CLERK",
+   "text": "The little girl says so. She watched from her roof. I am choosing to believe her."
+  },
+  {
+   "id": "ep05_235",
+   "who": "SIEG",
+   "text": "Takuto. Come look at this.",
+   "tts": "Tah-koo-toh. Come look at this."
+  },
+  {
+   "id": "ep05_236",
+   "who": "TAKUTO",
+   "text": "What is it?"
+  },
+  {
+   "id": "ep05_237",
+   "who": "SIEG",
+   "text": "The seal stone. From the lake bed. It washed up this morning. Look at the edge."
+  },
+  {
+   "id": "ep05_238",
+   "who": "TAKUTO",
+   "text": "It's burned. Like something melted it from the inside."
+  },
+  {
+   "id": "ep05_239",
+   "who": "WICK",
+   "text": "It smells like a burnt phone charger."
+  },
+  {
+   "id": "ep05_240",
+   "who": "AKURO",
+   "text": "Static.",
+   "mono": true
+  },
+  {
+   "id": "ep05_241",
+   "who": "SIEG",
+   "text": "The Hydra didn't wake up. Someone woke it, and aimed it at a town full of people."
+  },
+  {
+   "id": "ep05_242",
+   "who": "RIN",
+   "text": "And there were feathers on the shore. Black and red. Big ones."
+  },
+  {
+   "id": "ep05_243",
+   "who": "SIEG",
+   "text": "Plume Ogre feathers. They don't come this far south. Something is pushing them."
+  },
+  {
+   "id": "ep05_244",
+   "who": "CLERK",
+   "text": "Oh! And a hawk came from Ashford an hour ago. For you, Mister Valen."
+  },
+  {
+   "id": "ep05_245",
+   "who": "SIEG",
+   "text": "...Fort Cinder. Red Giants marching from the volcanic plain. Every Hunter rank C and above is called to the walls."
+  },
+  {
+   "id": "ep05_246",
+   "who": "RIN",
+   "text": "That's me."
+  },
+  {
+   "id": "ep05_247",
+   "who": "SIEG",
+   "text": "And me."
+  },
+  {
+   "id": "ep05_248",
+   "who": "TAKUTO",
+   "text": "And me."
+  },
+  {
+   "id": "ep05_249",
+   "who": "SIEG",
+   "text": "You're rank F, Takuto.",
+   "tts": "You're rank F, Tah-koo-toh."
+  },
+  {
+   "id": "ep05_250",
+   "who": "TAKUTO",
+   "text": "I'm an error. Errors go where they want."
+  },
+  {
+   "id": "ep05_251",
+   "who": "SIEG",
+   "text": "...Valentine is going to love you."
+  },
+  {
+   "id": "ep05_252",
+   "who": "TAKUTO",
+   "text": "Akuro. The middle head. Why was it sad?",
+   "tts": "Ah-koo-roh. The middle head. Why was it sad?"
+  },
+  {
+   "id": "ep05_253",
+   "who": "AKURO",
+   "text": "Two hundred years asleep in the mud, chained by a dead woman. Then someone burns the chain and points it at a town.",
+   "mono": true
+  },
+  {
+   "id": "ep05_254",
+   "who": "AKURO",
+   "text": "It wanted to go back to sleep, boy. That's all. Most monsters do.",
+   "mono": true
+  },
+  {
+   "id": "ep05_255",
+   "who": "TAKUTO",
+   "text": "Did I kill it? Or break it?"
+  },
+  {
+   "id": "ep05_256",
+   "who": "AKURO",
+   "text": "Both. You broke its heart, and that killed it. Isn't that wonderful? You're learning.",
+   "mono": true
+  },
+  {
+   "id": "ep05_257",
+   "who": "TAKUTO",
+   "text": "It doesn't feel wonderful."
+  },
+  {
+   "id": "ep05_258",
+   "who": "AKURO",
+   "text": "That's how you know you're still human. Enjoy it while it lasts.",
+   "mono": true
+  },
+  {
+   "id": "ep05_259",
+   "who": "SABLE",
+   "text": "Seven heads, one knot. He let the girl tie herself to it. How very brave of her."
+  },
+  {
+   "id": "ep05_260",
+   "who": "SABLE",
+   "text": "Next, let's see what he does when he loses."
+  },
+  {
+   "id": "ep05_261",
+   "who": "TAKUTO",
+   "text": "Next time: Fort Cinder, on the edge of the volcanic plain."
+  },
+  {
+   "id": "ep05_262",
+   "who": "TAKUTO",
+   "text": "The Red Giants march. And for the first time, I lose control."
+  },
+  {
+   "id": "ep05_263",
+   "who": "TAKUTO",
+   "text": "Akuro opens his eye. Rin gets hurt. Because of me.",
+   "tts": "Ah-koo-roh opens his eye. Rin gets hurt. Because of me."
+  },
+  {
+   "id": "ep05_264",
+   "who": "TAKUTO",
+   "text": "Episode six. The Red Giants March."
+  }
+ ]
+}

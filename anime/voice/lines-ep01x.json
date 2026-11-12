@@ -1,0 +1,2097 @@
+{
+ "cast": {
+  "TAKUTO": {
+   "voice": [
+    [
+     "am_michael",
+     0.6
+    ],
+    [
+     "am_puck",
+     0.4
+    ]
+   ],
+   "speed": 1.02
+  },
+  "NEMU": {
+   "voice": [
+    [
+     "af_nicole",
+     0.65
+    ],
+    [
+     "af_bella",
+     0.35
+    ]
+   ],
+   "speed": 1.02
+  },
+  "SIEG": {
+   "voice": [
+    [
+     "bm_george",
+     1
+    ]
+   ],
+   "speed": 1.06
+  },
+  "AKURO": {
+   "voice": [
+    [
+     "am_fenrir",
+     1
+    ]
+   ],
+   "speed": 0.8,
+   "fx": "demon"
+  },
+  "RIN": {
+   "voice": [
+    [
+     "af_kore",
+     0.6
+    ],
+    [
+     "bf_emma",
+     0.4
+    ]
+   ],
+   "speed": 1.05
+  },
+  "VALENTINE": {
+   "voice": [
+    [
+     "bf_isabella",
+     0.55
+    ],
+    [
+     "af_nova",
+     0.45
+    ]
+   ],
+   "speed": 1.06
+  },
+  "CLERK": {
+   "voice": [
+    [
+     "af_aoede",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "CROWD": {
+   "voice": [
+    [
+     "am_echo",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "CROWD2": {
+   "voice": [
+    [
+     "af_river",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "VENDOR": {
+   "voice": [
+    [
+     "bm_daniel",
+     1
+    ]
+   ],
+   "speed": 1.08
+  },
+  "HUNTER": {
+   "voice": [
+    [
+     "am_onyx",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "SABLE": {
+   "voice": [
+    [
+     "bm_fable",
+     1
+    ]
+   ],
+   "speed": 0.92,
+   "fx": "static"
+  },
+  "WICK": {
+   "voice": [
+    [
+     "am_puck",
+     0.5
+    ],
+    [
+     "am_liam",
+     0.5
+    ]
+   ],
+   "speed": 1.12
+  },
+  "GIDEON": {
+   "voice": [
+    [
+     "bm_lewis",
+     1
+    ]
+   ],
+   "speed": 1
+  },
+  "EXAMINER": {
+   "voice": [
+    [
+     "bf_alice",
+     1
+    ]
+   ],
+   "speed": 1.04
+  },
+  "HARUKI": {
+   "voice": [
+    [
+     "am_liam",
+     0.6
+    ],
+    [
+     "am_eric",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "LUCIEN": {
+   "voice": [
+    [
+     "bm_daniel",
+     0.5
+    ],
+    [
+     "am_adam",
+     0.5
+    ]
+   ],
+   "speed": 0.94
+  },
+  "VESPER": {
+   "voice": [
+    [
+     "bf_lily",
+     0.6
+    ],
+    [
+     "af_sky",
+     0.4
+    ]
+   ],
+   "speed": 1
+  },
+  "KUROZANE": {
+   "voice": [
+    [
+     "am_onyx",
+     0.7
+    ],
+    [
+     "am_fenrir",
+     0.3
+    ]
+   ],
+   "speed": 0.9
+  },
+  "OGRE": {
+   "voice": [
+    [
+     "am_santa",
+     1
+    ]
+   ],
+   "speed": 0.9,
+   "fx": "demon"
+  },
+  "NARRATOR": {
+   "voice": [
+    [
+     "bm_george",
+     0.4
+    ],
+    [
+     "am_adam",
+     0.6
+    ]
+   ],
+   "speed": 0.98
+  },
+  "???": {
+   "voice": [
+    [
+     "af_nicole",
+     0.65
+    ],
+    [
+     "af_bella",
+     0.35
+    ]
+   ],
+   "speed": 1.1
+  }
+ },
+ "lines": [
+  {
+   "id": "c1",
+   "who": "AKURO",
+   "text": "Tell me, boy...",
+   "src": [
+    "voice/voices.mp3",
+    0.25,
+    1.131
+   ]
+  },
+  {
+   "id": "c2",
+   "who": "AKURO",
+   "text": "...what is it you want to break?",
+   "src": [
+    "voice/voices.mp3",
+    1.7807,
+    1.6
+   ]
+  },
+  {
+   "id": "c3",
+   "who": "TAKUTO",
+   "text": "Everything that's in the way.",
+   "src": [
+    "voice/voices.mp3",
+    3.7807,
+    1.557
+   ]
+  },
+  {
+   "id": "e1",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "Two-fourteen. Last freight of the night.",
+   "src": [
+    "voice/voices.mp3",
+    5.738,
+    2.005
+   ]
+  },
+  {
+   "id": "e2",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "Same crossing. Same bell.",
+   "src": [
+    "voice/voices.mp3",
+    8.1433,
+    1.728
+   ]
+  },
+  {
+   "id": "e3",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "Same cat.",
+   "src": [
+    "voice/voices.mp3",
+    10.2713,
+    0.917
+   ]
+  },
+  {
+   "id": "e4",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "It was Haruki's cat first. He fed it every night on his way home.",
+   "tts": "It was Hah-roo-kee's cat first. He fed it every night, on his way home.",
+   "src": [
+    "voice/voices.mp3",
+    11.5887,
+    4.373
+   ]
+  },
+  {
+   "id": "e5",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "Two years now.",
+   "src": [
+    "voice/voices.mp3",
+    16.362,
+    0.981
+   ]
+  },
+  {
+   "id": "e6",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "So I bring the cat food. Somebody has to.",
+   "src": [
+    "voice/voices.mp3",
+    17.7433,
+    2.752
+   ]
+  },
+  {
+   "id": "e7",
+   "who": "TAKUTO",
+   "text": "Tuna. The expensive kind. Don't tell anyone.",
+   "src": [
+    "voice/voices.mp3",
+    20.8953,
+    2.901
+   ]
+  },
+  {
+   "id": "e8",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "Grandma used to say I was born to carry things for other people.",
+   "src": [
+    "voice/voices.mp3",
+    24.1967,
+    4.011
+   ]
+  },
+  {
+   "id": "e9",
+   "who": "TAKUTO",
+   "text": "...What is it?",
+   "src": [
+    "voice/voices.mp3",
+    28.6073,
+    0.875
+   ]
+  },
+  {
+   "id": "e10",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "The bell... There's no train.",
+   "src": [
+    "voice/voices.mp3",
+    29.882,
+    1.664
+   ]
+  },
+  {
+   "id": "e11",
+   "who": "TAKUTO",
+   "text": "...Okay. No.",
+   "src": [
+    "voice/voices.mp3",
+    31.946,
+    1.067
+   ]
+  },
+  {
+   "id": "e12",
+   "who": "???",
+   "text": "Don't come near it!",
+   "speed": 1.12,
+   "src": [
+    "voice/voices.mp3",
+    33.4127,
+    1.173
+   ]
+  },
+  {
+   "id": "e13",
+   "who": "TAKUTO",
+   "text": "Hey!",
+   "speed": 1.1,
+   "src": [
+    "voice/voices.mp3",
+    34.986,
+    0.576
+   ]
+  },
+  {
+   "id": "e14",
+   "who": "TAKUTO",
+   "text": "Get down!",
+   "speed": 1.15,
+   "src": [
+    "voice/voices.mp3",
+    35.962,
+    0.768
+   ]
+  },
+  {
+   "id": "a1",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "...Two moons.",
+   "src": [
+    "voice/voices.mp3",
+    37.13,
+    0.981
+   ]
+  },
+  {
+   "id": "a2",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "Okay. That's new.",
+   "src": [
+    "voice/voices.mp3",
+    38.5113,
+    1.173
+   ]
+  },
+  {
+   "id": "a3",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "And I'm holding... an axe?",
+   "src": [
+    "voice/voices.mp3",
+    40.0847,
+    1.643
+   ]
+  },
+  {
+   "id": "a4",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "Where the hell am I?",
+   "src": [
+    "voice/voices.mp3",
+    42.1273,
+    1.131
+   ]
+  },
+  {
+   "id": "a5",
+   "who": "NEMU",
+   "text": "Hnnnaaah... Oh. You're alive. Neat.",
+   "tts": "Hhaaaaah... Oh. You're alive. Neat.",
+   "src": [
+    "voice/voices.mp3",
+    43.658,
+    2.453
+   ]
+  },
+  {
+   "id": "a6",
+   "who": "TAKUTO",
+   "text": "You were lying on train tracks a minute ago.",
+   "src": [
+    "voice/voices.mp3",
+    46.5113,
+    2.304
+   ]
+  },
+  {
+   "id": "a7",
+   "who": "NEMU",
+   "text": "Mm. I'm very good at that.",
+   "src": [
+    "voice/voices.mp3",
+    49.2153,
+    1.941
+   ]
+  },
+  {
+   "id": "a8",
+   "who": "NEMU",
+   "text": "Lying places. Getting squished.",
+   "src": [
+    "voice/voices.mp3",
+    51.5567,
+    2.368
+   ]
+  },
+  {
+   "id": "a9",
+   "who": "TAKUTO",
+   "text": "Where is this?",
+   "src": [
+    "voice/voices.mp3",
+    54.3247,
+    1.003
+   ]
+  },
+  {
+   "id": "a10",
+   "who": "NEMU",
+   "text": "The Barrow Fields. Edge of the Ashen March.",
+   "src": [
+    "voice/voices.mp3",
+    55.7273,
+    3.157
+   ]
+  },
+  {
+   "id": "a11",
+   "who": "NEMU",
+   "text": "You fell out of the sky.",
+   "src": [
+    "voice/voices.mp3",
+    59.2847,
+    1.472
+   ]
+  },
+  {
+   "id": "a12",
+   "who": "NEMU",
+   "text": "People like you have a name here. Skyfallen.",
+   "src": [
+    "voice/voices.mp3",
+    61.1567,
+    3.157
+   ]
+  },
+  {
+   "id": "a13",
+   "who": "TAKUTO",
+   "text": "There are others?",
+   "src": [
+    "voice/voices.mp3",
+    64.714,
+    0.981
+   ]
+  },
+  {
+   "id": "a14",
+   "who": "NEMU",
+   "text": "A few. Most of them land worse.",
+   "src": [
+    "voice/voices.mp3",
+    66.0953,
+    2.197
+   ]
+  },
+  {
+   "id": "a15",
+   "who": "TAKUTO",
+   "text": "...I'll take that as a compliment.",
+   "src": [
+    "voice/voices.mp3",
+    68.6927,
+    1.707
+   ]
+  },
+  {
+   "id": "a16",
+   "who": "NEMU",
+   "text": "...Hey.",
+   "src": [
+    "voice/voices.mp3",
+    70.7993,
+    0.683
+   ]
+  },
+  {
+   "id": "a17",
+   "who": "NEMU",
+   "text": "Where did you get that axe?",
+   "src": [
+    "voice/voices.mp3",
+    71.882,
+    1.365
+   ]
+  },
+  {
+   "id": "a18",
+   "who": "TAKUTO",
+   "text": "It was sticking out of a grave. I grabbed it on the way down.",
+   "src": [
+    "voice/voices.mp3",
+    73.6473,
+    3.413
+   ]
+  },
+  {
+   "id": "a19",
+   "who": "NEMU",
+   "text": "That's the Headsman's Axe.",
+   "src": [
+    "voice/voices.mp3",
+    77.4607,
+    1.429
+   ]
+  },
+  {
+   "id": "a20",
+   "who": "NEMU",
+   "text": "It's been stuck in that grave for three hundred years.",
+   "src": [
+    "voice/voices.mp3",
+    79.29,
+    3.371
+   ]
+  },
+  {
+   "id": "a21",
+   "who": "NEMU",
+   "text": "People tried pulling it out with horses.",
+   "src": [
+    "voice/voices.mp3",
+    83.0607,
+    2.688
+   ]
+  },
+  {
+   "id": "a22",
+   "who": "TAKUTO",
+   "text": "...It was loose.",
+   "src": [
+    "voice/voices.mp3",
+    86.1487,
+    0.939
+   ]
+  },
+  {
+   "id": "a23",
+   "who": "NEMU",
+   "text": "WHY WAS IT LOOSE?!",
+   "tts": "Why was it loose?!",
+   "speed": 1.15,
+   "src": [
+    "voice/voices.mp3",
+    87.4873,
+    1.237
+   ]
+  },
+  {
+   "id": "a24",
+   "who": "NEMU",
+   "text": "Rifts open in the sky. Things crawl out.",
+   "src": [
+    "voice/voices.mp3",
+    89.1247,
+    3.008
+   ]
+  },
+  {
+   "id": "a25",
+   "who": "NEMU",
+   "text": "We call them Fiends.",
+   "src": [
+    "voice/voices.mp3",
+    92.5327,
+    1.259
+   ]
+  },
+  {
+   "id": "a26",
+   "who": "NEMU",
+   "text": "Swords don't bite them. Arrows bounce off.",
+   "src": [
+    "voice/voices.mp3",
+    94.1913,
+    3.157
+   ]
+  },
+  {
+   "id": "a27",
+   "who": "NEMU",
+   "text": "Normal people can't do anything but run.",
+   "src": [
+    "voice/voices.mp3",
+    97.7487,
+    2.773
+   ]
+  },
+  {
+   "id": "a28",
+   "who": "NEMU",
+   "text": "Unless you have a Brand.",
+   "src": [
+    "voice/voices.mp3",
+    100.922,
+    1.451
+   ]
+  },
+  {
+   "id": "a29",
+   "who": "NEMU",
+   "text": "A mark on your soul. It wakes up when you're about to die... if you have one.",
+   "src": [
+    "voice/voices.mp3",
+    102.7727,
+    5.333
+   ]
+  },
+  {
+   "id": "a30",
+   "who": "NEMU",
+   "text": "Branded people become Hunters. They hunt Fiends for the Guild.",
+   "src": [
+    "voice/voices.mp3",
+    108.506,
+    4.181
+   ]
+  },
+  {
+   "id": "a31",
+   "who": "TAKUTO",
+   "text": "And people without one?",
+   "src": [
+    "voice/voices.mp3",
+    113.0873,
+    1.387
+   ]
+  },
+  {
+   "id": "a32",
+   "who": "NEMU",
+   "text": "Get very good at running.",
+   "src": [
+    "voice/voices.mp3",
+    114.874,
+    1.472
+   ]
+  },
+  {
+   "id": "a33",
+   "who": "NEMU",
+   "text": "Mine's called Nine Lives.",
+   "src": [
+    "voice/voices.mp3",
+    116.746,
+    1.728
+   ]
+  },
+  {
+   "id": "a34",
+   "who": "NEMU",
+   "text": "I can die nine times. I've used six.",
+   "src": [
+    "voice/voices.mp3",
+    118.874,
+    3.243
+   ]
+  },
+  {
+   "id": "a35",
+   "who": "TAKUTO",
+   "text": "Six.",
+   "src": [
+    "voice/voices.mp3",
+    122.5167,
+    0.619
+   ]
+  },
+  {
+   "id": "a36",
+   "who": "NEMU",
+   "text": "Don't make the face.",
+   "src": [
+    "voice/voices.mp3",
+    123.5353,
+    1.216
+   ]
+  },
+  {
+   "id": "a37",
+   "who": "TAKUTO",
+   "text": "I'm not making a face.",
+   "src": [
+    "voice/voices.mp3",
+    125.1513,
+    1.365
+   ]
+  },
+  {
+   "id": "a38",
+   "who": "NEMU",
+   "text": "You're making it with your eyes.",
+   "src": [
+    "voice/voices.mp3",
+    126.9167,
+    1.643
+   ]
+  },
+  {
+   "id": "a39",
+   "who": "TAKUTO",
+   "text": "That thing at the crossing. Was it chasing you?",
+   "src": [
+    "voice/voices.mp3",
+    128.9593,
+    2.581
+   ]
+  },
+  {
+   "id": "a40",
+   "who": "NEMU",
+   "text": "I was digging for grave silver. It woke up. Shieldbearers don't wake up.",
+   "src": [
+    "voice/voices.mp3",
+    131.9407,
+    5.355
+   ]
+  },
+  {
+   "id": "a41",
+   "who": "NEMU",
+   "text": "Then the ground opened. Rifts open in the sky... not into other worlds.",
+   "src": [
+    "voice/voices.mp3",
+    137.6953,
+    5.525
+   ]
+  },
+  {
+   "id": "a42",
+   "who": "NEMU",
+   "text": "Somebody opened that one.",
+   "src": [
+    "voice/voices.mp3",
+    143.6207,
+    1.835
+   ]
+  },
+  {
+   "id": "a43",
+   "who": "TAKUTO",
+   "text": "...You hear that?",
+   "src": [
+    "voice/voices.mp3",
+    145.8553,
+    0.917
+   ]
+  },
+  {
+   "id": "a44",
+   "who": "NEMU",
+   "text": "A bell. There are no bells out here.",
+   "src": [
+    "voice/voices.mp3",
+    147.1727,
+    2.048
+   ]
+  },
+  {
+   "id": "b1",
+   "who": "NEMU",
+   "text": "Run. I mean it this time.",
+   "speed": 1.05,
+   "src": [
+    "voice/voices.mp3",
+    149.6207,
+    1.685
+   ]
+  },
+  {
+   "id": "b2",
+   "who": "TAKUTO",
+   "text": "You said that at the crossing.",
+   "src": [
+    "voice/voices.mp3",
+    151.706,
+    1.472
+   ]
+  },
+  {
+   "id": "b3",
+   "who": "NEMU",
+   "text": "And you didn't listen! I only have three left!",
+   "speed": 1.12,
+   "src": [
+    "voice/voices.mp3",
+    153.578,
+    2.837
+   ]
+  },
+  {
+   "id": "b4",
+   "who": "TAKUTO",
+   "text": "Then stay behind me.",
+   "src": [
+    "voice/voices.mp3",
+    156.8153,
+    1.387
+   ]
+  },
+  {
+   "id": "b5",
+   "who": "NEMU",
+   "text": "Don't hit the shield! Nothing breaks the shield!",
+   "speed": 1.15,
+   "src": [
+    "voice/voices.mp3",
+    158.602,
+    2.773
+   ]
+  },
+  {
+   "id": "b6",
+   "who": "TAKUTO",
+   "text": "Then what do I hit?!",
+   "speed": 1.1,
+   "src": [
+    "voice/voices.mp3",
+    161.7753,
+    1.216
+   ]
+  },
+  {
+   "id": "b7",
+   "who": "NEMU",
+   "text": "Nothing! We run!",
+   "speed": 1.15,
+   "src": [
+    "voice/voices.mp3",
+    163.3913,
+    1.045
+   ]
+  },
+  {
+   "id": "b8",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "Can't... get up...",
+   "speed": 0.85,
+   "src": [
+    "voice/voices.mp3",
+    164.8367,
+    1.301
+   ]
+  },
+  {
+   "id": "b9",
+   "who": "NEMU",
+   "text": "Hey! Ugly!",
+   "speed": 1.1,
+   "src": [
+    "voice/voices.mp3",
+    166.538,
+    0.896
+   ]
+  },
+  {
+   "id": "b10",
+   "who": "NEMU",
+   "text": "Over here!",
+   "speed": 1.12,
+   "src": [
+    "voice/voices.mp3",
+    167.834,
+    0.789
+   ]
+  },
+  {
+   "id": "b11",
+   "who": "TAKUTO",
+   "text": "Wait!",
+   "speed": 1.15,
+   "src": [
+    "voice/voices.mp3",
+    169.0233,
+    0.555
+   ]
+  },
+  {
+   "id": "b12",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "Born to carry things for other people.",
+   "speed": 0.9,
+   "src": [
+    "voice/voices.mp3",
+    169.978,
+    2.432
+   ]
+  },
+  {
+   "id": "b13",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "Groceries. Grudges. Blame.",
+   "speed": 0.88,
+   "src": [
+    "voice/voices.mp3",
+    172.81,
+    2.027
+   ]
+  },
+  {
+   "id": "b14",
+   "who": "TAKUTO",
+   "mono": true,
+   "text": "Not this. I'm not carrying this one.",
+   "speed": 0.9,
+   "src": [
+    "voice/voices.mp3",
+    175.2367,
+    2.261
+   ]
+  },
+  {
+   "id": "b15",
+   "who": "AKURO",
+   "text": "Finally.",
+   "src": [
+    "voice/voices.mp3",
+    177.898,
+    0.875
+   ]
+  },
+  {
+   "id": "b16",
+   "who": "AKURO",
+   "text": "Three hundred years in the dirt, and this is who pulls me out?",
+   "src": [
+    "voice/voices.mp3",
+    179.1727,
+    3.968
+   ]
+  },
+  {
+   "id": "b17",
+   "who": "TAKUTO",
+   "text": "Who are you?",
+   "src": [
+    "voice/voices.mp3",
+    183.5407,
+    0.875
+   ]
+  },
+  {
+   "id": "b18",
+   "who": "AKURO",
+   "text": "The reason the axe was stuck.",
+   "src": [
+    "voice/voices.mp3",
+    184.8153,
+    1.792
+   ]
+  },
+  {
+   "id": "b19",
+   "who": "AKURO",
+   "text": "Tell me, boy. What is it you want to break?",
+   "src": [
+    "voice/voices.mp3",
+    187.0073,
+    2.411
+   ]
+  },
+  {
+   "id": "b20",
+   "who": "TAKUTO",
+   "text": "Everything that's in the way.",
+   "src": [
+    "voice/voices.mp3",
+    189.818,
+    1.557
+   ]
+  },
+  {
+   "id": "b21",
+   "who": "AKURO",
+   "text": "...Good answer.",
+   "src": [
+    "voice/voices.mp3",
+    191.7753,
+    1.088
+   ]
+  },
+  {
+   "id": "b22",
+   "who": "TAKUTO",
+   "text": "It was in the way.",
+   "src": [
+    "voice/voices.mp3",
+    193.2633,
+    1.131
+   ]
+  },
+  {
+   "id": "b23",
+   "who": "NEMU",
+   "text": "Hnnaaah... Ow.",
+   "tts": "Hhaaaah... Ow.",
+   "src": [
+    "voice/voices.mp3",
+    194.794,
+    1.493
+   ]
+  },
+  {
+   "id": "b24",
+   "who": "TAKUTO",
+   "text": "You were dead.",
+   "src": [
+    "voice/voices.mp3",
+    196.6873,
+    0.896
+   ]
+  },
+  {
+   "id": "b25",
+   "who": "NEMU",
+   "text": "Mm. That's seven. Two left.",
+   "src": [
+    "voice/voices.mp3",
+    197.9833,
+    2.155
+   ]
+  },
+  {
+   "id": "b26",
+   "who": "TAKUTO",
+   "text": "Don't do that again.",
+   "src": [
+    "voice/voices.mp3",
+    200.538,
+    1.237
+   ]
+  },
+  {
+   "id": "b27",
+   "who": "NEMU",
+   "text": "You're making the face.",
+   "src": [
+    "voice/voices.mp3",
+    202.1753,
+    1.237
+   ]
+  },
+  {
+   "id": "b28",
+   "who": "TAKUTO",
+   "text": "I'm making it with my whole face this time.",
+   "src": [
+    "voice/voices.mp3",
+    203.8127,
+    2.539
+   ]
+  },
+  {
+   "id": "b29",
+   "who": "TAKUTO",
+   "text": "...I never asked your name.",
+   "src": [
+    "voice/voices.mp3",
+    206.7513,
+    1.451
+   ]
+  },
+  {
+   "id": "b30",
+   "who": "NEMU",
+   "text": "Nemu.",
+   "tts": "Neh-moo.",
+   "src": [
+    "voice/voices.mp3",
+    208.602,
+    0.875
+   ]
+  },
+  {
+   "id": "b31",
+   "who": "NEMU",
+   "text": "And you're the idiot who pulled out the Headsman's Axe.",
+   "src": [
+    "voice/voices.mp3",
+    209.8767,
+    2.965
+   ]
+  },
+  {
+   "id": "b32",
+   "who": "TAKUTO",
+   "text": "Takuto. Kirishima Takuto.",
+   "tts": "Tah-koo-toh. Kee-ree-shee-mah, Tah-koo-toh.",
+   "src": [
+    "voice/voices.mp3",
+    213.242,
+    2.283
+   ]
+  },
+  {
+   "id": "b33",
+   "who": "SIEG",
+   "text": "Well, well, well.",
+   "src": [
+    "voice/voices.mp3",
+    215.9247,
+    1.429
+   ]
+  },
+  {
+   "id": "b34",
+   "who": "SIEG",
+   "text": "A Shieldbearer's shield. Broken in one swing.",
+   "src": [
+    "voice/voices.mp3",
+    217.754,
+    3.008
+   ]
+  },
+  {
+   "id": "b35",
+   "who": "SIEG",
+   "text": "Twelve years I've been hunting. Never seen that.",
+   "src": [
+    "voice/voices.mp3",
+    221.162,
+    3.179
+   ]
+  },
+  {
+   "id": "b36",
+   "who": "SIEG",
+   "text": "Nice axe, kid. Mind telling me where you got it?",
+   "src": [
+    "voice/voices.mp3",
+    224.7407,
+    3.093
+   ]
+  },
+  {
+   "id": "b37",
+   "who": "TAKUTO",
+   "text": "It was loose.",
+   "src": [
+    "voice/voices.mp3",
+    228.234,
+    0.917
+   ]
+  },
+  {
+   "id": "b38",
+   "who": "NEMU",
+   "text": "He keeps saying that.",
+   "src": [
+    "voice/voices.mp3",
+    229.5513,
+    1.451
+   ]
+  },
+  {
+   "id": "b39",
+   "who": "SIEG",
+   "text": "Ha! It was loose, he says.",
+   "src": [
+    "voice/voices.mp3",
+    231.402,
+    1.792
+   ]
+  },
+  {
+   "id": "b40",
+   "who": "SIEG",
+   "text": "You two had better come with me. Because that...",
+   "src": [
+    "voice/voices.mp3",
+    233.594,
+    2.795
+   ]
+  },
+  {
+   "id": "b41",
+   "who": "SIEG",
+   "text": "...is not supposed to stay open.",
+   "src": [
+    "voice/voices.mp3",
+    236.7887,
+    1.984
+   ]
+  },
+  {
+   "id": "b42",
+   "who": "AKURO",
+   "text": "We're going to have so much fun, you and I.",
+   "src": [
+    "voice/voices.mp3",
+    239.1727,
+    2.603
+   ]
+  },
+  {
+   "id": "s1",
+   "who": "SABLE",
+   "text": "One fell through.",
+   "src": [
+    "voice/voices.mp3",
+    242.1753,
+    1.856
+   ]
+  },
+  {
+   "id": "s2",
+   "who": "SABLE",
+   "text": "...Good.",
+   "src": [
+    "voice/voices.mp3",
+    244.4313,
+    1.045
+   ]
+  },
+  {
+   "id": "p1",
+   "who": "TAKUTO",
+   "text": "Next time: the Hunters' Guild.",
+   "src": [
+    "voice/voices.mp3",
+    245.8767,
+    1.728
+   ]
+  },
+  {
+   "id": "p2",
+   "who": "TAKUTO",
+   "text": "A test that reads my rank as ERROR...",
+   "tts": "A test that reads my rank as error...",
+   "src": [
+    "voice/voices.mp3",
+    248.0047,
+    2.133
+   ]
+  },
+  {
+   "id": "p3",
+   "who": "TAKUTO",
+   "text": "...and a girl with a red scarf who hates me on sight.",
+   "src": [
+    "voice/voices.mp3",
+    250.538,
+    2.859
+   ]
+  },
+  {
+   "id": "p4",
+   "who": "TAKUTO",
+   "text": "Why does she have my hair?",
+   "src": [
+    "voice/voices.mp3",
+    253.7967,
+    1.493
+   ]
+  },
+  {
+   "id": "p5",
+   "who": "TAKUTO",
+   "text": "Episode two. Branded.",
+   "src": [
+    "voice/voices.mp3",
+    255.69,
+    1.621
+   ]
+  },
+  {
+   "id": "ep01x_001",
+   "who": "TAKUTO",
+   "text": "My name is Takuto Kirishima. Seventeen. Nerima ward, Tokyo.",
+   "tts": "My name is Tah-koo-toh Kee-ree-shee-mah. Seventeen. Neh-ree-mah ward, Tokyo."
+  },
+  {
+   "id": "ep01x_002",
+   "who": "TAKUTO",
+   "text": "I go to school. I sleep in class. I get into fights I do not start, and finish them anyway."
+  },
+  {
+   "id": "ep01x_003",
+   "who": "TAKUTO",
+   "text": "Two years ago, my best friend walked to the railway crossing to feed a stray cat, and never came home."
+  },
+  {
+   "id": "ep01x_004",
+   "who": "TAKUTO",
+   "text": "I still go every night. Somebody has to feed the cat."
+  },
+  {
+   "id": "ep01x_005",
+   "who": "HARUKI",
+   "text": "Your knuckles are bleeding."
+  },
+  {
+   "id": "ep01x_006",
+   "who": "TAKUTO",
+   "text": "They started it."
+  },
+  {
+   "id": "ep01x_007",
+   "who": "HARUKI",
+   "text": "There were three of them, and they are in high school, and you are fourteen. They definitely started it. You definitely finished it."
+  },
+  {
+   "id": "ep01x_008",
+   "who": "TAKUTO",
+   "text": "Why did you stop me?"
+  },
+  {
+   "id": "ep01x_009",
+   "who": "HARUKI",
+   "text": "Because they got it. You were just going to keep going. You looked like you would keep going forever."
+  },
+  {
+   "id": "ep01x_010",
+   "who": "TAKUTO",
+   "text": "...Nobody ever stops me."
+  },
+  {
+   "id": "ep01x_011",
+   "who": "HARUKI",
+   "text": "Then I will. Haruki Shinjo. Class two-B. You are Kirishima, right? Everybody is scared of you.",
+   "tts": "Then I will. Hah-roo-kee Sheen-joh. Class two-B. You are Kee-ree-shee-mah, right? Everybody is scared of you."
+  },
+  {
+   "id": "ep01x_012",
+   "who": "TAKUTO",
+   "text": "You are not."
+  },
+  {
+   "id": "ep01x_013",
+   "who": "HARUKI",
+   "text": "I am terrified. I just hide it well. Hey, look. Behind the vending machine."
+  },
+  {
+   "id": "ep01x_014",
+   "who": "HARUKI",
+   "text": "A cat. It watched the whole fight."
+  },
+  {
+   "id": "ep01x_015",
+   "who": "TAKUTO",
+   "text": "It looks hungry."
+  },
+  {
+   "id": "ep01x_016",
+   "who": "HARUKI",
+   "text": "What do cats drink? Milk?"
+  },
+  {
+   "id": "ep01x_017",
+   "who": "TAKUTO",
+   "text": "The machine only has coffee milk."
+  },
+  {
+   "id": "ep01x_018",
+   "who": "HARUKI",
+   "text": "Then it is getting coffee milk. Terrible idea. Let us do it."
+  },
+  {
+   "id": "ep01x_019",
+   "who": "HARUKI",
+   "text": "Ha! It likes it! It actually likes it!"
+  },
+  {
+   "id": "ep01x_020",
+   "who": "TAKUTO",
+   "text": "It is making a face."
+  },
+  {
+   "id": "ep01x_021",
+   "who": "HARUKI",
+   "text": "We should name it. I am calling it Mister Tuesday. I met it on a Tuesday."
+  },
+  {
+   "id": "ep01x_022",
+   "who": "TAKUTO",
+   "text": "That is a terrible name."
+  },
+  {
+   "id": "ep01x_023",
+   "who": "HARUKI",
+   "text": "What would you call it?"
+  },
+  {
+   "id": "ep01x_024",
+   "who": "TAKUTO",
+   "text": "...Coffee."
+  },
+  {
+   "id": "ep01x_025",
+   "who": "HARUKI",
+   "text": "That is worse! That is so much worse!"
+  },
+  {
+   "id": "ep01x_026",
+   "who": "HARUKI",
+   "text": "Same time tomorrow? Somebody has to feed it."
+  },
+  {
+   "id": "ep01x_027",
+   "who": "TAKUTO",
+   "text": "...Same time tomorrow."
+  },
+  {
+   "id": "ep01x_028",
+   "who": "HARUKI",
+   "text": "You are late. You are always late. The cat is going to give up on us."
+  },
+  {
+   "id": "ep01x_029",
+   "who": "TAKUTO",
+   "text": "Ten minutes. My dad caught me on the stairs."
+  },
+  {
+   "id": "ep01x_030",
+   "who": "HARUKI",
+   "text": "Takuto. The sky looks weird tonight. Is it supposed to crackle like that?",
+   "tts": "Tah-koo-toh. The sky looks weird tonight. Is it supposed to crackle like that?"
+  },
+  {
+   "id": "ep01x_031",
+   "who": "TAKUTO",
+   "text": "Crackle?"
+  },
+  {
+   "id": "ep01x_032",
+   "who": "HARUKI",
+   "text": "There is a crack in it. Takuto, there is a crack in the—",
+   "tts": "There is a crack in it. Tah-koo-toh, there is a crack in the—"
+  },
+  {
+   "id": "ep01x_033",
+   "who": "TAKUTO",
+   "text": "When I got there, there was a bag of cat food on the ground, and nobody else."
+  },
+  {
+   "id": "ep01x_034",
+   "who": "CROWD2",
+   "text": "Takuto? Is that you? Out so late again?",
+   "tts": "Tah-koo-toh? Is that you? Out so late again?"
+  },
+  {
+   "id": "ep01x_035",
+   "who": "TAKUTO",
+   "text": "Mrs. Shinjo. You are putting up posters at one in the morning?",
+   "tts": "Mrs. Sheen-joh. You are putting up posters at one in the morning?"
+  },
+  {
+   "id": "ep01x_036",
+   "who": "CROWD2",
+   "text": "The old ones get wet. Nobody reads a wet poster."
+  },
+  {
+   "id": "ep01x_037",
+   "who": "CROWD2",
+   "text": "Two years. Nobody calls anymore. Not even the police."
+  },
+  {
+   "id": "ep01x_038",
+   "who": "TAKUTO",
+   "text": "I will help."
+  },
+  {
+   "id": "ep01x_039",
+   "who": "CROWD2",
+   "text": "You always say that. You are a good boy, Takuto. He always said so.",
+   "tts": "You always say that. You are a good boy, Tah-koo-toh. He always said so."
+  },
+  {
+   "id": "ep01x_040",
+   "who": "CROWD2",
+   "text": "Are you still feeding the cat?"
+  },
+  {
+   "id": "ep01x_041",
+   "who": "TAKUTO",
+   "text": "Every night."
+  },
+  {
+   "id": "ep01x_042",
+   "who": "CROWD2",
+   "text": "Then he will know where to find you. When he comes back."
+  },
+  {
+   "id": "ep01x_043",
+   "who": "CROWD2",
+   "text": "Go on. It is almost two. Do not keep it waiting."
+  },
+  {
+   "id": "ep01x_044",
+   "who": "TAKUTO",
+   "text": "...Good night, Mrs. Shinjo.",
+   "tts": "...Good night, Mrs. Sheen-joh."
+  },
+  {
+   "id": "ep01x_045",
+   "who": "SIEG",
+   "text": "Proper introductions, then. Sieg Valen. Hunter, rank A. Some people call me the Laughing Blade. I do not know why.",
+   "tts": "Proper introductions, then. Seeg Valen. Hunter, rank A. Some people call me the Laughing Blade. I do not know why."
+  },
+  {
+   "id": "ep01x_046",
+   "who": "NEMU",
+   "text": "He winks a lot."
+  },
+  {
+   "id": "ep01x_047",
+   "who": "SIEG",
+   "text": "I wink exactly the right amount."
+  },
+  {
+   "id": "ep01x_048",
+   "who": "TAKUTO",
+   "text": "Takuto Kirishima. I fell out of the sky.",
+   "tts": "Tah-koo-toh Kee-ree-shee-mah. I fell out of the sky."
+  },
+  {
+   "id": "ep01x_049",
+   "who": "SIEG",
+   "text": "I noticed. A Skyfallen. You came through a Rift. The crack you saw in your sky. They open over this world, and Fiends crawl out of them."
+  },
+  {
+   "id": "ep01x_050",
+   "who": "TAKUTO",
+   "text": "The skeleton with the shield."
+  },
+  {
+   "id": "ep01x_051",
+   "who": "SIEG",
+   "text": "A Skeletal Shieldbearer. Lesser class. The weakest Fiend you will ever meet. You just broke its shield, which nobody has ever done."
+  },
+  {
+   "id": "ep01x_052",
+   "who": "TAKUTO",
+   "text": "It was in the way."
+  },
+  {
+   "id": "ep01x_053",
+   "who": "SIEG",
+   "text": "Ha! It was in the way. I like you."
+  },
+  {
+   "id": "ep01x_054",
+   "who": "SIEG",
+   "text": "Ordinary weapons barely scratch a Fiend. To hurt one, you need a Brand. A power carved into your soul. It shows up as a mark."
+  },
+  {
+   "id": "ep01x_055",
+   "who": "SIEG",
+   "text": "It only wakes when you are close to death. When you want something so badly that dying is not enough to stop you."
+  },
+  {
+   "id": "ep01x_056",
+   "who": "TAKUTO",
+   "text": "The axe."
+  },
+  {
+   "id": "ep01x_057",
+   "who": "SIEG",
+   "text": "The axe woke yours. Or you woke the axe. I am not sure which yet."
+  },
+  {
+   "id": "ep01x_058",
+   "who": "NEMU",
+   "text": "Mine is Nine Lives. I can die nine times and get back up."
+  },
+  {
+   "id": "ep01x_059",
+   "who": "TAKUTO",
+   "text": "You died. Today. I watched you die."
+  },
+  {
+   "id": "ep01x_060",
+   "who": "NEMU",
+   "text": "Mm. That was number seven. Two left. Do not look so sad. It is a good Brand. Very practical."
+  },
+  {
+   "id": "ep01x_061",
+   "who": "TAKUTO",
+   "text": "...Two left."
+  },
+  {
+   "id": "ep01x_062",
+   "who": "NEMU",
+   "text": "Two is a lot. Most people only get one."
+  },
+  {
+   "id": "ep01x_063",
+   "who": "TAKUTO",
+   "text": "Sieg. How do I get home?",
+   "tts": "Seeg. How do I get home?"
+  },
+  {
+   "id": "ep01x_064",
+   "who": "SIEG",
+   "text": "Skyfallen do not go home, Takuto. Not that I have ever heard of. I am sorry.",
+   "tts": "Skyfallen do not go home, Tah-koo-toh. Not that I have ever heard of. I am sorry."
+  },
+  {
+   "id": "ep01x_065",
+   "who": "TAKUTO",
+   "text": "My friend fell through two years ago. From the same crossing. Haruki Shinjo. Black hair. Blue eyes.",
+   "tts": "My friend fell through two years ago. From the same crossing. Hah-roo-kee Sheen-joh. Black hair. Blue eyes."
+  },
+  {
+   "id": "ep01x_066",
+   "who": "SIEG",
+   "text": "Then he could be anywhere in this world. Or nowhere. The Hunters' Guild keeps records of every Skyfallen it finds."
+  },
+  {
+   "id": "ep01x_067",
+   "who": "TAKUTO",
+   "text": "Where is the Guild?"
+  },
+  {
+   "id": "ep01x_068",
+   "who": "SIEG",
+   "text": "Ashford. Three days east. The frontier town. I am going there anyway. You two are coming with me."
+  },
+  {
+   "id": "ep01x_069",
+   "who": "NEMU",
+   "text": "Me?"
+  },
+  {
+   "id": "ep01x_070",
+   "who": "SIEG",
+   "text": "You died for him, little cat. That makes you his problem now. And his problem is my problem. That is how it works."
+  },
+  {
+   "id": "ep01x_071",
+   "who": "AKURO",
+   "text": "So. You can hear me now, boy. Properly. Not just in the screaming.",
+   "mono": true
+  },
+  {
+   "id": "ep01x_072",
+   "who": "TAKUTO",
+   "text": "Who are you?"
+  },
+  {
+   "id": "ep01x_073",
+   "who": "AKURO",
+   "text": "The one in the axe. The one who asked you a question. Do you remember what I asked?",
+   "mono": true
+  },
+  {
+   "id": "ep01x_074",
+   "who": "TAKUTO",
+   "text": "What is it you want to break."
+  },
+  {
+   "id": "ep01x_075",
+   "who": "AKURO",
+   "text": "And? You never really answered. You just swung. Very satisfying. Very rude.",
+   "mono": true
+  },
+  {
+   "id": "ep01x_076",
+   "who": "TAKUTO",
+   "text": "I want to find Haruki.",
+   "tts": "I want to find Hah-roo-kee."
+  },
+  {
+   "id": "ep01x_077",
+   "who": "AKURO",
+   "text": "That is not breaking, boy. That is finding. Those are different verbs. Think about it. We have time. I have had three hundred years of it.",
+   "mono": true
+  },
+  {
+   "id": "ep01x_078",
+   "who": "TAKUTO",
+   "text": "What is your name?"
+  },
+  {
+   "id": "ep01x_079",
+   "who": "AKURO",
+   "text": "...Akuro. Remember it. Everyone else forgot.",
+   "tts": "...Ah-koo-roh. Remember it. Everyone else forgot.",
+   "mono": true
+  },
+  {
+   "id": "ep01x_080",
+   "who": "TAKUTO",
+   "text": "You live here? In a graveyard?"
+  },
+  {
+   "id": "ep01x_081",
+   "who": "NEMU",
+   "text": "I am a grave scavenger. I find nice things the dead do not need, and I sell them in town for bread."
+  },
+  {
+   "id": "ep01x_082",
+   "who": "TAKUTO",
+   "text": "That sounds illegal."
+  },
+  {
+   "id": "ep01x_083",
+   "who": "NEMU",
+   "text": "It is very illegal. But I ask them first. I always ask. If they say no, I leave it."
+  },
+  {
+   "id": "ep01x_084",
+   "who": "TAKUTO",
+   "text": "They say no?"
+  },
+  {
+   "id": "ep01x_085",
+   "who": "NEMU",
+   "text": "Sometimes. You can feel it. A grave that says no feels heavy. Like a held breath."
+  },
+  {
+   "id": "ep01x_086",
+   "who": "NEMU",
+   "text": "The Headsman's grave always said no. For years. I tried to pull that axe out once. I hurt my back for a week."
+  },
+  {
+   "id": "ep01x_087",
+   "who": "TAKUTO",
+   "text": "It came out for me."
+  },
+  {
+   "id": "ep01x_088",
+   "who": "NEMU",
+   "text": "It said yes to you. I have never heard a grave say yes so loud."
+  },
+  {
+   "id": "ep01x_089",
+   "who": "NEMU",
+   "text": "Takuto. Thank you. For breaking the thing that was killing me.",
+   "tts": "Tah-koo-toh. Thank you. For breaking the thing that was killing me."
+  },
+  {
+   "id": "ep01x_090",
+   "who": "TAKUTO",
+   "text": "You died anyway."
+  },
+  {
+   "id": "ep01x_091",
+   "who": "NEMU",
+   "text": "Only a little. You got there in time for the rest of me."
+  },
+  {
+   "id": "ep01x_092",
+   "who": "NEMU",
+   "text": "This is everything I own. A blanket. A spoon. A music box that plays half a song."
+  },
+  {
+   "id": "ep01x_093",
+   "who": "TAKUTO",
+   "text": "Half a song?"
+  },
+  {
+   "id": "ep01x_094",
+   "who": "NEMU",
+   "text": "The other half is broken. Maybe you could break it back."
+  },
+  {
+   "id": "ep01x_095",
+   "who": "TAKUTO",
+   "text": "That is not how breaking works."
+  },
+  {
+   "id": "ep01x_096",
+   "who": "NEMU",
+   "text": "You do not know that yet."
+  },
+  {
+   "id": "ep01x_097",
+   "who": "NEMU",
+   "text": "Goodbye, everyone. I am going to Ashford. Do not let anyone else take your nice things while I am gone."
+  },
+  {
+   "id": "ep01x_098",
+   "who": "SIEG",
+   "text": "Takuto. Let me see the axe. Just look. I will not touch it.",
+   "tts": "Tah-koo-toh. Let me see the axe. Just look. I will not touch it."
+  },
+  {
+   "id": "ep01x_099",
+   "who": "SIEG",
+   "text": "Three hundred years old. Older. Look at the marks on the haft."
+  },
+  {
+   "id": "ep01x_100",
+   "who": "SIEG",
+   "text": "This is the Headsman's Axe. The one from the stories."
+  },
+  {
+   "id": "ep01x_101",
+   "who": "TAKUTO",
+   "text": "What stories?"
+  },
+  {
+   "id": "ep01x_102",
+   "who": "SIEG",
+   "text": "Stories you tell children so they stay out of graveyards. They mostly do not work. Ask Nemu.",
+   "tts": "Stories you tell children so they stay out of graveyards. They mostly do not work. Ask Neh-moo."
+  },
+  {
+   "id": "ep01x_103",
+   "who": "SIEG",
+   "text": "Do not swing it at anything you love, Takuto. And if it ever talks to you, tell me.",
+   "tts": "Do not swing it at anything you love, Tah-koo-toh. And if it ever talks to you, tell me."
+  },
+  {
+   "id": "ep01x_104",
+   "who": "TAKUTO",
+   "text": "...Okay."
+  },
+  {
+   "id": "ep01x_105",
+   "who": "AKURO",
+   "text": "Liar. Ha. We are going to get along so well, boy.",
+   "mono": true
+  },
+  {
+   "id": "ep01x_106",
+   "who": "NEMU",
+   "text": "How far is Ashford?"
+  },
+  {
+   "id": "ep01x_107",
+   "who": "SIEG",
+   "text": "Three days."
+  },
+  {
+   "id": "ep01x_108",
+   "who": "NEMU",
+   "text": "Can you carry me for two of them?"
+  },
+  {
+   "id": "ep01x_109",
+   "who": "SIEG",
+   "text": "Rank A Hunters do not carry cats."
+  },
+  {
+   "id": "ep01x_110",
+   "who": "NEMU",
+   "text": "I died yesterday."
+  },
+  {
+   "id": "ep01x_111",
+   "who": "SIEG",
+   "text": "...One day. I will carry you for one day."
+  },
+  {
+   "id": "ep01x_112",
+   "who": "NEMU",
+   "text": "Mm. Deal."
+  },
+  {
+   "id": "ep01x_113",
+   "who": "TAKUTO",
+   "text": "Is everything in this world trying to kill us?"
+  },
+  {
+   "id": "ep01x_114",
+   "who": "SIEG",
+   "text": "Only most things. The rest are trying to sell you something."
+  },
+  {
+   "id": "ep01x_115",
+   "who": "SIEG",
+   "text": "Watch the treeline. Fiends like dusk. Ashen Hounds, mostly. Small. Mean. Afraid of fire."
+  },
+  {
+   "id": "ep01x_116",
+   "who": "TAKUTO",
+   "text": "I do not have fire."
+  },
+  {
+   "id": "ep01x_117",
+   "who": "SIEG",
+   "text": "You have an axe that broke something unbreakable. I think the Hounds will be very polite to you."
+  },
+  {
+   "id": "ep01x_118",
+   "who": "NEMU",
+   "text": "Takuto. What is your world like?",
+   "tts": "Tah-koo-toh. What is your world like?"
+  },
+  {
+   "id": "ep01x_119",
+   "who": "TAKUTO",
+   "text": "Loud. Bright. Too many people. Trains every three minutes."
+  },
+  {
+   "id": "ep01x_120",
+   "who": "NEMU",
+   "text": "What is a train?"
+  },
+  {
+   "id": "ep01x_121",
+   "who": "TAKUTO",
+   "text": "A metal house that runs on rails. Very fast. You can sleep in it."
+  },
+  {
+   "id": "ep01x_122",
+   "who": "NEMU",
+   "text": "A house you can sleep in, that also takes you places? That is the best thing I have ever heard."
+  },
+  {
+   "id": "ep01x_123",
+   "who": "TAKUTO",
+   "text": "There are vending machines on every corner. Boxes that give you drinks at two in the morning."
+  },
+  {
+   "id": "ep01x_124",
+   "who": "NEMU",
+   "text": "For free?"
+  },
+  {
+   "id": "ep01x_125",
+   "who": "TAKUTO",
+   "text": "For coins. One of them has coffee milk. That is where I fed the cat."
+  },
+  {
+   "id": "ep01x_126",
+   "who": "NEMU",
+   "text": "What is the cat called?"
+  },
+  {
+   "id": "ep01x_127",
+   "who": "TAKUTO",
+   "text": "Coffee. Haruki wanted Mister Tuesday.",
+   "tts": "Coffee. Hah-roo-kee wanted Mister Tuesday."
+  },
+  {
+   "id": "ep01x_128",
+   "who": "NEMU",
+   "text": "Mister Tuesday is a much better name."
+  },
+  {
+   "id": "ep01x_129",
+   "who": "TAKUTO",
+   "text": "...Everybody says that."
+  },
+  {
+   "id": "ep01x_130",
+   "who": "NEMU",
+   "text": "Who is feeding Coffee now?"
+  },
+  {
+   "id": "ep01x_131",
+   "who": "TAKUTO",
+   "text": "...Nobody."
+  },
+  {
+   "id": "ep01x_132",
+   "who": "NEMU",
+   "text": "Then we had better find your friend quickly. Cats do not wait forever."
+  },
+  {
+   "id": "ep01x_133",
+   "who": "SIEG",
+   "text": "One. Two. Three..."
+  },
+  {
+   "id": "ep01x_134",
+   "who": "SIEG",
+   "text": "Eleven. And now two more. Thirteen."
+  },
+  {
+   "id": "ep01x_135",
+   "who": "SIEG",
+   "text": "A Rift that opens sideways. A Skyfallen boy with the Headsman's Axe. And static in the air, like before Grey Hollow."
+  },
+  {
+   "id": "ep01x_136",
+   "who": "SIEG",
+   "text": "...I do not like this at all."
+  }
+ ]
+}

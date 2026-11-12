@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ruinbreaker Episode 10</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Dela+Gothic+One&family=Noto+Sans:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&display=swap">
+<style>
+/* Layout: one cinema column. The player sits on top, and the season guide reads like the inside of a Blu-ray booklet. */
+:root {
+  --bg: #0c0a0d; --panel: #151217; --line: #2b252b; --fg: #f1ebe6; --muted: #a59ca1; --accent: #e8343c; --accent-soft: #ff8f8f;
+  --f-disp: "Big Shoulders Display", "Oswald", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Noto Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --f-jp: "Dela Gothic One", "Hiragino Sans", "Yu Gothic", sans-serif;
+  color-scheme: dark;
+}
+html, body { background: var(--bg); color: var(--fg); }
+[hidden] { display: none !important; }
+body { margin: 0; font: 500 15px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 18px 64px; }
+header.top { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; padding-block: 4px 16px; }
+.mark { font: 900 26px/1 var(--f-disp); letter-spacing: 0.08em; }
+.mark b { color: var(--accent); font-weight: 900; }
+.mark-jp { font: 400 13px/1 var(--f-jp); color: var(--muted); letter-spacing: 0.3em; }
+.top .season { margin-left: auto; font: 700 11px/1 var(--f-body); letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; }
+
+/* player */
+#stage { position: relative; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; background: #000; overflow: hidden; border-radius: 4px; box-shadow: 0 30px 80px -30px rgba(232, 52, 60, 0.35); user-select: none; -webkit-user-select: none; }
+#stage:fullscreen { border-radius: 0; width: 100vw; height: 100vh; aspect-ratio: auto; display: flex; align-items: center; justify-content: center; }
+#stage:fullscreen canvas { width: min(100vw, calc(100vh * 16 / 9)); height: auto; }
+#stage.pseudo-fs { position: fixed; inset: 0; z-index: 50; border-radius: 0; aspect-ratio: auto; height: 100%; display: flex; align-items: center; }
+#cv { display: block; width: 100%; height: auto; }
+#subs { position: absolute; left: 0; top: 0; width: 100%; height: 100%; cursor: pointer; }
+#stage:fullscreen #subs { left: 50%; top: 50%; width: min(100vw, calc(100vh * 16 / 9)); height: auto; aspect-ratio: 16 / 9; transform: translate(-50%, -50%); }
+#startOverlay, #endOverlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 10px; padding: 0 16px 9%; background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.75)); text-align: center; }
+#endOverlay { justify-content: center; background: rgba(6, 5, 7, 0.82); padding-bottom: 0; }
+.big-btn { display: inline-flex; align-items: center; gap: 12px; padding: 14px 26px 14px 20px; border: 0; border-radius: 999px; background: var(--fg); color: #120d10; font: 800 15px/1 var(--f-body); letter-spacing: 0.04em; cursor: pointer; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+.big-btn:hover:not(:disabled) { background: #fff; }
+.big-btn:disabled { opacity: 0.75; cursor: progress; }
+.big-btn svg { width: 22px; height: 22px; }
+.big-btn:focus-visible, .ctl:focus-visible, #bar:focus-visible, .chap:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 3px; }
+.hint { font: 600 12px/1.4 var(--f-body); color: rgba(241, 235, 230, 0.75); letter-spacing: 0.08em; }
+#endOverlay h3 { margin: 0; font: 900 34px/1 var(--f-disp); letter-spacing: 0.08em; }
+#endOverlay p { margin: 0 0 8px; color: var(--muted); }
+
+#ui { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 10px; background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.78)); opacity: 1; transition: opacity 0.3s; }
+#stage.playing:not(.ui-on) #ui { opacity: 0; pointer-events: none; }
+#stage.playing:not(.ui-on) #subs { cursor: none; }
+#bar { position: relative; height: 18px; cursor: pointer; touch-action: none; }
+#bar::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; height: 4px; background: rgba(255,255,255,0.22); border-radius: 2px; }
+#fill { position: absolute; left: 0; top: 7px; height: 4px; background: var(--accent); border-radius: 2px; }
+#knob { position: absolute; top: 3px; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; background: #fff; }
+.tick { position: absolute; top: 5px; width: 2px; height: 8px; background: rgba(0,0,0,0.65); }
+.row { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
+.ctl { display: inline-grid; place-items: center; width: 38px; height: 38px; border: 0; border-radius: 8px; background: transparent; color: #fff; cursor: pointer; }
+.ctl:hover { background: rgba(255,255,255,0.12); }
+.ctl svg { width: 22px; height: 22px; }
+#play[data-state="pause"] .i-play, #play[data-state="play"] .i-pause { display: none; }
+#cc[aria-pressed="false"] { opacity: 0.45; }
+#fps { font: 600 11px/1 var(--f-body); color: rgba(255,255,255,0.55); margin-left: 8px; font-variant-numeric: tabular-nums; }
+#time { font: 600 13px/1 var(--f-body); font-variant-numeric: tabular-nums; color: #eee; margin-left: 4px; }
+.spacer { flex: 1; }
+#vol { width: 90px; accent-color: var(--accent); }
+
+/* episode block */
+.ep { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 36px; margin-top: 30px; }
+.eyebrow { font: 700 11px/1 var(--f-body); letter-spacing: 0.32em; color: var(--accent-soft); text-transform: uppercase; }
+h1 { margin: 10px 0 4px; font: 900 clamp(40px, 7vw, 68px)/0.95 var(--f-disp); letter-spacing: 0.02em; text-wrap: balance; }
+.jp { font: 400 18px/1.3 var(--f-jp); color: var(--muted); letter-spacing: 0.2em; }
+.meta { display: flex; gap: 14px; flex-wrap: wrap; margin: 14px 0; font: 600 12px/1 var(--f-body); color: var(--muted); letter-spacing: 0.08em; }
+.meta span { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; }
+.syn { max-width: 62ch; color: #ddd5d0; margin: 0; }
+.chapters { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.chapters li { border-bottom: 1px solid var(--line); }
+.chap { display: grid; grid-template-columns: 56px 1fr; gap: 10px; width: 100%; padding: 11px 4px; background: none; border: 0; color: var(--fg); text-align: left; font: 600 14px/1.3 var(--f-body); cursor: pointer; }
+.chap:hover { background: rgba(255,255,255,0.04); }
+.chap time { font-variant-numeric: tabular-nums; color: var(--muted); }
+h2 { font: 900 30px/1 var(--f-disp); letter-spacing: 0.06em; margin: 64px 0 6px; text-transform: uppercase; }
+.sub { color: var(--muted); margin: 0 0 22px; max-width: 70ch; }
+
+/* season list */
+.eps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 36px; }
+.eps li { display: grid; grid-template-columns: 46px 1fr; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); }
+.eps .no { font: 900 28px/1 var(--f-disp); color: #4a4046; font-variant-numeric: tabular-nums; }
+.eps li.now .no { color: var(--accent); }
+.eps h4 a { color: inherit; text-decoration: none; } .eps h4 a:hover, .eps h4 a:focus-visible { color: var(--accent-soft); text-decoration: underline; }
+.eps h4 { margin: 0 0 4px; font: 800 17px/1.2 var(--f-body); }
+.eps h4 em { font-style: normal; font: 700 10px/1 var(--f-body); letter-spacing: 0.2em; color: var(--accent-soft); margin-left: 8px; vertical-align: 2px; }
+.eps p { margin: 0; color: var(--muted); font-size: 14px; }
+
+/* cast */
+.cast { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 14px; }
+.card { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 10px; background: var(--panel); border-radius: 6px; align-items: center; min-width: 0; }
+.card img { width: 74px; height: 74px; object-fit: cover; border-radius: 4px; background: #000; }
+.card h4 { margin: 0; font: 800 19px/1.1 var(--f-disp); letter-spacing: 0.04em; }
+.card .br { font: 700 10px/1.3 var(--f-body); letter-spacing: 0.18em; color: var(--accent-soft); text-transform: uppercase; margin: 3px 0; }
+.card p { margin: 0; font-size: 13px; line-height: 1.45; color: var(--muted); }
+.card.lead { outline: 1px solid rgba(232,52,60,0.6); }
+
+/* bestiary */
+.fiends { list-style: none; margin: 0; padding: 0; }
+.fiends li { display: grid; grid-template-columns: 120px minmax(0, 1fr) 70px; gap: 16px; align-items: baseline; padding: 12px 0; border-top: 1px solid var(--line); }
+.pill { justify-self: start; font: 700 10px/1 var(--f-body); letter-spacing: 0.18em; padding: 5px 8px; border-radius: 3px; text-transform: uppercase; border: 1px solid var(--line); color: var(--muted); }
+.pill.cal { border-color: rgba(232,52,60,0.7); color: var(--accent-soft); }
+.fiends b { font: 800 18px/1.2 var(--f-disp); letter-spacing: 0.04em; }
+.fiends span.d { display: block; color: var(--muted); font-size: 14px; }
+.fiends .epn { font: 600 12px/1 var(--f-body); color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; max-width: 80ch; }
+kbd { font: 600 11px/1 var(--f-body); padding: 2px 5px; border: 1px solid var(--line); border-radius: 3px; }
+
+@media (max-width: 760px) {
+  .ep { grid-template-columns: 1fr; gap: 24px; }
+  .eps { grid-template-columns: 1fr; }
+  .fiends li { grid-template-columns: 1fr; gap: 4px; }
+  .fiends .epn { text-align: left; }
+  #vol { display: none; }
+  #ui { padding: 18px 8px 4px; }
+  .ctl { width: 34px; height: 34px; }
+  .big-btn { padding: 11px 20px 11px 16px; font-size: 14px; }
+  .top .season { margin-left: 0; width: 100%; }
+  #startOverlay { justify-content: center; padding-bottom: 0; background: rgba(0,0,0,0.35); }
+  .hint { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) { #ui { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span class="mark">RUIN<b>/</b>BREAKER</span><span class="mark-jp">ルインブレイカー</span>
+    <span class="season">Season 1 · Episode 10</span>
+  </header>
+
+  <div id="stage" class="ui-on">
+    <canvas id="cv" width="1280" height="720" aria-label="Ruinbreaker Episode 10 animation"></canvas>
+    <canvas id="subs" width="1280" height="720" aria-hidden="true"></canvas>
+    <div id="startOverlay">
+      <button id="start" class="big-btn" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15l13-7.5z"/></svg>
+        <span id="startLbl">Loading…</span>
+      </button>
+      <div class="hint">Turn your sound on · <span data-dur>24:00</span> · best with headphones</div>
+    </div>
+    <div id="endOverlay" hidden>
+      <h3>END OF EPISODE 1</h3>
+      <p>Next time: Episode 2, “Branded”</p>
+      <button id="replay" class="big-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>Watch again</button>
+    </div>
+    <div id="ui" hidden>
+      <div id="bar" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"><div id="fill"></div><div id="knob"></div></div>
+      <div class="row">
+        <button id="play" class="ctl" aria-label="Play" data-state="play">
+          <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15l13-7.5z"/></svg>
+          <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+        </button>
+        <span id="time">0:00 / 0:00</span>
+        <span id="fps" title="Frames per second; it matches your screen's refresh rate"></span>
+        <span class="spacer"></span>
+        <button id="cc" class="ctl" aria-label="Subtitles" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5h18v14H3zm2 2v10h14V7zm2 3h4v1.5H8.5v1H11V14H7zm6 0h4v1.5h-2.5v1H17V14h-4z"/></svg></button>
+        <input id="vol" type="range" min="0" max="1" step="0.01" value="0.85" aria-label="Volume">
+        <button id="fs" class="ctl" aria-label="Fullscreen"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h6v2H6v4H4zm10 0h6v6h-2V6h-4zM4 14h2v4h4v2H4zm14 0h2v6h-6v-2h4z"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <section class="ep">
+    <div>
+      <div class="eyebrow">Episode 10</div>
+      <h1>Morvudd</h1>
+      <div class="jp">第十話「モルヴッド」</div>
+      <div class="meta"><span data-dur>11:32</span><span>Voiced</span><span>Subtitled</span><span>Original score</span></div>
+      <p class="syn">Sieg's nemesis returns across the plains with a horde, and Sieg holds the old stone bridge alone. Between two seconds, Mr. Sable finally tells Takuto the truth: he is the one who brought him here.</p>
+    </div>
+    <div>
+      <div class="eyebrow" style="margin-bottom:10px">Chapters</div>
+      <ol id="chapters" class="chapters"></ol>
+    </div>
+  </section>
+
+  <h2>Season 1</h2>
+  <p class="sub">Twelve episodes. A boy from Tokyo, an axe nobody else could lift, and a man in a black suit who opened the sky on purpose.</p>
+  <ol class="eps">
+    <li><span class="no">01</span><div><h4><a href="ep1.html">The Crossing</a></h4><p>The sky cracks over a Tokyo railway crossing. In the Barrow Fields, Takuto pulls out the Headsman's Axe, and something inside it wakes up.</p></div></li>
+    <li><span class="no">02</span><div><h4><a href="ep2.html">Branded</a></h4><p>The Hunters' Guild. Valentine's cube reads Takuto's rank as ERROR. Rin Ashveil hates him on sight.</p></div></li>
+    <li><span class="no">03</span><div><h4><a href="ep3.html">A Flame From Home</a></h4><p>The licensing exam, a Stonehide Behemoth, and Wick, another Skyfallen who says nobody ever goes home.</p></div></li>
+    <li><span class="no">04</span><div><h4><a href="ep4.html">Cogwheel Heart</a></h4><p>Gideon builds Takuto a harness so he can block exactly once. Someone is smiling in the forge smoke.</p></div></li>
+    <li><span class="no">05</span><div><h4><a href="ep5.html">Seven Heads, One River</a></h4><p>The Hydra of Marrowmere regrows every head he breaks off. Breaking a thing and killing it turn out to be different problems.</p></div></li>
+    <li><span class="no">06</span><div><h4><a href="ep6.html">The Red Giants March</a></h4><p>Fort Cinder falls under siege. Takuto loses control for the first time, and Rin gets hurt because of it.</p></div></li>
+    <li><span class="no">07</span><div><h4><a href="ep7.html">Feathers and Ash</a></h4><p>The Plume Ogres aren't raiding the village. They're running from something worse.</p></div></li>
+    <li><span class="no">08</span><div><h4><a href="ep8.html">The Fang Ronin</a></h4><p>Kurozane challenges Sieg to a duel, and Sieg's old squad comes back to haunt him.</p></div></li>
+    <li><span class="no">09</span><div><h4><a href="ep9.html">Saint Lumen</a></h4><p>The golden capital. Lucien Aurel offers Takuto a place in the Gilded Order, with Haruki standing at his side.</p></div></li>
+    <li class="now"><span class="no">10</span><div><h4><a href="ep10.html">Morvudd</a><em>NOW PLAYING</em></h4><p>The Fiend that killed Sieg's squad returns with a horde, and Mr. Sable finally introduces himself.</p></div></li>
+    <li><span class="no">11</span><div><h4><a href="ep11.html">Calamity</a></h4><p>Tyr the Frost Titan attacks the capital. Takuto lets Akuro out, and the Guild sends Vesper to kill him.</p></div></li>
+    <li><span class="no">12</span><div><h4><a href="ep12.html">Ruinbreaker</a></h4><p>A golden barrier over an entire city, and the one Brand built to break it.</p></div></li>
+  </ol>
+
+  <h2>Cast</h2>
+  <p class="sub">Everyone in this world needs a Brand to fight. Here is what each of them carries.</p>
+  <div class="cast">
+    <div class="card lead"><img src="assets/takuto.webp" alt="" style="object-position:52% 14%"><div><h4>Takuto Kirishima</h4><div class="br">Ruinbreaker</div><p>17, from Nerima. Whatever he strikes breaks. His axe can't block.</p></div></div>
+    <div class="card"><img src="assets/nemu.webp" alt="" style="object-position:60% 6%"><div><h4>Nemu</h4><div class="br">Nine Lives</div><p>Grave scavenger who can die nine times. Seven used.</p></div></div>
+    <div class="card"><img src="assets/sieg.webp" alt="" style="object-position:50% 12%"><div><h4>Sieg Valen</h4><div class="br">Afterimage</div><p>A-rank Hunter, "the Laughing Blade." Every slash repeats a heartbeat later.</p></div></div>
+    <div class="card"><img src="assets/rin.webp" alt="" style="object-position:50% 6%"><div><h4>Rin Ashveil</h4><div class="br">Red Thread</div><p>Rival prodigy. Her crimson threads bind, cut and tie things together.</p></div></div>
+    <div class="card"><img src="assets/gideon.webp" alt="" style="object-position:62% 22%"><div><h4>Gideon Halloway</h4><div class="br">Cogwheel Core</div><p>Guild artificer. Any metal he touches becomes a machine he controls.</p></div></div>
+    <div class="card"><img src="assets/valentine.webp" alt="" style="object-position:50% 40%"><div><h4>Valentine &amp; Tofu</h4><div class="br">Encore</div><p>The Guild's Brand appraiser and his cube, who reads Brands.</p></div></div>
+    <div class="card"><img src="assets/wick.webp" alt="" style="object-position:40% 4%"><div><h4>Wick</h4><div class="br">Will-o'-Wisp</div><p>A Skyfallen from Osaka whose Brand turned his head into blue fire.</p></div></div>
+    <div class="card"><img src="assets/haruki.webp" alt="" style="object-position:55% 8%"><div><h4>Haruki Shinjo</h4><div class="br">Frozen Hour</div><p>Takuto's best friend, missing for two years. Now he serves the Gilded Order.</p></div></div>
+    <div class="card"><img src="assets/lucien.webp" alt="" style="object-position:50% 20%"><div><h4>Lucien Aurel</h4><div class="br">Sanctum</div><p>S-rank "Golden Saint." His barriers have never been broken.</p></div></div>
+    <div class="card"><img src="assets/vesper.webp" alt="" style="object-position:55% 14%"><div><h4>Vesper</h4><div class="br">White Gale</div><p>The Guild's executioner. Hunts Branded people who lose control.</p></div></div>
+    <div class="card"><img src="assets/sable.webp" alt="" style="object-position:30% 8%"><div><h4>Mr. Sable</h4><div class="br">Calamity · Rift</div><p>A Fiend in a black suit. He opened the sky above the crossing.</p></div></div>
+    <div class="card"><img src="assets/akuro.webp" alt="" style="object-position:52% 32%"><div><h4>Akuro</h4><div class="br">The Crimson Calamity</div><p>Sealed in the Headsman's Axe for 300 years. Talks to Takuto.</p></div></div>
+  </div>
+
+  <h2>Bestiary</h2>
+  <p class="sub">Fiends crawl out of Rifts in the sky. Ordinary weapons barely scratch them.</p>
+  <ul class="fiends">
+    <li><span class="pill">Lesser</span><span><b>Skeletal Shieldbearer</b><span class="d">Armored undead with a tower shield. Its shield had never been broken.</span></span><span class="epn">Ep. 1</span></li>
+    <li><span class="pill">Greater</span><span><b>Stonehide Behemoth</b><span class="d">A walking hillside of spiked rock.</span></span><span class="epn">Ep. 3</span></li>
+    <li><span class="pill">Greater</span><span><b>Hydra of Marrowmere</b><span class="d">Many heads. Every head you cut grows back.</span></span><span class="epn">Ep. 5</span></li>
+    <li><span class="pill">Greater</span><span><b>Red Giant</b><span class="d">The demonic version of the Iron Giants. More aggressive and much deadlier.</span></span><span class="epn">Ep. 6</span></li>
+    <li><span class="pill">Greater</span><span><b>Plume Ogre Chieftain</b><span class="d">A feathered, masked brute with a bone spear, leading a tribe on the run.</span></span><span class="epn">Ep. 7</span></li>
+    <li><span class="pill">Greater</span><span><b>Kurozane, the Fang Ronin</b><span class="d">A wolf swordsman who duels Hunters for sport.</span></span><span class="epn">Ep. 8</span></li>
+    <li><span class="pill cal">Calamity</span><span><b>Morvudd</b><span class="d">Rules packs of lesser fiends. Killed Sieg's squad.</span></span><span class="epn">Ep. 10</span></li>
+    <li><span class="pill cal">Calamity</span><span><b>Tyr, the Frost Titan</b><span class="d">A horned ice giant with a rune axe.</span></span><span class="epn">Ep. 11</span></li>
+  </ul>
+
+  <footer>
+    <p>Keyboard: <kbd>Space</kbd> play or pause, <kbd>←</kbd> <kbd>→</kbd> skip 5 seconds, <kbd>C</kbd> subtitles, <kbd>F</kbd> fullscreen, <kbd>M</kbd> mute.</p>
+    <p>The score, ambience and effects are synthesized live in your browser. Voices are generated with the open-source Kokoro-82M speech model. The 3D characters are CC0 VRoid Studio sample models by pixiv, recoloured for the cast and rendered with three.js and three-vrm. Character and creature art comes from reference illustrations supplied by the series creator, and all rights belong to their original artists.</p>
+  </footer>
+</div>
+<script src="js/audio.js"></script>
+<script src="js/gfx.js"></script>
+<script src="js/voice-data-ep10.js"></script>
+<script>VOICE_DATA.lenient = true; window.RB_EP_LABEL = 'Episode 10  ·  Morvudd'; window.RB_EP_NO = 10; window.RB_CAST = ['lucien', 'haruki', 'sieg', 'takuto', 'rin', 'wick', 'nemu', 'vesper', 'valentine', 'gideon', 'sable']; window.RB_SPRITES = ['m_wolf', 'm_morvudd']; window.RB_PLATES = ['ashford_street', 'ashford_night', 'guild_hall', 'lumen_plaza', 'lumen_garden', 'lumen_dome', 'lumen_hall', 'plains_dusk', 'storm_plains', 'sanctum', 'lumen_library', 'lumen_balcony', 'lumen_night', 'lumen_gate', 'lumen_street', 'forest_camp', 'plains_battle', 'sunrise_hill', 'snow_forest', 'lumen_frozen', 'lumen_ruins'];</script>
+<script src="js/voice.js"></script>
+<script src="js/rig.js"></script>
+<script src="js/rigs.js"></script>
+<script src="js/parts.js"></script>
+<script src="js/post.js"></script>
+<script src="js/vfx.js"></script>
+<script src="js/fighter.js"></script>
+<script>window.RB_MODE = '3d';</script>
+<script src="vendor/three.min.js"></script>
+<script src="vendor/three-vrm.js"></script>
+<script src="js/stage3d.js"></script>
+<script src="js/ep01_3d.js"></script>
+<script src="js/ep01.js"></script>
+<script src="js/director.js"></script>
+<script src="js/shotkit.js"></script>
+<script src="js/ep10.js"></script>
+<script src="js/ep10_shots.js"></script>
+<script>window.RB_EP = EP10;</script>
+<script src="js/player.js"></script>
+</body>
+</html>
