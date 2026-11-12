@@ -83,9 +83,11 @@ const DIRECTOR = (() => {
       if (kind === 'two' && hb) { const mid = V3a(ha, hb, 0.5), dist = Math.max(2.6, Math.hypot(hb[0] - ha[0], hb[2] - ha[2]) * 1.55 + 1.4); return { pos: [mid[0] + nx * dist, mid[1] - 0.2, mid[2] + nz * dist], look: [mid[0], mid[1] - 0.32, mid[2]], fov: 30 }; }
       if (kind === 'ots' && hb) return { pos: [hb[0] + dx * 0.75 + nx * 0.42, hb[1] + 0.02, hb[2] + dz * 0.75 + nz * 0.42], look: [ha[0], ha[1] - 0.06, ha[2]], fov: 28 };
       const toCam = norm2((hb ? dx : dx) * 0.55 + nx * 0.85, (hb ? dz : dz) * 0.55 + nz * 0.85);
-      if (kind === 'cu') return { pos: [ha[0] + toCam[0] * 0.9, ha[1] - 0.02, ha[2] + toCam[1] * 0.9], look: [ha[0], ha[1] - 0.04, ha[2]], fov: 26 };
-      if (kind === 'mcu') return { pos: [ha[0] + toCam[0] * 1.55, ha[1] - 0.12, ha[2] + toCam[1] * 1.55], look: [ha[0], ha[1] - 0.2, ha[2]], fov: 28 };
-      if (kind === 'low') return { pos: [ha[0] + toCam[0] * 1.6, ha[1] - 0.75, ha[2] + toCam[1] * 1.6], look: [ha[0], ha[1] - 0.05, ha[2]], fov: 30 };
+      // anime composition: the face sits on a third, with room in the direction the character looks
+      if (kind === 'cu') return { pos: [ha[0] + toCam[0] * 0.9, ha[1] - 0.02, ha[2] + toCam[1] * 0.9], look: [ha[0] + dx * 0.15, ha[1] - 0.04, ha[2] + dz * 0.15], fov: 26 };
+      if (kind === 'mcu') return { pos: [ha[0] + toCam[0] * 1.55, ha[1] - 0.12, ha[2] + toCam[1] * 1.55], look: [ha[0] + dx * 0.24, ha[1] - 0.2, ha[2] + dz * 0.24], fov: 28 };
+      if (kind === 'ecu') return { pos: [ha[0] + toCam[0] * 0.62, ha[1] + 0.03, ha[2] + toCam[1] * 0.62], look: [ha[0] + dx * 0.03, ha[1] + 0.03, ha[2] + dz * 0.03], fov: 15 }; // the eyes
+      if (kind === 'low') return { pos: [ha[0] + toCam[0] * 1.6, ha[1] - 0.75, ha[2] + toCam[1] * 1.6], look: [ha[0] + dx * 0.12, ha[1] - 0.05, ha[2] + dz * 0.12], fov: 30, roll: 0.07 * SC.side }; // dutch tilt
       // wide: everybody
       const near = (k) => !b || [a, b].some(q => SC.marks[q] && Math.hypot(SC.marks[k].x - SC.marks[q].x, SC.marks[k].z - SC.marks[q].z) < 4.5);
       const ks = Object.keys(SC.marks).filter(k => !SC.marks[k].hidden && k !== 'tofu' && near(k)), c = ks.reduce((s2, k) => [s2[0] + SC.marks[k].x / ks.length, s2[1] + SC.marks[k].z / ks.length], [0, 0]);
@@ -93,7 +95,7 @@ const DIRECTOR = (() => {
       const [vx, vz] = SC.wideDir || [0, 1]; return { pos: [c[0] + vx * (spread * 2.4 + 2.5), 1.45, c[1] + vz * (spread * 2.4 + 2.5)], look: [c[0], 1.0, c[1]], fov: 32 };
     }
     function moveCam(a, lt, d, style, seed) {
-      const k = ease.io(clamp((lt - 0.3) / Math.max(0.5, d - 0.6))), c = { pos: a.pos.slice(), look: a.look.slice(), fov: a.fov };
+      const k = ease.io(clamp((lt - 0.3) / Math.max(0.5, d - 0.6))), c = { pos: a.pos.slice(), look: a.look.slice(), fov: a.fov, roll: a.roll };
       if (style === 'push') { c.pos = V3a(a.pos, a.look, 0.06 * k); }
       else if (style === 'drift') { const dx = a.look[2] - a.pos[2], dz = -(a.look[0] - a.pos[0]), l = Math.hypot(dx, dz) || 1; c.pos[0] += dx / l * 0.18 * (k - 0.5) * (hash(seed, 2) > 0.5 ? 1 : -1); c.pos[2] += dz / l * 0.18 * (k - 0.5) * (hash(seed, 2) > 0.5 ? 1 : -1); }
       if (SC.handheld) { c.pos = c.pos.map((v, i) => v + Math.sin(lt * (0.9 + i * 0.3) + seed) * 0.006); }
@@ -248,6 +250,7 @@ const DIRECTOR = (() => {
         else if (actor !== SC.prevSpeaker) kind = (hash(lineNo, 4) > 0.45 ? 'ots' : 'cu');
         else kind = SC.lastShot === 'cu' ? 'mcu' : 'cu';
         if (o.emote === 'angry' && onScreen && hash(lineNo, 8) > 0.5) kind = 'low';
+        else if (/angry|Surprised|shock/.test(o.emote || '') && onScreen && dur < 2.6 && hash(lineNo, 9) > 0.55) kind = 'ecu';
       }
       SC.pairShots++; SC.count++; SC.lastShot = kind; if (onScreen) SC.prevSpeaker = actor;
       const pre = o.pre ?? 0.45, post = o.post ?? 0.6 + (spec.pace || 0), d = Math.max(o.min || 0, pre + dur + post), seed = lineNo;

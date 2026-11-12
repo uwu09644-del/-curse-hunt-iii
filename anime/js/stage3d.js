@@ -384,7 +384,8 @@ const S3 = (() => {
     const mats = []; vrm.scene.traverse(o => { if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => { if (m.isMToonMaterial && !mats.includes(m)) { mats.push(m); const cel = window.RB_CEL !== false; /* 2D cel: bold ink, hard two-tone shading, flat light, no gloss */ if (m.color) m.color.multiplyScalar(cel ? 0.96 : 0.84); if (m.outlineWidthFactor != null) m.outlineWidthFactor *= cel ? 3.0 : 1.7; if (m.shadingToonyFactor != null) m.shadingToonyFactor = cel ? 1.0 : Math.max(m.shadingToonyFactor, 0.93); if (cel && m.giEqualizationFactor != null) m.giEqualizationFactor = 1.0; if (cel && m.matcapFactor) m.matcapFactor.set(0, 0, 0); if (m.outlineColorFactor) m.outlineColorFactor.set('#140a10');
       if (m.shadeColorFactor) m.userData.sh0 = m.shadeColorFactor.clone();
       if (cel && /_HAIR/.test(m.name || '') && m.matcapFactor) { m.matcapTexture = hairRing(); m.matcapFactor.setRGB(0.3, 0.29, 0.28); m.needsUpdate = true; } } }); });
-    return { J, kind, vrm, spec, mats, isVRM: true, headR: 0.1 };
+    const headU = { value: new THREE.Vector3() }; if (window.RB_CEL !== false) mats.forEach(m => sphereNormals(m, headU));
+    return { J, kind, vrm, spec, mats, isVRM: true, headR: 0.1, headU };
   }
   function setPoseVRM(ch, p, t, o) {
     const J = ch.J, vrm = ch.vrm, hu = vrm.humanoid;
@@ -858,7 +859,7 @@ const S3 = (() => {
     const cm = spec.cam; cam.fov = cm.fov || 32; cam.updateProjectionMatrix(); cam.position.set(...cm.pos); cam.up.set(Math.sin(cm.roll || 0), Math.cos(cm.roll || 0), 0); cam.lookAt(...cm.look);
     animateEnv(spec.env, spec.t, spec.envOpts || {}, sc);
     (spec.cast || []).forEach(([n]) => { const c = chars[n]; if (c && c.sprite) { const r = c.J.root; r.rotation.set(0, Math.atan2(cam.position.x - r.position.x, cam.position.z - r.position.z), 0); } });
-    cam.updateMatrixWorld(); const ud = sc.userData, look = celLook(spec, ud, pl, w, h);
+    cam.updateMatrixWorld(); const ud = sc.userData, look = celLook(spec, ud, pl, w, h); headCentres(spec.cast);
     RIM.uRim.value.set(spec.rim || ud.rim || '#ffb070'); if (pl && !spec.rim && plateImg[pl.id].light && window.RB_LOOK !== false) RIM.uRim.value.copy(plateImg[pl.id].light.rim); RIM.uRimK.value = spec.rimK ?? ud.rimK ?? 0.7; RIM.uRimDir.value.copy(spec.rimDir ? V3(...spec.rimDir) : (ud.rimDir || V3(0, 0.3, -1))).normalize().transformDirection(cam.matrixWorldInverse);
     (spec.cast || []).forEach(([n]) => { const c = chars[n]; if (c && c.mats) c.mats.forEach(m => { if (m.parametricRimColorFactor) { m.parametricRimColorFactor.copy(RIM.uRim.value).multiplyScalar(Math.min(1, RIM.uRimK.value * (window.RB_CEL === false ? 0.55 : 0.16))); m.parametricRimFresnelPowerFactor = 4.5; m.parametricRimLiftFactor = 0; }
       if (m.userData.sh0 && m.shadeColorFactor) m.shadeColorFactor.copy(m.userData.sh0).multiply(look.shade); }); });
@@ -879,12 +880,39 @@ const S3 = (() => {
      The scene is drawn into an offscreen target with its depth. A full-screen pass then inks a black line wherever a
      nearer surface meets a farther one (silhouettes, an arm across a body, hair over a face), on the nearer side only,
      like a key animator's line. Colours get a flatter, brighter cel treatment. Line width follows the frame height. */
+  /* Anime faces and hair are shaded as simple shapes, not as every bump of the mesh: their lighting normal is bent toward
+     a sphere round the skull (the head's centre, in view space, is updated every frame). Faces bend most, hair less. */
+  const FACE_RE = /Face_00_SKIN|_FACE/, HAIR_RE = /_HAIR/;
+  function sphereNormals(m, headU) {
+    const nm = m.name || '', k = FACE_RE.test(nm) ? 0.78 : HAIR_RE.test(nm) ? 0.5 : 0; if (!k || m.userData.sph) return; m.userData.sph = k;
+    const prev = m.onBeforeCompile, key = m.customProgramCacheKey;
+    m.onBeforeCompile = (sh, r) => { if (prev) prev.call(m, sh, r);
+      sh.uniforms.uHeadV = headU; sh.uniforms.uSphK = { value: k };
+      sh.vertexShader = 'uniform vec3 uHeadV;\nvarying vec3 vSphN;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>\n  vSphN = mvPosition.xyz - uHeadV;');
+      sh.fragmentShader = 'uniform float uSphK;\nvarying vec3 vSphN;\n' + sh.fragmentShader.replace('vec3 geometryNormal = normal;', 'normal = normalize( mix( normal, normalize( vSphN ), uSphK ) );\n  vec3 geometryNormal = normal;'); };
+    m.customProgramCacheKey = () => (key ? key.call(m) : '') + '|sph' + k; m.needsUpdate = true;
+  }
+  const HEAD_C = new THREE.Vector3();
+  function headCentres(cast) { (cast || []).forEach(([n]) => { const c = chars[n]; if (!c || !c.headU || !c.J.head) return; c.J.head.updateWorldMatrix(true, false); HEAD_C.set(0, 0.085, -0.01); c.J.head.localToWorld(HEAD_C); c.headU.value.copy(HEAD_C).applyMatrix4(cam.matrixWorldInverse); }); }
+  /* Inner lines: a second pass records which way every surface faces; the ink pass then draws a colour-trace line (a darker
+     line in the local colour, the way anime inks folds) wherever that direction turns sharply: hood rims, collars, fingers,
+     sleeves. Faces and eyes are masked so they keep only their own drawn lines. */
+  let nrmRT = null, nrmMat = null, maskMat = null;
+  function normalPass(sc, cam3, rw, rh) {
+    if (!nrmRT || nrmRT.width !== rw || nrmRT.height !== rh) { if (nrmRT) nrmRT.dispose(); nrmRT = new THREE.WebGLRenderTarget(rw, rh, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter }); }
+    if (!nrmMat) { nrmMat = new THREE.MeshNormalMaterial(); maskMat = new THREE.MeshBasicMaterial({ color: new THREE.Color().setRGB(0.5, 0.5, 0.5) }); }
+    const swaps = [], bg = sc.background; sc.background = null;
+    sc.traverseVisible(o => { if (!o.isMesh || !o.material) return; const pick = mm => (mm.isMToonMaterial && FACE_RE.test(mm.name || '')) || /EYE/.test(mm.name || '') || mm.transparent || mm.isSpriteMaterial || (mm.map && !mm.isMToonMaterial) ? maskMat : nrmMat;
+      swaps.push([o, o.material]); o.material = Array.isArray(o.material) ? o.material.map(pick) : pick(o.material); });
+    R.setRenderTarget(nrmRT); R.clear(true, true, true); R.render(sc, cam3); R.setRenderTarget(null);
+    swaps.forEach(([o, m]) => { o.material = m; }); sc.background = bg; return nrmRT.texture;
+  }
   let celRT = null, celScene = null, celCam = null, celMat = null, blankTex = null;
   /* The light a frame's characters get. With a painting behind them, it comes from the painting (readPlate);
      on a modelled set, from the set's key light. A shot can override any of it (spec.rim, spec.celRim, spec.rimDir2). */
   const WHITE = new THREE.Color(1, 1, 1), COOL = new THREE.Color(0.9, 0.9, 1.12);
   function celLook(spec, ud, pl, w, h) {
-    const P = pl && plateImg[pl.id] && plateImg[pl.id].light, o = { rimK: 0.5, ambK: 0, wrapK: 0, gradK: 0.14, tex: null, rect: [0, 0, 1, 1] };
+    const P = pl && plateImg[pl.id] && plateImg[pl.id].light, o = { rimK: 0.5, ambK: 0, wrapK: 0, gradK: 0.14, tex: null, rect: [0, 0, 1, 1], drawing: Math.floor((spec.t || 0) * 12) % 97 };
     if (P) {
       o.dir = P.dir.slice(); o.rim = P.rim.clone(); o.amb = P.amb; o.ambK = 0.2; o.wrapK = 0.55; o.rimK = P.lum < 0.28 ? 0.62 : 0.48;
       o.shade = WHITE.clone().lerp(P.shade, 0.5).multiplyScalar(0.94);
@@ -919,16 +947,20 @@ const S3 = (() => {
       if (!celMat) {
         celMat = new THREE.ShaderMaterial({
           uniforms: { tColor: { value: null }, tDepth: { value: null }, px: { value: new THREE.Vector2() }, cNear: { value: 0.05 }, cFar: { value: 900 }, width: { value: 1.6 }, ink: { value: new THREE.Color('#1a0f16') }, sat: { value: 1.2 },
-            tPlate: { value: null }, pRect: { value: new THREE.Vector4(0, 0, 1, 1) }, wrapK: { value: 0 }, rimCol: { value: new THREE.Color() }, rimK: { value: 0.5 }, rimDir: { value: new THREE.Vector2(0, 1) }, rimW: { value: 6 }, amb: { value: new THREE.Color(1, 1, 1) }, ambK: { value: 0 }, gradK: { value: 0.14 } },
+            tNorm: { value: null }, creaseK: { value: 0 }, boil: { value: 0 }, tPlate: { value: null }, pRect: { value: new THREE.Vector4(0, 0, 1, 1) }, wrapK: { value: 0 }, rimCol: { value: new THREE.Color() }, rimK: { value: 0.5 }, rimDir: { value: new THREE.Vector2(0, 1) }, rimW: { value: 6 }, amb: { value: new THREE.Color(1, 1, 1) }, ambK: { value: 0 }, gradK: { value: 0.14 } },
           vertexShader: 'varying vec2 vUv; void main() { vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }',
           fragmentShader: [
-            'uniform sampler2D tColor; uniform sampler2D tDepth; uniform sampler2D tPlate; uniform vec2 px; uniform float cNear; uniform float cFar; uniform float width; uniform vec3 ink; uniform float sat;',
-            'uniform vec4 pRect; uniform float wrapK; uniform vec3 rimCol; uniform float rimK; uniform vec2 rimDir; uniform float rimW; uniform vec3 amb; uniform float ambK; uniform float gradK; varying vec2 vUv;',
+            'uniform sampler2D tColor; uniform sampler2D tDepth; uniform sampler2D tNorm; uniform float creaseK; uniform sampler2D tPlate; uniform vec2 px; uniform float cNear; uniform float cFar; uniform float width; uniform vec3 ink; uniform float sat;',
+            'uniform float boil; uniform vec4 pRect; uniform float wrapK; uniform vec3 rimCol; uniform float rimK; uniform vec2 rimDir; uniform float rimW; uniform vec3 amb; uniform float ambK; uniform float gradK; varying vec2 vUv;',
             'float lin(float d) { return (2.0 * cNear * cFar) / (cFar + cNear - (d * 2.0 - 1.0) * (cFar - cNear)); }',
+            'float hh(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }',
+            'float vn(vec2 p) { vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f); return mix(mix(hh(i), hh(i + vec2(1.0, 0.0)), f.x), mix(hh(i + vec2(0.0, 1.0)), hh(i + vec2(1.0, 1.0)), f.x), f.y); }',
             'void main() {',
             '  vec4 c = texture2D(tColor, vUv); float d0 = lin(texture2D(tDepth, vUv).x); float e = 0.0; float bg = 0.0;',
+            '  vec2 bq = vUv * vec2(30.0, 17.0) + boil * vec2(7.13, 3.71); vec2 uvL = vUv + (vec2(vn(bq), vn(bq + 19.0)) - 0.5) * px * width * 1.1;',
+            '  float wL = width * (0.75 + 0.5 * vn(vUv * vec2(11.0, 6.0) + boil * 1.7)); float dL0 = lin(texture2D(tDepth, uvL).x);',
             '  for (int i = 0; i < 8; i++) { float a = float(i) * 0.7853982; vec2 dir = vec2(cos(a), sin(a));',
-            '    float d = lin(texture2D(tDepth, vUv + dir * px * width).x); e = max(e, (d - d0) / d0);',
+            '    float d = lin(texture2D(tDepth, uvL + dir * px * wL).x); e = max(e, (d - dL0) / dL0);',
             '    bg += step(1.6, lin(texture2D(tDepth, vUv + dir * px * width * 5.0).x) / d0); }',
             '  float near = (1.0 - smoothstep(16.0, 30.0, d0)) * step(0.01, c.a);',
             '  float line = smoothstep(0.018, 0.055, e) * step(0.01, c.a);',
@@ -943,6 +975,11 @@ const S3 = (() => {
             '  col = 1.0 - (1.0 - col) * (1.0 - rimCol * rim * rimK);',
             // highlight shoulder: bright hair and white cloth roll off softly instead of clipping to flat white
             '  vec3 sh = 0.7 + 0.35 * (1.0 - exp(-(col - 0.7) / 0.35)); col = mix(col, sh, step(vec3(0.7), col));',
+            '  vec4 nq = texture2D(tNorm, uvL); vec3 n0 = nq.xyz * 2.0 - 1.0; float cr = 0.0;',
+            '  for (int i = 0; i < 4; i++) { float a = float(i) * 1.5707963; vec4 q = texture2D(tNorm, uvL + vec2(cos(a), sin(a)) * px * wL * 0.9);',
+            '    vec3 ni = q.xyz * 2.0 - 1.0; float ok = step(0.6, length(ni)) * step(0.5, q.a); cr = max(cr, ok * (1.0 - dot(normalize(n0), normalize(ni)))); }',
+            '  float crease = smoothstep(0.1, 0.26, cr) * step(0.6, length(n0)) * step(0.5, nq.a) * near * creaseK * (1.0 - line);',
+            '  col = mix(col, mix(col * vec3(0.3, 0.27, 0.36), ink, 0.35), crease * 0.92);',
             '  col = mix(col, ink, line * 0.94);',
             '  gl_FragColor = linearToOutputTexel(vec4(col, c.a));',
             '}'].join('\n'),
@@ -952,11 +989,12 @@ const S3 = (() => {
       }
     }
     const enc = R.outputEncoding; R.outputEncoding = THREE.LinearEncoding;
-    R.setRenderTarget(celRT); R.clear(true, true, true); R.render(sc, cam3); R.setRenderTarget(null); R.outputEncoding = enc;
+    R.setRenderTarget(celRT); R.clear(true, true, true); R.render(sc, cam3); R.setRenderTarget(null);
+    const inner = window.RB_INNER !== false && window.RB_LOOK !== false, nt = inner ? normalPass(sc, cam3, rw, rh) : null; R.outputEncoding = enc;
     const u = celMat.uniforms; u.tColor.value = celRT.texture; u.tDepth.value = celRT.depthTexture; u.px.value.set(1 / rw, 1 / rh); u.cNear.value = cam3.near; u.cFar.value = cam3.far; u.width.value = 2.4 * rh / 720;
     if (!blankTex) { blankTex = new THREE.DataTexture(new Uint8Array([0, 0, 0, 255]), 1, 1); blankTex.needsUpdate = true; }
-    const L = look || celLook({}, sc.userData, null, w, h); u.tPlate.value = L.tex || blankTex; u.pRect.value.set(...L.rect); u.wrapK.value = L.tex ? L.wrapK : 0;
-    u.rimCol.value.copy(L.rim); u.rimK.value = L.rimK; u.rimDir.value.set(L.dir[0], L.dir[1]); u.rimW.value = u.width.value * 3.6; u.amb.value.copy(L.amb); u.ambK.value = L.ambK; u.gradK.value = L.gradK;
+    const L = look || celLook({}, sc.userData, null, w, h); u.tNorm.value = nt || blankTex; u.creaseK.value = nt ? 1 : 0; u.tPlate.value = L.tex || blankTex; u.pRect.value.set(...L.rect); u.wrapK.value = L.tex ? L.wrapK : 0;
+    u.rimCol.value.copy(L.rim); u.rimK.value = L.rimK; u.rimDir.value.set(L.dir[0], L.dir[1]); u.rimW.value = u.width.value * 3.6; u.amb.value.copy(L.amb); u.ambK.value = L.ambK; u.gradK.value = L.gradK; u.boil.value = window.RB_BOIL === false ? 0 : (L.drawing || 0);
     R.clear(true, true, true); R.render(celScene, celCam);
   }
   // project a world point to logical screen px (for 2D effects over the 3D frame)
